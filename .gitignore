@@ -18,6 +18,10 @@
 *.toc
 *.vrb
 
+# Default intermediate compilation targets
+textbook.pdf
+main.pdf
+
 # Xournal++ notes (ignored per user request)
 *.xopp
 .*.xopp

@@ -32,6 +32,21 @@
   \[
   A \Delta B = (A \setminus B) \cup (B \setminus A) = (A \cup B) \setminus (A \cap B), \quad \mathbf{1}_{A \Delta B} = (\mathbf{1}_A - \mathbf{1}_B)^2 = \mathbf{1}_A + \mathbf{1}_B - 2\mathbf{1}_A \mathbf{1}_B.
   \]
+  \item \textbf{Sentential \& First-Order Compactness Theorems:}
+  \[
+  \Sigma \text{ is satisfiable} \iff \text{every finite subset } \Sigma_0 \subseteq \Sigma \text{ is satisfiable.}
+  \]
+  \[
+  \Sigma \models \varphi \iff \exists \Sigma_0 \subseteq_{\mathrm{fin}} \Sigma \text{ such that } \Sigma_0 \models \varphi.
+  \]
+  \item \textbf{Soundness and G\"odel's Completeness Theorem:}
+  \[
+  \mathbf{\Sigma \models \varphi \iff \Sigma \vdash \varphi}.
+  \]
+  \item \textbf{Automorphism Invariance Criterion for Non-Definability:}
+  \[
+  \pi \in \mathrm{Aut}(\mathcal{M}) \implies \bigl(\mathcal{M} \models \varphi[a] \iff \mathcal{M} \models \varphi[\pi(a)]\bigr).
+  \]
 \end{enumerate}
 \end{quicksummary}
 
@@ -685,4 +700,755 @@ Without loss of generality, assume edges $(v_1, v_2), (v_1, v_3), (v_1, v_4)$ ar
   \item Case B: If none of the edges between $v_2, v_3, v_4$ are blue, then all three edges $(v_2, v_3), (v_3, v_4), (v_2, v_4)$ must be \textbf{red}. Thus $\{v_2, v_3, v_4\}$ forms a red triangle (three mutual strangers).
 \end{itemize}
 In either case, a monochromatic triangle exists, proving that there are always at least three mutual friends or three mutual strangers. \hfill $\blacksquare$
+\end{solution}
+
+
+% ===========================================================================
+% EXERCISE 1.13
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Parenthesis Counting Lemma and Unique Readability of Formulas}
+Let $\mathcal{L}_S$ be the formal language of sentential logic over sentence symbols $\mathcal{S}$ with connectives $\{\neg, \land, \lor, \to, \leftrightarrow\}$.
+For any string $w$, let $L(w)$ and $R(w)$ denote the count of left and right parentheses in $w$, respectively.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove by structural induction that for every well-formed formula $\alpha \in \mathrm{WFF}$, $L(\alpha) = R(\alpha)$.
+  \item Prove that for every non-empty proper initial segment (prefix) $u$ of a well-formed formula $\alpha$, $L(u) > R(u)$.
+  \item Deduce that no well-formed formula can be a proper initial segment of another well-formed formula.
+  \item Show why this guarantees that every formula $\alpha = (\beta \circ \gamma)$ has a uniquely determined principal connective $\circ$ and uniquely determined subformulas $\beta, \gamma$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Equality of Left and Right Parentheses $L(\alpha) = R(\alpha)$:}
+We proceed by structural induction on $\alpha \in \mathrm{WFF}$:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textit{Base step:} If $\alpha = A \in \mathcal{S}$ is an atomic sentence symbol, then $L(A) = 0$ and $R(A) = 0$, so $L(\alpha) = R(\alpha) = 0$.
+  \item \textit{Negation step:} Let $\alpha = (\neg \beta)$ with $\beta \in \mathrm{WFF}$. By the inductive hypothesis, $L(\beta) = R(\beta)$. Then:
+  \[
+  L(\alpha) = 1 + L(\beta) = 1 + R(\beta) = R(\alpha).
+  \]
+  \item \textit{Binary connective step:} Let $\alpha = (\beta \circ \gamma)$ where $\circ \in \{\land, \lor, \to, \leftrightarrow\}$ and $\beta, \gamma \in \mathrm{WFF}$.
+  By the inductive hypothesis, $L(\beta) = R(\beta)$ and $L(\gamma) = R(\gamma)$. Then:
+  \[
+  L(\alpha) = 1 + L(\beta) + L(\gamma) = 1 + R(\beta) + R(\gamma) = R(\alpha).
+  \]
+\end{itemize}
+By induction, $L(\alpha) = R(\alpha)$ holds for all $\alpha \in \mathrm{WFF}$.
+
+\textbf{2. Strict Inequality $L(u) > R(u)$ for Proper Prefixes:}
+Let $u$ be a non-empty proper prefix of $\alpha$. Again by structural induction:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item If $\alpha = A \in \mathcal{S}$, $\alpha$ has length 1. Its only proper prefix is the empty string $\epsilon$, so the statement holds vacuously.
+  \item If $\alpha = (\neg \beta)$, a non-empty proper prefix $u$ must take one of four forms:
+  \begin{enumerate}[leftmargin=1.2em,itemsep=1pt]
+    \item $u = ($: here $L(u) = 1 > 0 = R(u)$.
+    \item $u = (\neg$: here $L(u) = 1 > 0 = R(u)$.
+    \item $u = (\neg u'$ where $u'$ is a proper prefix of $\beta$: by inductive hypothesis, $L(u') \ge R(u')$, so $L(u) = 1 + L(u') \ge 1 + R(u') > R(u') = R(u)$.
+    \item $u = (\neg \beta$: here $L(u) = 1 + L(\beta) = 1 + R(\beta) > R(\beta) = R(u)$.
+  \end{enumerate}
+  \item If $\alpha = (\beta \circ \gamma)$, any non-empty proper prefix $u$ starts with the outermost left parenthesis $($.
+  Whether $u$ terminates inside $\beta$, at $\circ$, or inside $\gamma$, the leading $($ provides an extra left parenthesis that is not matched until the very last character of $\alpha$. Hence $L(u) > R(u)$ in all cases.
+\end{itemize}
+
+\textbf{3. No Formula is a Proper Prefix of Another:}
+Suppose to the contrary that there exist $\alpha, \beta \in \mathrm{WFF}$ such that $\alpha$ is a proper prefix of $\beta$.
+Since $\alpha \in \mathrm{WFF}$, by Part 1 we must have $L(\alpha) = R(\alpha)$.
+However, because $\alpha$ is a non-empty proper prefix of $\beta \in \mathrm{WFF}$, by Part 2 we must have $L(\alpha) > R(\alpha)$.
+This yields an immediate contradiction: $L(\alpha) = R(\alpha) < L(\alpha)$. Thus no formula can be a proper initial segment of another.
+
+\textbf{4. Unambiguous Parsing (Unique Readability):}
+Suppose $\alpha = (\beta_1 \circ_1 \gamma_1) = (\beta_2 \circ_2 \gamma_2)$.
+Stripping the initial left parenthesis yields $\beta_1 \circ_1 \gamma_1) = \beta_2 \circ_2 \gamma_2)$.
+If $\beta_1 \ne \beta_2$, one must be a proper initial segment of the other (say $\beta_1$ is a proper prefix of $\beta_2$).
+By Part 3, this is impossible since both $\beta_1, \beta_2 \in \mathrm{WFF}$.
+Therefore, $\beta_1 = \beta_2$.
+Matching the symbols immediately following $\beta_1$ forces $\circ_1 = \circ_2$, and matching the remaining suffix yields $\gamma_1 = \gamma_2$.
+Thus, every composite formula has a unique principal connective and unique subformulas. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.14
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Functional Completeness and the Sheffer Stroke (NAND / NOR)}
+Let $P \uparrow Q \iff \neg(P \land Q)$ denote the Sheffer Stroke (NAND operator) and $P \downarrow Q \iff \neg(P \lor Q)$ denote the Peirce Arrow (NOR operator).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Construct the truth table for $P \uparrow Q$ and $P \downarrow Q$.
+  \item Express the conditional $P \to Q$ and biconditional $P \leftrightarrow Q$ using exclusively the Sheffer Stroke $\uparrow$.
+  \item Express $\neg P$, $P \land Q$, and $P \lor Q$ using exclusively the Peirce Arrow $\downarrow$.
+  \item Prove that the connective set $\{\land, \lor\}$ is \textbf{not} functionally complete by establishing that every formula built with $\{\land, \lor\}$ satisfies a monotonicity property.
+  \item Prove that the connective set $\{\to\}$ alone is \textbf{not} functionally complete.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Truth Tables for NAND ($\uparrow$) and NOR ($\downarrow$):}
+\begin{center}
+\begin{tabular}{cc|c|c|c|c}
+\toprule
+$P$ & $Q$ & $P \land Q$ & $P \uparrow Q = \neg(P \land Q)$ & $P \lor Q$ & $P \downarrow Q = \neg(P \lor Q)$ \\
+\midrule
+T & T & T & \textbf{F} & T & \textbf{F} \\
+T & F & F & \textbf{T} & T & \textbf{F} \\
+F & T & F & \textbf{T} & T & \textbf{F} \\
+F & F & F & \textbf{T} & F & \textbf{T} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{2. Synthesizing $P \to Q$ and $P \leftrightarrow Q$ via $\uparrow$:}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item Recall that $P \to Q \iff \neg P \lor Q \iff \neg(P \land \neg Q) \iff P \uparrow (\neg Q)$.
+  Since $\neg Q \iff Q \uparrow Q$, we obtain:
+  \[
+  \mathbf{P \to Q \iff P \uparrow (Q \uparrow Q)}.
+  \]
+  \item For the biconditional: $P \leftrightarrow Q \iff (P \to Q) \land (Q \to P) \iff \neg\bigl((P \to Q) \uparrow (Q \to P)\bigr)$.
+  Using $A \land B \iff (A \uparrow B) \uparrow (A \uparrow B)$:
+  Let $X = P \uparrow (Q \uparrow Q)$ and $Y = Q \uparrow (P \uparrow P)$. Then:
+  \[
+  \mathbf{P \leftrightarrow Q \iff (X \uparrow Y) \uparrow (X \uparrow Y)}.
+  \]
+\end{itemize}
+
+\textbf{3. Synthesizing Connectives via the Peirce Arrow $\downarrow$:}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Negation:} $P \downarrow P \iff \neg(P \lor P) \iff \neg P$.
+  \item \textbf{Disjunction:} $P \lor Q \iff \neg\neg(P \lor Q) \iff \neg(P \downarrow Q) \iff \mathbf{(P \downarrow Q) \downarrow (P \downarrow Q)}$.
+  \item \textbf{Conjunction:} By De Morgan: $P \land Q \iff \neg(\neg P \lor \neg Q) \iff (\neg P) \downarrow (\neg Q) \iff \mathbf{(P \downarrow P) \downarrow (Q \downarrow Q)}$.
+\end{itemize}
+
+\textbf{4. Incompleteness of $\{\land, \lor\}$ (Monotonicity Barrier):}
+Assign truth value $1$ for True and $0$ for False with order $0 \le 1$.
+A Boolean function $F: \{0,1\}^n \to \{0,1\}$ is \textbf{monotone} if $(x_1, \dots, x_n) \le (y_1, \dots, y_n)$ componentwise implies $F(x_1, \dots, x_n) \le F(y_1, \dots, y_n)$.
+Observe that:
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+  \item The constant projections $F(x) = x_i$ are monotone.
+  \item If $F$ and $G$ are monotone, then $(F \land G)(x) = \min(F(x), G(x))$ and $(F \lor G)(x) = \max(F(x), G(x))$ are also monotone.
+\end{itemize}
+By structural induction, every formula built using only $\{\land, \lor\}$ computes a monotone Boolean function.
+In particular, when all inputs are $1$, the output must be $1$ ($F(1, \dots, 1) = 1$).
+However, the negation function $\neg x$ has $\neg(1) = 0 < 1 = \neg(0)$, so negation is strictly non-monotone.
+Therefore, negation cannot be expressed by $\{\land, \lor\}$, proving that $\{\land, \lor\}$ is not functionally complete.
+
+\textbf{5. Incompleteness of $\{\to\}$:}
+Consider the truth assignment $v$ where every sentence symbol is assigned $1$ (True).
+Notice that $1 \to 1 = 1$.
+By induction on formula construction, every formula $\alpha$ constructed using only the connective $\to$ must evaluate to $1$ when all its atomic variables are $1$.
+Thus it is impossible to express the constant False function $\mathbf{0}$ or the negation $\neg P$, because $\neg(1) = 0 \ne 1$.
+Hence $\{\to\}$ alone is not functionally complete. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.15
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Topological Compactness of Sentential Logic via the Cantor Space}
+Let $\mathcal{S} = \{A_n \mid n \in \N\}$ be a countable set of propositional variables.
+A truth assignment is a sequence $x = (x_0, x_1, x_2, \dots) \in \{0, 1\}^\N$, where $x_n = v(A_n)$.
+Endow $X = \{0, 1\}^\N$ with the product topology (the Cantor Space).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Describe the basic open cylinders of the product topology on $X$ and explain why $X$ is a compact, Hausdorff, totally disconnected topological space.
+  \item For any formula $\alpha \in \mathrm{WFF}$, define the truth set $[\alpha] = \{ x \in X \mid \bar{x}(\alpha) = 1 \}$.
+  Prove that $[\alpha]$ is both \textbf{closed and open} (clopen) in $X$.
+  \item Let $\Sigma$ be an infinite set of sentential formulas such that every finite subset $\Sigma_0 \subseteq \Sigma$ is satisfiable.
+  Use the \textbf{Finite Intersection Property} of compact spaces to prove that $\Sigma$ is satisfiable.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Topology of the Cantor Space $X = \{0, 1\}^\N$:}
+Give the two-point discrete space $\{0, 1\}$ the discrete topology. The product space $X = \prod_{n=0}^\infty \{0, 1\}$ has basic open sets of the form:
+\[
+U_{s} = \{ x \in X \mid x_0 = s_0, x_1 = s_1, \dots, x_{k-1} = s_{k-1} \},
+\]
+for some finite binary sequence $s = (s_0, \dots, s_{k-1}) \in \{0, 1\}^k$.
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Compactness:} By \textbf{Tychonoff's Theorem}, the arbitrary product of compact spaces is compact. Since $\{0, 1\}$ is finite (hence compact), $X$ is compact.
+  \item \textbf{Hausdorff:} For any two distinct points $x \ne y$, there is an index $m$ where $x_m \ne y_m$. The disjoint cylinders $\{z \mid z_m = x_m\}$ and $\{z \mid z_m = y_m\}$ separate $x$ and $y$.
+  \item \textbf{Totally Disconnected:} The basic cylinder sets $U_s$ are both open and closed (their complement is the finite union of other length-$k$ cylinders). Thus $X$ has a clopen base.
+\end{itemize}
+
+\textbf{2. Clopen Nature of Formula Sets $[\alpha]$:}
+Let $\alpha \in \mathrm{WFF}$. The formula $\alpha$ contains only a finite set of sentence symbols $\{A_{i_1}, A_{i_2}, \dots, A_{i_m}\}$.
+The valuation $\bar{x}(\alpha)$ depends entirely on the coordinates $(x_{i_1}, \dots, x_{i_m}) \in \{0, 1\}^m$.
+There are $2^m$ possible assignments to these $m$ variables.
+Let $S_\alpha \subseteq \{0, 1\}^m$ be the subset of assignments that evaluate $\alpha$ to True ($1$).
+Then:
+\[
+[\alpha] = \bigcup_{(c_1, \dots, c_m) \in S_\alpha} \left\{ x \in X \;\middle|\; x_{i_1} = c_1, \dots, x_{i_m} = c_m \right\}.
+\]
+Since each cylinder set is clopen, and $S_\alpha$ is a finite set, $[\alpha]$ is a \textbf{finite union of clopen sets}.
+Therefore, $[\alpha]$ is both \textbf{closed and open} in $X$.
+
+\textbf{3. Proof of Sentential Compactness via FIP:}
+Suppose every finite subset $\Sigma_0 \subseteq \Sigma$ is satisfiable.
+For each $\Sigma_0 = \{\alpha_1, \dots, \alpha_k\}$, satisfiability means there exists an assignment $x \in X$ such that $\bar{x}(\alpha_i) = 1$ for all $1 \le i \le k$.
+In topological notation:
+\[
+\bigcap_{\alpha \in \Sigma_0} [\alpha] = [\alpha_1] \cap [\alpha_2] \cap \dots \cap [\alpha_k] \ne \emptyset.
+\]
+This demonstrates that the collection of closed sets $\{ [\alpha] \}_{\alpha \in \Sigma}$ possesses the \textbf{Finite Intersection Property (FIP)}.
+Since $X$ is a compact topological space, every collection of closed subsets satisfying the FIP has a non-empty global intersection:
+\[
+\bigcap_{\alpha \in \Sigma} [\alpha] \ne \emptyset.
+\]
+Let $x^* \in \bigcap_{\alpha \in \Sigma} [\alpha]$.
+By definition, $x^* \in [\alpha]$ for every $\alpha \in \Sigma$, meaning $\overline{x^*}(\alpha) = 1$ for all $\alpha \in \Sigma$.
+Thus, $x^*$ is a simultaneous truth assignment satisfying the entire infinite theory $\Sigma$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.16
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{The de Bruijn--Erd\H{o}s Graph Coloring Theorem via Compactness}
+Let $G = (V, E)$ be an infinite simple graph, and let $k \in \N_{\ge 1}$.
+A valid $k$-coloring is a function $c: V \to \{1, 2, \dots, k\}$ such that $\{u, v\} \in E \implies c(u) \ne c(v)$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Formulate the $k$-colorability of $G$ as a set of sentential formulas $\Sigma_G$ using sentence symbols $\{P_{v, i} \mid v \in V,\, 1 \le i \le k\}$.
+  \item Prove that every finite subset $\Sigma_0 \subset \Sigma_G$ involves only a finite subgraph of $G$.
+  \item Apply the Compactness Theorem to prove the \textbf{de Bruijn--Erd\H{o}s Theorem}: $G$ is $k$-colorable if and only if every finite subgraph $G_0 \subseteq G$ is $k$-colorable.
+  \item Deduce that if an infinite planar graph has every finite subgraph 4-colorable (by the Four Color Theorem), then the infinite planar graph is also 4-colorable.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Formal Propositional Axiomatization $\Sigma_G$:}
+Introduce propositional variables $P_{v, i}$ with interpretation "vertex $v$ receives color $i$".
+The theory $\Sigma_G$ consists of three axiom families:
+\begin{align}
+\text{(Axiom 1: At least one color)} &\quad \bigvee_{i=1}^k P_{v, i} \quad \text{for each } v \in V, \\
+\text{(Axiom 2: At most one color)} &\quad \neg(P_{v, i} \land P_{v, j}) \quad \text{for each } v \in V \text{ and } 1 \le i < j \le k, \\
+\text{(Axiom 3: Adjacent vertices differ)} &\quad \neg(P_{u, i} \land P_{v, i}) \quad \text{for each } \{u, v\} \in E \text{ and each } 1 \le i \le k.
+\end{align}
+
+\textbf{2. Finite Subsets Involve Finite Subgraphs:}
+Let $\Sigma_0 \subseteq \Sigma_G$ be an arbitrary finite subset.
+Since $\Sigma_0$ contains only finitely many formulas, it mentions only a finite set of vertex symbols:
+\[
+V_0 = \{ v \in V \mid P_{v, i} \text{ appears in some formula of } \Sigma_0 \}.
+\]
+Let $E_0 = E \cap (V_0 \times V_0)$ be the edges of $G$ with both endpoints in $V_0$.
+Then $G_0 = (V_0, E_0)$ is a finite induced subgraph of $G$.
+All formulas in $\Sigma_0$ are axioms belonging to the theory $\Sigma_{G_0}$ of the finite subgraph $G_0$.
+
+\textbf{3. Compactness Proof of the de Bruijn--Erd\H{o}s Theorem:}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item $(\implies)$ If $G$ is $k$-colorable, restricting the coloring to any subgraph yields a valid $k$-coloring.
+  \item $(\impliedby)$ Assume every finite subgraph of $G$ is $k$-colorable.
+  Let $\Sigma_0 \subseteq \Sigma_G$ be any finite subset, mentioning vertices $V_0$.
+  The subgraph $G[V_0]$ is finite, so by hypothesis it admits a valid $k$-coloring $c: V_0 \to \{1, \dots, k\}$.
+  Define a valuation $v_0$ on the variables in $\Sigma_0$ by:
+  \[
+  v_0(P_{u, i}) = 1 \iff c(u) = i.
+  \]
+  Because $c$ is a valid coloring on $G[V_0]$, $v_0$ satisfies all clauses of Axiom 1, Axiom 2, and Axiom 3 present in $\Sigma_0$.
+  Thus every finite subset $\Sigma_0$ is satisfiable.
+  By the Compactness Theorem for Sentential Logic, the entire theory $\Sigma_G$ is satisfiable by some global valuation $v^*$.
+  Setting $c^*(u) = i \iff v^*(P_{u, i}) = 1$ yields a globally valid $k$-coloring of the entire infinite graph $G$.
+\end{itemize}
+
+\textbf{4. Application to Infinite Planar Graphs:}
+Let $G$ be an arbitrary (possibly uncountably infinite) planar graph.
+Every finite subgraph $G_0 \subset G$ is a finite planar graph.
+By the Four Color Theorem (Appel--Haken 1976), every finite planar graph is 4-colorable.
+By the de Bruijn--Erd\H{o}s Theorem, the full infinite planar graph $G$ is also 4-colorable. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.17
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{First-Order Structures, Terms, and Truth Evaluations}
+Consider the first-order language of arithmetic $\mathcal{L} = \{0, S, +, \cdot, <\}$, where $0$ is a constant, $S$ is a unary function symbol (successor), $+$ and $\cdot$ are binary function symbols, and $<$ is a binary relation symbol.
+Let $\mathcal{N} = (\N, 0, S^\N, +^\N, \cdot^\N, <^\N)$ be the standard model of natural numbers.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Write first-order formulas expressing:
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item "$x$ is an even number" ($\mathrm{Even}(x)$).
+    \item "$x$ is a prime number" ($\mathrm{Prime}(x)$).
+    \item "There are infinitely many twin primes" (Twin Prime Conjecture).
+  \end{itemize}
+  \item For the term $t(x, y) = S(x) \cdot (y + S(0))$, compute its valuation $\bar{s}(t)$ under the assignment $s(x) = 3, s(y) = 2$.
+  \item Determine the truth value in $\mathcal{N}$ of the sentence:
+  \[
+  \sigma = \forall x\, \exists y\, (x < y \land \forall z\, (\neg(x < z \land z < y))).
+  \]
+  What does $\sigma$ express about the order structure?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. First-Order Translations:}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Even numbers:} $x$ is even if it is a multiple of $2 = S(S(0))$:
+  \[
+  \mathrm{Even}(x) \equiv \exists y\, (x = y \cdot S(S(0))).
+  \]
+  \item \textbf{Prime numbers:} $x$ is prime if $x > 1$ and its only divisors are $1$ and $x$:
+  \[
+  \mathrm{Prime}(x) \equiv S(0) < x \;\land\; \forall y\, \forall z\, \bigl(x = y \cdot z \implies (y = S(0) \lor y = x)\bigr).
+  \]
+  \item \textbf{Twin Prime Conjecture:} For every number $n$, there exist primes $p, q > n$ with $q = p + 2$:
+  \[
+  \forall n\, \exists p\, \exists q\, \Bigl(n < p \;\land\; q = p + S(S(0)) \;\land\; \mathrm{Prime}(p) \;\land\; \mathrm{Prime}(q)\Bigr).
+  \]
+\end{itemize}
+
+\textbf{2. Term Valuation $\bar{s}(t)$:}
+Given $s(x) = 3$ and $s(y) = 2$:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item $\bar{s}(0) = 0$, so $\bar{s}(S(0)) = 0 + 1 = 1$.
+  \item $\bar{s}(y + S(0)) = s(y) + \bar{s}(S(0)) = 2 + 1 = 3$.
+  \item $\bar{s}(S(x)) = s(x) + 1 = 3 + 1 = 4$.
+  \item $\bar{s}(t) = \bar{s}(S(x)) \cdot \bar{s}(y + S(0)) = 4 \cdot 3 = \mathbf{12}$.
+\end{itemize}
+
+\textbf{3. Truth Value and Meaning of $\sigma$:}
+Let us analyze the subformula $\varphi(x, y) = x < y \land \neg \exists z\, (x < z \land z < y)$.
+This states that $y$ is the \textbf{immediate successor} of $x$ (there is no element strictly between $x$ and $y$).
+The full sentence $\sigma$ states: "Every element $x$ has an immediate successor $y$."
+In $(\N, <)$, for any $n \in \N$, taking $y = n + 1$ satisfies $n < n + 1$, and there is no integer $z$ such that $n < z < n + 1$.
+Therefore, $\sigma$ is \textbf{True} in $\mathcal{N}$.
+It expresses that the order is \textbf{discrete} on the right (not dense). In contrast, in $(\Q, <)$ or $(\R, <)$, $\sigma$ is False. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.18
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Definable Sets and Proofs of Non-Definability via Automorphisms}
+Let $\mathcal{M} = (M, I)$ be an $\mathcal{L}$-structure and $\mathrm{Aut}(\mathcal{M})$ its automorphism group.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove the \textbf{Automorphism Invariance Lemma}: If $\varphi(x_1, \dots, x_k)$ is a first-order formula, $\pi \in \mathrm{Aut}(\mathcal{M})$, and $a_1, \dots, a_k \in M$, then:
+  \[
+  \mathcal{M} \models \varphi[a_1, \dots, a_k] \iff \mathcal{M} \models \varphi[\pi(a_1), \dots, \pi(a_k)].
+  \]
+  \item Consider the field of complex numbers $\mathcal{C} = (\mathbb{C}, +, \cdot, 0, 1)$.
+  Show that complex conjugation $\sigma(z) = \bar{z}$ is an automorphism of $\mathcal{C}$.
+  Deduce that the imaginary unit $i$ is \textbf{not definable without parameters} in $\mathcal{C}$.
+  \item Consider the additive group of integers $\mathcal{Z} = (\mathbb{Z}, +)$.
+  Prove that the set of positive integers $\mathbb{Z}_{> 0} = \{1, 2, 3, \dots\}$ is \textbf{not definable without parameters} in $\mathcal{Z}$.
+  \item Is the set $\{0\}$ definable without parameters in $(\mathbb{Z}, +)$? If so, exhibit a defining formula.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Proof of Automorphism Invariance Lemma:}
+We proceed by induction on the structure of the formula $\varphi$:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textit{Terms:} An automorphism $\pi$ preserves constants ($\pi(c^\mathcal{M}) = c^\mathcal{M}$) and commutes with functions: $\pi(f^\mathcal{M}(a_1, \dots)) = f^\mathcal{M}(\pi(a_1), \dots)$.
+  Hence for any term $t(x_1, \dots, x_k)$, $\pi(\bar{s}(t)) = \overline{(\pi \circ s)}(t)$.
+  \item \textit{Atomic formulas:} For equality: $t_1 = t_2 \iff \pi(t_1) = \pi(t_2)$ because $\pi$ is injective.
+  For relations: $(t_1, \dots, t_n) \in R^\mathcal{M} \iff (\pi(t_1), \dots, \pi(t_n)) \in R^\mathcal{M}$ by definition of automorphism.
+  \item \textit{Boolean connectives:} Trivial since $\neg$ and $\to$ commute with truth values.
+  \item \textit{Quantifiers:} $\mathcal{M} \models \forall x \psi[s] \iff \forall a \in M,\, \mathcal{M} \models \psi[s(x \mapsto a)]$.
+  Since $\pi$ is a bijection, as $a$ ranges over $M$, $\pi(a)$ ranges over all of $M$.
+  By induction hypothesis, $\mathcal{M} \models \psi[s(x \mapsto a)] \iff \mathcal{M} \models \psi[(\pi \circ s)(x \mapsto \pi(a))]$.
+  Thus $\mathcal{M} \models \forall x \psi[\pi \circ s]$.
+\end{itemize}
+
+\textbf{2. Complex Conjugation and Non-Definability of $i$:}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item For all $z, w \in \C$: $\overline{z + w} = \bar{z} + \bar{w}$ and $\overline{z \cdot w} = \bar{z} \cdot \bar{w}$. Also $\bar{0} = 0, \bar{1} = 1$.
+  Since $z \mapsto \bar{z}$ is a bijection, complex conjugation is an automorphism of $\mathcal{C}$.
+  \item Suppose $i$ were definable by a formula $\varphi(x)$, so $\mathcal{C} \models \varphi[z] \iff z = i$.
+  Applying the automorphism $\sigma(z) = \bar{z}$:
+  \[
+  \mathcal{C} \models \varphi[i] \iff \mathcal{C} \models \varphi[\sigma(i)] \iff \mathcal{C} \models \varphi[-i].
+  \]
+  This would force $-i = i \implies 2i = 0$, a contradiction!
+  Hence, no first-order formula in the language of fields can distinguish $i$ from $-i$ without parameters.
+\end{itemize}
+
+\textbf{3. Non-Definability of $\mathbb{Z}_{> 0}$ in $(\mathbb{Z}, +)$:}
+The map $\pi(x) = -x$ is an automorphism of $(\mathbb{Z}, +)$ since $-(x + y) = (-x) + (-y)$ and it is bijective.
+If $\mathbb{Z}_{> 0}$ were defined by $\psi(x)$, then for any $n \in \mathbb{Z}$:
+\[
+n \in \mathbb{Z}_{> 0} \iff \mathcal{Z} \models \psi[n] \iff \mathcal{Z} \models \psi[\pi(n)] \iff -n \in \mathbb{Z}_{> 0}.
+\]
+Taking $n = 1$: $1 \in \mathbb{Z}_{> 0}$, so $-1 \in \mathbb{Z}_{> 0}$, a blatant contradiction.
+Therefore, the positive integers are not definable in $(\mathbb{Z}, +)$.
+
+\textbf{4. Definability of $\{0\}$ in $(\mathbb{Z}, +)$:}
+Yes, $\{0\}$ is definable without parameters.
+The element $0$ is the unique additive identity of the group:
+\[
+\varphi(x) \equiv \forall y\, (x + y = y) \quad \text{or simply} \quad x + x = x.
+\]
+Indeed, in $\mathbb{Z}$, $x + x = x \implies 2x = x \implies x = 0$.
+Hence $\{0\} = \{ x \in \mathbb{Z} \mid (\mathbb{Z}, +) \models x + x = x \}$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.19
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Compactness and Non-Axiomatizability of Graph Connectivity}
+Let $\mathcal{L} = \{E\}$ be the first-order language of graph theory, where $E$ is a symmetric, irreflexive binary relation.
+A graph $G = (V, E)$ is \textbf{connected} if between every pair of vertices there exists a path of finite length.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item For each $n \ge 1$, write a first-order formula $\mathrm{Path}_{\le n}(x, y)$ asserting that there is a path of length at most $n$ between $x$ and $y$.
+  \item Assume for contradiction that there exists a first-order sentence $\sigma_{\mathrm{conn}}$ such that for any graph $G$:
+  \[
+  G \models \sigma_{\mathrm{conn}} \iff G \text{ is connected.}
+  \]
+  Expand the language by adding two new constant symbols $c$ and $d$.
+  Consider the theory:
+  \[
+  \Sigma = \{ \sigma_{\mathrm{conn}} \} \cup \left\{ \neg \mathrm{Path}_{\le n}(c, d) \;\middle|\; n \in \N_{\ge 1} \right\}.
+  \]
+  Prove that every finite subset $\Sigma_0 \subset \Sigma$ has a model.
+  \item Apply the First-Order Compactness Theorem to derive a contradiction. Conclude that the property of graph connectivity is \textbf{not first-order axiomatizable}.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Path Formulas $\mathrm{Path}_{\le n}(x, y)$:}
+\begin{align*}
+\mathrm{Path}_{\le 1}(x, y) &\equiv x = y \lor E(x, y), \\
+\mathrm{Path}_{\le 2}(x, y) &\equiv \mathrm{Path}_{\le 1}(x, y) \lor \exists z_1\, (E(x, z_1) \land E(z_1, y)), \\
+\mathrm{Path}_{\le n}(x, y) &\equiv \exists z_1 \dots \exists z_{n-1}\, \bigvee_{k=1}^n \left( E(x, z_1) \land E(z_1, z_2) \land \dots \land E(z_{k-1}, y) \right).
+\end{align*}
+
+\textbf{2. Finite Satisfiability of $\Sigma$:}
+Let $\Sigma_0 \subset \Sigma$ be an arbitrary finite subset.
+$\Sigma_0$ contains the connectivity sentence $\sigma_{\mathrm{conn}}$ and finitely many negation conditions:
+\[
+\neg \mathrm{Path}_{\le n_1}(c, d), \dots, \neg \mathrm{Path}_{\le n_k}(c, d).
+\]
+Let $N = \max(n_1, \dots, n_k)$.
+To satisfy $\Sigma_0$, we need a graph that is connected, yet the distance between $c$ and $d$ is strictly greater than $N$.
+Construct a simple cycle graph $C_{2N+2}$ with $2N + 2$ vertices arranged in a ring.
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item $C_{2N+2}$ is connected, so $C_{2N+2} \models \sigma_{\mathrm{conn}}$.
+  \item Let $c$ and $d$ be antipodal vertices on the cycle. The shortest path between $c$ and $d$ has length $N + 1 > N$.
+  \item Therefore, $C_{2N+2} \models \neg \mathrm{Path}_{\le m}(c, d)$ for all $m \le N$.
+\end{itemize}
+Thus $C_{2N+2}$ with these constants satisfies $\Sigma_0$. Every finite subset $\Sigma_0$ has a model.
+
+\textbf{3. Derivation of Contradiction via Compactness:}
+By the First-Order Compactness Theorem, since every finite subset $\Sigma_0$ has a model, the entire infinite theory $\Sigma$ must have a model $\mathcal{G}^* = (V^*, E^*, c^*, d^*)$.
+Let us inspect the properties of $\mathcal{G}^*$:
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item Since $\sigma_{\mathrm{conn}} \in \Sigma$, $\mathcal{G}^* \models \sigma_{\mathrm{conn}}$. By our hypothesis on $\sigma_{\mathrm{conn}}$, $\mathcal{G}^*$ must be a \textbf{connected graph}.
+  \item But $\Sigma$ also contains $\neg \mathrm{Path}_{\le n}(c, d)$ for \textbf{every} $n \ge 1$.
+  This asserts that there is NO path of length $1$, NO path of length $2$, $\dots$, NO path of any finite length $n \in \N$ connecting $c^*$ and $d^*$.
+  \item Therefore, $c^*$ and $d^*$ belong to different connected components of $\mathcal{G}^*$, proving that $\mathcal{G}^*$ is \textbf{disconnected}!
+\end{enumerate}
+This direct contradiction proves that our initial hypothesis was false:
+\textbf{No first-order sentence $\sigma_{\mathrm{conn}}$ can axiomatize the class of connected graphs.} \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.20
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Non-Standard Models of Arithmetic via First-Order Compactness}
+Let $\mathcal{L}_A = \{0, S, +, \cdot, <\}$ and let $\mathrm{Th}(\N) = \{ \sigma \text{ sentence} \mid \N \models \sigma \}$ be True Arithmetic.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Add a new constant symbol $c$ to $\mathcal{L}_A$.
+  Consider the theory $\Sigma = \mathrm{Th}(\N) \cup \{ c > \bar{n} \mid n \in \N \}$, where $\bar{n} = S^n(0)$.
+  Prove using compactness that $\Sigma$ has a model $\mathcal{M}^*$.
+  \item Let $M^*$ be the universe of $\mathcal{M}^*$. Prove that the map $j: \N \to M^*$ given by $j(n) = \bar{n}^{\mathcal{M}^*}$ is an elementary embedding.
+  \item Deduce that $c^{\mathcal{M}^*}$ is an \textbf{infinite non-standard integer}.
+  \item Show that $\mathcal{M}^*$ also contains elements $c - 1, c + 1, 2c, c^2$ and infinitely many non-standard "galaxies" order-isomorphic to $(\mathbb{Z}, <)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Satisfiability of $\Sigma$ by Compactness:}
+Let $\Sigma_0 \subset \Sigma$ be an arbitrary finite subset.
+$\Sigma_0$ consists of a finite set of arithmetic truths $\Phi \subset \mathrm{Th}(\N)$ and finitely many inequalities $c > \bar{n}_1, \dots, c > \bar{n}_k$.
+Let $N = \max(n_1, \dots, n_k) + 1 \in \N$.
+In the standard structure $\N$, interpret the constant $c$ as $N$.
+Then:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item All sentences in $\Phi$ hold since $\Phi \subset \mathrm{Th}(\N)$.
+  \item Since $N > n_i$ for all $1 \le i \le k$, each sentence $c > \bar{n}_i$ is true in $(\N, N)$.
+\end{itemize}
+Thus $(\N, N) \models \Sigma_0$. Every finite subset has a model.
+By the First-Order Compactness Theorem, $\Sigma$ has a model $\mathcal{M}^* = (M^*, 0^*, S^*, +^*, \cdot^*, <^*, c^*)$.
+
+\textbf{2. Elementary Embedding of the Standard Numbers:}
+Since $\mathrm{Th}(\N) \subseteq \Sigma$, the model $\mathcal{M}^*$ satisfies the complete first-order theory of $\N$:
+\[
+\mathcal{M}^* \equiv \N.
+\]
+The map $j(n) = \bar{n}^{\mathcal{M}^*}$ maps each standard natural number to the interpretation of the numeral in $\mathcal{M}^*$.
+Since $\N \models \forall x \forall y\, (x \ne y \implies S^x(0) \ne S^y(0))$, $j$ is strictly injective.
+Furthermore, for any formula $\varphi(x_1, \dots, x_k)$ and $n_1, \dots, n_k \in \N$:
+\[
+\N \models \varphi(n_1, \dots, n_k) \iff \varphi(\bar{n}_1, \dots, \bar{n}_k) \in \mathrm{Th}(\N) \iff \mathcal{M}^* \models \varphi(j(n_1), \dots, j(n_k)).
+\]
+Thus $j: \N \hookrightarrow \mathcal{M}^*$ is an \textbf{elementary embedding}.
+
+\textbf{3. $c^*$ is an Infinite Non-Standard Integer:}
+For every standard integer $n \in \N$, the sentence $c > \bar{n}$ belongs to $\Sigma$.
+Therefore:
+\[
+\mathcal{M}^* \models c^* > j(n) \quad \text{for all } n \in \N.
+\]
+The element $c^*$ is strictly greater than every standard integer!
+Hence $c^* \in M^* \setminus j(\N)$ is an \textbf{infinite (non-standard) integer}.
+
+\textbf{4. Structure of Non-Standard Elements and $\mathbb{Z}$-Galaxies:}
+Since $\mathcal{M}^* \models \mathrm{Th}(\N)$, every first-order theorem of Peano arithmetic holds in $\mathcal{M}^*$:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item $\N \models \forall x\, (x > 0 \implies \exists! y\, (S(y) = x))$.
+  Applying this to $c^* > 0$, there exists a unique element $c^* - 1$ whose successor is $c^*$.
+  Similarly, $c^* + 1 = S(c^*)$, $c^* + 2, \dots$ all exist.
+  The set $\{ \dots, c^* - 2, c^* - 1, c^*, c^* + 1, c^* + 2, \dots \}$ forms a discrete chain order-isomorphic to $(\mathbb{Z}, <)$.
+  \item Operations: $2 \cdot c^* = c^* + c^* > c^*$, and $(c^*)^2 > 2c^*$.
+  Between the standard integers $\N$ and the galaxy of $c^*$, and between $c^*$ and $(c^*)^2$, there exist infinitely many other $\mathbb{Z}$-galaxies.
+  In fact, the order type of $\mathcal{M}^*$ is $\N + \mathbb{Z} \cdot \mathbb{Q}$ (a copy of $\N$ followed by a dense linear order of $\mathbb{Z}$-chains without endpoints). \hfill $\blacksquare$
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.21
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{The Class of Fields of Characteristic 0 is Not Strongly Elementary}
+Let $\mathcal{L}_{\mathrm{Ring}} = \{0, 1, +, \cdot\}$ be the language of rings.
+Recall that the characteristic of a field $F$ is the smallest integer $p \ge 1$ such that $\bar{p} = \underbrace{1 + \dots + 1}_{p \text{ times}} = 0$; if no such $p$ exists, $\mathrm{char}(F) = 0$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Show that the class $\mathrm{Field}_0$ of fields of characteristic 0 is an \textbf{elementary class} by specifying an infinite set of first-order axioms $\Sigma_0$.
+  \item Assume for contradiction that $\mathrm{Field}_0$ is \textbf{strongly elementary}, meaning there is a single first-order sentence $\psi$ such that:
+  \[
+  F \models \psi \iff \mathrm{char}(F) = 0.
+  \]
+  Consider the theory $\Gamma = \mathrm{Field} \cup \{\neg \psi\} \cup \{ \bar{p} \ne 0 \mid p \text{ is prime} \}$.
+  Show that every finite subset of $\Gamma$ has a model.
+  \item Derive a contradiction using the Compactness Theorem. Conclude that $\mathrm{Field}_0$ cannot be axiomatized by any finite set of axioms.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. $\mathrm{Field}_0$ is an Elementary Class:}
+Let $\Sigma_{\mathrm{Field}}$ denote the standard finite set of field axioms (associativity, commutativity, identity elements $0 \ne 1$, inverses, distributivity).
+Define the infinite set of axioms:
+\[
+\Sigma_0 = \Sigma_{\mathrm{Field}} \cup \{ \bar{p} \ne 0 \mid p \text{ is a prime number} \},
+\]
+where $\bar{p}$ is the term $1 + 1 + \dots + 1$ ($p$ times).
+A field $F$ satisfies $\bar{p} \ne 0$ for all primes $p$ if and only if $\mathrm{char}(F) = 0$.
+Therefore, $\mathrm{Field}_0 = \mathrm{Mod}(\Sigma_0)$, which proves that $\mathrm{Field}_0$ is an elementary class.
+
+\textbf{2. Finite Satisfiability of $\Gamma$:}
+Assume to the contrary that $\mathrm{Field}_0$ is strongly elementary, so $F \models \psi \iff \mathrm{char}(F) = 0$.
+Consequently:
+\[
+F \models \neg \psi \iff \mathrm{char}(F) > 0 \quad (\text{characteristic is a positive prime } p).
+\]
+Now consider the theory:
+\[
+\Gamma = \Sigma_{\mathrm{Field}} \cup \{\neg \psi\} \cup \{ \bar{p} \ne 0 \mid p \text{ prime} \}.
+\]
+Let $\Gamma_0 \subset \Gamma$ be any finite subset.
+$\Gamma_0$ contains $\Sigma_{\mathrm{Field}}$, $\neg \psi$, and finitely many prime restrictions:
+\[
+\bar{p}_1 \ne 0, \;\bar{p}_2 \ne 0, \;\dots, \;\bar{p}_k \ne 0.
+\]
+By Euclid's theorem, there exist infinitely many prime numbers.
+Choose a prime $q \in \N$ strictly greater than all primes in $\Gamma_0$:
+\[
+q > \max(p_1, p_2, \dots, p_k).
+\]
+Consider the finite field $\mathbb{F}_q = \mathbb{Z} / q\mathbb{Z}$.
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item $\mathbb{F}_q$ is a field, so $\mathbb{F}_q \models \Sigma_{\mathrm{Field}}$.
+  \item $\mathrm{char}(\mathbb{F}_q) = q > 0$, which means $\mathbb{F}_q$ does not have characteristic 0. Hence $\mathbb{F}_q \models \neg \psi$.
+  \item For any prime $p_i \le \max(p_1, \dots, p_k) < q$, the numeral $\bar{p}_i \not\equiv 0 \pmod q$.
+  Therefore, $\mathbb{F}_q \models \bar{p}_i \ne 0$ for all $1 \le i \le k$.
+\end{itemize}
+Thus, $\mathbb{F}_q \models \Gamma_0$. Every finite subset $\Gamma_0$ is satisfiable.
+
+\textbf{3. Contradiction via Compactness:}
+By the First-Order Compactness Theorem, since every finite subset $\Gamma_0$ has a model, the full theory $\Gamma$ has a model $F^*$.
+Let us evaluate the characteristic of $F^*$:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item Since $\Gamma$ contains $\bar{p} \ne 0$ for \textbf{every} prime $p$, $F^*$ cannot have prime characteristic $p$. Hence $\mathrm{char}(F^*) = 0$.
+  \item But since $\neg \psi \in \Gamma$, $F^* \models \neg \psi$, which means $\mathrm{char}(F^*) \ne 0$!
+\end{itemize}
+This contradiction proves that no such sentence $\psi$ can exist:
+\textbf{The class of fields of characteristic 0 is not strongly elementary; it requires infinitely many axioms.} \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.22
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Formal Deductions and the Deduction Metatheorem}
+In the Hilbert deductive system with axioms (Groups 1--5) and Modus Ponens:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Give a formal deduction of the identity theorem $\vdash \varphi \to \varphi$ using the tautology schema:
+  \begin{align*}
+  A_1 &\equiv \varphi \to ((\varphi \to \varphi) \to \varphi), \\
+  A_2 &\equiv (\varphi \to ((\varphi \to \varphi) \to \varphi)) \to ((\varphi \to (\varphi \to \varphi)) \to (\varphi \to \varphi)), \\
+  A_3 &\equiv \varphi \to (\varphi \to \varphi).
+  \end{align*}
+  \item State the \textbf{Deduction Metatheorem} and explain the technical restriction required when the Generalization Rule (GEN) is applied.
+  \item Use the Deduction Metatheorem to prove that if $\vdash \varphi \to \psi$ and $\vdash \psi \to \theta$, then $\vdash \varphi \to \theta$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Formal Derivation of $\vdash \varphi \to \varphi$:}
+We construct a 5-step formal deduction:
+\begin{enumerate}[leftmargin=1.8em,itemsep=3pt]
+  \item[(1)] $\varphi \to ((\varphi \to \varphi) \to \varphi)$ \hfill [Axiom Group 1 (instance of $A \to (B \to A)$)]
+  \item[(2)] $\bigl(\varphi \to ((\varphi \to \varphi) \to \varphi)\bigr) \to \bigl((\varphi \to (\varphi \to \varphi)) \to (\varphi \to \varphi)\bigr)$ \hfill [Axiom Group 1 (instance of $(A \to (B \to C)) \to ((A \to B) \to (A \to C))$)]
+  \item[(3)] $(\varphi \to (\varphi \to \varphi)) \to (\varphi \to \varphi)$ \hfill [Modus Ponens from (1) and (2)]
+  \item[(4)] $\varphi \to (\varphi \to \varphi)$ \hfill [Axiom Group 1 (instance of $A \to (B \to A)$)]
+  \item[(5)] $\mathbf{\varphi \to \varphi}$ \hfill [Modus Ponens from (4) and (3)]
+\end{enumerate}
+This complete 5-line sequence constitutes a formal syntactic proof of $\vdash \varphi \to \varphi$.
+
+\textbf{2. The Deduction Metatheorem and the Generalization Restriction:}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Statement:} Let $\Sigma$ be a set of formulas and $\varphi, \psi$ formulas.
+  If there is a deduction $\Sigma \cup \{\varphi\} \vdash \psi$ in which no variable $x$ free in $\varphi$ is generalized upon using GEN, then:
+  \[
+  \Sigma \vdash \varphi \to \psi.
+  \]
+  \item \textbf{Why the Restriction is Essential:}
+  Without the restriction, one could reason:
+  From $\{x = 0\}$, apply Generalization to obtain $\forall x (x = 0)$.
+  If the deduction theorem held without restriction, this would yield $\vdash x = 0 \to \forall x (x = 0)$, which is semantically false!
+  The restriction guarantees that free variables in active hypotheses behave as constants during deduction.
+\end{itemize}
+
+\textbf{3. Proof of Transitivity of Implication (Hypothetical Syllogism):}
+We wish to show $\vdash \varphi \to \theta$ given $\vdash \varphi \to \psi$ and $\vdash \psi \to \theta$.
+Consider the set of premises $\Sigma = \{\varphi \to \psi, \;\psi \to \theta, \;\varphi\}$.
+We construct a deduction of $\theta$ from $\Sigma$:
+\begin{enumerate}[leftmargin=1.8em,itemsep=2pt]
+  \item[(1)] $\varphi$ \hfill [Hypothesis from $\Sigma$]
+  \item[(2)] $\varphi \to \psi$ \hfill [Premise from $\Sigma$]
+  \item[(3)] $\psi$ \hfill [Modus Ponens from (1) and (2)]
+  \item[(4)] $\psi \to \theta$ \hfill [Premise from $\Sigma$]
+  \item[(5)] $\theta$ \hfill [Modus Ponens from (3) and (4)]
+\end{enumerate}
+We have established: $\{\varphi \to \psi, \;\psi \to \theta\} \cup \{\varphi\} \vdash \theta$.
+Since no Generalization was used, applying the Deduction Metatheorem with respect to hypothesis $\varphi$ yields:
+\[
+\{\varphi \to \psi, \;\psi \to \theta\} \vdash \varphi \to \theta.
+\]
+Since the two implications are provable ($\vdash \varphi \to \psi$ and $\vdash \psi \to \theta$), we conclude:
+\[
+\mathbf{\vdash \varphi \to \theta}. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.23
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{The Canonical Term Model Construction in G\"odel's Completeness Proof}
+Let $\mathcal{L}$ be a language with at least one constant symbol. Let $\Sigma$ be a maximal consistent theory with Henkin witnesses.
+Let $\mathrm{Term}_0$ be the set of closed terms of $\mathcal{L}$.
+Define the binary relation on $\mathrm{Term}_0$:
+\[
+t_1 \sim t_2 \iff \Sigma \vdash t_1 = t_2.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove using the equality axioms (Group 5) that $\sim$ is an equivalence relation on $\mathrm{Term}_0$.
+  \item Let $[t]$ denote the equivalence class of $t \in \mathrm{Term}_0$.
+  Prove that function interpretations $f^\mathcal{M}([t_1], \dots, [t_n]) = [f(t_1, \dots, t_n)]$ and relation interpretations $([t_1], \dots, [t_n]) \in R^\mathcal{M} \iff \Sigma \vdash R(t_1, \dots, t_n)$ are \textbf{well-defined} (independent of representatives).
+  \item Prove the base case of the \textbf{Truth Lemma}: For every closed atomic formula $\varphi \equiv t_1 = t_2$ and $\varphi \equiv R(t_1, \dots, t_n)$:
+  \[
+  \mathcal{M} \models \varphi \iff \varphi \in \Sigma.
+  \]
+  \item Explain how the Henkin witnessing property ensures that the inductive step holds for existential sentences $\exists x \psi(x)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Equivalence Relation $\sim$:}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Reflexivity:} By equality axiom $x = x$, $\Sigma \vdash t = t$, so $t \sim t$.
+  \item \textbf{Symmetry:} If $t_1 \sim t_2$, then $\Sigma \vdash t_1 = t_2$. By equality axiom $x = y \to y = x$ and MP, $\Sigma \vdash t_2 = t_1$, so $t_2 \sim t_1$.
+  \item \textbf{Transitivity:} If $t_1 \sim t_2$ and $t_2 \sim t_3$, then $\Sigma \vdash t_1 = t_2$ and $\Sigma \vdash t_2 = t_3$.
+  By axiom $(x = y \land y = z) \to x = z$ and MP, $\Sigma \vdash t_1 = t_3$, so $t_1 \sim t_3$.
+\end{itemize}
+Thus $\sim$ is an equivalence relation on $\mathrm{Term}_0$.
+
+\textbf{2. Well-Definedness of Operations and Relations:}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item Suppose $t_i \sim s_i$ for all $1 \le i \le n$, so $\Sigma \vdash t_i = s_i$.
+  By the function equality congruence axiom:
+  \[
+  (t_1 = s_1 \land \dots \land t_n = s_n) \implies f(t_1, \dots, t_n) = f(s_1, \dots, s_n).
+  \]
+  Applying Modus Ponens yields $\Sigma \vdash f(t_1, \dots, t_n) = f(s_1, \dots, s_n)$, which means:
+  \[
+  [f(t_1, \dots, t_n)] = [f(s_1, \dots, s_n)].
+  \]
+  Thus $f^\mathcal{M}$ is well-defined.
+  \item By the relation equality congruence axiom:
+  \[
+  (t_1 = s_1 \land \dots \land t_n = s_n) \implies \bigl( R(t_1, \dots, t_n) \leftrightarrow R(s_1, \dots, s_n) \bigr).
+  \]
+  Thus $\Sigma \vdash R(t_1, \dots, t_n) \iff \Sigma \vdash R(s_1, \dots, s_n)$, so $R^\mathcal{M}$ is well-defined.
+\end{itemize}
+
+\textbf{3. Base Case of the Truth Lemma:}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Equality atomic formula ($t_1 = t_2$):}
+  \[
+  \mathcal{M} \models t_1 = t_2 \iff [t_1] = [t_2] \iff t_1 \sim t_2 \iff \Sigma \vdash t_1 = t_2.
+  \]
+  Since $\Sigma$ is maximal consistent and deductively closed, $\Sigma \vdash t_1 = t_2 \iff (t_1 = t_2) \in \Sigma$.
+  \item \textbf{Relation atomic formula ($R(t_1, \dots, t_n)$):}
+  \[
+  \mathcal{M} \models R(t_1, \dots, t_n) \iff ([t_1], \dots, [t_n]) \in R^\mathcal{M} \iff \Sigma \vdash R(t_1, \dots, t_n) \iff R(t_1, \dots, t_n) \in \Sigma.
+  \]
+\end{itemize}
+In both cases, $\mathcal{M} \models \varphi \iff \varphi \in \Sigma$.
+
+\textbf{4. The Henkin Witness Step:}
+Consider an existential sentence $\varphi \equiv \exists x \psi(x)$.
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item $(\implies)$ If $\mathcal{M} \models \exists x \psi(x)$, then there exists an element $m \in M$ such that $\mathcal{M} \models \psi[m]$.
+  Since every element in the term model is the equivalence class of some closed term $t \in \mathrm{Term}_0$, $m = [t]$.
+  By inductive hypothesis on lower-complexity formula $\psi(t)$, $\mathcal{M} \models \psi(t) \iff \psi(t) \in \Sigma$.
+  Since $\psi(t) \to \exists x \psi(x)$ is a logical theorem, $\exists x \psi(x) \in \Sigma$.
+  \item $(\impliedby)$ Conversely, suppose $\exists x \psi(x) \in \Sigma$.
+  Here is where the \textbf{Henkin witnessing property} is crucial:
+  Because $\Sigma$ has witnesses, there exists a constant symbol $c$ such that:
+  \[
+  \exists x \psi(x) \to \psi(c) \in \Sigma.
+  \]
+  Since $\exists x \psi(x) \in \Sigma$ and $\Sigma$ is closed under Modus Ponens, we obtain:
+  \[
+  \psi(c) \in \Sigma.
+  \]
+  By the inductive hypothesis on $\psi(c)$, $\mathcal{M} \models \psi(c)$, which means $\mathcal{M} \models \psi[[c]]$.
+  Since $[c] \in M$, this proves that $\mathcal{M} \models \exists x \psi(x)$!
+\end{itemize}
+The Henkin witness constant $c$ bridges the semantic existence in $\mathcal{M}$ with the syntactic presence of $\exists$ in $\Sigma$, completing the proof of G\"odel's Completeness Theorem. \hfill $\blacksquare$
 \end{solution}

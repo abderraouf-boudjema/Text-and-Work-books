@@ -166,7 +166,542 @@ More generally, for any indexed family of subsets $\{A_i\}_{i \in I}$:
 \end{equation}
 \end{theorembox}
 
-\section{Worked Examples with Step-by-Step Proofs}
+
+% ===========================================================================
+% SECTION 5: FORMAL SYNTAX, UNIQUE READABILITY & FUNCTIONAL COMPLETENESS
+% ===========================================================================
+\section{Formal Syntax of Sentential Logic, Unique Readability \& Functional Completeness}
+\label{sec:sentential_formal_syntax}
+
+To study mathematical logic with mathematical rigor, the language of logic itself must be formalized as a mathematical object. This foundational perspective distinguishes \textbf{syntax} (pure string formation and grammar) from \textbf{semantics} (truth values and interpretations).
+
+\subsection{Strings, Alphabets, and Well-Formed Formulas}
+
+\begin{definitionbox}{The Formal Language of Sentential Logic $\mathcal{L}_S$}
+The formal alphabet of sentential logic consists of three disjoint sets of symbols:
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Sentence Symbols:} A countably infinite set $\mathcal{S} = \{A_1, A_2, A_3, \dots\} \cup \{P, Q, R, \dots\}$.
+  \item \textbf{Logical Connectives:} The unary symbol $\neg$ (negation) and binary symbols $\{\land, \lor, \to, \leftrightarrow\}$.
+  \item \textbf{Punctuation Symbols:} Left and right parentheses $($ and $)$.
+\end{enumerate}
+An \textbf{expression} is any finite sequence (string) of symbols from this alphabet. The concatenation of two expressions $\alpha$ and $\beta$ is denoted $\alpha\beta$.
+\end{definitionbox}
+
+Not every string represents a syntactically valid statement (e.g., $)\to P($ is meaningless). We define the set of \textbf{well-formed formulas} ($\mathrm{WFF}$) inductively from first principles.
+
+\begin{definitionbox}{Inductive Definition of Well-Formed Formulas ($\mathrm{WFF}$)}
+The set $\mathrm{WFF}$ of well-formed sentential formulas is the smallest set of strings satisfying:
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item Every sentence symbol $A \in \mathcal{S}$ is in $\mathrm{WFF}$ (atomic formulas).
+  \item If $\alpha \in \mathrm{WFF}$, then the string $(\neg \alpha) \in \mathrm{WFF}$.
+  \item If $\alpha, \beta \in \mathrm{WFF}$ and $\circ \in \{\land, \lor, \to, \leftrightarrow\}$, then the string $(\alpha \circ \beta) \in \mathrm{WFF}$.
+  \item No string is in $\mathrm{WFF}$ unless its membership follows from a finite number of applications of rules (1)--(3).
+\end{enumerate}
+\end{definitionbox}
+
+\subsection{The Unique Readability Theorem}
+
+In natural language, syntactic ambiguity often creates paradoxical interpretations (e.g., "time flies like an arrow"). In formal logic, mathematical reasoning requires that every compound formula possesses an \textbf{unambiguous parse tree}: its principal connective and component subformulas must be uniquely determined.
+
+\begin{propbox}{Parenthesis Balance Lemma for Well-Formed Formulas}
+For any string $w$, let $L(w)$ and $R(w)$ denote the total number of left and right parentheses in $w$, respectively. For every $\alpha \in \mathrm{WFF}$:
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item $L(\alpha) = R(\alpha)$ (every well-formed formula contains an equal number of left and right parentheses).
+  \item For every \textbf{non-empty proper initial segment} (prefix) $u$ of $\alpha$, $L(u) > R(u)$.
+\end{enumerate}
+\end{propbox}
+
+\paragraph{Proof.}
+We proceed by structural induction on the construction of $\alpha \in \mathrm{WFF}$.
+\begin{itemize}[leftmargin=1.4em,itemsep=3pt]
+  \item \textit{Base Case:} If $\alpha = A \in \mathcal{S}$ is an atomic symbol, $L(\alpha) = R(\alpha) = 0$. Since $\alpha$ has length 1, its only non-empty proper prefix is the empty string or non-existent, satisfying both claims vacuously.
+  \item \textit{Negation Step:} Let $\alpha = (\neg \beta)$ where $\beta \in \mathrm{WFF}$ satisfies the inductive hypothesis. Then $L(\alpha) = 1 + L(\beta) = 1 + R(\beta) = R(\alpha)$. Any non-empty proper prefix $u$ of $\alpha$ is either:
+  (i) $($, where $L(u)=1 > R(u)=0$;
+  (ii) $(\neg$, where $L(u)=1 > R(u)=0$;
+  (iii) $(\neg u'$ where $u'$ is a prefix of $\beta$, giving $L(u) = 1 + L(u') \ge 1 + R(u') > R(u') = R(u)$;
+  (iv) $(\neg \beta$, giving $L(u) = 1 + L(\beta) = 1 + R(\beta) > R(\beta) = R(u)$. In every case, $L(u) > R(u)$.
+  \item \textit{Binary Connective Step:} Let $\alpha = (\beta \circ \gamma)$ where $\beta, \gamma \in \mathrm{WFF}$. Then $L(\alpha) = 1 + L(\beta) + L(\gamma) = 1 + R(\beta) + R(\gamma) = R(\alpha)$. Any proper prefix $u$ intersects $(\beta$, or $(\beta\circ$, or $(\beta\circ \gamma'$ with $\gamma'$ a prefix of $\gamma$. In all subcases, the initial unmatched left parenthesis guarantees $L(u) > R(u)$. $\blacksquare$
+\end{itemize}
+
+\begin{theorembox}{Unique Readability of Sentential Formulas}
+For any formula $\alpha \in \mathrm{WFF}$:
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item No proper initial segment of $\alpha$ belongs to $\mathrm{WFF}$.
+  \item Exactly one of the following mutually exclusive conditions holds:
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item $\alpha \in \mathcal{S}$ is an atomic sentence symbol.
+    \item There is a unique formula $\beta \in \mathrm{WFF}$ such that $\alpha = (\neg \beta)$.
+    \item There exist unique formulas $\beta, \gamma \in \mathrm{WFF}$ and a unique binary connective $\circ \in \{\land, \lor, \to, \leftrightarrow\}$ such that $\alpha = (\beta \circ \gamma)$.
+  \end{itemize}
+\end{enumerate}
+\end{theorembox}
+
+\subsection{Truth Assignments and Functional Completeness}
+
+\begin{definitionbox}{Truth Valuations and Homomorphic Extension}
+A \textbf{truth assignment} is a function $v: \mathcal{S} \to \{0, 1\}$. By the Unique Readability Theorem, $v$ extends uniquely to a valuation function $\bar{v}: \mathrm{WFF} \to \{0, 1\}$ satisfying:
+\begin{align*}
+\bar{v}(A) &= v(A) \quad \text{for all } A \in \mathcal{S}, \\
+\bar{v}((\neg \alpha)) &= 1 - \bar{v}(\alpha), \\
+\bar{v}((\alpha \land \beta)) &= \min(\bar{v}(\alpha), \bar{v}(\beta)) = \bar{v}(\alpha) \cdot \bar{v}(\beta), \\
+\bar{v}((\alpha \lor \beta)) &= \max(\bar{v}(\alpha), \bar{v}(\beta)) = \bar{v}(\alpha) + \bar{v}(\beta) - \bar{v}(\alpha)\bar{v}(\beta), \\
+\bar{v}((\alpha \to \beta)) &= \begin{cases} 0 & \text{if } \bar{v}(\alpha) = 1 \text{ and } \bar{v}(\beta) = 0, \\ 1 & \text{otherwise}. \end{cases}
+\end{align*}
+\end{definitionbox}
+
+\begin{definitionbox}{Boolean Functions and Functional Completeness}
+An $n$-ary \textbf{Boolean function} is a map $F: \{0, 1\}^n \to \{0, 1\}$. There are exactly $2^{2^n}$ distinct $n$-ary Boolean functions.
+A set of logical connectives $\Omega$ is \textbf{functionally complete} (or adequate) if every Boolean function $F$ can be expressed by a formula using only connectives from $\Omega$.
+\end{definitionbox}
+
+\begin{theorembox}{Normal Form Theorems and Complete Connective Bases}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Disjunctive Normal Form (DNF):} Every Boolean function $F(x_1, \dots, x_n)$ can be written as a disjunction of minterms:
+  \[
+  F(x_1, \dots, x_n) = \bigvee_{(c_1, \dots, c_n) \in F^{-1}(1)} \left( \ell_1^{c_1} \land \ell_2^{c_2} \land \dots \land \ell_n^{c_n} \right), \quad \text{where } \ell_i^1 = x_i \text{ and } \ell_i^0 = \neg x_i.
+  \]
+  Consequently, the basis $\{\neg, \land, \lor\}$ is functionally complete.
+  \item \textbf{Minimal Binary Bases:} Since $P \lor Q \iff \neg(\neg P \land \neg Q)$ and $P \land Q \iff \neg(\neg P \lor \neg Q)$, both $\{\neg, \land\}$ and $\{\neg, \lor\}$ are functionally complete.
+  \item \textbf{Singleton Bases (Sheffer Stroke and Peirce Arrow):} The NAND operator ($P \uparrow Q \iff \neg(P \land Q)$) and NOR operator ($P \downarrow Q \iff \neg(P \lor Q)$) are each individually functionally complete:
+  \[
+  \neg P \iff P \uparrow P, \qquad P \land Q \iff (P \uparrow Q) \uparrow (P \uparrow Q), \qquad P \lor Q \iff (P \uparrow P) \uparrow (Q \uparrow Q).
+  \]
+\end{enumerate}
+\end{theorembox}
+
+\begin{propbox}{Incompleteness of $\{\land, \lor\}$ (Monotonicity Barrier)}
+The set of connectives $\{\land, \lor\}$ is \textbf{not} functionally complete. In particular, it cannot express negation $\neg P$.
+\end{propbox}
+\paragraph{Proof.}
+Every formula built solely from $\{\land, \lor\}$ defines a \textbf{monotone Boolean function}: if $v(A) = 1$ for all sentence symbols, then $\bar{v}(\alpha) = 1$. Since $\neg P$ evaluates to $0$ when $P = 1$, negation cannot be monotone and therefore cannot be expressed using $\{\land, \lor\}$ alone. $\blacksquare$
+
+% ===========================================================================
+% SECTION 6: FIRST-ORDER LANGUAGES, STRUCTURES & MODEL THEORY
+% ===========================================================================
+\section{First-Order Languages, Structures \& Model Theory}
+\label{sec:first_order_model_theory}
+
+Sentential logic cannot formalize internal mathematical relations such as "$x < y$" or arithmetic operations such as "$x + y = z$". \textbf{First-Order Logic (Predicate Logic)} provides the foundational framework for modern axiomatic mathematics.
+
+\subsection{Syntax of First-Order Logic}
+
+\begin{definitionbox}{First-Order Signatures and Expressions}
+A \textbf{first-order signature} (or language) $\mathcal{L}$ is defined by three disjoint sets of non-logical symbols:
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item A set $\mathcal{C}$ of \textbf{constant symbols} (e.g., $0, 1, e, \pi$).
+  \item A set $\mathcal{F}$ of \textbf{function symbols}, each assigned an integer arity $n \ge 1$ (e.g., $+$, $\cdot$, $\exp$).
+  \item A set $\mathcal{R}$ of \textbf{relation (predicate) symbols}, each assigned an integer arity $n \ge 1$ (e.g., $<$, $\le$, $\in$).
+\end{enumerate}
+The logical symbols consist of variables $V = \{v_0, v_1, v_2, \dots\}$, connectives $\{\neg, \to\}$, universal quantifier $\forall$, equality symbol $=$, and parentheses.
+\end{definitionbox}
+
+\begin{definitionbox}{Terms and Formulas}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Terms ($\mathrm{Term}(\mathcal{L})$):} The formal "nouns" denoting objects.
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item Every variable $x \in V$ and constant $c \in \mathcal{C}$ is a term.
+    \item If $f \in \mathcal{F}$ has arity $n$ and $t_1, \dots, t_n$ are terms, then $f(t_1, \dots, t_n)$ is a term.
+  \end{itemize}
+  \item \textbf{Atomic Formulas:} If $t_1, t_2$ are terms and $R \in \mathcal{R}$ has arity $n$, then:
+  \[
+  t_1 = t_2 \quad \text{and} \quad R(t_1, \dots, t_n) \quad \text{are atomic formulas.}
+  \]
+  \item \textbf{Well-Formed Formulas ($\mathrm{WFF}(\mathcal{L})$):}
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item Every atomic formula is in $\mathrm{WFF}(\mathcal{L})$.
+    \item If $\varphi, \psi \in \mathrm{WFF}(\mathcal{L})$ and $x \in V$, then $(\neg \varphi)$, $(\varphi \to \psi)$, and $(\forall x \varphi)$ are in $\mathrm{WFF}(\mathcal{L})$.
+    \item Standard abbreviations: $\exists x \varphi \equiv \neg \forall x (\neg \varphi)$, $\varphi \land \psi \equiv \neg(\varphi \to \neg \psi)$, $\varphi \lor \psi \equiv (\neg \varphi) \to \psi$.
+  \end{itemize}
+\end{enumerate}
+\end{definitionbox}
+
+\begin{definitionbox}{Free Variables and Sentences}
+The set of \textbf{free variables} $\mathrm{Free}(\varphi)$ of a formula $\varphi$ is defined recursively:
+\begin{align*}
+\mathrm{Free}(t_1 = t_2) &= \mathrm{Var}(t_1) \cup \mathrm{Var}(t_2), \\
+\mathrm{Free}(R(t_1, \dots, t_n)) &= \bigcup_{i=1}^n \mathrm{Var}(t_i), \\
+\mathrm{Free}(\neg \varphi) &= \mathrm{Free}(\varphi), \\
+\mathrm{Free}(\varphi \to \psi) &= \mathrm{Free}(\varphi) \cup \mathrm{Free}(\psi), \\
+\mathrm{Free}(\forall x \varphi) &= \mathrm{Free}(\varphi) \setminus \{x\}.
+\end{align*}
+A formula $\sigma$ with $\mathrm{Free}(\sigma) = \emptyset$ is called a \textbf{sentence} (or closed formula).
+\end{definitionbox}
+
+\subsection{Structures and Tarskian Semantics}
+
+\begin{definitionbox}{First-Order Structures}
+An \textbf{$\mathcal{L}$-structure} $\mathcal{M}$ is a pair $(M, I)$ where:
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item $M$ is a non-empty set called the \textbf{universe} (or domain) of $\mathcal{M}$, denoted $|\mathcal{M}|$.
+  \item The interpretation function $I$ assigns:
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item For each constant $c \in \mathcal{C}$, an element $c^\mathcal{M} = I(c) \in M$.
+    \item For each $n$-ary function symbol $f \in \mathcal{F}$, a function $f^\mathcal{M}: M^n \to M$.
+    \item For each $n$-ary relation symbol $R \in \mathcal{R}$, an $n$-ary relation $R^\mathcal{M} \subseteq M^n$.
+  \end{itemize}
+\end{enumerate}
+\end{definitionbox}
+
+\begin{definitionbox}{Tarskian Satisfaction Relation $\mathcal{M} \models \varphi [s]$}
+Let $\mathcal{M}$ be an $\mathcal{L}$-structure and $s: V \to M$ a \textbf{variable assignment}.
+The valuation of a term $t$, denoted $\bar{s}(t) \in M$, evaluates variables via $s(x)$ and functions via $f^\mathcal{M}$.
+The \textbf{satisfaction relation} $\mathcal{M} \models \varphi [s]$ is defined inductively:
+\begin{align*}
+\mathcal{M} \models (t_1 = t_2)[s] &\iff \bar{s}(t_1) = \bar{s}(t_2) \text{ in } M, \\
+\mathcal{M} \models R(t_1, \dots, t_n)[s] &\iff (\bar{s}(t_1), \dots, \bar{s}(t_n)) \in R^\mathcal{M}, \\
+\mathcal{M} \models (\neg \varphi)[s] &\iff \mathcal{M} \not\models \varphi[s], \\
+\mathcal{M} \models (\varphi \to \psi)[s] &\iff (\mathcal{M} \models \varphi[s] \implies \mathcal{M} \models \psi[s]), \\
+\mathcal{M} \models (\forall x \varphi)[s] &\iff \forall a \in M,\, \mathcal{M} \models \varphi[s(x \mapsto a)],
+\end{align*}
+where $s(x \mapsto a)$ denotes the assignment identical to $s$ except that $x$ is mapped to $a$.
+For a sentence $\sigma$, $\mathcal{M} \models \sigma [s]$ is independent of $s$; we write $\mathcal{M} \models \sigma$ ("$\mathcal{M}$ is a model of $\sigma$").
+\end{definitionbox}
+
+\subsection{Definability and Automorphisms}
+
+\begin{definitionbox}{Definable Subsets and Relations}
+Let $\mathcal{M}$ be an $\mathcal{L}$-structure. A subset $S \subseteq M^k$ is \textbf{definable without parameters} if there exists a formula $\varphi(x_1, \dots, x_k)$ such that:
+\[
+S = \left\{ (a_1, \dots, a_k) \in M^k \;\middle|\; \mathcal{M} \models \varphi[a_1, \dots, a_k] \right\}.
+\]
+\end{definitionbox}
+
+\begin{theorembox}{Automorphism Invariance and Non-Definability Criterion}
+An \textbf{automorphism} of $\mathcal{M}$ is a bijection $\pi: M \to M$ that preserves all constants, functions, and relations:
+\[
+\pi(c^\mathcal{M}) = c^\mathcal{M}, \quad \pi(f^\mathcal{M}(a_1,\dots)) = f^\mathcal{M}(\pi(a_1),\dots), \quad (a_1,\dots) \in R^\mathcal{M} \iff (\pi(a_1),\dots) \in R^\mathcal{M}.
+\]
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Invariance Theorem:} If $\varphi(x_1, \dots, x_k)$ is any first-order formula and $\pi \in \mathrm{Aut}(\mathcal{M})$, then for all $a_1, \dots, a_k \in M$:
+  \[
+  \mathcal{M} \models \varphi[a_1, \dots, a_k] \iff \mathcal{M} \models \varphi[\pi(a_1), \dots, \pi(a_k)].
+  \]
+  \item \textbf{Non-Definability Criterion:} If $S \subseteq M^k$ is definable without parameters, then $\pi(S) = S$ for every $\pi \in \mathrm{Aut}(\mathcal{M})$.
+  Consequently, if an automorphism $\pi$ maps an element of $S$ outside of $S$, then $S$ is \textbf{not first-order definable}.
+\end{enumerate}
+\end{theorembox}
+
+\subsection{Elementary Equivalence and Elementary Substructures}
+
+\begin{definitionbox}{Elementary Classes and Elementary Equivalence}
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item Two structures $\mathcal{M}$ and $\mathcal{N}$ are \textbf{elementarily equivalent} (denoted $\mathcal{M} \equiv \mathcal{N}$) if for every first-order sentence $\sigma$:
+  \[
+  \mathcal{M} \models \sigma \iff \mathcal{N} \models \sigma.
+  \]
+  \item Isomorphic structures are always elementarily equivalent: $\mathcal{M} \cong \mathcal{N} \implies \mathcal{M} \equiv \mathcal{N}$.
+  However, the converse fails: the ordered fields $(\mathbb{Q}, <)$ and $(\mathbb{R}, <)$ are dense linear orders without endpoints, so $(\mathbb{Q}, <) \equiv (\mathbb{R}, <)$, yet they cannot be isomorphic because $|\mathbb{Q}| = \aleph_0 \neq 2^{\aleph_0} = |\mathbb{R}|$.
+  \item A class $\mathcal{K}$ of $\mathcal{L}$-structures is \textbf{elementary} if there is a set of sentences $\Sigma$ such that $\mathcal{K} = \mathrm{Mod}(\Sigma) = \{ \mathcal{M} \mid \mathcal{M} \models \Sigma \}$. If $\Sigma$ can be chosen finite (or a single sentence), $\mathcal{K}$ is \textbf{strongly elementary}.
+\end{enumerate}
+\end{definitionbox}
+
+\begin{definitionbox}{Substructures and Elementary Substructures}
+Let $\mathcal{A}$ and $\mathcal{B}$ be $\mathcal{L}$-structures with $A \subseteq B$.
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item $\mathcal{A}$ is a \textbf{substructure} of $\mathcal{B}$ (denoted $\mathcal{A} \subseteq \mathcal{B}$) if the inclusion map $j: A \hookrightarrow B$ is an embedding.
+  \item $\mathcal{A}$ is an \textbf{elementary substructure} of $\mathcal{B}$ (denoted $\mathcal{A} \preceq \mathcal{B}$) if for every formula $\varphi(x_1, \dots, x_n)$ and all $a_1, \dots, a_n \in A$:
+  \[
+  \mathcal{A} \models \varphi[a_1, \dots, a_n] \iff \mathcal{B} \models \varphi[a_1, \dots, a_n].
+  \]
+  \item \textbf{Tarski-Vaught Test:} $\mathcal{A} \preceq \mathcal{B} \iff$ for every formula $\varphi(x, y_1, \dots, y_n)$ and $a_1, \dots, a_n \in A$, if $\mathcal{B} \models \exists x \varphi(x, a_1, \dots, a_n)$, then there exists an element $c \in A$ such that $\mathcal{B} \models \varphi(c, a_1, \dots, a_n)$.
+\end{enumerate}
+\end{definitionbox}
+
+% ===========================================================================
+% SECTION 7: THE COMPACTNESS THEOREM & MATHEMATICAL APPLICATIONS
+% ===========================================================================
+\section{The Compactness Theorem \& Non-Axiomatizability}
+\label{sec:compactness_applications}
+
+The Compactness Theorem is the cornerstone of Model Theory. It connects finite local satisfiability to global infinite existence, providing a powerful tool for discovering non-standard structures and proving non-axiomatizability results.
+
+\subsection{Compactness in Sentential Logic: Topological and Combinatorial Proofs}
+
+\begin{theorembox}{Sentential Compactness Theorem}
+A set of sentential formulas $\Sigma$ is satisfiable if and only if every finite subset $\Sigma_0 \subseteq \Sigma$ is satisfiable.
+\end{theorembox}
+
+\paragraph{Topological Proof via the Cantor Space $2^\mathbb{N}$.}
+Let $\mathcal{S} = \{A_1, A_2, \dots\}$ be the countable set of sentence symbols. A truth assignment is a sequence $v = (v(A_1), v(A_2), \dots) \in \{0, 1\}^\mathbb{N}$.
+Endow the space $X = \{0, 1\}^\mathbb{N}$ with the product topology (the Cantor Space).
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item By \textbf{Tychonoff's Theorem} (or the Heine-Borel theorem for Cantor sets), $X$ is a \textbf{compact topological space}.
+  \item For each formula $\alpha \in \mathrm{WFF}$, the set of satisfying assignments $[\alpha] = \{ v \in X \mid \bar{v}(\alpha) = 1 \}$ depends only on the finitely many sentence symbols occurring in $\alpha$. Therefore, $[\alpha]$ is a finite union of basic cylinder sets, meaning $[\alpha]$ is both \textbf{closed and open} (clopen) in $X$.
+  \item Suppose every finite subset $\Sigma_0 \subseteq \Sigma$ is satisfiable. Then the finite intersection $\bigcap_{\alpha \in \Sigma_0} [\alpha] \neq \emptyset$.
+  Thus, the family of closed sets $\{ [\alpha] \}_{\alpha \in \Sigma}$ possesses the \textbf{Finite Intersection Property (FIP)}.
+  \item Since $X$ is compact, the total intersection is non-empty:
+  \[
+  \bigcap_{\alpha \in \Sigma} [\alpha] \neq \emptyset.
+  \]
+  Any assignment $v^*$ in this intersection satisfies every formula in $\Sigma$ simultaneously. $\blacksquare$
+\end{enumerate}
+
+\subsection{Application: The de Bruijn--Erd\H{o}s Graph Coloring Theorem}
+
+\begin{theorembox}{The de Bruijn--Erd\H{o}s Theorem (1951)}
+Let $G = (V, E)$ be an arbitrary (possibly uncountably infinite) graph, and let $k \in \mathbb{N}_{\ge 1}$.
+The graph $G$ is $k$-colorable if and only if every finite subgraph $G_0 \subseteq G$ is $k$-colorable.
+\end{theorembox}
+
+\paragraph{Proof via Sentential Compactness.}
+Define a propositional language with sentence symbols $\{ P_{v, c} \mid v \in V,\, c \in \{1, 2, \dots, k\} \}$, where $P_{v, c}$ asserts that "vertex $v$ is assigned color $c$".
+Construct the theory $\Sigma$ with three families of axioms:
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{At least one color per vertex:} For every $v \in V$: $\bigvee_{c=1}^k P_{v, c}$.
+  \item \textbf{At most one color per vertex:} For every $v \in V$ and distinct $c \neq c'$: $\neg(P_{v, c} \land P_{v, c'})$.
+  \item \textbf{Proper coloring across edges:} For every edge $\{u, v\} \in E$ and each color $c$: $\neg(P_{u, c} \land P_{v, c})$.
+\end{enumerate}
+Now let $\Sigma_0 \subseteq \Sigma$ be an arbitrary finite subset. $\Sigma_0$ mentions only a finite set of vertices $V_0 \subset V$.
+The induced subgraph $G[V_0]$ is finite, and by hypothesis, it admits a valid $k$-coloring. Setting $v(P_{v, c}) = 1$ if vertex $v$ receives color $c$ defines a valuation satisfying $\Sigma_0$.
+By the Sentential Compactness Theorem, $\Sigma$ is globally satisfiable, producing a valid $k$-coloring for the entire graph $G$. $\blacksquare$
+
+\subsection{The First-Order Compactness Theorem}
+
+\begin{theorembox}{First-Order Compactness Theorem}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Model Form:} A set of first-order sentences $\Sigma$ has a model if and only if every finite subset $\Sigma_0 \subseteq \Sigma$ has a model.
+  \item \textbf{Implication Form:} If $\Sigma \models \varphi$, then there exists a finite subset $\Sigma_0 \subseteq \Sigma$ such that $\Sigma_0 \models \varphi$.
+\end{enumerate}
+\end{theorembox}
+
+\subsection{Proving Non-Axiomatizability via Compactness}
+
+\begin{propbox}{Non-Standard Models of Arithmetic}
+There exists a non-standard model of True Arithmetic: an ordered structure $\mathcal{M}^* \equiv (\mathbb{N}, +, \cdot, 0, 1, <)$ that contains an "infinite" number $c$ strictly greater than every standard integer ($c > n$ for all $n \in \mathbb{N}$).
+\end{propbox}
+\paragraph{Proof.}
+Expand the language of arithmetic by adding a new constant symbol $c$. Consider the theory:
+\[
+\Sigma = \mathrm{Th}(\mathbb{N}, +, \cdot, 0, 1, <) \cup \{ c > \bar{n} \mid n \in \mathbb{N} \},
+\]
+where $\bar{n}$ is the numeral $\underbrace{1 + 1 + \dots + 1}_{n \text{ times}}$.
+Let $\Sigma_0 \subset \Sigma$ be any finite subset. $\Sigma_0$ contains axioms from $\mathrm{Th}(\mathbb{N})$ and finitely many conditions $c > \bar{n}_1, \dots, c > \bar{n}_k$.
+Let $N = \max(n_1, \dots, n_k) + 1$. In the standard structure $\mathbb{N}$, interpreting $c$ as $N$ satisfies all sentences in $\Sigma_0$.
+By Compactness, $\Sigma$ has a model $\mathcal{M}^*$. In $\mathcal{M}^*$, all first-order theorems of arithmetic remain true, yet $c^{\mathcal{M}^*}$ is greater than every standard integer! $\blacksquare$
+
+\begin{propbox}{Non-Axiomatizability of Finiteness and Graph Connectivity}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Finiteness is Not Elementary:} If a theory $\Sigma$ has arbitrarily large finite models, then it possesses an infinite model.
+  Consequently, the class of finite groups, finite graphs, or finite fields is \textbf{not} first-order axiomatizable.
+  \item \textbf{Graph Connectivity is Not Elementary:} The class of connected graphs cannot be axiomatized in first-order logic.
+  \item \textbf{Fields of Characteristic 0:} The class $\mathrm{Field}_0$ is elementary (axiomatized by the infinite set $\{ \bar{p} \neq 0 \mid p \text{ prime} \}$), but \textbf{not strongly elementary}: no single sentence (or finite set of sentences) can define characteristic 0.
+\end{enumerate}
+\end{propbox}
+
+% ===========================================================================
+% SECTION 8: DEDUCTIVE SYSTEMS, SOUNDNESS & GÖDEL'S COMPLETENESS THEOREM
+% ===========================================================================
+\section{Formal Deductive Systems, Soundness \& G\"odel's Completeness Theorem}
+\label{sec:godel_completeness}
+
+The semantic notion of truth ($\Sigma \models \varphi$) requires surveying all conceivable mathematical structures. In contrast, the syntactic notion of proof ($\Sigma \vdash \varphi$) operates purely via mechanical, algorithmic symbol manipulation. Kurt G\"odel's landmark 1929 Completeness Theorem establishes that these two distinct concepts are in perfect harmony.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.28\textwidth]{dedekind.jpg}
+  \caption{\textbf{Richard Dedekind (1831--1916)}, who pioneered the axiomatic isolation of arithmetic and set-theoretic foundations, setting the stage for formal proof theory and G\"odel's completeness theorem.}
+  \label{fig:dedekind}
+\end{figure}
+
+\subsection{Hilbert-Style Formal Deductive System}
+
+\begin{definitionbox}{Logical Axiom Schemata and Rules of Inference}
+A formal deduction in first-order logic utilizes the following logical axioms:
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Group 1 (Tautologies):} All substitution instances of propositional tautologies.
+  \item \textbf{Group 2 (Quantifier Instantiation):} $\forall x \varphi \to \varphi_t^x$, where $t$ is substitutable for $x$ in $\varphi$.
+  \item \textbf{Group 3 (Quantifier Distribution):} $\forall x (\varphi \to \psi) \to (\forall x \varphi \to \forall x \psi)$.
+  \item \textbf{Group 4 (Vacuous Quantification):} $\varphi \to \forall x \varphi$, where $x \notin \mathrm{Free}(\varphi)$.
+  \item \textbf{Group 5 (Equality Axioms):} Reflexivity ($x = x$), symmetry ($x = y \to y = x$), transitivity ($x = y \land y = z \to x = z$), and congruence for functions and relations.
+\end{enumerate}
+The system possesses two \textbf{rules of inference}:
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+  \item \textbf{Modus Ponens (MP):} From $\varphi$ and $\varphi \to \psi$, infer $\psi$.
+  \item \textbf{Generalization (GEN):} From $\varphi$, infer $\forall x \varphi$.
+\end{itemize}
+A formula $\varphi$ is \textbf{deducible} from $\Sigma$ (denoted $\Sigma \vdash \varphi$) if there is a finite sequence of formulas $\psi_1, \dots, \psi_n = \varphi$ where each $\psi_i$ is an axiom, a member of $\Sigma$, or follows from earlier formulas via MP or GEN.
+\end{definitionbox}
+
+\begin{theorembox}{The Deduction Metatheorem}
+Let $\Sigma$ be a set of sentences and $\varphi, \psi$ formulas.
+\[
+\Sigma \cup \{\varphi\} \vdash \psi \iff \Sigma \vdash \varphi \to \psi.
+\]
+\end{theorembox}
+
+\begin{theorembox}{The Soundness Theorem}
+If $\Sigma \vdash \varphi$, then $\Sigma \models \varphi$.
+\end{theorembox}
+\paragraph{Proof.}
+By structural induction on the length $n$ of the formal derivation. Every logical axiom is true in all structures under all assignments (validity). Modus Ponens preserves truth, and Generalization preserves validity. Therefore, every theorem is a semantic logical consequence. $\blacksquare$
+
+\subsection{The Henkin Model Construction and G\"odel's Completeness Theorem}
+
+\begin{definitionbox}{Consistency and Maximal Consistent Theories}
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item A set of formulas $\Sigma$ is \textbf{consistent} if $\Sigma \nvdash \bot$ (no contradiction can be formally derived).
+  \item \textbf{Lindenbaum's Lemma:} Every consistent theory $\Sigma$ can be extended to a \textbf{maximal consistent theory} $\Sigma^*$, such that for every sentence $\varphi$, exactly one of $\varphi \in \Sigma^*$ or $\neg \varphi \in \Sigma^*$ holds.
+  \item \textbf{Henkin Witnessing Property:} A theory $\Sigma$ has \textbf{witnesses} if for every formula $\varphi(x)$, there is a constant symbol $c$ such that:
+  \[
+  \exists x \varphi(x) \to \varphi(c) \in \Sigma.
+  \]
+\end{enumerate}
+\end{definitionbox}
+
+\begin{theorembox}{The Canonical Term Model Construction}
+Let $\Sigma$ be a maximal consistent theory with witnesses in language $\mathcal{L}$.
+We construct the \textbf{Canonical Term Model} $\mathcal{M}$:
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item Define an equivalence relation on the set of closed terms $\mathrm{Term}_0(\mathcal{L})$:
+  \[
+  t_1 \sim t_2 \iff \Sigma \vdash t_1 = t_2.
+  \]
+  \item The universe is the quotient $M = \mathrm{Term}_0(\mathcal{L}) / \sim$.
+  \item Constants: $c^\mathcal{M} = [c]$.
+  \item Functions: $f^\mathcal{M}([t_1], \dots, [t_n]) = [f(t_1, \dots, t_n)]$.
+  \item Relations: $([t_1], \dots, [t_n]) \in R^\mathcal{M} \iff \Sigma \vdash R(t_1, \dots, t_n)$.
+\end{enumerate}
+\end{theorembox}
+
+\begin{theorembox}{The Fundamental Truth Lemma and G\"odel's Completeness Theorem}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{The Truth Lemma:} For every sentence $\varphi$ in the language of the term model:
+  \[
+  \mathcal{M} \models \varphi \iff \varphi \in \Sigma.
+  \]
+  (Proved by structural induction on $\varphi$; the existential case is guaranteed by Henkin witnesses).
+  \item \textbf{Model Existence Theorem:} Every consistent first-order theory has a model.
+  \item \textbf{G\"odel's Completeness Theorem (1929):} For any set of sentences $\Sigma$ and sentence $\varphi$:
+  \[
+  \mathbf{\Sigma \models \varphi \iff \Sigma \vdash \varphi}.
+  \]
+\end{enumerate}
+\end{theorembox}
+
+\begin{propbox}{Compactness as a Corollary of Completeness}
+The First-Order Compactness Theorem follows immediately from G\"odel's Completeness Theorem:
+If $\Sigma$ is unsatisfiable, then $\Sigma \models \bot$.
+By Completeness, there is a formal deduction $\Sigma \vdash \bot$.
+Since a formal deduction is a \textbf{finite sequence} of formulas, it can use only finitely many premises $\Sigma_0 \subset \Sigma$.
+Thus $\Sigma_0 \vdash \bot$, which by Soundness implies $\Sigma_0 \models \bot$ ($\Sigma_0$ is unsatisfiable).
+Taking the contrapositive: if every finite subset $\Sigma_0 \subseteq \Sigma$ is satisfiable, then $\Sigma$ is satisfiable!
+\end{propbox}
+
+% ===========================================================================
+% SECTION 9: ADVANCED WORKED EXAMPLES WITH STEP-BY-STEP PROOFS
+% ===========================================================================
+\section{Advanced Worked Examples with Step-by-Step Proofs}
+
+\begin{workedexample}{Structural Induction: Sentence Symbols vs. Binary Connectives}
+Let $\alpha \in \mathrm{WFF}$ be a well-formed sentential formula built strictly from sentence symbols and binary connectives $\{\land, \lor, \to, \leftrightarrow\}$.
+Let $S(\alpha)$ be the total number of occurrences of sentence symbols in $\alpha$, and let $C(\alpha)$ be the total number of binary connectives in $\alpha$.
+Prove by structural induction that:
+\[
+S(\alpha) = C(\alpha) + 1.
+\]
+
+\paragraph{Solution and Proof.}
+We proceed by induction on the complexity of $\alpha \in \mathrm{WFF}$.
+
+\textbf{1. Base Case:}
+Let $\alpha = A \in \mathcal{S}$ be an atomic sentence symbol.
+Then $S(A) = 1$ and $C(A) = 0$.
+Thus $S(A) = 1 = 0 + 1 = C(A) + 1$, verifying the base case.
+
+\textbf{2. Inductive Step:}
+Suppose $\alpha$ is a composite formula built with a binary connective: $\alpha = (\beta \circ \gamma)$ where $\circ \in \{\land, \lor, \to, \leftrightarrow\}$ and $\beta, \gamma \in \mathrm{WFF}$.
+By the Inductive Hypothesis, the claim holds for both components:
+\[
+S(\beta) = C(\beta) + 1 \quad \text{and} \quad S(\gamma) = C(\gamma) + 1.
+\]
+By the syntactic structure of $\alpha = (\beta \circ \gamma)$:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item The sentence symbols in $\alpha$ are precisely the symbols in $\beta$ plus the symbols in $\gamma$:
+  \[
+  S(\alpha) = S(\beta) + S(\gamma).
+  \]
+  \item The binary connectives in $\alpha$ consist of those in $\beta$, those in $\gamma$, plus the new principal connective $\circ$:
+  \[
+  C(\alpha) = C(\beta) + C(\gamma) + 1.
+  \]
+\end{itemize}
+Substituting the induction hypotheses:
+\[
+S(\alpha) = (C(\beta) + 1) + (C(\gamma) + 1) = [C(\beta) + C(\gamma) + 1] + 1 = C(\alpha) + 1.
+\]
+By structural induction, $S(\alpha) = C(\alpha) + 1$ holds for all formulas. $\blacksquare$
+\end{workedexample}
+
+\begin{workedexample}{Functional Completeness: Expressing Connectives via the Sheffer Stroke}
+The Sheffer Stroke (NAND), denoted $\uparrow$, is defined by the truth condition:
+\[
+P \uparrow Q \iff \neg(P \land Q).
+\]
+Prove constructively that $\{\uparrow\}$ forms a functionally complete set of connectives by expressing $\neg P$, $P \land Q$, and $P \lor Q$ using only $\uparrow$.
+
+\paragraph{Solution and Proof.}
+Recall that the set $\{\neg, \land, \lor\}$ is functionally complete. It suffices to show that each can be synthesized from $\uparrow$:
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Negation ($\neg P$):}
+  By definition:
+  \[
+  P \uparrow P \iff \neg(P \land P) \iff \neg P.
+  \]
+  Hence, $\mathbf{\neg P \iff P \uparrow P}$.
+
+  \item \textbf{Conjunction ($P \land Q$):}
+  Observe that $P \land Q \iff \neg(\neg(P \land Q)) \iff \neg(P \uparrow Q)$.
+  Using our expression for negation:
+  \[
+  \mathbf{P \land Q \iff (P \uparrow Q) \uparrow (P \uparrow Q)}.
+  \]
+
+  \item \textbf{Disjunction ($P \lor Q$):}
+  By De Morgan's Law: $P \lor Q \iff \neg(\neg P \land \neg Q) \iff (\neg P) \uparrow (\neg Q)$.
+  Substituting $\neg P = P \uparrow P$ and $\neg Q = Q \uparrow Q$:
+  \[
+  \mathbf{P \lor Q \iff (P \uparrow P) \uparrow (Q \uparrow Q)}.
+  \]
+\end{enumerate}
+Since $\{\neg, \land, \lor\}$ is functionally complete, any Boolean truth function can be synthesized using exclusively the Sheffer Stroke $\uparrow$. $\blacksquare$
+\end{workedexample}
+
+\begin{workedexample}{Non-Definability via Automorphisms: Ordering in the Group of Integers}
+Consider the structure of integers under addition $\mathcal{Z} = (\mathbb{Z}, +)$.
+Prove that the standard order relation $<$ is \textbf{not first-order definable without parameters} in $\mathcal{Z}$.
+
+\paragraph{Solution and Proof.}
+Assume for contradiction that there exists a first-order formula $\varphi(x, y)$ in the language $\mathcal{L} = \{+\}$ such that for all $a, b \in \mathbb{Z}$:
+\[
+a < b \iff \mathcal{Z} \models \varphi[a, b].
+\]
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Construct an Automorphism:}
+  Consider the negation map $\pi: \mathbb{Z} \to \mathbb{Z}$ defined by $\pi(x) = -x$.
+  We verify that $\pi$ is an automorphism of $(\mathbb{Z}, +)$:
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item $\pi$ is a bijection: $\pi(\pi(x)) = -(-x) = x$.
+    \item $\pi$ preserves addition: $\pi(x + y) = -(x + y) = (-x) + (-y) = \pi(x) + \pi(y)$.
+  \end{itemize}
+  Thus $\pi \in \mathrm{Aut}(\mathcal{Z})$.
+
+  \item \textbf{Apply the Automorphism Invariance Theorem:}
+  If $\varphi(x, y)$ defines $<$, then by the Invariance Theorem:
+  \[
+  \mathcal{Z} \models \varphi[a, b] \iff \mathcal{Z} \models \varphi[\pi(a), \pi(b)].
+  \]
+  \item \textbf{Derive a Contradiction:}
+  Choose $a = 1$ and $b = 2$.
+  Since $1 < 2$, we have $\mathcal{Z} \models \varphi[1, 2]$.
+  Applying the automorphism $\pi$:
+  \[
+  \mathcal{Z} \models \varphi[\pi(1), \pi(2)] \iff \mathcal{Z} \models \varphi[-1, -2].
+  \]
+  Since $\varphi$ defines the order relation $<$, this implies $-1 < -2$, which is mathematically false!
+\end{enumerate}
+This contradiction proves that the order relation $<$ cannot be defined in the group $(\mathbb{Z}, +)$. $\blacksquare$
+\end{workedexample}
+
 
 \begin{workedexample}{Irrationality of $\sqrt{2}$ by Contradiction}
 Prove by contradiction that $\sqrt{2}$ is not a rational number ($\sqrt{2} \notin \mathbb{Q}$).
