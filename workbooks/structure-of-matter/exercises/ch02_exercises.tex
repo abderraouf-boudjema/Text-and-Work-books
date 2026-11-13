@@ -1,0 +1,1114 @@
+\chapter{Constituents of Matter, Nuclear Binding \& Isotopes}
+\label{chap:exo_ch02}
+
+\begin{quicksummary}{Nuclide Notation, Average Atomic Mass \& Nuclear Binding Energy}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Nuclide Symbolism \& Subatomic Accounting:}
+  \[
+  \ce{^{A}_{Z}X^{q\pm}} \quad \implies \quad 
+  \begin{cases}
+  \text{Protons:} & Z \\
+  \text{Neutrons:} & N = A - Z \\
+  \text{Electrons:} & n_e = Z - (\text{charge})
+  \end{cases}
+  \]
+  \item \textbf{Average Atomic Mass of Isotopic Mixtures:}
+  \[
+  \bar{M} = \sum_{i} x_i M_i = x_1 M_1 + x_2 M_2 + \dots \qquad \text{where } \sum_i x_i = 1\ (100\%).
+  \]
+  \item \textbf{Unified Atomic Mass Unit \& Energy Equivalence:}
+  \[
+  1\ \mathrm{u} = \frac{1}{12} m(\ce{^{12}C}) = \frac{10^{-3}\ \mathrm{kg}}{N_A} = 1.660\,539 \times 10^{-27}\ \mathrm{kg}.
+  \]
+  \[
+  1\ \mathrm{u} \cdot c^2 = 931.494\ \mathrm{MeV} = 1.492\,418 \times 10^{-10}\ \mathrm{J}.
+  \]
+  \item \textbf{Nuclear Mass Defect ($\Delta m$):}
+  \[
+  \Delta m = \left[ Z \cdot m_p + (A - Z) \cdot m_n \right] - m_{\text{nucleus}}
+  \]
+  Or using neutral atomic rest masses ($m(\ce{^1_1H}) = m_p + m_e$):
+  \[
+  \Delta m = \left[ Z \cdot m(\ce{^1_1H}) + (A - Z) \cdot m_n \right] - M(\ce{^{A}_{Z}X}).
+  \]
+  \item \textbf{Total Binding Energy ($E_L$ or $B$) \& Specific Binding Energy ($E_L/A$):}
+  \[
+  E_L = \Delta m \cdot c^2 \quad [\mathrm{J\ or\ MeV}], \qquad \text{Specific Binding Energy} = \frac{E_L}{A} \quad [\mathrm{MeV/nucleon}].
+  \]
+  \item \textbf{Reaction $Q$-Value (Mass Defect of Nuclear Transformation):}
+  \[
+  Q = \left( \sum m_{\text{reactants}} - \sum m_{\text{products}} \right) c^2 = \sum E_{L,\text{products}} - \sum E_{L,\text{reactants}}.
+  \]
+  Exothermic if $Q > 0$ (energy released); endothermic if $Q < 0$.
+\end{enumerate}
+\end{quicksummary}
+
+\vspace{10pt}
+
+% ===========================================================================
+% EXERCISE 2.1
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Subatomic Structure of Neutral Atoms}
+For each of the following neutral ground-state atoms, determine the atomic number $Z$, the mass number $A$, the neutron number $N$, the number of protons $p^+$, the number of neutrons $n^0$, and the number of electrons $e^-$:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Carbon-12: $\ce{^{12}_{6}C}$
+  \item Phosphorus-31: $\ce{^{31}_{15}P}$
+  \item Iron-56: $\ce{^{56}_{26}Fe}$
+  \item Gold-197: $\ce{^{197}_{79}Au}$
+  \item Uranium-238: $\ce{^{238}_{92}U}$
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+For a neutral nuclide $\ce{^{A}_{Z}X}$:
+\[
+Z = p^+ = e^-, \qquad N = n^0 = A - Z.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item $\ce{^{12}_{6}C}$: $Z = 6,\ A = 12 \implies \mathbf{p^+ = 6},\ \mathbf{n^0 = 12 - 6 = 6},\ \mathbf{e^- = 6}$.
+  \item $\ce{^{31}_{15}P}$: $Z = 15,\ A = 31 \implies \mathbf{p^+ = 15},\ \mathbf{n^0 = 31 - 15 = 16},\ \mathbf{e^- = 15}$.
+  \item $\ce{^{56}_{26}Fe}$: $Z = 26,\ A = 56 \implies \mathbf{p^+ = 26},\ \mathbf{n^0 = 56 - 26 = 30},\ \mathbf{e^- = 26}$.
+  \item $\ce{^{197}_{79}Au}$: $Z = 79,\ A = 197 \implies \mathbf{p^+ = 79},\ \mathbf{n^0 = 197 - 79 = 118},\ \mathbf{e^- = 79}$.
+  \item $\ce{^{238}_{92}U}$: $Z = 92,\ A = 238 \implies \mathbf{p^+ = 92},\ \mathbf{n^0 = 238 - 92 = 146},\ \mathbf{e^- = 92}$.
+\end{enumerate}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.2
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Subatomic Particle Inventory of Monoatomic Ions}
+Determine the number of protons ($p^+$), neutrons ($n^0$), and electrons ($e^-$) in each of the following ions:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Magnesium ion: $\ce{^{24}_{12}Mg^{2+}}$
+  \item Iron(III) cation: $\ce{^{56}_{26}Fe^{3+}}$
+  \item Bromide anion: $\ce{^{80}_{35}Br^{-}}$
+  \item Sulfide anion: $\ce{^{32}_{16}S^{2-}}$
+  \item Lead(II) cation: $\ce{^{208}_{82}Pb^{2+}}$
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+For an ion $\ce{^{A}_{Z}X^{q}}$ with net ionic charge $q$ (in units of elementary charge $e$):
+\[
+p^+ = Z, \qquad n^0 = A - Z, \qquad e^- = Z - q.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item $\ce{^{24}_{12}Mg^{2+}}$ ($q = +2$):
+  \[
+  \mathbf{p^+ = 12}, \quad \mathbf{n^0 = 24 - 12 = 12}, \quad \mathbf{e^- = 12 - 2 = 10}.
+  \]
+  \item $\ce{^{56}_{26}Fe^{3+}}$ ($q = +3$):
+  \[
+  \mathbf{p^+ = 26}, \quad \mathbf{n^0 = 56 - 26 = 30}, \quad \mathbf{e^- = 26 - 3 = 23}.
+  \]
+  \item $\ce{^{80}_{35}Br^{-}}$ ($q = -1$):
+  \[
+  \mathbf{p^+ = 35}, \quad \mathbf{n^0 = 80 - 35 = 45}, \quad \mathbf{e^- = 35 - (-1) = 36}.
+  \]
+  \item $\ce{^{32}_{16}S^{2-}}$ ($q = -2$):
+  \[
+  \mathbf{p^+ = 16}, \quad \mathbf{n^0 = 32 - 16 = 16}, \quad \mathbf{e^- = 16 - (-2) = 18}.
+  \]
+  \item $\ce{^{208}_{82}Pb^{2+}}$ ($q = +2$):
+  \[
+  \mathbf{p^+ = 82}, \quad \mathbf{n^0 = 208 - 82 = 126}, \quad \mathbf{e^- = 82 - 2 = 80}.
+  \]
+\end{enumerate}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.3
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Subatomic Inventory of Polyatomic Molecular Ions}
+Consider the following polyatomic ions constructed from their dominant terrestrial isotopes:
+($\ce{^{1}_{1}H}$, $\ce{^{12}_{6}C}$, $\ce{^{14}_{7}N}$, $\ce{^{16}_{8}O}$, $\ce{^{32}_{16}S}$, $\ce{^{52}_{24}Cr}$).
+Calculate the total number of protons ($p^+$), neutrons ($n^0$), and electrons ($e^-$) contained within one formula unit of:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Ammonium cation: $\ce{NH4+}$
+  \item Nitrate anion: $\ce{NO3-}$
+  \item Sulfate anion: $\ce{SO4^{2-}}$
+  \item Dichromate anion: $\ce{Cr2O7^{2-}}$
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+For a polyatomic ion with net charge $q$:
+\[
+p^+_{\text{total}} = \sum_i Z_i, \qquad n^0_{\text{total}} = \sum_i (A_i - Z_i), \qquad e^-_{\text{total}} = p^+_{\text{total}} - q.
+\]
+\textbf{1. Ammonium cation ($\ce{NH4+}$, $q = +1$):}
+\begin{align*}
+p^+ &= Z(\ce{N}) + 4 Z(\ce{H}) = 7 + 4(1) = \mathbf{11}. \\
+n^0 &= (14 - 7) + 4(1 - 1) = 7 + 0 = \mathbf{7}. \\
+e^- &= p^+ - (+1) = 11 - 1 = \mathbf{10}.
+\end{align*}
+
+\textbf{2. Nitrate anion ($\ce{NO3-}$, $q = -1$):}
+\begin{align*}
+p^+ &= Z(\ce{N}) + 3 Z(\ce{O}) = 7 + 3(8) = 7 + 24 = \mathbf{31}. \\
+n^0 &= (14 - 7) + 3(16 - 8) = 7 + 3(8) = 7 + 24 = \mathbf{31}. \\
+e^- &= p^+ - (-1) = 31 + 1 = \mathbf{32}.
+\end{align*}
+
+\textbf{3. Sulfate anion ($\ce{SO4^{2-}}$, $q = -2$):}
+\begin{align*}
+p^+ &= Z(\ce{S}) + 4 Z(\ce{O}) = 16 + 4(8) = 16 + 32 = \mathbf{48}. \\
+n^0 &= (32 - 16) + 4(16 - 8) = 16 + 32 = \mathbf{48}. \\
+e^- &= p^+ - (-2) = 48 + 2 = \mathbf{50}.
+\end{align*}
+
+\textbf{4. Dichromate anion ($\ce{Cr2O7^{2-}}$, $q = -2$):}
+\begin{align*}
+p^+ &= 2 Z(\ce{Cr}) + 7 Z(\ce{O}) = 2(24) + 7(8) = 48 + 56 = \mathbf{104}. \\
+n^0 &= 2(52 - 24) + 7(16 - 8) = 2(28) + 7(8) = 56 + 56 = \mathbf{112}. \\
+e^- &= p^+ - (-2) = 104 + 2 = \mathbf{106}.
+\end{align*}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.4
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Taxonomy of Nuclear Species: Isotopes, Isobars, and Isotones}
+Examine the following list of atomic and nuclear species:
+\[
+\ce{^{14}_{6}C}, \quad \ce{^{14}_{7}N}, \quad \ce{^{16}_{8}O}, \quad \ce{^{13}_{6}C}, \quad \ce{^{12}_{6}C}, \quad \ce{^{15}_{7}N}, \quad \ce{^{14}_{8}O}, \quad \ce{^{16}_{7}N}.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Identify all pairs or groups that are \textbf{isotopes} (same $Z$).
+  \item Identify all pairs or groups that are \textbf{isobars} (same $A$).
+  \item Identify all pairs or groups that are \textbf{isotones} (same $N = A - Z$).
+  \item State which pair forms a set of \textbf{mirror nuclei} (where $Z_1 = N_2$ and $N_1 = Z_2$).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+Let us tabulate $(Z, A, N)$ for each species:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Species & $Z$ & $A$ & $N = A - Z$ \\
+\midrule
+$\ce{^{12}_{6}C}$ & 6 & 12 & 6 \\
+$\ce{^{13}_{6}C}$ & 6 & 13 & 7 \\
+$\ce{^{14}_{6}C}$ & 6 & 14 & 8 \\
+$\ce{^{14}_{7}N}$ & 7 & 14 & 7 \\
+$\ce{^{15}_{7}N}$ & 7 & 15 & 8 \\
+$\ce{^{16}_{7}N}$ & 7 & 16 & 9 \\
+$\ce{^{14}_{8}O}$ & 8 & 14 & 6 \\
+$\ce{^{16}_{8}O}$ & 8 & 16 & 8 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{1. Isotopes (Identical $Z$):}
+\begin{itemize}[itemsep=1pt]
+  \item Carbon isotopes ($Z=6$): $\{\ce{^{12}_{6}C}, \ce{^{13}_{6}C}, \ce{^{14}_{6}C}\}$.
+  \item Nitrogen isotopes ($Z=7$): $\{\ce{^{14}_{7}N}, \ce{^{15}_{7}N}, \ce{^{16}_{7}N}\}$.
+  \item Oxygen isotopes ($Z=8$): $\{\ce{^{14}_{8}O}, \ce{^{16}_{8}O}\}$.
+\end{itemize}
+
+\textbf{2. Isobars (Identical $A$):}
+\begin{itemize}[itemsep=1pt]
+  \item $A = 14$: $\{\ce{^{14}_{6}C}, \ce{^{14}_{7}N}, \ce{^{14}_{8}O}\}$.
+  \item $A = 16$: $\{\ce{^{16}_{7}N}, \ce{^{16}_{8}O}\}$.
+\end{itemize}
+
+\textbf{3. Isotones (Identical $N$):}
+\begin{itemize}[itemsep=1pt]
+  \item $N = 6$: $\{\ce{^{12}_{6}C}, \ce{^{14}_{8}O}\}$.
+  \item $N = 7$: $\{\ce{^{13}_{6}C}, \ce{^{14}_{7}N}\}$.
+  \item $N = 8$: $\{\ce{^{14}_{6}C}, \ce{^{15}_{7}N}, \ce{^{16}_{8}O}\}$.
+\end{itemize}
+
+\textbf{4. Mirror Nuclei ($Z_1 = N_2$ and $N_1 = Z_2$):}
+Consider $\ce{^{13}_{6}C}$ ($Z=6, N=7$) and $\ce{^{13}_{7}N}$ ($Z=7, N=6$). In our set, $\ce{^{14}_{6}C}$ ($Z=6, N=8$) and $\ce{^{14}_{8}O}$ ($Z=8, N=6$) have swapped proton/neutron counts:
+\[
+(\ce{^{14}_{6}C}, \ce{^{14}_{8}O}) \quad \text{form an authentic mirror isobaric pair!}
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.5
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{The Unified Atomic Mass Unit and Fundamental Mass Conversions}
+The unified atomic mass unit ($1\ \mathrm{u}$) is defined as exactly $1/12$ of the rest mass of an unbound neutral Carbon-12 atom in its ground state.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Using Avogadro's constant $N_A = 6.022\,140\,76 \times 10^{23}\ \mathrm{mol^{-1}}$, prove rigorously that $1\ \mathrm{u} = \dfrac{10^{-3}\ \mathrm{kg}}{N_A} \approx 1.660\,539 \times 10^{-27}\ \mathrm{kg}$.
+  \item The atomic mass of a gold atom ($\ce{^{197}_{79}Au}$) is $M = 196.966\,569\ \mathrm{u}$. Calculate the mass of one single gold atom in:
+  \begin{enumerate}[leftmargin=1.2em,itemsep=1pt]
+    \item Kilograms ($\mathrm{kg}$).
+    \item Grams ($\mathrm{g}$).
+  \end{enumerate}
+  \item How many gold atoms are contained in a pure $1.000\ \mathrm{kg}$ gold bullion bar?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Rigorous Derivation of $1\ \mathrm{u}$:}
+By definition of the mole, exactly $1\ \mathrm{mol}$ of Carbon-12 has a mass of exactly $12.000\ \mathrm{g} = 12 \times 10^{-3}\ \mathrm{kg}$.
+Since $1\ \mathrm{mol}$ contains $N_A$ atoms:
+\[
+m(\ce{^{12}C}) = \frac{12 \times 10^{-3}\ \mathrm{kg}}{N_A}.
+\]
+By definition of the unified atomic mass unit:
+\[
+1\ \mathrm{u} = \frac{1}{12} m(\ce{^{12}C}) = \frac{1}{12} \left( \frac{12 \times 10^{-3}\ \mathrm{kg}}{N_A} \right) = \mathbf{\frac{10^{-3}\ \mathrm{kg}}{N_A}}.
+\]
+Plugging in $N_A = 6.022\,140\,76 \times 10^{23}\ \mathrm{mol^{-1}}$:
+\[
+1\ \mathrm{u} = \frac{10^{-3}\ \mathrm{kg}}{6.022\,140\,76 \times 10^{23}} = \mathbf{1.660\,539 \times 10^{-27}\ \mathrm{kg}}. \quad \text{Q.E.D.}
+\]
+
+\textbf{2. Rest Mass of One Gold Atom:}
+\begin{enumerate}[leftmargin=1.4em,itemsep=1pt]
+  \item In kilograms:
+  \[
+  m_{\text{Au}} = 196.966\,569 \times 1.660\,539 \times 10^{-27}\ \mathrm{kg} = \mathbf{3.2707 \times 10^{-25}\ \mathrm{kg}}.
+  \]
+  \item In grams:
+  \[
+  m_{\text{Au}} = 3.2707 \times 10^{-22}\ \mathrm{g}.
+  \]
+\end{enumerate}
+
+\textbf{3. Number of Atoms in $1.000\ \mathrm{kg}$ Bullion:}
+\[
+N_{\text{atoms}} = \frac{m_{\text{bar}}}{m_{\text{Au}}} = \frac{1.000\ \mathrm{kg}}{3.2707 \times 10^{-25}\ \mathrm{kg}} = \mathbf{3.057 \times 10^{24}\ \text{atoms}}.
+\]
+Alternatively: $n = \frac{1000\ \mathrm{g}}{196.967\ \mathrm{g\cdot mol^{-1}}} = 5.077\ \mathrm{mol} \implies N = 5.077 \times 6.022 \times 10^{23} = \mathbf{3.057 \times 10^{24}\ \text{atoms}}$.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.6
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Einstein Energy Equivalence of the Atomic Mass Unit}
+Using Einstein's mass-energy equivalence relation $E = m c^2$ with speed of light $c = 2.997\,924\,58 \times 10^8\ \mathrm{m\cdot s^{-1}}$ and elementary charge $e = 1.602\,176\,634 \times 10^{-19}\ \mathrm{C}$:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the energy equivalent of $1\ \mathrm{u}$ in Joules ($\mathrm{J}$).
+  \item Convert this energy into electronvolts ($\mathrm{eV}$) and mega-electronvolts ($\mathrm{MeV}$).
+  \item State the standard CODATA conversion factor $1\ \mathrm{u} \cdot c^2$ in $\mathrm{MeV}$ used throughout nuclear physics.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Energy Equivalent in Joules:}
+Using $m = 1\ \mathrm{u} = 1.660\,539\,066 \times 10^{-27}\ \mathrm{kg}$:
+\begin{align*}
+E &= m \cdot c^2 = (1.660\,539\,066 \times 10^{-27}\ \mathrm{kg}) \times (2.997\,924\,58 \times 10^8\ \mathrm{m\cdot s^{-1}})^2 \\
+  &= (1.660\,539\,066 \times 10^{-27}) \times (8.987\,551\,787 \times 10^{16}) \\
+  &= \mathbf{1.492\,418 \times 10^{-10}\ \mathrm{J}}.
+\end{align*}
+
+\textbf{2. Conversion into $\mathrm{eV}$ and $\mathrm{MeV}$:}
+Since $1\ \mathrm{eV} = 1.602\,176\,634 \times 10^{-19}\ \mathrm{J}$:
+\[
+E = \frac{1.492\,418 \times 10^{-10}\ \mathrm{J}}{1.602\,176\,634 \times 10^{-19}\ \mathrm{J\cdot eV^{-1}}} = 931\,494\,102\ \mathrm{eV}.
+\]
+Dividing by $10^6\ \mathrm{eV\cdot MeV^{-1}}$:
+\[
+E = \mathbf{931.494\ \mathrm{MeV}}.
+\]
+
+\textbf{3. Standard Nuclear Conversion Factor:}
+\[
+\mathbf{1\ \mathrm{u} \equiv 931.494\ \mathrm{MeV}/c^2} \quad \iff \quad \mathbf{E = \Delta m\ (\mathrm{u}) \times 931.494\ \mathrm{MeV}}.
+\]
+This universal factor allows direct calculation of binding energies without tedious conversions through SI units.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.7
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Average Atomic Mass of Chlorine}
+Naturally occurring chlorine consists of two stable isotopes with the following mass spectrometry data:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Isotope} & \textbf{Isotopic Mass (u)} & \textbf{Natural Abundance (\%)} \\
+\midrule
+$\ce{^{35}_{17}Cl}$ & $34.968\,853$ & $75.76\%$ \\
+$\ce{^{37}_{17}Cl}$ & $36.965\,903$ & $24.24\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the standard average atomic mass $\bar{M}(\ce{Cl})$ of elemental chlorine to four decimal places.
+  \item Explain why the mass numbers $A_1 = 35$ and $A_2 = 37$ are integers, but the average atomic mass of chlorine reported on the periodic table is $\approx 35.45\ \mathrm{u}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Average Atomic Mass Calculation:}
+The fractional abundances are $x_1 = 0.7576$ and $x_2 = 0.2424$ (note $x_1 + x_2 = 1.0000$):
+\begin{align*}
+\bar{M}(\ce{Cl}) &= x_1 M_1 + x_2 M_2 \\
+                 &= (0.7576 \times 34.968\,853\ \mathrm{u}) + (0.2424 \times 36.965\,903\ \mathrm{u}) \\
+                 &= 26.492\,403\ \mathrm{u} + 8.960\,535\ \mathrm{u} \\
+                 &= \mathbf{35.4529\ \mathrm{u}} \approx \mathbf{35.45\ \mathrm{u}}.
+\end{align*}
+
+\textbf{2. Physical Explanation:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item The mass number $A$ is by definition the count of nucleons ($p^+ + n^0$) in a specific nucleus, which is strictly an \textbf{integer}.
+  \item The atomic mass of an individual nuclide deviates slightly from $A$ due to nuclear binding energy ($E = mc^2$) and the proton-neutron mass difference.
+  \item The periodic table value represents the \textbf{weighted average} of the naturally occurring isotopic mixture. Because terrestrial chlorine is an approximate $3:1$ blend of $^{35}\ce{Cl}$ and $^{37}\ce{Cl}$, its average atomic mass is roughly $(3 \times 35 + 1 \times 37)/4 = 35.5\ \mathrm{u}$, not an integer.
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.8
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Determination of Boron Isotopic Abundances}
+Naturally occurring boron consists exclusively of two stable isotopes: Boron-10 ($\ce{^{10}B}$) with isotopic mass $M_1 = 10.0129\ \mathrm{u}$, and Boron-11 ($\ce{^{11}B}$) with isotopic mass $M_2 = 11.0093\ \mathrm{u}$. The official IUPAC standard atomic weight of natural boron is $\bar{M} = 10.8110\ \mathrm{u}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Set up the algebraic system linking the fractional abundances $x_1$ and $x_2$ to the average mass.
+  \item Solve the system to determine the percentage abundances of $\ce{^{10}B}$ and $\ce{^{11}B}$ to two decimal places.
+  \item If a nuclear reactor control rod contains $m = 250.0\ \mathrm{g}$ of natural boron, what mass of pure neutron-absorbing $\ce{^{10}B}$ is present?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Algebraic Formulation:}
+Let $x_1$ be the fraction of $\ce{^{10}B}$ and $x_2$ the fraction of $\ce{^{11}B}$:
+\begin{align}
+x_1 + x_2 &= 1 \implies x_2 = 1 - x_1 \label{eq:b_sum} \\
+x_1 M_1 + x_2 M_2 &= \bar{M} \label{eq:b_mass}
+\end{align}
+
+\textbf{2. Calculation of Abundances:}
+Substitute \eqref{eq:b_sum} into \eqref{eq:b_mass}:
+\[
+x_1 M_1 + (1 - x_1) M_2 = \bar{M} \implies x_1(M_1 - M_2) + M_2 = \bar{M}
+\]
+\[
+x_1 = \frac{M_2 - \bar{M}}{M_2 - M_1} = \frac{11.0093 - 10.8110}{11.0093 - 10.0129} = \frac{0.1983}{0.9964} = 0.199016.
+\]
+Thus:
+\begin{align*}
+x_1(\ce{^{10}B}) &= 0.1990 \implies \mathbf{19.90\%}, \\
+x_2(\ce{^{11}B}) &= 1 - 0.1990 = 0.8010 \implies \mathbf{80.10\%}.
+\end{align*}
+
+\textbf{3. Mass of $\ce{^{10}B}$ in Control Rod:}
+The mole fraction of $\ce{^{10}B}$ is $x_1 = 0.1990$.
+Total moles of boron in $250.0\ \mathrm{g}$:
+\[
+n_{\text{total}} = \frac{m_{\text{rod}}}{\bar{M}} = \frac{250.0\ \mathrm{g}}{10.8110\ \mathrm{g\cdot mol^{-1}}} = 23.1246\ \mathrm{mol}.
+\]
+Moles of $\ce{^{10}B}$:
+\[
+n(\ce{^{10}B}) = x_1 \cdot n_{\text{total}} = 0.199016 \times 23.1246\ \mathrm{mol} = 4.6022\ \mathrm{mol}.
+\]
+Mass of $\ce{^{10}B}$:
+\[
+m(\ce{^{10}B}) = n(\ce{^{10}B}) \cdot M_1 = 4.6022\ \mathrm{mol} \times 10.0129\ \mathrm{g\cdot mol^{-1}} = \mathbf{46.08\ \mathrm{g}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.9
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Mass Spectrometry Peak Ratio Analysis of Copper}
+In an Aston mass spectrometer, a beam of copper ions ($\ce{Cu+}$) is separated into two isotopic parabolic trajectories corresponding to $\ce{^{63}Cu}$ ($M_1 = 62.9296\ \mathrm{u}$) and $\ce{^{65}Cu}$ ($M_2 = 64.9278\ \mathrm{u}$). The ratio of collector ion currents is measured to be:
+\[
+R = \frac{I(\ce{^{63}Cu})}{I(\ce{^{65}Cu})} = 2.2464.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Express the fractional abundances $x_1$ and $x_2$ in terms of the peak ratio $R$.
+  \item Compute the percentage natural abundance of both isotopes.
+  \item Calculate the average atomic mass of copper based on these spectrometric measurements.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Abundances in Terms of Peak Ratio $R$:}
+Since the ion detector response is linearly proportional to isotopic abundance:
+\[
+\frac{x_1}{x_2} = R \implies x_1 = R \cdot x_2.
+\]
+Substituting into $x_1 + x_2 = 1$:
+\[
+R \cdot x_2 + x_2 = 1 \implies x_2(1 + R) = 1 \implies \mathbf{x_2 = \frac{1}{1 + R}}, \qquad \mathbf{x_1 = \frac{R}{1 + R}}.
+\]
+
+\textbf{2. Percentage Abundance Calculation:}
+Given $R = 2.2464$:
+\[
+x_2(\ce{^{65}Cu}) = \frac{1}{1 + 2.2464} = \frac{1}{3.2464} = 0.30803 \implies \mathbf{30.80\%}.
+\]
+\[
+x_1(\ce{^{63}Cu}) = 1 - 0.30803 = 0.69197 \implies \mathbf{69.20\%}.
+\]
+
+\textbf{3. Average Atomic Mass of Copper:}
+\begin{align*}
+\bar{M}(\ce{Cu}) &= x_1 M_1 + x_2 M_2 \\
+                 &= (0.69197 \times 62.9296\ \mathrm{u}) + (0.30803 \times 64.9278\ \mathrm{u}) \\
+                 &= 43.5454\ \mathrm{u} + 19.9997\ \mathrm{u} = \mathbf{63.545\ \mathrm{u}}.
+\end{align*}
+This matches the IUPAC standard periodic table atomic weight of copper ($63.546\ \mathrm{u}$).
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.10
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Three-Isotope System of Magnesium}
+Naturally occurring magnesium is composed of three stable isotopes:
+\begin{itemize}[itemsep=1pt]
+  \item $\ce{^{24}_{12}Mg}$: $M_1 = 23.9850\ \mathrm{u}$
+  \item $\ce{^{25}_{12}Mg}$: $M_2 = 24.9858\ \mathrm{u}$
+  \item $\ce{^{26}_{12}Mg}$: $M_3 = 25.9826\ \mathrm{u}$
+\end{itemize}
+High-resolution mass spectrometry shows that the ratio of abundances between the two heavier isotopes is $x_3 / x_2 = 1.1082$. The standard atomic mass of natural magnesium is $\bar{M} = 24.3050\ \mathrm{u}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Set up the system of three equations in three unknowns ($x_1, x_2, x_3$).
+  \item Solve the system to determine the exact natural abundance percentages of all three isotopes.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. System of Equations:}
+\begin{align}
+x_1 + x_2 + x_3 &= 1 \label{eq:mg1} \\
+x_1 M_1 + x_2 M_2 + x_3 M_3 &= \bar{M} = 24.3050 \label{eq:mg2} \\
+x_3 &= 1.1082 \, x_2 \label{eq:mg3}
+\end{align}
+
+\textbf{2. Solution of the System:}
+Substitute \eqref{eq:mg3} into \eqref{eq:mg1}:
+\[
+x_1 + x_2 + 1.1082 \, x_2 = 1 \implies x_1 + 2.1082 \, x_2 = 1 \implies x_1 = 1 - 2.1082 \, x_2.
+\]
+Now substitute $x_1$ and $x_3$ into the mass equation \eqref{eq:mg2}:
+\[
+(1 - 2.1082 \, x_2) M_1 + x_2 M_2 + (1.1082 \, x_2) M_3 = \bar{M}
+\]
+\[
+M_1 + x_2 \left[ M_2 + 1.1082 \, M_3 - 2.1082 \, M_1 \right] = \bar{M}.
+\]
+Compute the bracketed coefficient:
+\begin{align*}
+M_2 + 1.1082 \, M_3 - 2.1082 \, M_1 &= 24.9858 + 1.1082(25.9826) - 2.1082(23.9850) \\
+&= 24.9858 + 28.7939 - 50.5652 = 3.2145\ \mathrm{u}.
+\end{align*}
+The numerator is:
+\[
+\bar{M} - M_1 = 24.3050 - 23.9850 = 0.3200\ \mathrm{u}.
+\]
+Thus:
+\[
+x_2 = \frac{0.3200}{3.2145} = 0.09955 \implies \mathbf{x_2(\ce{^{25}Mg}) = 9.96\%}.
+\]
+From \eqref{eq:mg3}:
+\[
+x_3 = 1.1082 \times 0.09955 = 0.11032 \implies \mathbf{x_3(\ce{^{26}Mg}) = 11.03\%}.
+\]
+From \eqref{eq:mg1}:
+\[
+x_1 = 1 - (0.09955 + 0.11032) = 1 - 0.20987 = 0.79013 \implies \mathbf{x_1(\ce{^{24}Mg}) = 79.01\%}.
+\]
+\textbf{Summary of Natural Abundances:}
+\[
+\ce{^{24}Mg}: \mathbf{79.01\%}, \qquad \ce{^{25}Mg}: \mathbf{9.96\%}, \qquad \ce{^{26}Mg}: \mathbf{11.03\%}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.11
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Nuclear Mass Defect and Binding of the Deuteron}
+A deuteron ($\ce{^{2}_{1}H}$ or $\mathrm{D}$ nucleus) consists of one bound proton and one bound neutron.
+\begin{itemize}[itemsep=1pt]
+  \item Proton rest mass: $m_p = 1.007\,276\ \mathrm{u}$
+  \item Neutron rest mass: $m_n = 1.008\,665\ \mathrm{u}$
+  \item Deuteron nuclear mass: $m_d = 2.013\,553\ \mathrm{u}$
+\end{itemize}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Compute the nuclear mass defect $\Delta m$ in atomic mass units ($\mathrm{u}$) and in kilograms ($\mathrm{kg}$).
+  \item Calculate the total binding energy $E_L$ of the deuteron in mega-electronvolts ($\mathrm{MeV}$) and Joules ($\mathrm{J}$).
+  \item Determine the binding energy per nucleon ($E_L/A$).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Mass Defect $\Delta m$:}
+The constituent particles are $1\ p^+$ and $1\ n^0$:
+\[
+m_{\text{constituents}} = m_p + m_n = 1.007\,276 + 1.008\,665 = 2.015\,941\ \mathrm{u}.
+\]
+\[
+\Delta m = m_{\text{constituents}} - m_d = 2.015\,941 - 2.013\,553 = \mathbf{0.002\,388\ \mathrm{u}}.
+\]
+In kilograms:
+\[
+\Delta m = 0.002\,388 \times 1.660\,539 \times 10^{-27}\ \mathrm{kg} = \mathbf{3.9654 \times 10^{-30}\ \mathrm{kg}}.
+\]
+
+\textbf{2. Total Binding Energy $E_L$:}
+In $\mathrm{MeV}$:
+\[
+E_L = \Delta m \times 931.494\ \mathrm{MeV/u} = 0.002\,388\ \mathrm{u} \times 931.494\ \mathrm{MeV/u} = \mathbf{2.224\ \mathrm{MeV}}.
+\]
+In Joules:
+\[
+E_L = 2.2244\ \mathrm{MeV} \times 1.602\,177 \times 10^{-13}\ \mathrm{J/MeV} = \mathbf{3.564 \times 10^{-13}\ \mathrm{J}}.
+\]
+(Check: $\Delta m \cdot c^2 = 3.9654 \times 10^{-30} \times (2.9979 \times 10^8)^2 = 3.564 \times 10^{-13}\ \mathrm{J}$).
+
+\textbf{3. Binding Energy Per Nucleon ($E_L/A$):}
+For deuterium, $A = 2$:
+\[
+\frac{E_L}{A} = \frac{2.2244\ \mathrm{MeV}}{2} = \mathbf{1.112\ \mathrm{MeV/nucleon}}.
+\]
+This low binding energy per nucleon indicates that the deuteron is a relatively loosely bound nucleus.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.12
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Alpha Particle Nuclear Binding and Tightly Bound Systems}
+An alpha particle is the bare nucleus of Helium-4 ($\ce{^{4}_{2}He}^{2+}$), containing 2 protons and 2 neutrons.
+\begin{itemize}[itemsep=1pt]
+  \item Proton mass: $m_p = 1.007\,276\ \mathrm{u}$
+  \item Neutron mass: $m_n = 1.008\,665\ \mathrm{u}$
+  \item Helium-4 nuclear mass: $m_\alpha = 4.001\,506\ \mathrm{u}$
+\end{itemize}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the nuclear mass defect $\Delta m$ of the alpha particle in $\mathrm{u}$.
+  \item Calculate the total nuclear binding energy $E_L$ in $\mathrm{MeV}$.
+  \item Determine the specific binding energy $E_L/A$.
+  \item Compare this specific binding energy to that of the deuteron from Exercise 2.11 ($1.112\ \mathrm{MeV/nucleon}$). What explains the extraordinary stability of the alpha particle?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Nuclear Mass Defect $\Delta m$:}
+Constituents mass ($2\ p^+ + 2\ n^0$):
+\[
+m_{\text{free}} = 2 m_p + 2 m_n = 2(1.007\,276) + 2(1.008\,665) = 2.014\,552 + 2.017\,330 = 4.031\,882\ \mathrm{u}.
+\]
+\[
+\Delta m = m_{\text{free}} - m_\alpha = 4.031\,882 - 4.001\,506 = \mathbf{0.030\,376\ \mathrm{u}}.
+\]
+
+\textbf{2. Total Binding Energy $E_L$:}
+\[
+E_L = \Delta m \times 931.494\ \mathrm{MeV/u} = 0.030\,376 \times 931.494 = \mathbf{28.295\ \mathrm{MeV}}.
+\]
+
+\textbf{3. Specific Binding Energy ($E_L/A$):}
+For $\ce{^{4}_{2}He}$, $A = 4$:
+\[
+\frac{E_L}{A} = \frac{28.295\ \mathrm{MeV}}{4} = \mathbf{7.074\ \mathrm{MeV/nucleon}}.
+\]
+
+\textbf{4. Stability Analysis:}
+The binding energy per nucleon of $\ce{^{4}He}$ ($7.074\ \mathrm{MeV/nucleon}$) is more than \textbf{six times larger} than that of deuterium ($1.112\ \mathrm{MeV/nucleon}$).
+Helium-4 is a \textbf{doubly magic nucleus} ($Z = 2, N = 2$), where both protons and neutrons completely fill their lowest nuclear energy shell ($1s_{1/2}$). This exceptionally strong binding explains why alpha particles are emitted as discrete, highly stable entities in radioactive decay chains.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.13
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Binding Energy Calculation Using Atomic Masses}
+Calculate the nuclear binding energy of Carbon-12 ($\ce{^{12}_{6}C}$) using neutral atomic masses.
+\begin{itemize}[itemsep=1pt]
+  \item Neutral Hydrogen atom rest mass: $m(\ce{^{1}_{1}H}) = 1.007\,825\ \mathrm{u}$
+  \item Neutron rest mass: $m_n = 1.008\,665\ \mathrm{u}$
+  \item Neutral Carbon-12 atom rest mass: $M(\ce{^{12}_{6}C}) \equiv 12.000\,000\ \mathrm{u}$ (by definition)
+\end{itemize}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Show why the formula $\Delta m = [Z \cdot m(\ce{^1H}) + (A - Z) \cdot m_n] - M(\ce{^{A}_{Z}X})$ automatically accounts for electron masses.
+  \item Compute $\Delta m$ for Carbon-12 in $\mathrm{u}$.
+  \item Calculate the total binding energy $E_L$ in $\mathrm{MeV}$ and the binding energy per nucleon $E_L/A$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Cancellation of Electron Masses:}
+The neutral atom consists of the nucleus plus $Z$ orbital electrons:
+\[
+M(\ce{^{A}_{Z}X}) \approx m_{\text{nucleus}} + Z \cdot m_e.
+\]
+Similarly, a neutral hydrogen atom is a proton plus one electron:
+\[
+m(\ce{^1H}) = m_p + m_e.
+\]
+Substituting into the formula:
+\begin{align*}
+\Delta m &= \left[ Z(m_p + m_e) + (A - Z) m_n \right] - \left[ m_{\text{nucleus}} + Z m_e \right] \\
+         &= \left[ Z m_p + Z m_e + (A - Z) m_n \right] - m_{\text{nucleus}} - Z m_e \\
+         &= \left[ Z m_p + (A - Z) m_n \right] - m_{\text{nucleus}}.
+\end{align*}
+The $Z$ electron masses cancel out perfectly! (Electronic binding energies of a few tens of $\mathrm{eV}$ are negligible compared to $\mathrm{MeV}$ nuclear energies).
+
+\textbf{2. Mass Defect of $\ce{^{12}_{6}C}$:}
+For Carbon-12, $Z = 6,\ N = 6$:
+\begin{align*}
+\Delta m &= 6 \cdot m(\ce{^1H}) + 6 \cdot m_n - 12.000\,000 \\
+         &= 6(1.007\,825) + 6(1.008\,665) - 12.000\,000 \\
+         &= 6.046\,950 + 6.051\,990 - 12.000\,000 \\
+         &= 12.098\,940 - 12.000\,000 = \mathbf{0.098\,940\ \mathrm{u}}.
+\end{align*}
+
+\textbf{3. Total and Specific Binding Energy:}
+\[
+E_L = \Delta m \times 931.494\ \mathrm{MeV/u} = 0.098\,940 \times 931.494 = \mathbf{92.162\ \mathrm{MeV}}.
+\]
+\[
+\frac{E_L}{A} = \frac{92.162\ \mathrm{MeV}}{12} = \mathbf{7.680\ \mathrm{MeV/nucleon}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.14
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{The Peak of the Aston Stability Curve: Iron-56}
+Iron-56 ($\ce{^{56}_{26}Fe}$) sits at the absolute summit of nuclear stability on the Aston curve.
+\begin{itemize}[itemsep=1pt]
+  \item Neutral Hydrogen atom: $m(\ce{^{1}_{1}H}) = 1.007\,825\ \mathrm{u}$
+  \item Neutron: $m_n = 1.008\,665\ \mathrm{u}$
+  \item Atomic mass of Iron-56: $M(\ce{^{56}_{26}Fe}) = 55.934\,937\ \mathrm{u}$
+\end{itemize}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the total mass defect $\Delta m$ of Iron-56.
+  \item Compute the total nuclear binding energy $E_L$ in $\mathrm{MeV}$.
+  \item Determine the specific binding energy $E_L/A$ in $\mathrm{MeV/nucleon}$.
+  \item Explain why iron represents the ultimate thermodynamic "sink" of stellar nucleosynthesis in massive stars.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Mass Defect $\Delta m$:}
+For $\ce{^{56}_{26}Fe}$, $Z = 26$ and $N = 56 - 26 = 30$:
+\begin{align*}
+m_{\text{free}} &= 26 \cdot m(\ce{^1H}) + 30 \cdot m_n \\
+                &= 26(1.007\,825) + 30(1.008\,665) \\
+                &= 26.203\,450 + 30.259\,950 = 56.463\,400\ \mathrm{u}.
+\end{align*}
+\[
+\Delta m = 56.463\,400 - 55.934\,937 = \mathbf{0.528\,463\ \mathrm{u}}.
+\]
+
+\textbf{2. Total Binding Energy $E_L$:}
+\[
+E_L = 0.528\,463\ \mathrm{u} \times 931.494\ \mathrm{MeV/u} = \mathbf{492.26\ \mathrm{MeV}}.
+\]
+
+\textbf{3. Specific Binding Energy ($E_L/A$):}
+\[
+\frac{E_L}{A} = \frac{492.26\ \mathrm{MeV}}{56} = \mathbf{8.790\ \mathrm{MeV/nucleon}}.
+\]
+
+\textbf{4. Astrophysical Significance:}
+At $8.79\ \mathrm{MeV/nucleon}$, Iron-56 nucleons reside in the deepest nuclear potential well in nature. 
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item Fusing nuclei lighter than iron releases energy ($\Delta(E_L/A) > 0$).
+  \item Fissioning nuclei heavier than iron releases energy ($\Delta(E_L/A) > 0$).
+  \item However, attempting to fuse iron nuclei or fission iron requires an input of external energy (endothermic). Thus, when a massive star builds an iron core, fusion ceases; unable to support itself against gravity, the core collapses catastrophically, triggering a Type II Supernova.
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.15
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Heavy Nuclide Binding: Uranium-238}
+Calculate the nuclear binding parameters of Uranium-238 ($\ce{^{238}_{92}U}$), the principal isotope of natural uranium:
+\begin{itemize}[itemsep=1pt]
+  \item $m(\ce{^{1}_{1}H}) = 1.007\,825\ \mathrm{u}$
+  \item $m_n = 1.008\,665\ \mathrm{u}$
+  \item $M(\ce{^{238}_{92}U}) = 238.050\,788\ \mathrm{u}$
+\end{itemize}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the mass defect $\Delta m$ in $\mathrm{u}$ and in $\mathrm{kg}$.
+  \item Determine the total binding energy $E_L$ in $\mathrm{MeV}$.
+  \item Compute the binding energy per nucleon ($E_L/A$).
+  \item Why does $E_L/A$ decrease from $8.79\ \mathrm{MeV/nucleon}$ (in iron) to $7.57\ \mathrm{MeV/nucleon}$ (in uranium)?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Mass Defect $\Delta m$:}
+For $\ce{^{238}_{92}U}$, $Z = 92$ and $N = 238 - 92 = 146$:
+\begin{align*}
+m_{\text{free}} &= 92(1.007\,825) + 146(1.008\,665) \\
+                &= 92.719\,900 + 147.265\,090 = 239.984\,990\ \mathrm{u}.
+\end{align*}
+\[
+\Delta m = 239.984\,990 - 238.050\,788 = \mathbf{1.934\,202\ \mathrm{u}}.
+\]
+In kilograms:
+\[
+\Delta m = 1.934\,202 \times 1.660\,539 \times 10^{-27}\ \mathrm{kg} = \mathbf{3.2118 \times 10^{-27}\ \mathrm{kg}}.
+\]
+
+\textbf{2. Total Binding Energy $E_L$:}
+\[
+E_L = 1.934\,202\ \mathrm{u} \times 931.494\ \mathrm{MeV/u} = \mathbf{1801.70\ \mathrm{MeV}}.
+\]
+
+\textbf{3. Specific Binding Energy ($E_L/A$):}
+\[
+\frac{E_L}{A} = \frac{1801.70\ \mathrm{MeV}}{238} = \mathbf{7.570\ \mathrm{MeV/nucleon}}.
+\]
+
+\textbf{4. Physical Reason for Decrease:}
+In heavy nuclei ($Z = 92$), long-range Coulomb electrostatic repulsion between protons scales as $Z(Z-1) \sim Z^2$, whereas short-range strong nuclear attractive forces act only between nearest neighbors and scale roughly as $A$. As $Z$ grows, electrostatic repulsion destabilizes the nucleus, causing $E_L/A$ to drop from $8.79\ \mathrm{MeV/nucleon}$ to $7.57\ \mathrm{MeV/nucleon}$.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.16
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Thermodynamic Proof of Nuclear Fusion and Fission}
+Using the Aston curve binding energies per nucleon calculated in previous exercises:
+\[
+\left(\frac{E_L}{A}\right)_{\ce{^{2}H}} = 1.11\ \mathrm{MeV}, \quad 
+\left(\frac{E_L}{A}\right)_{\ce{^{4}He}} = 7.07\ \mathrm{MeV}, \quad 
+\left(\frac{E_L}{A}\right)_{\ce{^{56}Fe}} = 8.79\ \mathrm{MeV}, \quad 
+\left(\frac{E_L}{A}\right)_{\ce{^{238}U}} = 7.57\ \mathrm{MeV}.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove mathematically that the hypothetical fusion of two deuterons into an alpha particle:
+  \[
+  \ce{^{2}_{1}H + ^{2}_{1}H -> ^{4}_{2}He}
+  \]
+  is overwhelmingly exothermic, and compute the energy released $\Delta E$ in $\mathrm{MeV}$.
+  \item Prove mathematically that the hypothetical symmetric fission of a heavy nucleus ($A \approx 240, E_L/A \approx 7.6\ \mathrm{MeV}$) into two intermediate fragments ($A \approx 120, E_L/A \approx 8.5\ \mathrm{MeV}$) is exothermic, and compute the energy released.
+  \item State the universal thermodynamic criterion for a nuclear transformation to release net energy.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Deuteron Fusion Energetics:}
+The total binding energy of reactants:
+\[
+E_{L,\text{reactants}} = 2 \times E_L(\ce{^{2}H}) = 2 \times (2 \times 1.112\ \mathrm{MeV}) = 4.45\ \mathrm{MeV}.
+\]
+The total binding energy of products:
+\[
+E_{L,\text{products}} = E_L(\ce{^{4}He}) = 4 \times 7.074\ \mathrm{MeV} = 28.30\ \mathrm{MeV}.
+\]
+The energy released is the increase in binding energy:
+\[
+Q = E_{L,\text{products}} - E_{L,\text{reactants}} = 28.30 - 4.45 = \mathbf{+23.85\ \mathrm{MeV}}.
+\]
+The reaction is intensely exothermic!
+
+\textbf{2. Symmetric Fission Energetics:}
+Initial binding energy of heavy parent nucleus ($A = 240$):
+\[
+E_{L,\text{initial}} = 240 \times 7.60\ \mathrm{MeV} = 1824.0\ \mathrm{MeV}.
+\]
+Final binding energy of two intermediate fragments ($A = 120$ each):
+\[
+E_{L,\text{final}} = 2 \times (120 \times 8.50\ \mathrm{MeV}) = 240 \times 8.50\ \mathrm{MeV} = 2040.0\ \mathrm{MeV}.
+\]
+Energy released:
+\[
+Q = E_{L,\text{final}} - E_{L,\text{initial}} = 2040.0 - 1824.0 = \mathbf{+216.0\ \mathrm{MeV}}.
+\]
+Over $200\ \mathrm{MeV}$ of nuclear energy is liberated per fission event!
+
+\textbf{3. Universal Thermodynamic Criterion:}
+A nuclear process is spontaneously exoenergetic ($Q > 0$) if and only if:
+\[
+\sum E_{L,\text{products}} > \sum E_{L,\text{reactants}} \iff \left(\frac{E_L}{A}\right)_{\text{products}} > \left(\frac{E_L}{A}\right)_{\text{reactants}}.
+\]
+Any transformation moving nucleons closer to the stability peak at Iron-56 liberates binding energy!
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.17
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Energetics of Deuterium-Tritium Thermonuclear Fusion}
+The principal fusion reaction planned for future magnetic confinement fusion reactors (ITER) is:
+\[
+\ce{^{2}_{1}H + ^{3}_{1}H -> ^{4}_{2}He + ^{1}_{0}n + Q}
+\]
+Given the accurate neutral atomic rest masses:
+\begin{itemize}[itemsep=1pt]
+  \item Deuterium: $m(\ce{^{2}_{1}H}) = 2.014\,102\ \mathrm{u}$
+  \item Tritium: $m(\ce{^{3}_{1}H}) = 3.016\,049\ \mathrm{u}$
+  \item Helium-4: $m(\ce{^{4}_{2}He}) = 4.002\,603\ \mathrm{u}$
+  \item Neutron: $m_n = 1.008\,665\ \mathrm{u}$
+\end{itemize}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the reaction mass change $\Delta m = m_{\text{reactants}} - m_{\text{products}}$ in $\mathrm{u}$.
+  \item Determine the energy release $Q$ per fusion event in $\mathrm{MeV}$ and in Joules ($\mathrm{J}$).
+  \item Calculate the total energy released by the complete fusion of $m_{\text{fuel}} = 1.000\ \mathrm{kg}$ of an equimolar $\mathrm{D}$-$\mathrm{T}$ fuel mixture ($1\ \mathrm{mol}\ \ce{^2H} + 1\ \mathrm{mol}\ \ce{^3H} = 5.030\ \mathrm{g}$ of mixture).
+  \item Compare this energy to burning $1.000\ \mathrm{kg}$ of octane gasoline ($\Delta H_{\text{comb}} \approx 44.0\ \mathrm{MJ\cdot kg^{-1}}$).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Mass Change $\Delta m$:}
+\begin{align*}
+m_{\text{reactants}} &= m(\ce{^{2}H}) + m(\ce{^{3}H}) = 2.014\,102 + 3.016\,049 = 5.030\,151\ \mathrm{u}. \\
+m_{\text{products}} &= m(\ce{^{4}He}) + m_n = 4.002\,603 + 1.008\,665 = 5.011\,268\ \mathrm{u}.
+\end{align*}
+\[
+\Delta m = 5.030\,151 - 5.011\,268 = \mathbf{0.018\,883\ \mathrm{u}}.
+\]
+
+\textbf{2. Energy Release $Q$ per Fusion Event:}
+\[
+Q = 0.018\,883\ \mathrm{u} \times 931.494\ \mathrm{MeV/u} = \mathbf{17.589\ \mathrm{MeV}}.
+\]
+In Joules:
+\[
+Q = 17.589\ \mathrm{MeV} \times 1.602\,177 \times 10^{-13}\ \mathrm{J/MeV} = \mathbf{2.818 \times 10^{-12}\ \mathrm{J}}.
+\]
+
+\textbf{3. Energy of $1.000\ \mathrm{kg}$ Equimolar Fuel Mixture:}
+One pair of reacting $(\ce{^2H} + \ce{^3H})$ nuclei has a combined mass of:
+\[
+m_{\text{pair}} = (2.014\,102 + 3.016\,049) \times 1.660\,539 \times 10^{-27}\ \mathrm{kg} = 8.3528 \times 10^{-27}\ \mathrm{kg}.
+\]
+Number of fusion reactions in $1.000\ \mathrm{kg}$:
+\[
+N_{\text{reactions}} = \frac{1.000\ \mathrm{kg}}{8.3528 \times 10^{-27}\ \mathrm{kg}} = 1.1972 \times 10^{26}\ \text{reactions}.
+\]
+Total energy released:
+\[
+E_{\text{total}} = 1.1972 \times 10^{26} \times (2.818 \times 10^{-12}\ \mathrm{J}) = \mathbf{3.374 \times 10^{14}\ \mathrm{J}} \approx \mathbf{337.4\ \mathrm{TJ}}.
+\]
+
+\textbf{4. Comparison with Gasoline:}
+For $1.000\ \mathrm{kg}$ of gasoline: $E_{\text{gas}} = 4.40 \times 10^7\ \mathrm{J}$.
+\[
+\frac{E_{\text{fusion}}}{E_{\text{gasoline}}} = \frac{3.374 \times 10^{14}\ \mathrm{J}}{4.40 \times 10^7\ \mathrm{J}} \approx \mathbf{7.67 \times 10^6}.
+\]
+One kilogram of fusion fuel yields the equivalent energy of \textbf{7.67 million kilograms (7670 tonnes)} of premium gasoline!
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.18
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Induced Nuclear Fission of Uranium-235 in a Power Reactor}
+A typical thermal neutron induced fission reaction of Uranium-235 is:
+\[
+\ce{^{1}_{0}n + ^{235}_{92}U -> ^{141}_{56}Ba + ^{92}_{36}Kr + 3\,^{1}_{0}n}
+\]
+Accurate isotopic masses:
+\begin{itemize}[itemsep=1pt]
+  \item $m(\ce{^{235}_{92}U}) = 235.043\,929\ \mathrm{u}$
+  \item $m(\ce{^{141}_{56}Ba}) = 140.914\,411\ \mathrm{u}$
+  \item $m(\ce{^{92}_{36}Kr}) = 91.926\,156\ \mathrm{u}$
+  \item $m_n = 1.008\,665\ \mathrm{u}$
+\end{itemize}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the mass change $\Delta m$ and the energy $Q$ liberated per fission in $\mathrm{MeV}$ and $\mathrm{J}$.
+  \item Calculate the total thermal energy released by the complete fission of $m = 1.000\ \mathrm{kg}$ of pure $\ce{^{235}U}$.
+  \item A nuclear power plant operates at a thermal efficiency of $\eta = 34.0\%$ and generates a continuous electrical output of $P_e = 1000\ \mathrm{MW}$ ($1.000 \times 10^9\ \mathrm{W}$). Calculate the daily consumption mass of $\ce{^{235}U}$ in kilograms.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Fission Energetics:}
+Net reaction equation after canceling one spectator neutron:
+\[
+\ce{^{235}_{92}U -> ^{141}_{56}Ba + ^{92}_{36}Kr + 2\,^{1}_{0}n}.
+\]
+\begin{align*}
+m_{\text{reactants}} &= 235.043\,929\ \mathrm{u}. \\
+m_{\text{products}} &= 140.914\,411 + 91.926\,156 + 2(1.008\,665) = 232.840\,567 + 2.017\,330 = 234.857\,897\ \mathrm{u}.
+\end{align*}
+\[
+\Delta m = 235.043\,929 - 234.857\,897 = \mathbf{0.186\,032\ \mathrm{u}}.
+\]
+\[
+Q = 0.186\,032\ \mathrm{u} \times 931.494\ \mathrm{MeV/u} = \mathbf{173.29\ \mathrm{MeV}}.
+\]
+In Joules:
+\[
+Q = 173.288\ \mathrm{MeV} \times 1.602\,177 \times 10^{-13}\ \mathrm{J/MeV} = \mathbf{2.776 \times 10^{-11}\ \mathrm{J}}.
+\]
+
+\textbf{2. Complete Fission of $1.000\ \mathrm{kg}$ of $\ce{^{235}U}$:}
+Number of $\ce{^{235}U}$ nuclei in $1.000\ \mathrm{kg}$:
+\[
+N = \frac{1000\ \mathrm{g}}{235.044\ \mathrm{g\cdot mol^{-1}}} \times 6.022\,141 \times 10^{23}\ \mathrm{mol^{-1}} = 2.5621 \times 10^{24}\ \text{nuclei}.
+\]
+Total thermal energy:
+\[
+E_{\text{thermal}} = 2.5621 \times 10^{24} \times (2.7764 \times 10^{-11}\ \mathrm{J}) = \mathbf{7.113 \times 10^{13}\ \mathrm{J}} \approx \mathbf{71.13\ \mathrm{TJ}}.
+\]
+
+\textbf{3. Daily $\ce{^{235}U}$ Consumption in a $1000\ \mathrm{MW_e}$ Power Plant:}
+Thermal power required:
+\[
+P_{\text{th}} = \frac{P_e}{\eta} = \frac{1000\ \mathrm{MW}}{0.340} = 2941.2\ \mathrm{MW} = 2.9412 \times 10^9\ \mathrm{J\cdot s^{-1}}.
+\]
+Thermal energy required in one full day ($t = 24 \times 3600\ \mathrm{s} = 86\,400\ \mathrm{s}$):
+\[
+E_{\text{day}} = P_{\text{th}} \times 86\,400\ \mathrm{s} = 2.9412 \times 10^9 \times 86\,400 = 2.5412 \times 10^{14}\ \mathrm{J}.
+\]
+Mass of $\ce{^{235}U}$ consumed per day:
+\[
+m_{\text{day}} = \frac{E_{\text{day}}}{E_{\text{thermal per kg}}} = \frac{2.5412 \times 10^{14}\ \mathrm{J}}{7.1134 \times 10^{13}\ \mathrm{J\cdot kg^{-1}}} = \mathbf{3.573\ \mathrm{kg/day}}.
+\]
+A massive $1000\ \mathrm{MW}$ gigawatt power station running continuously consumes merely $\mathbf{3.57\ \mathrm{kg}}$ of uranium-235 each day!
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.19
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Fine Corrections: Nuclear Mass vs. Atomic Mass}
+The exact neutral atomic mass of Lithium-7 is $M(\ce{^{7}_{3}Li}) = 7.016\,004\ \mathrm{u}$.
+\begin{itemize}[itemsep=1pt]
+  \item Electron rest mass: $m_e = 0.000\,548\,580\ \mathrm{u}$
+  \item Total electronic binding energy of the three electrons: $B_e = 203.5\ \mathrm{eV}$
+\end{itemize}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Derive the exact relation between the neutral atomic mass $M(\ce{^{A}_{Z}X})$ and the bare nuclear mass $m_{\text{nuc}}$:
+  \[
+  m_{\text{nuc}} = M(\ce{^{A}_{Z}X}) - Z \cdot m_e + \frac{B_e}{c^2}.
+  \]
+  \item Calculate the bare nuclear mass $m_{\text{nuc}}$ of the Lithium-7 nucleus in $\mathrm{u}$ to 7 decimal places.
+  \item Determine the percentage error introduced into the nuclear mass if the electronic binding energy term $B_e / c^2$ is neglected.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Exact Nuclear Mass Derivation:}
+The total mass-energy of a neutral atom is the sum of the nuclear mass, the rest mass of $Z$ electrons, minus their atomic binding energy $B_e$:
+\[
+M(\ce{^{A}_{Z}X}) \cdot c^2 = m_{\text{nuc}} \cdot c^2 + Z \cdot m_e \cdot c^2 - B_e.
+\]
+Dividing across by $c^2$ and solving for $m_{\text{nuc}}$:
+\[
+\mathbf{m_{\text{nuc}} = M(\ce{^{A}_{Z}X}) - Z \cdot m_e + \frac{B_e}{c^2}}. \quad \text{Q.E.D.}
+\]
+
+\textbf{2. Calculation for Lithium-7 ($Z = 3$):}
+Convert $B_e = 203.5\ \mathrm{eV}$ into atomic mass units:
+\[
+\frac{B_e}{c^2} = \frac{203.5\ \mathrm{eV}}{931.494 \times 10^6\ \mathrm{eV/u}} = 2.185 \times 10^{-7}\ \mathrm{u}.
+\]
+Subtracting the rest mass of 3 electrons:
+\[
+3 \cdot m_e = 3 \times 0.000\,548\,580\ \mathrm{u} = 0.001\,645\,740\ \mathrm{u}.
+\]
+Therefore:
+\begin{align*}
+m_{\text{nuc}}(\ce{^{7}Li}) &= 7.016\,004\,000 - 0.001\,645\,740 + 0.000\,000\,218 \\
+                           &= \mathbf{7.014\,358\,478\ \mathrm{u}}.
+\end{align*}
+
+\textbf{3. Relative Error Analysis:}
+The neglected term is $2.185 \times 10^{-7}\ \mathrm{u}$:
+\[
+\text{Relative Error} = \frac{2.185 \times 10^{-7}\ \mathrm{u}}{7.014\ \mathrm{u}} \times 100\% = \mathbf{3.1 \times 10^{-6}\%}.
+\]
+This microscopic discrepancy ($0.03\ \text{ppm}$) validates the standard practice in nuclear chemistry of neglecting $B_e$ and approximating $m_{\text{nuc}} \approx M(\ce{^{A}_{Z}X}) - Z m_e$.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.20
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Relativistic Mass Loss: Chemical vs. Nuclear Reactions}
+According to special relativity, every exothermic reaction releases energy $\Delta E$ at the expense of a microscopic loss of rest mass $\Delta m = \Delta E / c^2$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Chemical Combustion:} Combustion of $1.000\ \mathrm{mol}$ of methane ($\ce{CH4}$) releases $\Delta H^\circ = -890.4\ \mathrm{kJ}$:
+  \[
+  \ce{CH4(g) + 2 O2(g) -> CO2(g) + 2 H2O(l)}, \qquad \Delta E_{\text{chem}} = 890.4\ \mathrm{kJ}.
+  \]
+  Calculate the relativistic mass defect $\Delta m_{\text{chem}}$ in kilograms and compare it to the initial mass of reactants ($M_{\text{initial}} = 80.05\ \mathrm{g}$).
+  \item \textbf{Nuclear Fission:} Fission of $1.000\ \mathrm{mol}$ of Uranium-235 ($235.04\ \mathrm{g}$) releases $\Delta E_{\text{nuc}} = 1.67 \times 10^{10}\ \mathrm{kJ}$.
+  Calculate the nuclear mass defect $\Delta m_{\text{nuc}}$ in kilograms and the percentage of mass converted into energy.
+  \item Compare the two mass defect fractions and state the profound conceptual distinction between chemical and nuclear energy.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Chemical Combustion of Methane:}
+Using $\Delta m = \Delta E / c^2$ with $c = 2.9979 \times 10^8\ \mathrm{m\cdot s^{-1}}$:
+\[
+\Delta m_{\text{chem}} = \frac{890.4 \times 10^3\ \mathrm{J}}{(2.9979 \times 10^8\ \mathrm{m\cdot s^{-1}})^2} = \frac{8.904 \times 10^5}{8.9876 \times 10^{16}} = \mathbf{9.907 \times 10^{-12}\ \mathrm{kg}} \approx \mathbf{9.91\ \mathrm{ng}}.
+\]
+Initial mass of reactants:
+\[
+m_{\text{initial}} = M(\ce{CH4}) + 2 M(\ce{O2}) = 16.04 + 2(32.00) = 80.04\ \mathrm{g} = 0.08004\ \mathrm{kg}.
+\]
+Fractional mass loss:
+\[
+\frac{\Delta m_{\text{chem}}}{m_{\text{initial}}} = \frac{9.907 \times 10^{-12}\ \mathrm{kg}}{0.08004\ \mathrm{kg}} = \mathbf{1.24 \times 10^{-10}} \quad (\mathbf{1.24 \times 10^{-8}\%}).
+\]
+This mass loss ($10\ \mathrm{picograms}$) is entirely beyond detection on any analytical balance, which explains why Lavoisier's law of conservation of mass holds to extraordinary accuracy in chemical reactions!
+
+\textbf{2. Nuclear Fission of Uranium-235:}
+\[
+\Delta m_{\text{nuc}} = \frac{1.67 \times 10^{13}\ \mathrm{J}}{8.9876 \times 10^{16}\ \mathrm{m^2\cdot s^{-2}}} = \mathbf{1.858 \times 10^{-4}\ \mathrm{kg}} = \mathbf{0.1858\ \mathrm{g}}.
+\]
+Initial mass of reactants: $m_{\text{initial}} = 0.23504\ \mathrm{kg}$.
+Fractional mass loss:
+\[
+\frac{\Delta m_{\text{nuc}}}{m_{\text{initial}}} = \frac{0.1858\ \mathrm{g}}{235.04\ \mathrm{g}} \times 100\% = \mathbf{0.0790\%} \approx \mathbf{0.08\%}.
+\]
+
+\textbf{3. Fundamental Comparison:}
+\[
+\frac{(\Delta m / m)_{\text{nuclear}}}{(\Delta m / m)_{\text{chemical}}} = \frac{7.9 \times 10^{-4}}{1.24 \times 10^{-10}} \approx \mathbf{6.4 \times 10^6}.
+\]
+Nuclear reactions rearrange nucleons bound by the **strong nuclear force** ($\sim \mathrm{MeV}$ scale), whereas chemical reactions rearrange valence electrons bound by **electromagnetic interactions** ($\sim \mathrm{eV}$ scale). Nuclear transformations are approximately **six orders of magnitude (one million times)** more energetic per unit mass than chemical transformations!
+\end{solution}

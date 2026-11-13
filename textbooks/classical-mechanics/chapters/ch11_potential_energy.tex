@@ -1,0 +1,324 @@
+\chapter{Conservative Forces and Potential Energy}
+\label{ch:potential_energy}
+
+\begin{chapterintro}
+\textbf{Chapter Objectives:} In this chapter, we develop the theoretical foundation of potential energy. You will formulate the mathematical criteria for conservative vector fields via curl and path independence; derive the potential energy function $E_p$ from gradient relations; prove the Theorem of Mechanical Energy Conservation; and calculate energy dissipation by non-conservative forces in complex mechanical and gravitational systems.
+\end{chapterintro}
+
+\section{Conservative Vector Fields and Path Independence}
+
+In the preceding chapter, we established that the work done by a force along a path $\mathcal{C}$ between two points $A$ and $B$ generally depends on the specific geometric path traversed. However, a profoundly important class of physical forces possesses a special property: the work performed is entirely independent of the trajectory connecting the initial and final states.
+
+\begin{definitionbox}{Conservative Force Field}
+A force field $\vec{F}(\vec{r})$ defined on an open, connected domain $\mathcal{D} \subseteq \mathbb{R}^3$ is said to be \textbf{conservative} if the mechanical work performed along any smooth curve $\mathcal{C}$ joining point $A$ to point $B$ depends solely on the positions of the endpoints $A$ and $B$, and not on the particular path taken:
+\begin{equation}
+W_{A \to B}^{(\mathcal{C}_1)} = W_{A \to B}^{(\mathcal{C}_2)} = \int_A^B \vec{F} \cdot \dd\vec{r}, \qquad \forall\, \mathcal{C}_1, \mathcal{C}_2 \subset \mathcal{D}.
+\end{equation}
+\end{definitionbox}
+
+An immediate and mathematically equivalent characterization concerns closed loops. Let $\mathcal{C}$ be any closed contour ($\oint$) beginning and ending at the same point:
+\begin{lawbox}{Closed-Loop Criterion for Conservative Forces}
+A force field $\vec{F}$ is conservative if and only if its circulation around every closed closed curve $\mathcal{C}$ in $\mathcal{D}$ vanishes identically:
+\begin{equation}
+\oint_{\mathcal{C}} \vec{F} \cdot \dd\vec{r} \equiv 0.
+\end{equation}
+\end{lawbox}
+
+\paragraph{Proof of Equivalence.}
+Let $A$ and $B$ be two arbitrary points on a closed loop $\mathcal{C}$. Decompose $\mathcal{C}$ into two forward paths: $\mathcal{C}_1$ from $A$ to $B$, and $\mathcal{C}_2$ from $B$ to $A$ (or $-\mathcal{C}_2$ from $A$ to $B$). Then:
+\[
+\oint_{\mathcal{C}} \vec{F}\cdot\dd\vec{r} = \int_{\mathcal{C}_1} \vec{F}\cdot\dd\vec{r} + \int_{\mathcal{C}_2} \vec{F}\cdot\dd\vec{r} = \int_{\mathcal{C}_1} \vec{F}\cdot\dd\vec{r} - \int_{-\mathcal{C}_2} \vec{F}\cdot\dd\vec{r}.
+\]
+This integral vanishes for all contours if and only if $\int_{\mathcal{C}_1} \vec{F}\cdot\dd\vec{r} = \int_{-\mathcal{C}_2} \vec{F}\cdot\dd\vec{r}$, which is precisely path independence. $\blacksquare$
+
+\section{Differential Criteria: The Curl Condition}
+
+From Stokes' theorem in vector calculus, the circulation of a differentiable vector field along the boundary $\partial S$ of an orientable surface $S$ is related to the flux of its curl:
+\begin{equation}
+\oint_{\partial S} \vec{F} \cdot \dd\vec{r} = \iint_S (\vec{\nabla} \times \vec{F}) \cdot \dd\vec{S}.
+\end{equation}
+
+\begin{lawbox}{The Curl Condition for Conservative Fields}
+In a simply connected spatial domain $\mathcal{D}$, a continuously differentiable force field $\vec{F}(\vec{r})$ is conservative if and only if its curl (rotational) vanishes identically everywhere:
+\begin{equation}
+\vec{\nabla} \times \vec{F} = \rot\vec{F} \equiv \vzero.
+\end{equation}
+In Cartesian coordinates, this condition is equivalent to the three scalar component relations:
+\begin{equation}
+\frac{\partial F_z}{\partial y} = \frac{\partial F_y}{\partial z}, \qquad \frac{\partial F_x}{\partial z} = \frac{\partial F_z}{\partial x}, \qquad \frac{\partial F_y}{\partial x} = \frac{\partial F_x}{\partial y}.
+\end{equation}
+\end{lawbox}
+
+\begin{itemize}[leftmargin=1.5em,itemsep=4pt]
+  \item \textbf{Example of a Conservative Field:} A central force field $\vec{F}(\vec{r}) = f(r)\,\ur$. As proven in Chapter 2, $\vec{\nabla}\times(f(r)\ur) = \vzero$ identically for any scalar function $f(r)$. Hence, all spherically symmetric central forces (Newtonian gravity, Coulomb electrostatics) are conservative.
+  \item \textbf{Example of a Non-Conservative Field:} A 2D rotational vortex field $\vec{F} = -y\,\ihat + x\,\jhat$.
+  \[
+  \vec{\nabla}\times\vec{F} = \left(\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}\right)\khat = (1 - (-1))\khat = 2\,\khat \neq \vzero.
+  \]
+  Integrating around a unit circle $\mathcal{C}$ gives $\oint \vec{F}\cdot\dd\vec{r} = 2\pi \neq 0$.
+  \item \textbf{Frictional Forces:} Kinetic friction $\vec{F}_f = -\mu_k N \frac{\vec{v}}{v}$ is directed opposite to velocity at every instant. The circulation around a closed path of perimeter $L$ is $\oint \vec{F}_f\cdot\dd\vec{r} = \oint (-\mu_k N)\,\dd s = -\mu_k N L < 0$. Mechanical energy is irreversibly dissipated into microscopic thermal vibrations.
+\end{itemize}
+
+\section{The Potential Energy Function}
+
+Because the work done by a conservative force between a fixed reference point $O$ and an arbitrary point $M$ depends only on the position of $M$, we can define a scalar state function:
+
+\begin{definitionbox}{Potential Energy Function}
+Let $\vec{F}(\vec{r})$ be a conservative force field. The \textbf{potential energy} $E_p(\vec{r})$ (or $U(\vec{r})$) associated with $\vec{F}$ is defined such that the elementary work is the exact negative differential of $E_p$:
+\begin{equation}
+\delta W = \vec{F} \cdot \dd\vec{r} \eqdef -\dd E_p.
+\end{equation}
+Integrating from an arbitrary reference configuration $\vec{r}_{\text{ref}}$ (where $E_p(\vec{r}_{\text{ref}}) = 0$ by convention):
+\begin{equation}
+E_p(\vec{r}) \eqdef -\int_{\vec{r}_{\text{ref}}}^{\vec{r}} \vec{F} \cdot \dd\vec{r}'.
+\end{equation}
+\end{definitionbox}
+
+\begin{lawbox}{Gradient Relation Between Force and Potential Energy}
+A conservative force is the negative spatial gradient of its potential energy:
+\begin{equation}
+\vec{F} = -\vec{\nabla} E_p = -\grad E_p.
+\end{equation}
+\begin{itemize}[leftmargin=1.5em,itemsep=3pt]
+  \item \textbf{Cartesian coordinates:} $\vec{F} = -\left( \frac{\partial E_p}{\partial x}\ihat + \frac{\partial E_p}{\partial y}\jhat + \frac{\partial E_p}{\partial z}\khat \right)$.
+  \item \textbf{Cylindrical coordinates:} $\vec{F} = -\left( \frac{\partial E_p}{\partial r}\ur + \frac{1}{r}\frac{\partial E_p}{\partial \theta}\ut + \frac{\partial E_p}{\partial z}\khat \right)$.
+  \item \textbf{Spherical coordinates:} $\vec{F} = -\left( \frac{\partial E_p}{\partial r}\ur + \frac{1}{r}\frac{\partial E_p}{\partial \theta}\ut + \frac{1}{r\sin\theta}\frac{\partial E_p}{\partial \phi}\uphi \right)$.
+\end{itemize}
+\end{lawbox}
+
+The negative sign has profound physical significance: \textbf{a conservative force always points in the direction of steepest descent of the potential energy landscape}. A particle naturally seeks to minimize its potential energy.
+
+\subsection{Canonical Potential Energy Expressions}
+
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Interaction} & \textbf{Force Law $\vec{F}(\vec{r})$} & \textbf{Potential Energy $E_p(\vec{r})$} & \textbf{Reference Zero} \\
+\midrule
+Uniform Gravity & $\vec{P} = -mg\,\khat$ & $E_p(z) = mgz + C$ & $E_p(0) = 0$ at $z = 0$ \\
+Hooke's Spring & $\vec{F} = -k(x - x_0)\,\ihat$ & $E_p(x) = \frac{1}{2}k(x - x_0)^2$ & $E_p(x_0) = 0$ at equilibrium \\
+Newtonian Gravitation & $\vec{F} = -\frac{G M m}{r^2}\,\ur$ & $E_p(r) = -\frac{G M m}{r}$ & $E_p(\infty) = 0$ at infinity \\
+Coulomb Electrostatics & $\vec{F} = \frac{q_1 q_2}{4\pi\varepsilon_0 r^2}\,\ur$ & $E_p(r) = \frac{q_1 q_2}{4\pi\varepsilon_0 r}$ & $E_p(\infty) = 0$ at infinity \\
+\bottomrule
+\end{tabular}
+\caption{Fundamental conservative forces of classical mechanics and their standard potential energy functions.}
+\label{tab:potentials}
+\end{table}
+
+\section{The Principle of Conservation of Mechanical Energy}
+
+\begin{definitionbox}{Total Mechanical Energy}
+The \textbf{total mechanical energy} $E_m$ of a material point is the sum of its kinetic energy and all its potential energies:
+\begin{equation}
+E_m \eqdef E_k + E_p = \frac{1}{2}m v^2 + E_p(\vec{r}).
+\end{equation}
+\end{definitionbox}
+
+Decomposing the net force acting on a particle into conservative and non-conservative components, $\vec{F}_{\text{net}} = \vec{F}_{\text{c}} + \vec{F}_{\text{nc}}$, we take the time derivative of $E_m$:
+\[
+\frac{\dd E_m}{\dd t} = \frac{\dd E_k}{\dd t} + \frac{\dd E_p}{\dd t}.
+\]
+From the Work-Energy Theorem, $\frac{\dd E_k}{\dd t} = (\vec{F}_{\text{c}} + \vec{F}_{\text{nc}})\cdot\vec{v}$. Using the chain rule for $E_p(\vec{r}(t))$:
+\[
+\frac{\dd E_p}{\dd t} = \vec{\nabla} E_p \cdot \frac{\dd\vec{r}}{\dd t} = -\vec{F}_{\text{c}} \cdot \vec{v}.
+\]
+Adding these two expressions:
+\[
+\frac{\dd E_m}{\dd t} = (\vec{F}_{\text{c}} + \vec{F}_{\text{nc}})\cdot\vec{v} - \vec{F}_{\text{c}}\cdot\vec{v} = \vec{F}_{\text{nc}} \cdot \vec{v} = \mathcal{P}_{\text{nc}}.
+\]
+
+\begin{lawbox}{Theorem of Mechanical Energy}
+The rate of change of mechanical energy equals the instantaneous power delivered by non-conservative forces:
+\begin{equation}
+\frac{\dd E_m}{\dd t} = \vec{F}_{\text{nc}} \cdot \vec{v} = \mathcal{P}_{\text{nc}}.
+\end{equation}
+Over a finite trajectory between states $A$ and $B$:
+\begin{equation}
+\Delta E_m = E_m(B) - E_m(A) = W_{A \to B}^{\text{nc}} = \int_A^B \vec{F}_{\text{nc}} \cdot \dd\vec{r}.
+\end{equation}
+\textbf{Corollary (Conservation of Mechanical Energy):} If all forces performing work on the system are conservative ($W^{\text{nc}} = 0$), the total mechanical energy is an invariant of motion:
+\begin{equation}
+E_m = E_k + E_p = \text{constant}.
+\end{equation}
+\end{lawbox}
+
+\section{Comprehensive Worked Examples}
+
+\begin{workedexample}{Escape Velocity from Planetary Gravitation}
+A space probe of mass $m$ is launched vertically upward from the surface of a spherical planet of mass $M$ and radius $R$. Atmospheric drag is negligible.
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item Determine the maximum altitude $h_{\max}$ reached if the initial launch speed is $v_0$.
+  \item Calculate the critical escape velocity $v_{\text{esc}}$ necessary for the probe to permanently overcome the planet's gravitational pull and reach infinity with non-negative kinetic energy.
+  \item Evaluate $v_{\text{esc}}$ numerically for Earth ($M_\oplus = 5.972\times 10^{24}\ \mathrm{kg}$, $R_\oplus = 6371\ \mathrm{km}$) and for the Moon ($M_{\text{Moon}} = 7.342\times 10^{22}\ \mathrm{kg}$, $R_{\text{Moon}} = 1737\ \mathrm{km}$).
+\end{enumerate}
+
+\paragraph{Solution.}
+\textbf{1. Maximum Altitude Reached:}\\
+The only force performing work is Newtonian gravitation $\vec{F}_G = -\frac{G M m}{r^2}\ur$, which is conservative with potential energy:
+\[
+E_p(r) = -\frac{G M m}{r}.
+\]
+Since no non-conservative forces act, mechanical energy is conserved throughout the trajectory:
+\[
+E_m = \frac{1}{2}m v(r)^2 - \frac{G M m}{r} = \text{constant}.
+\]
+At the planetary surface, $r_1 = R$ and $v_1 = v_0$:
+\[
+E_m = \frac{1}{2}m v_0^2 - \frac{G M m}{R}.
+\]
+At maximum height $r_{\max} = R + h_{\max}$, the radial velocity drops momentarily to zero ($v = 0$):
+\[
+E_m = 0 - \frac{G M m}{R + h_{\max}}.
+\]
+Equating the two energies:
+\[
+\frac{1}{2}m v_0^2 - \frac{G M m}{R} = -\frac{G M m}{R + h_{\max}}.
+\]
+Dividing by $m$ and rearranging:
+\[
+\frac{G M}{R + h_{\max}} = \frac{G M}{R} - \frac{1}{2}v_0^2 = \frac{2GM - R v_0^2}{2R}.
+\]
+Inverting both sides:
+\[
+R + h_{\max} = \frac{2GM R}{2GM - R v_0^2} \implies h_{\max} = \frac{R^2 v_0^2}{2GM - R v_0^2}.
+\]
+Notice that when $v_0 \ll \sqrt{2GM/R}$, using $g = GM/R^2$:
+\[
+h_{\max} \approx \frac{R^2 v_0^2}{2gR^2} = \frac{v_0^2}{2g},
+\]
+which perfectly reproduces the uniform-field kinematic result!
+
+\textbf{2. Critical Escape Velocity $v_{\text{esc}}$:}\\
+For the probe to reach infinity ($r \to \infty$), its mechanical energy must satisfy $E_m \ge 0$, because at $r \to \infty$, $E_p(\infty) \to 0$ and $E_k(\infty) \ge 0$.
+The threshold condition for escape corresponds to $E_m = 0$ (the probe arrives at infinity with speed $v_\infty = 0$):
+\[
+\frac{1}{2} m v_{\text{esc}}^2 - \frac{G M m}{R} = 0 \implies v_{\text{esc}} = \sqrt{\frac{2GM}{R}} = \sqrt{2gR}.
+\]
+
+\textbf{3. Numerical Computations:}\\
+Using Newton's gravitational constant $G = 6.6743\times 10^{-11}\ \mathrm{m^3\cdot kg^{-1}\cdot s^{-2}}$:
+\begin{itemize}[leftmargin=1.5em,itemsep=3pt]
+  \item \textbf{For Earth:}
+  \[
+  v_{\text{esc},\oplus} = \sqrt{\frac{2(6.6743\times 10^{-11})(5.972\times 10^{24})}{6.371\times 10^6}} = \sqrt{1.2509\times 10^8} \approx 11\,184\ \mathrm{m\cdot s^{-1}} \approx 11.18\ \mathrm{km\cdot s^{-1}}.
+  \]
+  \item \textbf{For the Moon:}
+  \[
+  v_{\text{esc},\text{Moon}} = \sqrt{\frac{2(6.6743\times 10^{-11})(7.342\times 10^{22})}{1.737\times 10^6}} = \sqrt{5.642\times 10^6} \approx 2\,375\ \mathrm{m\cdot s^{-1}} \approx 2.38\ \mathrm{km\cdot s^{-1}}.
+  \]
+\end{itemize}
+Because the Moon's escape speed ($2.38\ \mathrm{km/s}$) is comparable to the thermal root-mean-square speed of light atmospheric molecules ($v_{\text{rms}} = \sqrt{3k_B T/m}$), the Moon could not retain an atmosphere over geological timescales.
+\end{workedexample}
+
+\begin{workedexample}{Two Collinear Springs and Equilibrium Energy Landscape}
+A particle of mass $m$ slides along a frictionless horizontal guide rail ($x$-axis). It is connected to two fixed anchor points $A_1$ (at $x = -L$) and $A_2$ (at $x = +L$) by two ideal linear springs with spring constants $k_1, k_2$ and unextended resting lengths $l_{01}, l_{02}$ respectively.
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item Formulate the total potential energy $E_p(x)$ of the system as a function of the position $x \in (-L, L)$.
+  \item Find the equilibrium position $x_{\text{eq}}$ where the net force vanishes by setting $\frac{\dd E_p}{\dd x} = 0$.
+  \item Determine the effective spring constant $k_{\text{eff}} = \left.\frac{\dd^2 E_p}{\dd x^2}\right|_{x_{\text{eq}}}$ and compute the natural frequency of oscillation $\omega_0$.
+\end{enumerate}
+
+\paragraph{Solution.}
+\textbf{1. Total Potential Energy:}\\
+Spring 1 extends from $A_1(-L)$ to $M(x)$. Its instantaneous length is $l_1 = x - (-L) = x + L$.
+The elastic potential energy stored in spring 1 is:
+\[
+E_{p1}(x) = \frac{1}{2} k_1 (l_1 - l_{01})^2 = \frac{1}{2} k_1 (x + L - l_{01})^2.
+\]
+Spring 2 extends from $M(x)$ to $A_2(+L)$. Its instantaneous length is $l_2 = L - x$.
+The elastic potential energy stored in spring 2 is:
+\[
+E_{p2}(x) = \frac{1}{2} k_2 (l_2 - l_{02})^2 = \frac{1}{2} k_2 (L - x - l_{02})^2 = \frac{1}{2} k_2 (x - (L - l_{02}))^2.
+\]
+The total potential energy is the sum:
+\[
+E_p(x) = \frac{1}{2} k_1 (x + L - l_{01})^2 + \frac{1}{2} k_2 (x - L + l_{02})^2.
+\]
+
+\textbf{2. Equilibrium Position:}\\
+The net restoring force is $F_x(x) = -\frac{\dd E_p}{\dd x}$. Differentiating:
+\[
+\frac{\dd E_p}{\dd x} = k_1(x + L - l_{01}) + k_2(x - L + l_{02}) = (k_1 + k_2) x + k_1(L - l_{01}) - k_2(L - l_{02}).
+\]
+Setting $\frac{\dd E_p}{\dd x} = 0$ yields the unique equilibrium position:
+\[
+x_{\text{eq}} = \frac{k_2(L - l_{02}) - k_1(L - l_{01})}{k_1 + k_2}.
+\]
+Notice that if the springs are identical ($k_1 = k_2 = k$ and $l_{01} = l_{02} = l_0$), then $x_{\text{eq}} = 0$, directly at the center as dictated by symmetry.
+
+\textbf{3. Effective Stiffness and Frequency:}\\
+Taking the second derivative of the potential energy:
+\[
+k_{\text{eff}} \eqdef \left.\frac{\dd^2 E_p}{\dd x^2}\right|_{x_{\text{eq}}} = k_1 + k_2.
+\]
+Since $k_1 > 0$ and $k_2 > 0$, $k_{\text{eff}} = k_1 + k_2 > 0$ strictly; the potential well is parabolic and concave upward everywhere, guaranteeing that $x_{\text{eq}}$ is an unconditionally stable equilibrium.
+The angular frequency of small (and even large linear) oscillations about $x_{\text{eq}}$ is:
+\[
+\omega_0 = \sqrt{\frac{k_{\text{eff}}}{m}} = \sqrt{\frac{k_1 + k_2}{m}}, \qquad T_0 = 2\pi\sqrt{\frac{m}{k_1 + k_2}}.
+\]
+The two springs act in parallel from a dynamical perspective, reinforcing each other's stiffness.
+\end{workedexample}
+
+\begin{workedexample}{Energy Dissipation of a Block on a Rough Incline with a Spring}
+A block of mass $m = 2.0\ \mathrm{kg}$ is placed against a compressed spring (stiffness $k = 400\ \mathrm{N\cdot m^{-1}}$, compression $\Delta x_0 = 0.30\ \mathrm{m}$) at the base of an incline of angle $\alpha = 30^\circ$. When released, the spring shoots the block up the ramp. The coefficient of kinetic friction between block and incline is $\mu_k = 0.20$. Gravity is $g = 9.8\ \mathrm{m\cdot s^{-2}}$.
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item Using the Theorem of Mechanical Energy, find the total distance $d$ traveled along the incline before the block momentarily stops.
+  \item Determine whether the block remains stuck at its highest point or slides back down.
+\end{enumerate}
+
+\paragraph{Solution.}
+\textbf{1. Maximum Distance Traveled:}\\
+Let state 1 be the release point where the spring is compressed by $\Delta x_0$ and the block is at rest ($v_1 = 0$).
+Let state 2 be the highest point on the ramp where the block momentarily stops ($v_2 = 0$) after traveling a distance $d$ along the incline.
+
+Choose the reference height $z = 0$ at the initial position of the block.
+The initial mechanical energy is entirely elastic potential energy in the spring:
+\[
+E_m(1) = E_k(1) + E_{p,\text{grav}}(1) + E_{p,\text{elastic}}(1) = 0 + 0 + \frac{1}{2} k (\Delta x_0)^2.
+\]
+At state 2, the block has traveled distance $d$ along the incline, rising to vertical height $h = d\sin\alpha$. The spring has uncoiled and is no longer engaged (assuming $d > \Delta x_0$). Thus:
+\[
+E_m(2) = 0 + mg d\sin\alpha + 0 = mg d\sin\alpha.
+\]
+The non-conservative force acting during the motion is kinetic friction. The normal force on the incline is $N = mg\cos\alpha$, so the magnitude of kinetic friction is:
+\[
+F_k = \mu_k N = \mu_k mg\cos\alpha.
+\]
+The friction force opposes the motion over the entire distance $d$. Its work is:
+\[
+W_{1\to 2}^{\text{nc}} = -F_k d = -\mu_k mg\cos\alpha\, d.
+\]
+Applying the Theorem of Mechanical Energy $\Delta E_m = E_m(2) - E_m(1) = W_{1\to 2}^{\text{nc}}$:
+\[
+mg d\sin\alpha - \frac{1}{2} k (\Delta x_0)^2 = -\mu_k mg\cos\alpha\, d.
+\]
+Rearranging terms with $d$:
+\[
+d \left( mg\sin\alpha + \mu_k mg\cos\alpha \right) = \frac{1}{2} k (\Delta x_0)^2 \implies d = \frac{k (\Delta x_0)^2}{2mg(\sin\alpha + \mu_k \cos\alpha)}.
+\]
+Substituting the numerical values:
+\[
+\frac{1}{2} k (\Delta x_0)^2 = \frac{1}{2}(400)(0.30)^2 = 18.0\ \mathrm{J},
+\]
+\[
+mg(\sin 30^\circ + \mu_k \cos 30^\circ) = 2.0(9.8)\left(0.50 + 0.20 \times 0.8660\right) = 19.6(0.50 + 0.1732) = 19.6 \times 0.6732 = 13.195\ \mathrm{N}.
+\]
+The total distance traveled along the incline is:
+\[
+d = \frac{18.0\ \mathrm{J}}{13.195\ \mathrm{N}} \approx 1.364\ \mathrm{m}.
+\]
+Notice that $d = 1.36\ \mathrm{m} > \Delta x_0 = 0.30\ \mathrm{m}$, confirming that the spring separated cleanly.
+
+\textbf{2. Sticking Condition at Summit:}\\
+At the highest point, the component of gravity pulling the block down the ramp is:
+\[
+F_{\parallel} = mg\sin\alpha = 2.0(9.8)\sin 30^\circ = 9.8\ \mathrm{N}.
+\]
+The maximum available static friction opposing downward motion (assuming $\mu_s \approx \mu_k = 0.20$) is:
+\[
+F_{s,\max} = \mu_s mg\cos\alpha = 0.20(19.6)\cos 30^\circ = 3.39\ \mathrm{N}.
+\]
+Because $F_{\parallel} = 9.8\ \mathrm{N} > F_{s,\max} = 3.39\ \mathrm{N}$, static friction cannot hold the block in equilibrium. The block immediately accelerates back down the incline!
+\end{workedexample}

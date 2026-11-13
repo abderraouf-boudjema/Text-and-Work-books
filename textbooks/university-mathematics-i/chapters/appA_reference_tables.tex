@@ -1,0 +1,79 @@
+\chapter{Mathematical Reference Tables and Formula Manual}
+\label{app:math_tables}
+
+\section{Master Table of Standard Derivatives}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{@{}lll@{}}
+\toprule
+\textbf{Function} $f(x)$ & \textbf{Derivative} $f'(x)$ & \textbf{Domain of Differentiability} \\
+\midrule
+\endhead
+Constant: $c$ & $0$ & $\mathbb{R}$ \\
+Power: $x^n$ ($n \in \mathbb{Z}$) & $n x^{n-1}$ & $\mathbb{R}$ (or $\mathbb{R}^*$ if $n < 0$) \\
+Power: $x^\alpha$ ($\alpha \in \mathbb{R}$) & $\alpha x^{\alpha-1}$ & $(0, +\infty)$ \\
+Square root: $\sqrt{x}$ & $\dfrac{1}{2\sqrt{x}}$ & $(0, +\infty)$ \\
+Natural exponential: $e^x$ & $e^x$ & $\mathbb{R}$ \\
+General exponential: $a^x$ ($a > 0$) & $a^x \ln(a)$ & $\mathbb{R}$ \\
+Natural logarithm: $\ln|x|$ & $\dfrac{1}{x}$ & $\mathbb{R}^*$ \\
+Sine: $\sin(x)$ & $\cos(x)$ & $\mathbb{R}$ \\
+Cosine: $\cos(x)$ & $-\sin(x)$ & $\mathbb{R}$ \\
+Tangent: $\tan(x)$ & $1 + \tan^2(x) = \dfrac{1}{\cos^2(x)}$ & $x \neq \dfrac{\pi}{2} + k\pi$ \\
+Arcsine: $\arcsin(x)$ & $\dfrac{1}{\sqrt{1 - x^2}}$ & $(-1, 1)$ \\
+Arccosine: $\arccos(x)$ & $-\dfrac{1}{\sqrt{1 - x^2}}$ & $(-1, 1)$ \\
+Arctangent: $\arctan(x)$ & $\dfrac{1}{1 + x^2}$ & $\mathbb{R}$ \\
+Hyperbolic sine: $\sinh(x)$ & $\cosh(x)$ & $\mathbb{R}$ \\
+Hyperbolic cosine: $\cosh(x)$ & $\sinh(x)$ & $\mathbb{R}$ \\
+Hyperbolic tangent: $\tanh(x)$ & $1 - \tanh^2(x) = \dfrac{1}{\cosh^2(x)}$ & $\mathbb{R}$ \\
+\bottomrule
+\end{longtable}
+
+\section{Master Table of Indefinite Integrals (Antiderivatives)}
+
+\renewcommand{\arraystretch}{1.35}
+\begin{longtable}{@{}lll@{}}
+\toprule
+\textbf{Integrand} $f(x)$ & \textbf{General Antiderivative} $\int f(x)\,\dd x$ & \textbf{Validity Interval} \\
+\midrule
+\endhead
+$x^\alpha$ ($\alpha \neq -1$) & $\dfrac{x^{\alpha+1}}{\alpha + 1} + C$ & $(0, +\infty)$ \\
+$\dfrac{1}{x}$ & $\ln|x| + C$ & $(-\infty, 0)$ or $(0, +\infty)$ \\
+$e^{\lambda x}$ ($\lambda \neq 0$) & $\dfrac{1}{\lambda} e^{\lambda x} + C$ & $\mathbb{R}$ \\
+$\sin(x)$ & $-\cos(x) + C$ & $\mathbb{R}$ \\
+$\cos(x)$ & $\sin(x) + C$ & $\mathbb{R}$ \\
+$\dfrac{1}{\cos^2(x)} = 1 + \tan^2(x)$ & $\tan(x) + C$ & $(-\pi/2, \pi/2) + k\pi$ \\
+$\dfrac{1}{1 + x^2}$ & $\arctan(x) + C$ & $\mathbb{R}$ \\
+$\dfrac{1}{a^2 + x^2}$ ($a > 0$) & $\dfrac{1}{a} \arctan\left(\dfrac{x}{a}\right) + C$ & $\mathbb{R}$ \\
+$\dfrac{1}{\sqrt{1 - x^2}}$ & $\arcsin(x) + C$ & $(-1, 1)$ \\
+$\dfrac{1}{\sqrt{a^2 - x^2}}$ ($a > 0$) & $\arcsin\left(\dfrac{x}{a}\right) + C$ & $(-a, a)$ \\
+$\dfrac{1}{\sqrt{x^2 + 1}}$ & $\mathrm{argsinh}(x) + C = \ln\left(x + \sqrt{x^2 + 1}\right) + C$ & $\mathbb{R}$ \\
+$\dfrac{1}{\sqrt{x^2 - 1}}$ & $\mathrm{argcosh}(x) + C = \ln\left(x + \sqrt{x^2 - 1}\right) + C$ & $(1, +\infty)$ \\
+$\dfrac{u'(x)}{u(x)}$ & $\ln|u(x)| + C$ & where $u(x) \neq 0$ \\
+$u'(x) [u(x)]^\alpha$ ($\alpha \neq -1$) & $\dfrac{[u(x)]^{\alpha+1}}{\alpha + 1} + C$ & where $u(x)$ valid \\
+$u'(x) e^{u(x)}$ & $e^{u(x)} + C$ & $\mathbb{R}$ \\
+\bottomrule
+\end{longtable}
+
+\section{Master Table of Asymptotic Equivalents as $x \to 0$}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Expression} & \textbf{Equivalent as } $x \to 0$ \\
+\midrule
+$\sin(x)$ & $x$ \\
+$\tan(x)$ & $x$ \\
+$\arcsin(x)$ & $x$ \\
+$\arctan(x)$ & $x$ \\
+$\sinh(x)$ & $x$ \\
+$\tanh(x)$ & $x$ \\
+$1 - \cos(x)$ & $\dfrac{x^2}{2}$ \\
+$\cosh(x) - 1$ & $\dfrac{x^2}{2}$ \\
+$e^x - 1$ & $x$ \\
+$\ln(1 + x)$ & $x$ \\
+$(1 + x)^\alpha - 1$ & $\alpha x$ \\
+$\sqrt{1 + x} - 1$ & $\dfrac{x}{2}$ \\
+\bottomrule
+\end{tabular}
+\end{center}

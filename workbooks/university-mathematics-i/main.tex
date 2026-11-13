@@ -1,0 +1,254 @@
+\documentclass[11pt,oneside,openany]{book}
+
+% ---------------------------------------------------------------------------
+% PAGE GEOMETRY & TYPOGRAPHY
+% ---------------------------------------------------------------------------
+\usepackage[a4paper,top=2.2cm,bottom=2.3cm,left=2.0cm,right=2.0cm,headheight=16pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{emptypage}
+
+% ---------------------------------------------------------------------------
+% MATHEMATICS PACKAGES
+% ---------------------------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+
+% ---------------------------------------------------------------------------
+% GRAPHICS, TIKZ & TABLES
+% ---------------------------------------------------------------------------
+\usepackage{graphicx}
+\graphicspath{{figures/}{images/}}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,patterns}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{caption}
+\captionsetup{font=small,labelfont={bf,color=navyblue},width=0.92\textwidth}
+
+% ---------------------------------------------------------------------------
+% COLOR PALETTE (Authoritative Academic Palette)
+% ---------------------------------------------------------------------------
+\definecolor{navyblue}{HTML}{0F2A4A}
+\definecolor{accentcrimson}{HTML}{8C1D40}
+\definecolor{forestgreen}{HTML}{134E3F}
+\definecolor{ambergold}{HTML}{B45309}
+\definecolor{slateink}{HTML}{1F2937}
+\definecolor{lightgraybg}{HTML}{F8FAFC}
+\definecolor{borderblue}{HTML}{1E40AF}
+\definecolor{softgreen}{HTML}{F0FDF4}
+\definecolor{softred}{HTML}{FEF2F2}
+\definecolor{softblue}{HTML}{F0F7FF}
+\definecolor{softamber}{HTML}{FFFBEB}
+\definecolor{gridblue}{HTML}{CBD5E1}
+
+% ---------------------------------------------------------------------------
+% CALLOUT BOXES & TABLET WORKSPACES (tcolorbox)
+% ---------------------------------------------------------------------------
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% Chapter Formula Summary Box
+\newtcolorbox{quicksummary}[1]{
+  enhanced, breakable, colback=softgreen, colframe=forestgreen,
+  boxrule=0.7pt, leftrule=4pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt,
+  fonttitle=\sffamily\bfseries\small,
+  title={\textsc{Essential Chapter Theorems \& Formulas} \enspace\textperiodcentered\enspace #1},
+  coltitle=white, colbacktitle=forestgreen
+}
+
+% Exercise Counter
+\newcounter{exocounter}[chapter]
+\renewcommand{\theexocounter}{\thechapter.\arabic{exocounter}}
+
+% Exercise Environment
+\newtcolorbox{exercisebox}[2][]{
+  enhanced, breakable, colback=softblue, colframe=navyblue,
+  boxrule=0.6pt, leftrule=4pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt,
+  fonttitle=\sffamily\bfseries\small,
+  title={\textsc{Exercise \theexocounter} \enspace\textperiodcentered\enspace #2 \hfill \textnormal{\footnotesize\color{navyblue!20}#1}},
+  coltitle=white, colbacktitle=navyblue
+}
+
+\newenvironment{exercise}[2][]{%
+  \refstepcounter{exocounter}%
+  \begin{exercisebox}[#1]{#2}%
+}{%
+  \end{exercisebox}%
+}
+
+% Dedicated 5mm Tablet Grid Workspace Environment
+\newtcolorbox{tabletworkspace}[1][5.5cm]{
+  enhanced, breakable, colback=white, colframe=navyblue!35,
+  boxrule=0.5pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt,
+  title={\sffamily\bfseries\scriptsize\color{slateink!70}\textsc{Graphic Tablet Workspace} \enspace\textperiodcentered\enspace \textnormal{\tiny 5\,mm Grid for Stylus \& Digital Pen Solution}},
+  colbacktitle=lightgraybg,
+  underlay={
+    \begin{tcbclipinterior}
+      \draw[help lines, color=gridblue!70, step=5mm, line width=0.35pt]
+        (interior.south west) grid (interior.north east);
+    \end{tcbclipinterior}
+  },
+  height=#1
+}
+
+% Solution Environment
+\newtcolorbox{solutionbox}{
+  enhanced, breakable, colback=lightgraybg, colframe=borderblue,
+  boxrule=0.6pt, leftrule=4pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt,
+  fonttitle=\sffamily\bfseries\small,
+  title={\textsc{Complete Step-by-Step Solution \theexocounter}},
+  coltitle=white, colbacktitle=borderblue
+}
+
+\newenvironment{solution}{%
+  \begin{solutionbox}%
+}{%
+  \end{solutionbox}\vspace{10pt}%
+}
+
+% ---------------------------------------------------------------------------
+% HEADERS, FOOTERS & TITLES
+% ---------------------------------------------------------------------------
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\bfseries\color{navyblue}}
+  {\filleft\Large\textsc{\chaptertitlename}~\thechapter}
+  {8pt}
+  {\Huge\filright}
+  [\vspace{6pt}{\color{navyblue!40}\titlerule[1.2pt]}]
+\titlespacing*{\chapter}{0pt}{-10pt}{24pt}
+
+\titleformat{\section}
+  {\normalfont\sffamily\bfseries\Large\color{navyblue}}
+  {\thesection}{0.8em}{}
+\titlespacing*{\section}{0pt}{2.0ex plus .3ex}{0.8ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{slateink!70}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\sffamily\color{slateink!70}\thepage}
+\fancyfoot[C]{\small\sffamily\color{slateink!60}University Mathematics I --- Complete Problem Workbook}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{navyblue!25}\leaders\hrule height \headrulewidth\hfill}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\sffamily\color{slateink!60}\thepage}%
+  \renewcommand{\headrulewidth}{0pt}}
+
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+
+\renewcommand{\cftchapfont}{\sffamily\bfseries\color{navyblue}}
+\renewcommand{\cftchappagefont}{\sffamily\bfseries\color{navyblue}}
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftsecpagefont}{\sffamily}
+\setcounter{tocdepth}{1}
+
+% ---------------------------------------------------------------------------
+% HYPERREF & MACROS
+% ---------------------------------------------------------------------------
+\usepackage[colorlinks=true,linkcolor=navyblue,urlcolor=accentcrimson,citecolor=navyblue,
+            pdftitle={University Mathematics I: Complete Problem Workbook},
+            pdfauthor={Abderraouf Boudjema}]{hyperref}
+\usepackage{xurl}
+\usepackage{cleveref}
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\card}{\operatorname{card}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+
+% ===========================================================================
+% DOCUMENT
+% ===========================================================================
+\begin{document}
+
+% ---------------------------------------------------------------------------
+% TITLE PAGE
+% ---------------------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[navyblue] (current page.north west) rectangle ([yshift=-5.8cm]current page.north east);
+  \fill[accentcrimson] ([yshift=-5.8cm]current page.north west) rectangle ([yshift=-6.02cm]current page.north east);
+  \node[anchor=north west, text=white, font=\sffamily\bfseries\small\scshape]
+    at ([xshift=2.2cm,yshift=-1.9cm]current page.north west) {UNIVERSITY WORKBOOK SERIES IN MATHEMATICAL SCIENCES};
+  \node[anchor=north west, text=white, font=\sffamily\bfseries\fontsize{38}{44}\selectfont]
+    at ([xshift=2.2cm,yshift=-2.7cm]current page.north west) {UNIVERSITY};
+  \node[anchor=north west, text=white, font=\sffamily\bfseries\fontsize{38}{44}\selectfont]
+    at ([xshift=2.2cm,yshift=-4.0cm]current page.north west) {MATHEMATICS I};
+  \node[anchor=north west, text=white, font=\sffamily\Large]
+    at ([xshift=2.2cm,yshift=-5.1cm]current page.north west) {Complete Problem Workbook with Tablet Workspaces \& Full Solutions};
+\end{tikzpicture}
+
+\vspace*{6.0cm}
+\begin{flushleft}
+{\sffamily\bfseries\color{navyblue}\fontsize{24}{29}\selectfont Progressive Exercises from Scratch to Mastery}\\[12pt]
+{\sffamily\color{accentcrimson}\Large Complete Step-by-Step Solutions After Every Single Exercise}\\[22pt]
+{\large Covering Logic, Set Theory, Relations, Algebraic Structures, the Real Number System,\\[3pt]
+Numerical Sequences \& $\varepsilon$-$N$ Convergence, Real Functions \& $\varepsilon$-$\delta$ Continuity,\\[3pt]
+Rolle \& Mean Value Theorems, Taylor Expansions, and Riemann Integration.}\\[14pt]
+{\normalsize Equipped with dedicated \textbf{5\,mm graphic tablet workspaces} formatted for direct\\[2pt]
+digital stylus problem-solving in Xournal++, OneNote, or PDF annotation software.}
+\end{flushleft}
+
+\vfill
+\begin{flushleft}
+{\sffamily\bfseries\large Abderraouf Boudjema}\\[4pt]
+{\sffamily\color{slateink!70}Faculty of Sciences $\cdot$ Department of Matter Sciences (SM)}\\[2pt]
+{\sffamily\color{slateink!70}Amar Telidji University --- Laghouat}\\[2pt]
+{\sffamily\color{slateink!70}Academic Year 2025--2026}
+\end{flushleft}
+\end{titlepage}
+
+\frontmatter
+\pagestyle{plain}
+
+% ---------------------------------------------------------------------------
+% PREFACE / HOW TO USE THIS WORKBOOK
+% ---------------------------------------------------------------------------
+\chapter*{How to Use This Workbook}
+\addcontentsline{toc}{chapter}{How to Use This Workbook}
+\markboth{How to Use This Workbook}{}
+
+This problem workbook is engineered specifically for active, hands-on learning with a \textbf{graphic tablet or digital stylus} on PC. Designed to directly accompany \emph{University Mathematics I: Comprehensive University Textbook}, it provides extensive training across all foundational concepts of higher mathematical analysis and abstract algebra.
+
+\section*{Key Pedagogical Features}
+
+\begin{enumerate}[leftmargin=1.8em,itemsep=5pt]
+  \item \textbf{Progressive Difficulty Rating:} Every exercise is categorized by difficulty:
+  \begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+    \item[$\bigstar$] \textbf{Foundational:} Direct application of definitions, truth tables, basic set operations, direct computations, and elementary single-step proofs.
+    \item[$\bigstar\bigstar$] \textbf{Intermediate:} Multi-step proofs, $\varepsilon$-$N$ and $\varepsilon$-$\delta$ demonstrations, equivalence classes, quotient sets, induction with inequalities, and recurring sequences.
+    \item[$\bigstar\bigstar\bigstar$] \textbf{Advanced / Exam Level:} Comprehensive synthetic problems, topological characterizations, adjacent sequences, Mean Value Theorem applications, Taylor expansions with asymptotic limits, and intricate Riemann integration techniques.
+  \end{itemize}
+  \item \textbf{Dedicated 5\,mm Tablet Grid Workspaces:} Each exercise is immediately followed by an authentic 5\,mm Cartesian grid box calibrated for standard tablet stylus resolution. Open this PDF in your favorite annotation application (such as \textbf{Xournal++}, \textbf{Drawboard}, or \textbf{OneNote}) to solve problems by hand.
+  \item \textbf{Immediate, Complete Solutions:} Following each workspace, a comprehensive step-by-step solution provides every algebraic manipulation, logical justification, and formal conclusion.
+\end{enumerate}
+
+\tableofcontents
+
+\mainmatter
+\pagestyle{fancy}
+
+\input{exercises/ch01_exercises}
+\input{exercises/ch02_exercises}
+\input{exercises/ch03_exercises}
+\input{exercises/ch04_exercises}
+\input{exercises/ch05_exercises}
+\input{exercises/ch06_exercises}
+
+\end{document}

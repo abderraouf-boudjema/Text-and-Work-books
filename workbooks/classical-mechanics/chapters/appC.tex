@@ -1,0 +1,83 @@
+\chapter{Comprehensive Formula Sheet and Problem-Solving Protocols}
+\label{app:formula_sheet}
+
+\section{The Five-Step Mechanics Problem-Solving Protocol}
+
+Whenever you encounter a mechanics problem, systematically follow this standard five-step algorithm:
+
+\begin{enumerate}[leftmargin=1.8em,itemsep=4pt]
+  \item \textbf{Define the System and the Reference Frame}:
+        \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+          \item Explicitly specify the particle(s) or body being studied.
+          \item Choose an appropriate reference frame $\mathcal{R}$ (Galilean whenever possible; otherwise identify the non-inertial acceleration $\vec{a}_e$ and angular velocity $\vec{\Omega}$).
+          \item Select the most natural coordinate system (Cartesian for uniform fields; Polar/Cylindrical for circular/axial symmetry; Spherical for central fields; Frenet for known trajectories).
+        \end{itemize}
+  \item \textbf{Perform the Comprehensive Force Inventory (Free-Body Diagram)}:
+        \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+          \item Field forces (at a distance): Weight $\vec{P} = m\vec{g}$, Gravitation $\vec{F}_g = -G\frac{Mm}{r^2}\ur$, Electrostatic $\vec{F}_e = q\vec{E}$.
+          \item Contact forces: Normal reaction $\vec{N}$ (orthogonal to surface), Friction $\vec{f}$ (tangential, static $f_s \le \mu_s N$ or kinetic $f_k = \mu_k N$), Tension $\vec{T}$ (along string/rope), Spring restoring force $\vec{F}_s = -k(\ell - \ell_0)\vec{u}$.
+          \item Fictitious forces (if in non-inertial frame): $\vec{F}_{ie} = -m\vec{a}_e$ and $\vec{F}_{ic} = -2m\vec{\Omega}\times\vec{v}_r$.
+        \end{itemize}
+  \item \textbf{Select the Optimal Fundamental Principle}:
+        \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+          \item If seeking accelerations or forces at an instant $\rightarrow$ \textbf{Newton's Second Law}: $\sum\vec{F} = m\vec{a}$.
+          \item If relating speeds and positions without tracking time $\rightarrow$ \textbf{Work-Energy Theorem}: $\Delta E_c = W_{\text{all forces}}$ or \textbf{Conservation of Mechanical Energy}: $\Delta E_m = W_{\text{nc}}$.
+          \item If dealing with rotational, central, or orbital motion $\rightarrow$ \textbf{Angular Momentum Theorem}: $\frac{\dd\vec{L}_O}{\dd t} = \vec{\tau}_O$.
+          \item If dealing with sudden collisions, impacts, or explosions $\rightarrow$ \textbf{Conservation of Linear Momentum}: $\vec{P}_{\text{tot}} = \text{const}$.
+        \end{itemize}
+  \item \textbf{Project and Integrate}:
+        \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+          \item Project the vector equation onto the coordinate axes.
+          \item Separate variables and integrate with respect to time or space using initial conditions.
+        \end{itemize}
+  \item \textbf{Sanity Checks}:
+        \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+          \item \textbf{Dimensional check}: Verify that both sides have the same physical units!
+          \item \textbf{Limiting cases}: Check limits (e.g. $\theta \to 0$, $m_1 \gg m_2$, friction $\mu \to 0$, $t \to \infty$).
+          \item \textbf{Physical plausibility}: Is the sign reasonable? Is the numerical order of magnitude realistic?
+        \end{itemize}
+\end{enumerate}
+
+\section{Core Formula Quick-Reference Sheet}
+
+\subsection{Kinematics}
+\begin{align*}
+\text{1D Constant Acceleration:}\quad & v(t) = at + v_0, \quad x(t) = \tfrac{1}{2}at^2 + v_0 t + x_0, \quad v^2 - v_0^2 = 2a(x - x_0) \\
+\text{Frenet Frame:}\quad & \vec{v} = v\,\utt, \quad \vec{a} = \dot{v}\,\utt + \frac{v^2}{R}\un \\
+\text{Polar Coordinates:}\quad & \vec{v} = \dot{r}\ur + r\dot{\theta}\ut, \quad \vec{a} = (\ddot{r} - r\dot{\theta}^2)\ur + (r\ddot{\theta} + 2\dot{r}\dot{\theta})\ut \\
+\text{Composition of Velocities:}\quad & \vec{v}_a = \vec{v}_r + \vec{v}_e \quad (\vec{v}_e = \vec{v}(O') + \vec{\Omega}\times\vec{r}') \\
+\text{Composition of Accelerations:}\quad & \vec{a}_a = \vec{a}_r + \vec{a}_e + \vec{a}_c \quad (\vec{a}_c = 2\vec{\Omega}\times\vec{v}_r)
+\end{align*}
+
+\subsection{Dynamics and Forces}
+\begin{align*}
+\text{Newton's 2nd Law (Inertial):}\quad & \sum\vec{F} = m\vec{a} = \frac{\dd\vec{p}}{\dd t} \\
+\text{Newton's 2nd Law (Non-Inertial):}\quad & m\vec{a}_r = \sum\vec{F}_{\text{real}} - m\vec{a}_e - 2m\,\vec{\Omega}\times\vec{v}_r \\
+\text{Coulomb Solid Friction:}\quad & \text{Static: } f_s \le \mu_s N, \quad \text{Kinetic: } f_k = \mu_k N \\
+\text{Hooke's Law:}\quad & \vec{F}_s = -k(x - x_0)\ihat
+\end{align*}
+
+\subsection{Work, Energy, and Oscillations}
+\begin{align*}
+\text{Work-Energy Theorem:}\quad & \Delta E_c = W_{A\to B}(\sum\vec{F}) \\
+\text{Conservative Force:}\quad & \vec{F} = -\vec{\nabla} E_p \iff \vec{\nabla}\times\vec{F} = \vzero \\
+\text{Total Mechanical Energy:}\quad & E_m = E_c + E_p, \quad \frac{\dd E_m}{\dd t} = P_{\text{nc}} = \vec{F}_{\text{nc}}\cdot\vec{v} \\
+\text{Small Oscillations around } x_0:\quad & \omega_0 = \sqrt{\frac{k_{\text{eff}}}{m}}, \quad k_{\text{eff}} = \left.\frac{\dd^2 E_p}{\dd x^2}\right|_{x_0} > 0 \\
+\text{Damped Oscillator:}\quad & \ddot{x} + 2\lambda\dot{x} + \omega_0^2 x = 0, \quad \omega_d = \sqrt{\omega_0^2 - \lambda^2}, \quad Q = \frac{\omega_0}{2\lambda}
+\end{align*}
+
+\subsection{Angular Momentum and Central Forces}
+\begin{align*}
+\text{Angular Momentum Theorem:}\quad & \frac{\dd\vec{L}_O}{\dd t} = \vec{\tau}_O = \vec{r}\times\vec{F} \\
+\text{Central Force Conservation:}\quad & \vec{L}_O = \text{const} \implies r^2\dot{\theta} = C = \text{const} \\
+\text{Effective Potential:}\quad & U_{\text{eff}}(r) = U(r) + \frac{L^2}{2mr^2} \\
+\text{Vis-Viva Equation (Kepler):}\quad & v^2 = GM\left(\frac{2}{r} - \frac{1}{a}\right), \quad T^2 = \frac{4\pi^2}{GM}a^3
+\end{align*}
+
+\subsection{Systems and Collisions}
+\begin{align*}
+\text{Center of Mass:}\quad & M\vec{a}_G = \sum\vec{F}_{\text{ext}} \\
+\text{1D Restitution Coefficient:}\quad & e = -\frac{v_{1f} - v_{2f}}{v_{1i} - v_{2i}} \in [0, 1] \\
+\text{Koenig's First Theorem:}\quad & E_c = \frac{1}{2}M v_G^2 + \frac{1}{2}\mu v_{\text{rel}}^2, \quad \mu = \frac{m_1 m_2}{m_1 + m_2} \\
+\text{Tsiolkovsky Rocket:}\quad & \Delta v = u_{\text{ex}}\ln\left(\frac{m_0}{m_f}\right)
+\end{align*}

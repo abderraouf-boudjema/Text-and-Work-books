@@ -1,0 +1,765 @@
+\chapter{Numerical Sequences \& Limits in $\mathbb{R}$}
+\label{chap:exo_ch04}
+
+\begin{quicksummary}{Convergence Criteria, Monotonicity, Cauchy \& Recurrence}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{$\varepsilon$-$N$ Definition of Sequence Limit:}
+  \[
+  \lim_{n \to \infty} u_n = \ell \iff \forall \varepsilon > 0,\ \exists N \in \N,\ \forall n \ge N,\ |u_n - \ell| < \varepsilon.
+  \]
+  \item \textbf{Squeeze Theorem (Théorème des Gendarmes):}
+  If $v_n \le u_n \le w_n$ for all $n \ge N_0$ and $\lim v_n = \lim w_n = \ell$, then $\lim u_n = \ell$.
+  \item \textbf{Monotone Convergence Theorem:}
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item If $(u_n)$ is increasing and bounded above, then $(u_n)$ converges and $\lim u_n = \sup \{u_n : n \in \N\}$.
+    \item If $(u_n)$ is decreasing and bounded below, then $(u_n)$ converges and $\lim u_n = \inf \{u_n : n \in \N\}$.
+  \end{itemize}
+  \item \textbf{Bolzano-Weierstrass Theorem:}
+  Every bounded real sequence $(u_n)_{n \in \N}$ possesses at least one convergent subsequence $(u_{\phi(n)})_{n \in \N}$.
+  \item \textbf{Cauchy Criterion:}
+  A sequence $(u_n)$ in $\R$ converges if and only if it is a Cauchy sequence:
+  \[
+  \forall \varepsilon > 0,\ \exists N \in \N,\ \forall p, q \ge N,\ |u_p - u_q| < \varepsilon.
+  \]
+  \item \textbf{Adjacent Sequences (Suites Adjacentes):}
+  Two sequences $(u_n)$ and $(v_n)$ are adjacent if $(u_n)$ is increasing, $(v_n)$ is decreasing, and $\lim (v_n - u_n) = 0$.
+  They necessarily converge to the exact same finite limit $\ell$, with $u_n \le \ell \le v_n$ for all $n$.
+  \item \textbf{Recurrence Relations $u_{n+1} = f(u_n)$:}
+  If $f: I \to I$ is continuous and $(u_n)$ converges to $\ell \in I$, then $\ell$ is a fixed point: $f(\ell) = \ell$.
+\end{enumerate}
+\end{quicksummary}
+
+\vspace{10pt}
+
+% ===========================================================================
+% EXERCISE 4.1
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Direct $\varepsilon$-$N$ Proofs of Sequence Convergence}
+Using the formal $\varepsilon$-$N$ definition of limit:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $\lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0$.
+  \item Prove that $\lim_{n \to \infty} \frac{3n - 1}{2n + 5} = \frac{3}{2}$.
+  \item For $\varepsilon = 10^{-3}$, calculate an explicit integer threshold $N$ for the sequence in part 2.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Proof that $\lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0$:}
+Let $\varepsilon > 0$ be given. We must find $N \in \N$ such that:
+\[
+\forall n \ge N, \quad \left| \frac{1}{\sqrt{n}} - 0 \right| < \varepsilon \iff \frac{1}{\sqrt{n}} < \varepsilon \iff \sqrt{n} > \frac{1}{\varepsilon} \iff n > \frac{1}{\varepsilon^2}.
+\]
+By the Archimedean property of $\R$, there exists $N \in \N$ such that $N > \frac{1}{\varepsilon^2}$ (for instance, $N = \lfloor 1/\varepsilon^2 \rfloor + 1$).
+Then for all $n \ge N$:
+\[
+n \ge N > \frac{1}{\varepsilon^2} \implies \frac{1}{\sqrt{n}} < \varepsilon.
+\]
+Thus $\lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0$. \hfill $\blacksquare$
+
+\textbf{2. Proof that $\lim_{n \to \infty} \frac{3n - 1}{2n + 5} = \frac{3}{2}$:}
+Compute the difference $|u_n - \ell|$:
+\[
+\left| \frac{3n - 1}{2n + 5} - \frac{3}{2} \right| = \left| \frac{2(3n - 1) - 3(2n + 5)}{2(2n + 5)} \right| = \left| \frac{6n - 2 - 6n - 15}{4n + 10} \right| = \frac{17}{4n + 10}.
+\]
+Notice that for all $n \ge 1$, $4n + 10 > 4n$, so:
+\[
+\frac{17}{4n + 10} < \frac{17}{4n}.
+\]
+To ensure $|u_n - 3/2| < \varepsilon$, it suffices to enforce $\frac{17}{4n} < \varepsilon$:
+\[
+\frac{17}{4n} < \varepsilon \iff n > \frac{17}{4\varepsilon}.
+\]
+Let $\varepsilon > 0$. Choose $N = \left\lfloor \frac{17}{4\varepsilon} \right\rfloor + 1 \in \N$.
+Then for all $n \ge N$:
+\[
+\left| \frac{3n - 1}{2n + 5} - \frac{3}{2} \right| = \frac{17}{4n + 10} < \frac{17}{4n} \le \frac{17}{4N} < \varepsilon.
+\]
+This proves that $\lim_{n \to \infty} u_n = 3/2$. \hfill $\blacksquare$
+
+\textbf{3. Threshold for $\varepsilon = 10^{-3}$:}
+\[
+N = \left\lfloor \frac{17}{4 \times 10^{-3}} \right\rfloor + 1 = \left\lfloor \frac{17000}{4} \right\rfloor + 1 = 4250 + 1 = 4251.
+\]
+For any index $n \ge 4251$, the term $u_n$ is guaranteed to be within $0.001$ of $1.5$.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.2
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Computation of Limits and Resolution of Indeterminate Forms}
+Calculate the limit of each of the following sequences as $n \to \infty$:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item $u_n = \sqrt{n^2 + 4n + 1} - n \quad (\text{Indeterminate form } \infty - \infty)$.
+  \item $v_n = \frac{2^n + 3^n}{2^{n+1} + 3^{n+1}} \quad (\text{Dominant geometric base})$.
+  \item $w_n = \left( 1 + \frac{2}{n} \right)^n \quad (\text{Euler exponential form } 1^\infty)$.
+  \item $z_n = \frac{n^3 + 5n - 2}{4n^3 - 7n^2 + 1}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Limit of $u_n = \sqrt{n^2 + 4n + 1} - n$:}
+Multiply and divide by the conjugate expression:
+\begin{align*}
+u_n &= \frac{(\sqrt{n^2 + 4n + 1} - n)(\sqrt{n^2 + 4n + 1} + n)}{\sqrt{n^2 + 4n + 1} + n} \\
+&= \frac{(n^2 + 4n + 1) - n^2}{\sqrt{n^2(1 + 4/n + 1/n^2)} + n} \\
+&= \frac{4n + 1}{n\sqrt{1 + 4/n + 1/n^2} + n} = \frac{n(4 + 1/n)}{n(\sqrt{1 + 4/n + 1/n^2} + 1)} \\
+&= \frac{4 + 1/n}{\sqrt{1 + 4/n + 1/n^2} + 1}.
+\end{align*}
+As $n \to \infty$, $1/n \to 0$ and $1/n^2 \to 0$:
+\[
+\lim_{n \to \infty} u_n = \frac{4 + 0}{\sqrt{1 + 0 + 0} + 1} = \frac{4}{2} = 2.
+\]
+
+\textbf{2. Limit of $v_n$:}
+Factor the dominant base $3^n$ from numerator and denominator:
+\[
+v_n = \frac{3^n \left[ (2/3)^n + 1 \right]}{3^{n+1} \left[ (2/3)^{n+1} + 1 \right]} = \frac{1}{3} \cdot \frac{(2/3)^n + 1}{(2/3)^{n+1} + 1}.
+\]
+Since $|2/3| < 1$, $\lim_{n \to \infty} (2/3)^n = 0$:
+\[
+\lim_{n \to \infty} v_n = \frac{1}{3} \cdot \frac{0 + 1}{0 + 1} = \frac{1}{3}.
+\]
+
+\textbf{3. Limit of $w_n = (1 + 2/n)^n$:}
+Use the logarithmic transformation:
+\[
+\ln(w_n) = n \ln\left(1 + \frac{2}{n}\right).
+\]
+As $n \to \infty$, $2/n \to 0$. Using the standard equivalence $\ln(1 + u) \sim u$ as $u \to 0$:
+\[
+\ln\left(1 + \frac{2}{n}\right) \sim \frac{2}{n} \implies \ln(w_n) \sim n \cdot \frac{2}{n} = 2.
+\]
+By continuity of the exponential function:
+\[
+\lim_{n \to \infty} w_n = e^2.
+\]
+
+\textbf{4. Limit of $z_n$:}
+Factor the highest power $n^3$:
+\[
+z_n = \frac{n^3(1 + 5/n^2 - 2/n^3)}{n^3(4 - 7/n + 1/n^3)} = \frac{1 + 5/n^2 - 2/n^3}{4 - 7/n + 1/n^3} \xrightarrow{n \to \infty} \frac{1 + 0 - 0}{4 - 0 + 0} = \frac{1}{4}. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.3
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{The Squeeze (Sandwich) Theorem}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State the Squeeze Theorem for numerical sequences.
+  \item Determine $\lim_{n \to \infty} \frac{\cos(n^2) + (-1)^n \sin(n)}{n}$.
+  \item Determine the limit of the sum:
+  \[
+  S_n = \sum_{k=1}^n \frac{1}{\sqrt{n^2 + k}} = \frac{1}{\sqrt{n^2 + 1}} + \frac{1}{\sqrt{n^2 + 2}} + \dots + \frac{1}{\sqrt{n^2 + n}}.
+  \]
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Statement of Squeeze Theorem:}
+Let $(u_n), (v_n), (w_n)$ be real sequences. If there exists $N_0 \in \N$ such that $v_n \le u_n \le w_n$ for all $n \ge N_0$, and $\lim_{n \to \infty} v_n = \lim_{n \to \infty} w_n = \ell \in \R$, then $(u_n)$ converges and $\lim_{n \to \infty} u_n = \ell$.
+
+\textbf{2. Limit of $x_n = \frac{\cos(n^2) + (-1)^n \sin(n)}{n}$:}
+Using the triangle inequality on the numerator:
+\[
+|\cos(n^2) + (-1)^n \sin(n)| \le |\cos(n^2)| + |\sin(n)| \le 1 + 1 = 2.
+\]
+Dividing by $n > 0$:
+\[
+-\frac{2}{n} \le x_n \le \frac{2}{n}.
+\]
+Since $\lim_{n \to \infty} (-2/n) = 0$ and $\lim_{n \to \infty} (2/n) = 0$, by the Squeeze Theorem:
+\[
+\lim_{n \to \infty} x_n = 0.
+\]
+
+\textbf{3. Limit of $S_n = \sum_{k=1}^n \frac{1}{\sqrt{n^2 + k}}$:}
+For each $k \in \{1, 2, \dots, n\}$, we have $1 \le k \le n$, which gives:
+\[
+n^2 + 1 \le n^2 + k \le n^2 + n.
+\]
+Taking square roots and reciprocals reverses the inequality:
+\[
+\frac{1}{\sqrt{n^2 + n}} \le \frac{1}{\sqrt{n^2 + k}} \le \frac{1}{\sqrt{n^2 + 1}}.
+\]
+Summing this inequality for all $k$ from $1$ to $n$ ($n$ identical terms):
+\[
+\sum_{k=1}^n \frac{1}{\sqrt{n^2 + n}} \le S_n \le \sum_{k=1}^n \frac{1}{\sqrt{n^2 + 1}} \iff \frac{n}{\sqrt{n^2 + n}} \le S_n \le \frac{n}{\sqrt{n^2 + 1}}.
+\]
+Compute the limits of the bounding sequences:
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item $\frac{n}{\sqrt{n^2 + n}} = \frac{n}{n\sqrt{1 + 1/n}} = \frac{1}{\sqrt{1 + 1/n}} \xrightarrow{n \to \infty} 1$.
+  \item $\frac{n}{\sqrt{n^2 + 1}} = \frac{n}{n\sqrt{1 + 1/n^2}} = \frac{1}{\sqrt{1 + 1/n^2}} \xrightarrow{n \to \infty} 1$.
+\end{itemize}
+Since both bounds converge to $1$, by the Squeeze Theorem:
+\[
+\lim_{n \to \infty} S_n = 1. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.4
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Monotone Convergence: The Basel Partial Sums}
+Consider the sequence of partial sums:
+\[
+u_n = \sum_{k=1}^n \frac{1}{k^2} = 1 + \frac{1}{4} + \frac{1}{9} + \dots + \frac{1}{n^2} \quad (n \ge 1).
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $(u_n)$ is strictly increasing.
+  \item Prove that for all $k \ge 2$, $\frac{1}{k^2} < \frac{1}{k(k - 1)} = \frac{1}{k - 1} - \frac{1}{k}$.
+  \item Deduce by telescoping summation that for all $n \ge 1$, $u_n < 2$.
+  \item Conclude that $(u_n)$ converges to a finite limit $\ell \in (1, 2]$ using the Monotone Convergence Theorem.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Monotonicity:}
+Compute the difference between consecutive terms:
+\[
+u_{n+1} - u_n = \left(\sum_{k=1}^{n+1} \frac{1}{k^2}\right) - \left(\sum_{k=1}^n \frac{1}{k^2}\right) = \frac{1}{(n+1)^2} > 0.
+\]
+Since $u_{n+1} - u_n > 0$ for all $n \ge 1$, the sequence $(u_n)$ is strictly increasing.
+
+\textbf{2. Partial Fraction Bound:}
+For any integer $k \ge 2$, $k^2 > k(k - 1)$. Taking reciprocals:
+\[
+\frac{1}{k^2} < \frac{1}{k(k - 1)}.
+\]
+Decomposing into partial fractions:
+\[
+\frac{1}{k - 1} - \frac{1}{k} = \frac{k - (k - 1)}{k(k - 1)} = \frac{1}{k(k - 1)}.
+\]
+Thus $\frac{1}{k^2} < \frac{1}{k - 1} - \frac{1}{k}$.
+
+\textbf{3. Telescoping Upper Bound:}
+Isolate the first term ($k = 1$):
+\[
+u_n = 1 + \sum_{k=2}^n \frac{1}{k^2} < 1 + \sum_{k=2}^n \left( \frac{1}{k - 1} - \frac{1}{k} \right).
+\]
+Expand the telescoping sum:
+\[
+\sum_{k=2}^n \left( \frac{1}{k - 1} - \frac{1}{k} \right) = \left( 1 - \frac{1}{2} \right) + \left( \frac{1}{2} - \frac{1}{3} \right) + \dots + \left( \frac{1}{n - 1} - \frac{1}{n} \right) = 1 - \frac{1}{n}.
+\]
+Therefore:
+\[
+u_n < 1 + \left( 1 - \frac{1}{n} \right) = 2 - \frac{1}{n} < 2.
+\]
+Thus $u_n < 2$ for all $n \ge 1$.
+
+\textbf{4. Convergence:}
+The sequence $(u_n)$ is strictly increasing and bounded above by $2$.
+By the Monotone Convergence Theorem, $(u_n)$ converges to a finite limit $\ell = \sup \{u_n : n \ge 1\}$.
+Since $u_1 = 1 < u_n < 2$, we have $1 < \ell \le 2$.
+(Euler famously proved in 1734 that $\ell = \frac{\pi^2}{6} \approx 1.64493$). \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.5
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Divergence to Infinity and the Harmonic Series}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State the formal definition of $\lim_{n \to \infty} u_n = +\infty$.
+  \item Prove directly using the definition that $\lim_{n \to \infty} \frac{n^2 - 4}{n + 3} = +\infty$.
+  \item Consider the harmonic sequence $H_n = \sum_{k=1}^n \frac{1}{k}$. Prove Oresme's inequality:
+  \[
+  H_{2^p} \ge 1 + \frac{p}{2} \quad \text{for all } p \in \N.
+  \]
+  \item Deduce that $\lim_{n \to \infty} H_n = +\infty$ (the harmonic series diverges).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Definition of Divergence to $+\infty$:}
+\[
+\lim_{n \to \infty} u_n = +\infty \iff \forall A > 0,\ \exists N \in \N,\ \forall n \ge N,\ u_n > A.
+\]
+
+\textbf{2. Limit of $u_n = \frac{n^2 - 4}{n + 3}$:}
+For $n \ge 3$, $n^2 - 4 \ge n^2 - \frac{1}{2}n^2 = \frac{1}{2}n^2$.
+Also for $n \ge 3$, $n + 3 \le n + n = 2n$.
+Thus:
+\[
+u_n = \frac{n^2 - 4}{n + 3} \ge \frac{n^2 / 2}{2n} = \frac{n}{4}.
+\]
+Let $A > 0$ be arbitrary. We require $\frac{n}{4} > A \iff n > 4A$.
+Choose $N = \max(3, \lfloor 4A \rfloor + 1)$.
+Then for all $n \ge N$:
+\[
+u_n \ge \frac{n}{4} \ge \frac{N}{4} > A.
+\]
+Hence $\lim_{n \to \infty} u_n = +\infty$.
+
+\textbf{3. Oresme's Inequality for $H_{2^p}$:}
+We group the terms in dyadic blocks:
+\[
+H_{2^p} = 1 + \frac{1}{2} + \left( \frac{1}{3} + \frac{1}{4} \right) + \left( \frac{1}{5} + \dots + \frac{1}{8} \right) + \dots + \left( \frac{1}{2^{p-1} + 1} + \dots + \frac{1}{2^p} \right).
+\]
+In each block $B_j = \sum_{k=2^{j-1}+1}^{2^j} \frac{1}{k}$ (for $j = 1, \dots, p$):
+There are $2^j - 2^{j-1} = 2^{j-1}$ terms, and the smallest term is the last one, $\frac{1}{2^j}$.
+Thus:
+\[
+B_j \ge 2^{j-1} \times \frac{1}{2^j} = \frac{1}{2}.
+\]
+Summing over all $p$ blocks:
+\[
+H_{2^p} = 1 + \sum_{j=1}^p B_j \ge 1 + \sum_{j=1}^p \frac{1}{2} = 1 + \frac{p}{2}.
+\]
+
+\textbf{4. Divergence of $H_n$:}
+The sequence $(H_n)$ is strictly increasing since $H_{n+1} - H_n = \frac{1}{n+1} > 0$.
+The subsequence $H_{2^p} \ge 1 + p/2$ is unbounded as $p \to \infty$.
+An increasing sequence that possesses an unbounded subsequence must diverge to $+\infty$.
+Therefore, $\lim_{n \to \infty} H_n = +\infty$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.6
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Subsequences and the Bolzano-Weierstrass Theorem}
+Consider the sequence:
+\[
+u_n = \sin\left(\frac{n\pi}{2}\right) + \frac{1}{n} \quad (n \ge 1).
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $(u_n)$ is bounded.
+  \item Extract four convergent subsequences corresponding to indices $n = 4k, 4k+1, 4k+2, 4k+3$. Determine their respective limits.
+  \item Deduce that $(u_n)$ does not converge.
+  \item State the Bolzano-Weierstrass Theorem and explain how this sequence illustrates it.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Boundedness:}
+Using the triangle inequality:
+\[
+|u_n| = \left| \sin\left(\frac{n\pi}{2}\right) + \frac{1}{n} \right| \le \left|\sin\left(\frac{n\pi}{2}\right)\right| + \frac{1}{n} \le 1 + 1 = 2.
+\]
+Thus $-2 \le u_n \le 2$ for all $n \ge 1$. $(u_n)$ is bounded.
+
+\textbf{2. Four Subsequences:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item For $n = 4k$: $\sin(4k\pi/2) = \sin(2k\pi) = 0$.
+  $u_{4k} = 0 + \frac{1}{4k} \xrightarrow{k \to \infty} 0$.
+  \item For $n = 4k + 1$: $\sin((4k+1)\pi/2) = \sin(2k\pi + \pi/2) = 1$.
+  $u_{4k+1} = 1 + \frac{1}{4k+1} \xrightarrow{k \to \infty} 1$.
+  \item For $n = 4k + 2$: $\sin((4k+2)\pi/2) = \sin(2k\pi + \pi) = 0$.
+  $u_{4k+2} = 0 + \frac{1}{4k+2} \xrightarrow{k \to \infty} 0$.
+  \item For $n = 4k + 3$: $\sin((4k+3)\pi/2) = \sin(2k\pi + 3\pi/2) = -1$.
+  $u_{4k+3} = -1 + \frac{1}{4k+3} \xrightarrow{k \to \infty} -1$.
+\end{itemize}
+
+\textbf{3. Non-convergence of $(u_n)$:}
+Recall that if a sequence $(u_n)$ converges to a limit $\ell$, then \emph{all} its subsequences must converge to the same limit $\ell$.
+Here, we have found two subsequences converging to distinct limits:
+\[
+\lim_{k \to \infty} u_{4k+1} = 1 \ne -1 = \lim_{k \to \infty} u_{4k+3}.
+\]
+Therefore, $(u_n)$ diverges (it oscillates among the accumulation values $\{-1, 0, 1\}$).
+
+\textbf{4. Bolzano-Weierstrass Illustration:}
+The Bolzano-Weierstrass Theorem states that every bounded real sequence has at least one convergent subsequence.
+Here, $(u_n)$ is bounded, and indeed we extracted multiple convergent subsequences (converging to $-1, 0,$ and $1$).
+The theorem does not guarantee that the whole sequence converges, only that convergent subsequences exist. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.7
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{The Cauchy Criterion for Convergence}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State the definition of a Cauchy sequence in $\R$.
+  \item Prove that every convergent sequence in $\R$ is a Cauchy sequence.
+  \item Consider the sequence:
+  \[
+  u_n = \sum_{k=1}^n \frac{\cos(k)}{2^k} \quad (n \ge 1).
+  \]
+  Prove that $(u_n)$ is a Cauchy sequence, and deduce that $(u_n)$ converges.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Definition of Cauchy Sequence:}
+A sequence $(u_n)_{n \in \N}$ in $\R$ is a Cauchy sequence if:
+\[
+\forall \varepsilon > 0,\ \exists N \in \N,\ \forall p, q \ge N,\ |u_p - u_q| < \varepsilon.
+\]
+
+\textbf{2. Convergent $\implies$ Cauchy:}
+Assume $\lim_{n \to \infty} u_n = \ell \in \R$.
+Let $\varepsilon > 0$. By definition of convergence with threshold $\varepsilon/2$:
+\[
+\exists N \in \N,\ \forall n \ge N, \quad |u_n - \ell| < \frac{\varepsilon}{2}.
+\]
+Let $p, q \ge N$. Using the triangle inequality:
+\[
+|u_p - u_q| = |(u_p - \ell) - (u_q - \ell)| \le |u_p - \ell| + |u_q - \ell| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+\]
+Thus $(u_n)$ is a Cauchy sequence.
+
+\textbf{3. Proof that $u_n = \sum_{k=1}^n \frac{\cos(k)}{2^k}$ is Cauchy:}
+Let $p, q \in \N^*$ with $q > p \ge N$.
+\begin{align*}
+|u_q - u_p| &= \left| \sum_{k=p+1}^q \frac{\cos(k)}{2^k} \right| \le \sum_{k=p+1}^q \frac{|\cos(k)|}{2^k} \le \sum_{k=p+1}^q \frac{1}{2^k} \\
+&= \frac{1}{2^{p+1}} \sum_{j=0}^{q-p-1} \left(\frac{1}{2}\right)^j = \frac{1}{2^{p+1}} \cdot \frac{1 - (1/2)^{q-p}}{1 - 1/2} \\
+&< \frac{1}{2^{p+1}} \cdot \frac{1}{1/2} = \frac{1}{2^p}.
+\end{align*}
+Let $\varepsilon > 0$. Since $\lim_{p \to \infty} \frac{1}{2^p} = 0$, by the Archimedean property there exists $N \in \N$ such that:
+\[
+\frac{1}{2^N} < \varepsilon.
+\]
+Then for all $q > p \ge N$:
+\[
+|u_q - u_p| < \frac{1}{2^p} \le \frac{1}{2^N} < \varepsilon.
+\]
+Thus $(u_n)$ is a Cauchy sequence.
+Since $\R$ is complete (every Cauchy sequence in $\R$ converges), $(u_n)$ converges to a finite limit $\ell \in \R$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.8
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Adjacent Sequences and the Irrationality of $e$}
+Consider the two sequences defined for $n \ge 1$ by:
+\[
+u_n = \sum_{k=0}^n \frac{1}{k!} = 1 + 1 + \frac{1}{2} + \dots + \frac{1}{n!} \qquad \text{and} \qquad v_n = u_n + \frac{1}{n \cdot n!}.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $(u_n)$ is strictly increasing.
+  \item Prove that $(v_n)$ is strictly decreasing.
+  \item Prove that $\lim_{n \to \infty} (v_n - u_n) = 0$.
+  \item Deduce that $(u_n)$ and $(v_n)$ are adjacent and converge to the same limit $e$.
+  \item Prove by contradiction that $e$ is irrational.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Monotonicity of $(u_n)$:}
+\[
+u_{n+1} - u_n = \frac{1}{(n+1)!} > 0.
+\]
+Thus $(u_n)$ is strictly increasing.
+
+\textbf{2. Monotonicity of $(v_n)$:}
+\begin{align*}
+v_{n+1} - v_n &= \left( u_{n+1} + \frac{1}{(n+1)(n+1)!} \right) - \left( u_n + \frac{1}{n \cdot n!} \right) \\
+&= \frac{1}{(n+1)!} + \frac{1}{(n+1)(n+1)!} - \frac{1}{n \cdot n!} \\
+&= \frac{1}{(n+1)!} \left[ 1 + \frac{1}{n+1} - \frac{n+1}{n} \right] \\
+&= \frac{1}{(n+1)!} \left[ \frac{n+2}{n+1} - \frac{n+1}{n} \right] = \frac{1}{(n+1)!} \left[ \frac{n(n+2) - (n+1)^2}{n(n+1)} \right] \\
+&= \frac{1}{(n+1)!} \left[ \frac{n^2 + 2n - (n^2 + 2n + 1)}{n(n+1)} \right] = -\frac{1}{n(n+1)(n+1)!} < 0.
+\end{align*}
+Thus $(v_n)$ is strictly decreasing.
+
+\textbf{3. Gap Limit:}
+\[
+v_n - u_n = \frac{1}{n \cdot n!} \xrightarrow{n \to \infty} 0.
+\]
+
+\textbf{4. Adjacency and Limit $e$:}
+Since $(u_n)$ is increasing, $(v_n)$ is decreasing, and $v_n - u_n \to 0$, the sequences are adjacent.
+By the Adjacent Sequences Theorem, they converge to the exact same limit $\ell = e \approx 2.71828$, and:
+\[
+u_n < e < v_n \iff u_n < e < u_n + \frac{1}{n \cdot n!} \quad \text{for all } n \ge 1.
+\]
+
+\textbf{5. Proof that $e \notin \Q$:}
+Assume for contradiction that $e \in \Q$, so $e = \frac{p}{q}$ for some $p, q \in \N^*$.
+Choose $n = q \ge 1$. From the strict inequality $u_q < e < v_q$:
+\[
+u_q < \frac{p}{q} < u_q + \frac{1}{q \cdot q!}.
+\]
+Multiply all sides by $q!$:
+\[
+q! \cdot u_q < p \cdot (q - 1)! < q! \cdot u_q + \frac{1}{q}.
+\]
+Notice that $q! \cdot u_q = q! \sum_{k=0}^q \frac{1}{k!} = \sum_{k=0}^q \frac{q!}{k!} \in \Z$, because for all $k \le q$, $k!$ divides $q!$.
+Let $M = q! \cdot u_q \in \Z$. Also $p(q-1)! = K \in \Z$ is an integer.
+The inequality becomes:
+\[
+M < K < M + \frac{1}{q}.
+\]
+Since $q \ge 1$, $\frac{1}{q} \le 1$, meaning $M < K < M + 1$.
+This requires the integer $K$ to lie strictly between two consecutive integers $M$ and $M + 1$, which is impossible!
+Contradiction. Therefore, $e$ is irrational. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.9
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Arithmetic-Geometric Recurrence Sequences}
+Consider the sequence $(u_n)_{n \in \N}$ defined by:
+\[
+u_0 = 5 \qquad \text{and} \qquad u_{n+1} = \frac{1}{3}u_n + 4 \quad \text{for all } n \ge 0.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Determine the fixed point $\alpha$ of the recurrence relation: $\alpha = \frac{1}{3}\alpha + 4$.
+  \item Define the auxiliary sequence $v_n = u_n - \alpha$. Prove that $(v_n)$ is a geometric sequence.
+  \item Express $v_n$ and $u_n$ explicitly as functions of $n$.
+  \item Compute $\lim_{n \to \infty} u_n$ and the sum $S_n = \sum_{k=0}^n u_k$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Fixed Point $\alpha$:}
+\[
+\alpha = \frac{1}{3}\alpha + 4 \iff \alpha - \frac{1}{3}\alpha = 4 \iff \frac{2}{3}\alpha = 4 \iff \alpha = 4 \times \frac{3}{2} = 6.
+\]
+
+\textbf{2. Auxiliary Sequence $v_n = u_n - 6$:}
+\[
+v_{n+1} = u_{n+1} - 6 = \left(\frac{1}{3}u_n + 4\right) - 6 = \frac{1}{3}u_n - 2 = \frac{1}{3}(u_n - 6) = \frac{1}{3}v_n.
+\]
+Thus $(v_n)$ is a geometric sequence with common ratio $q = 1/3$.
+Initial term: $v_0 = u_0 - 6 = 5 - 6 = -1$.
+
+\textbf{3. Explicit Expressions:}
+\[
+v_n = v_0 \cdot q^n = -1 \cdot \left(\frac{1}{3}\right)^n = -\frac{1}{3^n}.
+\]
+Since $u_n = v_n + 6$:
+\[
+u_n = 6 - \frac{1}{3^n} = 6 - 3^{-n}.
+\]
+
+\textbf{4. Limit and Sum:}
+Since $|1/3| < 1$, $\lim_{n \to \infty} 3^{-n} = 0$:
+\[
+\lim_{n \to \infty} u_n = 6 - 0 = 6.
+\]
+Sum $S_n = \sum_{k=0}^n u_k$:
+\[
+S_n = \sum_{k=0}^n (6 - 3^{-k}) = 6(n + 1) - \sum_{k=0}^n \left(\frac{1}{3}\right)^k = 6(n + 1) - \frac{1 - (1/3)^{n+1}}{1 - 1/3} = 6n + 6 - \frac{3}{2}\left(1 - \frac{1}{3^{n+1}}\right). \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.10
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Non-Linear Recurrence: $u_{n+1} = \sqrt{2 + u_n}$}
+Consider the sequence $(u_n)_{n \in \N}$ defined by:
+\[
+u_0 = 0 \qquad \text{and} \qquad u_{n+1} = \sqrt{2 + u_n} \quad \text{for } n \ge 0.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Let $f(x) = \sqrt{2 + x}$. Show that $f([0, 2]) \subseteq [0, 2]$.
+  \item Prove by induction that $0 \le u_n \le u_{n+1} \le 2$ for all $n \in \N$.
+  \item Deduce that $(u_n)$ converges and calculate its limit $\ell$.
+  \item Establish the error estimate: $|u_{n+1} - 2| \le \frac{1}{2}|u_n - 2|$, and deduce that $|u_n - 2| \le 2 \cdot 2^{-n}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Stability of $I = [0, 2]$:}
+$f(x) = \sqrt{2 + x}$ is strictly increasing on $[-2, +\infty)$.
+For $x \in [0, 2]$:
+\[
+f(0) = \sqrt{2} \approx 1.414 \ge 0, \qquad f(2) = \sqrt{2 + 2} = \sqrt{4} = 2.
+\]
+Thus $f([0, 2]) = [\sqrt{2}, 2] \subseteq [0, 2]$.
+
+\textbf{2. Induction: $0 \le u_n \le u_{n+1} \le 2$:}
+Let $P(n): 0 \le u_n \le u_{n+1} \le 2$.
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item Base step ($n = 0$): $u_0 = 0$, $u_1 = \sqrt{2}$. Since $0 \le 0 \le \sqrt{2} \le 2$, $P(0)$ holds.
+  \item Induction step: Assume $0 \le u_n \le u_{n+1} \le 2$.
+  Since $f$ is strictly increasing on $[0, 2]$, applying $f$ preserves the order:
+  \[
+  f(0) \le f(u_n) \le f(u_{n+1}) \le f(2) \implies \sqrt{2} \le u_{n+1} \le u_{n+2} \le 2.
+  \]
+  Since $0 \le \sqrt{2}$, we obtain $0 \le u_{n+1} \le u_{n+2} \le 2$, which is $P(n+1)$.
+\end{itemize}
+By induction, $(u_n)$ is increasing and bounded above by $2$.
+
+\textbf{3. Convergence and Limit:}
+By the Monotone Convergence Theorem, $(u_n)$ converges to a finite limit $\ell \in [0, 2]$.
+Since $f$ is continuous on $[0, 2]$, passing to the limit in $u_{n+1} = f(u_n)$:
+\[
+\ell = f(\ell) \iff \ell = \sqrt{2 + \ell} \iff \ell^2 = 2 + \ell \iff \ell^2 - \ell - 2 = 0.
+\]
+Factoring: $(\ell - 2)(\ell + 1) = 0 \implies \ell = 2$ or $\ell = -1$.
+Since $u_n \ge 0$ for all $n$, $\ell \ge 0$, discarding $\ell = -1$.
+Thus $\lim_{n \to \infty} u_n = 2$.
+
+\textbf{4. Error Bound:}
+Multiply by conjugate:
+\[
+|u_{n+1} - 2| = |\sqrt{2 + u_n} - 2| = \frac{|(2 + u_n) - 4|}{\sqrt{2 + u_n} + 2} = \frac{|u_n - 2|}{\sqrt{2 + u_n} + 2}.
+\]
+Since $u_n \ge 0$, the denominator satisfies $\sqrt{2 + u_n} + 2 \ge \sqrt{2} + 2 > 2$.
+Therefore:
+\[
+|u_{n+1} - 2| \le \frac{1}{2}|u_n - 2|.
+\]
+By induction:
+\[
+|u_n - 2| \le \left(\frac{1}{2}\right)^n |u_0 - 2| = 2 \cdot 2^{-n} = 2^{1 - n}. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.11
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{The Cesàro Mean Theorem and Applications}
+Let $(u_n)_{n \ge 1}$ be a real sequence. Define its sequence of arithmetic means (Cesàro means):
+\[
+c_n = \frac{1}{n} \sum_{k=1}^n u_k = \frac{u_1 + u_2 + \dots + u_n}{n}.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove the Cesàro Theorem: If $\lim_{n \to \infty} u_n = \ell \in \R$, then $\lim_{n \to \infty} c_n = \ell$.
+  \item Show that the converse is false by analyzing $u_n = (-1)^n$.
+  \item Application: Let $(x_n)_{n \ge 1}$ be a sequence of strictly positive numbers. Prove that if $\lim_{n \to \infty} \frac{x_{n+1}}{x_n} = \ell > 0$, then $\lim_{n \to \infty} \sqrt[n]{x_n} = \ell$.
+  \item Calculate: $\lim_{n \to \infty} \frac{\sqrt[n]{n!}}{n}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Proof of the Cesàro Theorem:}
+Assume $\lim_{n \to \infty} u_n = \ell$. Let $\varepsilon > 0$.
+There exists $N_0 \in \N^*$ such that for all $k \ge N_0$, $|u_k - \ell| < \varepsilon/2$.
+For $n > N_0$, split the Cesàro sum:
+\begin{align*}
+|c_n - \ell| &= \left| \frac{1}{n}\sum_{k=1}^n (u_k - \ell) \right| \le \frac{1}{n}\sum_{k=1}^{N_0} |u_k - \ell| + \frac{1}{n}\sum_{k=N_0+1}^n |u_k - \ell| \\
+&< \frac{1}{n}\sum_{k=1}^{N_0} |u_k - \ell| + \frac{n - N_0}{n}\frac{\varepsilon}{2} < \frac{M}{n} + \frac{\varepsilon}{2},
+\end{align*}
+where $M = \sum_{k=1}^{N_0} |u_k - \ell|$ is a fixed constant independent of $n$.
+Since $\lim_{n \to \infty} \frac{M}{n} = 0$, there exists $N_1 \in \N$ such that for all $n \ge N_1$, $\frac{M}{n} < \frac{\varepsilon}{2}$.
+Setting $N = \max(N_0, N_1)$, for all $n \ge N$:
+\[
+|c_n - \ell| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+\]
+Thus $\lim_{n \to \infty} c_n = \ell$. \hfill $\blacksquare$
+
+\textbf{2. Converse is False (Counterexample):}
+Let $u_n = (-1)^n$. The sequence alternates $-1, 1, -1, 1, \dots$ and diverges.
+However:
+\[
+c_n = \frac{1}{n}\sum_{k=1}^n (-1)^k = \begin{cases} 0 & \text{if } n \text{ is even} \\ -1/n & \text{if } n \text{ is odd} \end{cases} \implies \lim_{n \to \infty} c_n = 0.
+\]
+The Cesàro mean converges to 0 even though $(u_n)$ diverges.
+
+\textbf{3. Root Limit from Ratio Limit:}
+Let $y_n = \ln(x_n)$. Then $\sqrt[n]{x_n} = \exp\left(\frac{1}{n}\ln(x_n)\right)$.
+Notice that $\ln(x_n) = \ln(x_1) + \sum_{k=1}^{n-1} \ln\left(\frac{x_{k+1}}{x_k}\right)$.
+Let $w_k = \ln\left(\frac{x_{k+1}}{x_k}\right)$. By hypothesis, $w_k \to \ln(\ell)$.
+Applying Cesàro to $(w_k)$:
+\[
+\frac{\ln(x_n)}{n} \xrightarrow{n \to \infty} \ln(\ell).
+\]
+By continuity of the exponential function, $\lim_{n \to \infty} \sqrt[n]{x_n} = e^{\ln(\ell)} = \ell$.
+
+\textbf{4. Computation of $\lim \frac{\sqrt[n]{n!}}{n}$:}
+Rewrite $\frac{\sqrt[n]{n!}}{n} = \sqrt[n]{\frac{n!}{n^n}}$.
+Let $x_n = \frac{n!}{n^n}$. Compute the ratio $\frac{x_{n+1}}{x_n}$:
+\[
+\frac{x_{n+1}}{x_n} = \frac{(n+1)!}{(n+1)^{n+1}} \cdot \frac{n^n}{n!} = \frac{(n+1) n! \cdot n^n}{(n+1)(n+1)^n n!} = \left(\frac{n}{n+1}\right)^n = \frac{1}{(1 + 1/n)^n}.
+\]
+As $n \to \infty$, $(1 + 1/n)^n \to e$, so $\lim_{n \to \infty} \frac{x_{n+1}}{x_n} = \frac{1}{e}$.
+By part 3:
+\[
+\lim_{n \to \infty} \frac{\sqrt[n]{n!}}{n} = \frac{1}{e}. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 4.12
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Gauss's Arithmetic-Geometric Mean (AGM)}
+Let $0 < b_0 < a_0$. Define the coupled sequences for $n \ge 0$ by:
+\[
+a_{n+1} = \frac{a_n + b_n}{2} \qquad \text{and} \qquad b_{n+1} = \sqrt{a_n b_n}.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that for all $n \ge 0$, $b_n \le b_{n+1} \le a_{n+1} \le a_n$ using the AM-GM inequality.
+  \item Prove that $(a_n)$ is decreasing, $(b_n)$ is increasing, and both converge.
+  \item Show that $a_{n+1} - b_{n+1} = \frac{(a_n - b_n)^2}{2(\sqrt{a_n} + \sqrt{b_n})^2} \le \frac{(a_n - b_n)^2}{8b_0}$.
+  \item Deduce that $\lim_{n \to \infty} (a_n - b_n) = 0$, so $(a_n)$ and $(b_n)$ are adjacent and converge to a common value $M(a_0, b_0)$ (Gauss's AGM).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. AM-GM Inequality and Ordering:}
+By the Arithmetic-Geometric Mean inequality, for any positive numbers $x, y > 0$:
+\[
+\sqrt{xy} \le \frac{x + y}{2}, \quad \text{with equality iff } x = y.
+\]
+Applied to $a_n, b_n$:
+\[
+b_{n+1} = \sqrt{a_n b_n} \le \frac{a_n + b_n}{2} = a_{n+1}.
+\]
+Since $b_n < a_n$, we also have:
+\[
+a_{n+1} = \frac{a_n + b_n}{2} < \frac{a_n + a_n}{2} = a_n,
+\]
+\[
+b_{n+1} = \sqrt{a_n b_n} > \sqrt{b_n b_n} = b_n.
+\]
+Thus for all $n \ge 0$:
+\[
+b_0 \le b_n < b_{n+1} \le a_{n+1} < a_n \le a_0.
+\]
+
+\textbf{2. Convergence of Both Sequences:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item $(a_n)$ is strictly decreasing and bounded below by $b_0$. By the Monotone Convergence Theorem, $a_n \to \ell_a$.
+  \item $(b_n)$ is strictly increasing and bounded above by $a_0$. By the Monotone Convergence Theorem, $b_n \to \ell_b$.
+\end{itemize}
+
+\textbf{3. Quadratic Difference Formula:}
+\begin{align*}
+a_{n+1} - b_{n+1} &= \frac{a_n + b_n}{2} - \sqrt{a_n b_n} = \frac{a_n - 2\sqrt{a_n b_n} + b_n}{2} = \frac{(\sqrt{a_n} - \sqrt{b_n})^2}{2} \\
+&= \frac{1}{2} \left( \frac{a_n - b_n}{\sqrt{a_n} + \sqrt{b_n}} \right)^2 = \frac{(a_n - b_n)^2}{2(\sqrt{a_n} + \sqrt{b_n})^2}.
+\end{align*}
+Since $a_n \ge b_n \ge b_0$, we have $\sqrt{a_n} + \sqrt{b_n} \ge 2\sqrt{b_0}$, so $(\sqrt{a_n} + \sqrt{b_n})^2 \ge 4b_0$.
+Therefore:
+\[
+a_{n+1} - b_{n+1} \le \frac{(a_n - b_n)^2}{8b_0}.
+\]
+
+\textbf{4. Adjacency and Gauss's AGM:}
+From the recursive relation $a_{n+1} = \frac{a_n + b_n}{2}$, taking limits on both sides:
+\[
+\ell_a = \frac{\ell_a + \ell_b}{2} \implies 2\ell_a = \ell_a + \ell_b \implies \ell_a = \ell_b.
+\]
+Thus $\lim_{n \to \infty} (a_n - b_n) = 0$.
+The sequences $(a_n)$ and $(b_n)$ are adjacent, converging to the exact same value:
+\[
+M(a_0, b_0) = \lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n.
+\]
+This common limit is the Arithmetic-Geometric Mean of Gauss, famously used to rapidly compute elliptic integrals and digits of $\pi$. \hfill $\blacksquare$
+\end{solution}

@@ -1,0 +1,238 @@
+\documentclass[11pt,oneside,openany]{book}
+
+% ---------------------------------------------------------------------------
+% PAGE GEOMETRY & TYPOGRAPHY
+% ---------------------------------------------------------------------------
+\usepackage[a4paper,top=2.2cm,bottom=2.3cm,left=2.0cm,right=2.0cm,headheight=16pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{emptypage}
+
+% ---------------------------------------------------------------------------
+% MATHEMATICS PACKAGES
+% ---------------------------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+
+% ---------------------------------------------------------------------------
+% GRAPHICS, TIKZ & TABLES
+% ---------------------------------------------------------------------------
+\usepackage{graphicx}
+\graphicspath{{figures/}{images/}}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,patterns,shapes}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{caption}
+\captionsetup{font=small,labelfont={bf,color=navyblue},width=0.92\textwidth}
+
+% ---------------------------------------------------------------------------
+% COLOR PALETTE (Authoritative Academic Palette)
+% ---------------------------------------------------------------------------
+\definecolor{navyblue}{HTML}{0F2A4A}
+\definecolor{accentcrimson}{HTML}{8C1D40}
+\definecolor{forestgreen}{HTML}{134E3F}
+\definecolor{ambergold}{HTML}{B45309}
+\definecolor{slateink}{HTML}{1F2937}
+\definecolor{lightgraybg}{HTML}{F8FAFC}
+\definecolor{borderblue}{HTML}{1E40AF}
+\definecolor{softgreen}{HTML}{F0FDF4}
+\definecolor{softred}{HTML}{FEF2F2}
+\definecolor{softblue}{HTML}{F0F7FF}
+\definecolor{softamber}{HTML}{FFFBEB}
+\definecolor{gridblue}{HTML}{CBD5E1}
+
+% ---------------------------------------------------------------------------
+% CALLOUT BOXES & THEOREMS (tcolorbox)
+% ---------------------------------------------------------------------------
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% Definition Box
+\newtcolorbox{definitionbox}[1]{
+  enhanced, breakable, colback=softblue, colframe=navyblue,
+  boxrule=0.6pt, leftrule=4pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt,
+  fonttitle=\sffamily\bfseries\small,
+  title={\textsc{Definition} \enspace\textperiodcentered\enspace #1},
+  coltitle=white, colbacktitle=navyblue
+}
+
+% Theorem Box
+\newtcolorbox{theorembox}[1]{
+  enhanced, breakable, colback=softred, colframe=accentcrimson,
+  boxrule=0.6pt, leftrule=4pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt,
+  fonttitle=\sffamily\bfseries\small,
+  title={\textsc{Theorem} \enspace\textperiodcentered\enspace #1},
+  coltitle=white, colbacktitle=accentcrimson
+}
+
+% Proposition / Lemma Box
+\newtcolorbox{propbox}[1]{
+  enhanced, breakable, colback=softgreen, colframe=forestgreen,
+  boxrule=0.6pt, leftrule=4pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt,
+  fonttitle=\sffamily\bfseries\small,
+  title={\textsc{Proposition / Lemma} \enspace\textperiodcentered\enspace #1},
+  coltitle=white, colbacktitle=forestgreen
+}
+
+% Historical Context Box
+\newtcolorbox{historicalbox}[1]{
+  enhanced, breakable, colback=softamber, colframe=ambergold,
+  boxrule=0.6pt, leftrule=4pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt,
+  fonttitle=\sffamily\bfseries\small,
+  title={\textsc{Historical Milestone} \enspace\textperiodcentered\enspace #1},
+  coltitle=white, colbacktitle=ambergold
+}
+
+% Worked Example Box (Auto counter)
+\newtcolorbox[auto counter, number within=chapter]{workedexample}[1]{
+  enhanced, breakable, colback=lightgraybg, colframe=borderblue,
+  boxrule=0.6pt, leftrule=4pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt,
+  fonttitle=\sffamily\bfseries\small,
+  title={\textsc{Worked Example \thetcbcounter} \enspace\textperiodcentered\enspace #1},
+  coltitle=white, colbacktitle=borderblue
+}
+
+% ---------------------------------------------------------------------------
+% HEADERS, FOOTERS & TITLES
+% ---------------------------------------------------------------------------
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\bfseries\color{navyblue}}
+  {\filleft\Large\textsc{\chaptertitlename}~\thechapter}
+  {8pt}
+  {\Huge\filright}
+  [\vspace{6pt}{\color{navyblue!40}\titlerule[1.2pt]}]
+\titlespacing*{\chapter}{0pt}{-10pt}{24pt}
+
+\titleformat{\section}
+  {\normalfont\sffamily\bfseries\Large\color{navyblue}}
+  {\thesection}{0.8em}{}
+\titlespacing*{\section}{0pt}{2.2ex plus .3ex}{0.8ex}
+
+\titleformat{\subsection}
+  {\normalfont\sffamily\bfseries\large\color{accentcrimson}}
+  {\thesubsection}{0.8em}{}
+\titlespacing*{\subsection}{0pt}{1.8ex plus .2ex}{0.6ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{slateink!70}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\sffamily\color{slateink!70}\thepage}
+\fancyfoot[C]{\small\sffamily\color{slateink!60}University Mathematics I --- Analysis, Logic \& Algebraic Foundations}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{navyblue!25}\leaders\hrule height \headrulewidth\hfill}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\sffamily\color{slateink!60}\thepage}%
+  \renewcommand{\headrulewidth}{0pt}}
+
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+
+\renewcommand{\cftchapfont}{\sffamily\bfseries\color{navyblue}}
+\renewcommand{\cftchappagefont}{\sffamily\bfseries\color{navyblue}}
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftsecpagefont}{\sffamily}
+\setcounter{tocdepth}{2}
+
+% ---------------------------------------------------------------------------
+% HYPERREF & MACROS
+% ---------------------------------------------------------------------------
+\usepackage[colorlinks=true,linkcolor=navyblue,urlcolor=accentcrimson,citecolor=navyblue,
+            pdftitle={University Mathematics I: Comprehensive Theory Textbook},
+            pdfauthor={Abderraouf Boudjema}]{hyperref}
+\usepackage{xurl}
+\usepackage{cleveref}
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+
+% ===========================================================================
+% DOCUMENT
+% ===========================================================================
+\begin{document}
+
+% ---------------------------------------------------------------------------
+% TITLE PAGE
+% ---------------------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[navyblue] (current page.north west) rectangle ([yshift=-5.8cm]current page.north east);
+  \fill[accentcrimson] ([yshift=-5.8cm]current page.north west) rectangle ([yshift=-6.02cm]current page.north east);
+  \node[anchor=north west, text=white, font=\sffamily\bfseries\small\scshape]
+    at ([xshift=2.2cm,yshift=-1.9cm]current page.north west) {UNIVERSITY TEXTBOOK SERIES IN MATHEMATICAL SCIENCES};
+  \node[anchor=north west, text=white, font=\sffamily\bfseries\fontsize{38}{44}\selectfont]
+    at ([xshift=2.2cm,yshift=-2.7cm]current page.north west) {UNIVERSITY};
+  \node[anchor=north west, text=white, font=\sffamily\bfseries\fontsize{38}{44}\selectfont]
+    at ([xshift=2.2cm,yshift=-4.0cm]current page.north west) {MATHEMATICS I};
+  \node[anchor=north west, text=white, font=\sffamily\Large]
+    at ([xshift=2.2cm,yshift=-5.1cm]current page.north west) {Analysis, Mathematical Logic \& Algebraic Foundations};
+\end{tikzpicture}
+
+\vspace*{6.0cm}
+\begin{flushleft}
+{\sffamily\bfseries\color{navyblue}\fontsize{24}{29}\selectfont Comprehensive Theory, Formal Proofs \& Worked Examples}\\[12pt]
+{\sffamily\color{accentcrimson}\Large Designed for First-Year Physics, Chemistry \& Engineering Undergraduates}\\[22pt]
+{\large Covering Propositional Logic, Quantifiers, Set Theory, Binary Relations, Groups, Rings,\\[3pt]
+The Real Completeness Axiom, Numerical Sequences, $\varepsilon$-$\delta$ Continuity, Differential Calculus,\\[3pt]
+Rolle's \& Mean Value Theorems, Taylor Expansions, and Riemann Integration.}\\[14pt]
+{\normalsize Enriched with authentic historical portraits of pioneer mathematicians from Wikimedia Commons,\\[2pt]
+precision TikZ analytical diagrams, rigorous proofs from scratch, and in-depth multi-step worked examples.}
+\end{flushleft}
+
+\vfill
+\begin{flushleft}
+{\sffamily\bfseries\large Abderraouf Boudjema}\\[4pt]
+{\sffamily\color{slateink!70}Department of Sciences $\cdot$ First Edition}\\[2pt]
+{\sffamily\color{slateink!70}\today}
+\end{flushleft}
+\end{titlepage}
+
+\frontmatter
+\pagestyle{plain}
+
+% ---------------------------------------------------------------------------
+% PREFACE
+% ---------------------------------------------------------------------------
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{}
+
+This textbook provides a rigorous, exhaustive, and pedagogical presentation of **University Mathematics I** (Calculus, Real Analysis, Mathematical Logic, and Abstract Algebraic Structures). Designed specifically for undergraduate students in the physical sciences, chemistry, and engineering, it bridges the gap between high school calculus and axiomatic modern university mathematics.
+
+\section*{Pedagogical Philosophy and Structure}
+\begin{enumerate}[leftmargin=1.8em,itemsep=5pt]
+  \item \textbf{Axiomatic Rigor from First Principles:} Mathematical definitions are stated with uncompromising precision using standard first-order logical quantifiers ($\forall, \exists, \exists!$). Key theorems (Completeness of $\mathbb{R}$, Bolzano-Weierstrass, Monotone Convergence, Intermediate Value Theorem, Rolle, Mean Value Theorem, Taylor with Lagrange remainder, Fundamental Theorem of Calculus) are accompanied by complete, step-by-step proofs.
+  \item \textbf{Geometric and Analytical Visualizations:} Concepts are illuminated with standalone TikZ vector diagrams depicting set operations, mapping classifications, the supremum characterization, $\varepsilon$-$N$ sequence convergence tubes, $\varepsilon$-$\delta$ continuity neighborhoods, tangent-secant Mean Value parallelism, and Riemann sum approximations.
+  \item \textbf{Historical Milestones and Human Dimension:} Authentic historical portraits of foundational thinkers (Boole, Cantor, Dedekind, Cauchy, Weierstrass, Bolzano, Newton, Leibniz, Euler, Taylor, Lagrange, Riemann, Galois, Rolle) provide context for the evolutionary milestones of mathematical thought.
+  \item \textbf{Multi-Step Worked Examples:} Each chapter concludes with detailed worked examples demonstrating how abstract theorems translate into concrete proof techniques and computational mastery.
+\end{enumerate}
+
+\tableofcontents
+
+\mainmatter
+\pagestyle{fancy}
+
+\input{chapters/ch01_logic_sets}
+\input{chapters/ch02_relations_structures}
+\input{chapters/ch03_real_numbers}
+\input{chapters/ch04_sequences}
+\input{chapters/ch05_functions_derivatives}
+\input{chapters/ch06_taylor_integrals}
+\input{chapters/appA_reference_tables}
+
+\end{document}

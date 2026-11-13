@@ -1,0 +1,1081 @@
+\chapter{Radioactivity and Nuclear Reactions}
+\label{chap:exo_ch03}
+
+\begin{quicksummary}{Decay Laws, Kinetics, Activity Units \& Radiometric Dating}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Soddy-Fajans Conservation Laws:}
+  In any nuclear transformation:
+  \[
+  \sum Z_{\text{reactants}} = \sum Z_{\text{products}}, \qquad 
+  \sum A_{\text{reactants}} = \sum A_{\text{products}}.
+  \]
+  \item \textbf{Fundamental Decay Modes:}
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item \textit{Alpha ($\alpha$):} $\ce{^{A}_{Z}X -> ^{A-4}_{Z-2}Y + ^{4}_{2}He}$.
+    \item \textit{Beta Minus ($\beta^-$):} $\ce{^{A}_{Z}X -> ^{A}_{Z+1}Y + ^{0}_{-1}e + \bar{\nu}_e}$ \quad ($n \to p + e^- + \bar{\nu}_e$).
+    \item \textit{Beta Plus ($\beta^+$):} $\ce{^{A}_{Z}X -> ^{A}_{Z-1}Y + ^{0}_{+1}e + \nu_e}$ \quad ($p \to n + e^+ + \nu_e$).
+    \item \textit{Electron Capture (EC):} $\ce{^{A}_{Z}X + ^{0}_{-1}e -> ^{A}_{Z-1}Y + \nu_e}$.
+    \item \textit{Gamma De-excitation ($\gamma$):} $\ce{^{A}_{Z}X^* -> ^{A}_{Z}X + \gamma}$.
+  \end{itemize}
+  \item \textbf{Decay Kinetics \& Exponential Law:}
+  \[
+  \frac{\dd N}{\dd t} = -\lambda N(t) \implies N(t) = N_0 e^{-\lambda t}, \qquad m(t) = m_0 e^{-\lambda t}.
+  \]
+  \item \textbf{Half-Life ($t_{1/2}$) \& Mean Lifetime ($\tau$):}
+  \[
+  t_{1/2} = \frac{\ln 2}{\lambda} = \frac{0.693147}{\lambda}, \qquad \tau = \frac{1}{\lambda} = \frac{t_{1/2}}{\ln 2}.
+  \]
+  After $k$ half-lives ($t = k \cdot t_{1/2}$): $N(t) = \dfrac{N_0}{2^k}$.
+  \item \textbf{Activity ($A$) \& Units:}
+  \[
+  A(t) = -\frac{\dd N}{\dd t} = \lambda N(t) = A_0 e^{-\lambda t}.
+  \]
+  \[
+  1\ \mathrm{Becquerel\ (Bq)} = 1\ \mathrm{decay\cdot s^{-1}}, \qquad 1\ \mathrm{Curie\ (Ci)} = 3.7 \times 10^{10}\ \mathrm{Bq}.
+  \]
+  \item \textbf{Radiometric Dating Formulas:}
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item \textit{Radiocarbon ($^{14}\ce{C}$):} $t = \dfrac{t_{1/2}}{\ln 2} \ln \left( \dfrac{A_0}{A(t)} \right) = \dfrac{5730\ \mathrm{yr}}{\ln 2} \ln \left( \dfrac{A_0}{A(t)} \right)$.
+    \item \textit{Uranium-Lead ($^{238}\ce{U} \to ^{206}\ce{Pb}$):} $t = \dfrac{1}{\lambda} \ln \left( 1 + \dfrac{N(\ce{^{206}Pb})}{N(\ce{^{238}U})} \right)$.
+  \end{itemize}
+\end{enumerate}
+\end{quicksummary}
+
+\vspace{10pt}
+
+% ===========================================================================
+% EXERCISE 3.1
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Physical Properties and Shielding of Nuclear Radiations}
+Summarize the fundamental physical properties of the four primary ionizing radiations:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Complete a comparative table specifying for $\alpha$, $\beta^-$, $\beta^+$, and $\gamma$:
+  \begin{itemize}[itemsep=1pt]
+    \item Particle nature and composition;
+    \item Electric charge (in units of elementary charge $e$);
+    \item Rest mass (in atomic mass units $\mathrm{u}$);
+    \item Penetrating power and typical shielding material required to stop it.
+  \end{itemize}
+  \item Explain why alpha radiation is benign outside the human body but exceptionally lethal when inhaled or ingested.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Comparative Table of Radiations:}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}p{2.3cm}p{3.1cm}p{1.8cm}p{2.3cm}p{5.5cm}@{}}
+\toprule
+\textbf{Radiation} & \textbf{Nature} & \textbf{Charge} & \textbf{Rest Mass} & \textbf{Shielding Required} \\
+\midrule
+Alpha ($\alpha$) & $\ce{^{4}_{2}He}^{2+}$ nucleus & $+2\,e$ & $4.0015\ \mathrm{u}$ & Sheet of paper, dead skin layer ($40\ \mu\mathrm{m}$) \\
+Beta Minus ($\beta^-$) & Fast electron ($e^-$) & $-1\,e$ & $0.000549\ \mathrm{u}$ & Few mm of aluminum or Plexiglas \\
+Beta Plus ($\beta^+$) & Positron ($e^+$) & $+1\,e$ & $0.000549\ \mathrm{u}$ & Annihilates with $e^-$ into two $511\ \mathrm{keV}\ \gamma$ photons \\
+Gamma ($\gamma$) & High-energy photon & $0$ & $0$ & Several cm of lead ($\ce{Pb}$) or dense concrete \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{2. Internal vs. External Biological Hazard of $\alpha$-Radiation:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Externally:} Alpha particles have very low penetration ($< 0.05\ \mathrm{mm}$ in tissue). They are completely stopped by the dead stratum corneum layer of human skin and cannot reach living cells.
+  \item \textbf{Internally (Inhaled/Ingested):} Alpha particles possess high mass and $+2e$ charge, resulting in an extremely high \textbf{linear energy transfer (LET)}. They dump their full kinetic energy ($\approx 4\text{--}8\ \mathrm{MeV}$) within a tiny cellular volume ($\approx 40\ \mu\mathrm{m}$, the diameter of 2--3 cells), causing severe double-strand DNA breaks, chromosomal aberrations, and cellular death.
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.2
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Soddy-Fajans Conservation Laws in Alpha Decay}
+Applying the Soddy-Fajans conservation laws of nucleon number $A$ and charge number $Z$, complete and balance each of the following alpha decay processes:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Uranium-238 alpha decay: $\ce{^{238}_{92}U ->} \mathbf{?} + \ce{^{4}_{2}He}$
+  \item Radium-226 alpha decay: $\ce{^{226}_{88}Ra ->} \mathbf{?} + \ce{^{4}_{2}He}$
+  \item Polonium-210 alpha decay: $\ce{^{210}_{84}Po ->} \mathbf{?} + \ce{^{4}_{2}He}$
+  \item Americium-241 alpha decay (smoke detectors): $\ce{^{241}_{95}Am ->} \mathbf{?} + \ce{^{4}_{2}He}$
+\end{enumerate}
+Identify the daughter element in each case using the periodic table.
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+For alpha decay: $\ce{^{A}_{Z}X -> ^{A-4}_{Z-2}Y + ^{4}_{2}He}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=3pt]
+  \item $\ce{^{238}_{92}U}$:
+  $A = 238 - 4 = 234,\ Z = 92 - 2 = 90$ (Thorium, $\ce{Th}$):
+  \[
+  \ce{^{238}_{92}U -> ^{234}_{90}Th + ^{4}_{2}He}.
+  \]
+  \item $\ce{^{226}_{88}Ra}$:
+  $A = 226 - 4 = 222,\ Z = 88 - 2 = 86$ (Radon, $\ce{Rn}$):
+  \[
+  \ce{^{226}_{88}Ra -> ^{222}_{86}Rn + ^{4}_{2}He}.
+  \]
+  \item $\ce{^{210}_{84}Po}$:
+  $A = 210 - 4 = 206,\ Z = 84 - 2 = 82$ (Lead, $\ce{Pb}$):
+  \[
+  \ce{^{210}_{84}Po -> ^{206}_{82}Pb + ^{4}_{2}He}.
+  \]
+  \item $\ce{^{241}_{95}Am}$:
+  $A = 241 - 4 = 237,\ Z = 95 - 2 = 93$ (Neptunium, $\ce{Np}$):
+  \[
+  \ce{^{241}_{95}Am -> ^{237}_{93}Np + ^{4}_{2}He}.
+  \]
+\end{enumerate}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.3
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Balancing Beta Minus ($\beta^-$) and Beta Plus ($\beta^+$) Decays}
+Write the complete, balanced nuclear reaction for each decay, including the emitted electron or positron and the corresponding antineutrino ($\bar{\nu}_e$) or neutrino ($\nu_e$):
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Beta minus decay of Carbon-14 ($\ce{^{14}_{6}C}$).
+  \item Beta minus decay of Iodine-131 ($\ce{^{131}_{53}I}$).
+  \item Beta minus decay of Cobalt-60 ($\ce{^{60}_{27}Co}$).
+  \item Beta plus decay (positron emission) of Carbon-11 ($\ce{^{11}_{6}C}$).
+  \item Beta plus decay of Fluorine-18 ($\ce{^{18}_{9}F}$) used in PET scanning.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{Beta Minus Rules:} $\ce{^{A}_{Z}X -> ^{A}_{Z+1}Y + ^{0}_{-1}e + \bar{\nu}_e}$ (with neutron conversion $n \to p + e^- + \bar{\nu}_e$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Carbon-14:
+  \[
+  \ce{^{14}_{6}C -> ^{14}_{7}N + ^{0}_{-1}e + \bar{\nu}_e}.
+  \]
+  \item Iodine-131:
+  \[
+  \ce{^{131}_{53}I -> ^{131}_{54}Xe + ^{0}_{-1}e + \bar{\nu}_e}.
+  \]
+  \item Cobalt-60:
+  \[
+  \ce{^{60}_{27}Co -> ^{60}_{28}Ni + ^{0}_{-1}e + \bar{\nu}_e}.
+  \]
+\end{enumerate}
+
+\textbf{Beta Plus Rules:} $\ce{^{A}_{Z}X -> ^{A}_{Z-1}Y + ^{0}_{+1}e + \nu_e}$ (with proton conversion $p \to n + e^+ + \nu_e$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \setcounter{enumi}{3}
+  \item Carbon-11:
+  \[
+  \ce{^{11}_{6}C -> ^{11}_{5}B + ^{0}_{+1}e + \nu_e}.
+  \]
+  \item Fluorine-18:
+  \[
+  \ce{^{18}_{9}F -> ^{18}_{8}O + ^{0}_{+1}e + \nu_e}.
+  \]
+\end{enumerate}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.4
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Electron Capture and Gamma De-excitation}
+Certain proton-rich nuclides decay competitively via orbital electron capture (EC) rather than positron emission:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item In rocks, Potassium-40 undergoes electron capture by capturing an inner K-shell electron:
+  \[
+  \ce{^{40}_{19}K + ^{0}_{-1}e ->} \mathbf{?} + \nu_e.
+  \]
+  Identify the daughter nuclide.
+  \item After electron capture, the atomic electron cloud undergoes reorganization. What characteristic electromagnetic radiation is subsequently emitted?
+  \item The nuclear isomer Technetium-99m ($\ce{^{99m}_{43}Tc}$) decays by isomeric gamma transition. Write the decay equation and explain why its mass number $A$ and atomic number $Z$ remain unchanged.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Electron Capture of Potassium-40:}
+$A = 40 + 0 = 40,\ Z = 19 + (-1) = 18$ (Argon, $\ce{Ar}$):
+\[
+\ce{^{40}_{19}K + ^{0}_{-1}e -> ^{40}_{18}Ar + \nu_e}.
+\]
+
+\textbf{2. Characteristic Atomic Radiation:}
+When an inner K-shell electron is captured by the nucleus, a vacancy is created in the innermost shell. An outer electron (from the L or M shell) drops down into the vacancy, releasing the energy difference as a \textbf{characteristic X-ray photon} ($\ce{K_\alpha}$ or $\ce{K_\beta}$ X-rays) or through the emission of an Auger electron.
+
+\textbf{3. Isomeric Transition of Technetium-99m:}
+\[
+\ce{^{99m}_{43}Tc -> ^{99}_{43}Tc + \gamma} \quad (E_\gamma = 140.5\ \mathrm{keV}).
+\]
+The "m" denotes a metastable nuclear excited state. A gamma decay is a pure electromagnetic transition where the nucleus sheds excess excitation energy without altering the number of protons ($Z=43$) or neutrons ($N=56$).
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.5
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Historic Nuclear Transmutation and Discovery Reactions}
+Write the balanced nuclear equations for three monumental discoveries in modern physics:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Discovery of the Proton (Rutherford, 1919):} Nitrogen-14 bombarded with alpha particles produces an unknown nuclide and a free proton ($\ce{^{1}_{1}p}$ or $\ce{^{1}_{1}H}$).
+  \item \textbf{Discovery of the Neutron (Chadwick, 1932):} Beryllium-9 bombarded with alpha particles produces Carbon-12 and a neutral particle.
+  \item \textbf{First Artificial Radioactivity (Irène \& Frédéric Joliot-Curie, 1934):} Aluminum-27 bombarded with alpha particles ejects a neutron to form a radioactive phosphorus isotope ($\ce{^{30}_{15}P}$), which subsequently decays by positron emission. Write both reactions.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Rutherford's Proton Discovery (1919):}
+Reactants: $A = 14 + 4 = 18,\ Z = 7 + 2 = 9$.
+Known product: $\ce{^{1}_{1}p}$.
+Daughter nuclide: $A = 18 - 1 = 17,\ Z = 9 - 1 = 8$ (Oxygen, $\ce{O}$):
+\[
+\ce{^{14}_{7}N + ^{4}_{2}He -> ^{17}_{8}O + ^{1}_{1}p} \quad (\text{Notation: } \ce{^{14}N(\alpha, p)^{17}O}).
+\]
+
+\textbf{2. Chadwick's Neutron Discovery (1932):}
+Reactants: $A = 9 + 4 = 13,\ Z = 4 + 2 = 6$.
+Known product: $\ce{^{12}_{6}C}$.
+Neutral particle: $A = 13 - 12 = 1,\ Z = 6 - 6 = 0$ (Neutron, $\ce{^{1}_{0}n}$):
+\[
+\ce{^{9}_{4}Be + ^{4}_{2}He -> ^{12}_{6}C + ^{1}_{0}n} \quad (\text{Notation: } \ce{^{9}Be(\alpha, n)^{12}C}).
+\]
+
+\textbf{3. Joliot-Curie Artificial Radioactivity (1934):}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item Bombardment synthesis:
+  Reactants: $A = 27 + 4 = 31,\ Z = 13 + 2 = 15$. Ejected particle: $\ce{^{1}_{0}n}$.
+  \[
+  \ce{^{27}_{13}Al + ^{4}_{2}He -> ^{30}_{15}P + ^{1}_{0}n}.
+  \]
+  \item Radioactive decay of synthesized phosphorus-30 ($t_{1/2} = 2.50\ \mathrm{min}$):
+  \[
+  \ce{^{30}_{15}P -> ^{30}_{14}Si + ^{0}_{+1}e + \nu_e}.
+  \]
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.6
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Decay Constant, Half-Life, and Mean Lifetime}
+The decay kinetics of a radioactive nuclide are governed by the differential equation $\dd N / \dd t = -\lambda N$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Integrate this differential equation analytically with initial condition $N(0) = N_0$ to derive $N(t) = N_0 e^{-\lambda t}$.
+  \item Derive the exact relationship between the half-life $t_{1/2}$ and the decay constant $\lambda$.
+  \item Radon-222 ($\ce{^{222}_{86}Rn}$) has a half-life of $t_{1/2} = 3.823\ \mathrm{days}$. Calculate its decay constant $\lambda$ in $\mathrm{day^{-1}}$ and in SI units ($\mathrm{s^{-1}}$).
+  \item Calculate the mean lifetime $\tau = 1/\lambda$ of a Radon-222 nucleus.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Analytical Integration:}
+Separate variables:
+\[
+\frac{\dd N}{N} = -\lambda \dd t.
+\]
+Integrate from $t = 0$ ($N = N_0$) to time $t$ ($N = N(t)$):
+\[
+\int_{N_0}^{N(t)} \frac{\dd N}{N} = -\lambda \int_0^t \dd t \implies \ln \left( \frac{N(t)}{N_0} \right) = -\lambda t.
+\]
+Exponentiating both sides:
+\[
+\frac{N(t)}{N_0} = e^{-\lambda t} \implies \mathbf{N(t) = N_0 e^{-\lambda t}}. \quad \text{Q.E.D.}
+\]
+
+\textbf{2. Derivation of Half-Life Formula:}
+By definition of the half-life $t_{1/2}$, at $t = t_{1/2}$, exactly half the nuclei remain: $N(t_{1/2}) = N_0 / 2$.
+\[
+\frac{N_0}{2} = N_0 e^{-\lambda t_{1/2}} \implies e^{\lambda t_{1/2}} = 2 \implies \lambda t_{1/2} = \ln 2.
+\]
+\[
+\mathbf{t_{1/2} = \frac{\ln 2}{\lambda} \approx \frac{0.693147}{\lambda}}, \qquad \mathbf{\lambda = \frac{\ln 2}{t_{1/2}}}.
+\]
+
+\textbf{3. Calculations for Radon-222:}
+\[
+\lambda = \frac{\ln 2}{3.823\ \mathrm{days}} = \mathbf{0.1813\ \mathrm{day^{-1}}}.
+\]
+Converting days to seconds ($1\ \mathrm{day} = 86\,400\ \mathrm{s}$):
+\[
+t_{1/2} = 3.823 \times 86\,400\ \mathrm{s} = 330\,307.2\ \mathrm{s}.
+\]
+\[
+\lambda = \frac{\ln 2}{330\,307.2\ \mathrm{s}} = \mathbf{2.0985 \times 10^{-6}\ \mathrm{s^{-1}}}.
+\]
+
+\textbf{4. Mean Lifetime $\tau$:}
+\[
+\tau = \frac{1}{\lambda} = \frac{1}{0.1813\ \mathrm{day^{-1}}} = \mathbf{5.515\ \mathrm{days}} \approx \mathbf{4.765 \times 10^5\ \mathrm{s}}.
+\]
+Notice that $\tau = t_{1/2} / \ln 2 \approx 1.443 \, t_{1/2}$.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.7
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Absolute Activity: The Becquerel and the Curie}
+The historical Curie unit ($1\ \mathrm{Ci}$) was originally defined by Marie Curie as the activity of exactly $1.000\ \mathrm{g}$ of pure Radium-226 ($\ce{^{226}_{88}Ra}$).
+\begin{itemize}[itemsep=1pt]
+  \item Molar mass of Radium-226: $M = 226.025\ \mathrm{g\cdot mol^{-1}}$
+  \item Half-life: $t_{1/2} = 1600\ \mathrm{years}$ ($1\ \mathrm{yr} = 365.25\ \mathrm{days} = 3.15576 \times 10^7\ \mathrm{s}$)
+  \item $N_A = 6.022\,141 \times 10^{23}\ \mathrm{mol^{-1}}$
+\end{itemize}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the decay constant $\lambda$ of Radium-226 in $\mathrm{s^{-1}}$.
+  \item Determine the number of radium nuclei $N$ in $1.000\ \mathrm{g}$ of $\ce{^{226}Ra}$.
+  \item Compute the absolute activity $A = \lambda N$ in Becquerels ($\mathrm{Bq}$).
+  \item Compare your result to the modern exact definition: $1\ \mathrm{Ci} \equiv 3.700 \times 10^{10}\ \mathrm{Bq}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Decay Constant $\lambda$ in $\mathrm{s^{-1}}$:}
+Half-life in seconds:
+\[
+t_{1/2} = 1600 \times 3.15576 \times 10^7\ \mathrm{s} = 5.0492 \times 10^{10}\ \mathrm{s}.
+\]
+\[
+\lambda = \frac{\ln 2}{t_{1/2}} = \frac{0.693147}{5.0492 \times 10^{10}\ \mathrm{s}} = \mathbf{1.3728 \times 10^{-11}\ \mathrm{s^{-1}}}.
+\]
+
+\textbf{2. Number of Radium Nuclei in $1.000\ \mathrm{g}$:}
+\[
+N = \frac{m}{M} \cdot N_A = \frac{1.000\ \mathrm{g}}{226.025\ \mathrm{g\cdot mol^{-1}}} \times 6.022\,141 \times 10^{23}\ \mathrm{mol^{-1}} = \mathbf{2.6644 \times 10^{21}\ \text{nuclei}}.
+\]
+
+\textbf{3. Absolute Activity $A$ in Becquerels:}
+\[
+A = \lambda N = (1.3728 \times 10^{-11}\ \mathrm{s^{-1}}) \times (2.6644 \times 10^{21}) = \mathbf{3.658 \times 10^{10}\ \mathrm{Bq}}.
+\]
+
+\textbf{4. Comparison with Standard Definition:}
+The calculated activity of $1\ \mathrm{g}$ of $^{226}\ce{Ra}$ ($3.66 \times 10^{10}\ \mathrm{Bq}$) differs by only $1.1\%$ from the standardized definition of the Curie ($3.700 \times 10^{10}\ \mathrm{Bq}$), which was established internationally in 1953 as an exact rounded reference benchmark.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.8
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Radioactive Mass Decay of Iodine-131}
+Iodine-131 ($\ce{^{131}_{53}I}$) is widely used in hospital nuclear medicine for the therapeutic destruction of hyperactive thyroid tissue. It decays by $\beta^-$ emission with a half-life of $t_{1/2} = 8.020\ \mathrm{days}$. A hospital pharmacy receives an initial sample containing $m_0 = 20.00\ \mathrm{mg}$ of pure $\ce{^{131}I}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the remaining mass of $\ce{^{131}I}$ after:
+  \begin{enumerate}[leftmargin=1.2em,itemsep=1pt]
+    \item Exactly two half-lives ($t = 16.04\ \mathrm{days}$).
+    \item Exactly three half-lives ($t = 24.06\ \mathrm{days}$).
+    \item Exactly $30.00\ \mathrm{days}$.
+  \end{enumerate}
+  \item What percentage of the initial radioactivity has decayed after $30.00\ \mathrm{days}$?
+  \item How many days must elapse until only $0.100\%$ ($1/1000$) of the initial iodine remains?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Remaining Mass:}
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item After $k = 2$ half-lives:
+  \[
+  m(16.04\ \mathrm{d}) = \frac{m_0}{2^2} = \frac{20.00\ \mathrm{mg}}{4} = \mathbf{5.000\ \mathrm{mg}}.
+  \]
+  \item After $k = 3$ half-lives:
+  \[
+  m(24.06\ \mathrm{d}) = \frac{m_0}{2^3} = \frac{20.00\ \mathrm{mg}}{8} = \mathbf{2.500\ \mathrm{mg}}.
+  \]
+  \item After $t = 30.00\ \mathrm{days}$:
+  First find $\lambda$: $\lambda = \frac{\ln 2}{8.020\ \mathrm{d}} = 0.086427\ \mathrm{day^{-1}}$.
+  \[
+  m(30.0\ \mathrm{d}) = m_0 e^{-\lambda t} = 20.00 \times e^{-0.086427 \times 30.00} = 20.00 \times e^{-2.5928} = \mathbf{1.496\ \mathrm{mg}}.
+  \]
+\end{enumerate}
+
+\textbf{2. Percentage Decayed after $30.00\ \mathrm{days}$:}
+Fraction remaining: $\frac{1.496}{20.00} = 0.0748 \implies 7.48\%$.
+\[
+\text{Percentage Decayed} = 100\% - 7.48\% = \mathbf{92.52\%}.
+\]
+
+\textbf{3. Time for $0.100\%$ Remaining ($N(t)/N_0 = 10^{-3}$):}
+\[
+\frac{N(t)}{N_0} = e^{-\lambda t} = 0.00100 \implies -\lambda t = \ln(0.00100) = -6.907755.
+\]
+\[
+t = \frac{6.907755}{0.086427\ \mathrm{day^{-1}}} = \mathbf{79.93\ \mathrm{days}} \approx \mathbf{80\ \mathrm{days}}.
+\]
+(Rule of thumb: 10 half-lives reduces activity by $2^{10} = 1024 \approx 1000$; here $10 \times 8.02 = 80.2\ \mathrm{days}$).
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.9
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Determination of Radioactive Half-Life from Activity Data}
+A laboratory technician measures the count rate (activity in counts per minute, $\mathrm{cpm}$) of a newly isolated beta-emitting radioisotope using a Geiger-Müller counter. The recorded data are:
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+Time $t$ (hours) & $0$ & $3.0$ & $6.0$ & $9.0$ & $12.0$ & $18.0$ \\
+\midrule
+Activity $A(t)$ ($\mathrm{cpm}$) & $8400$ & $5940$ & $4200$ & $2970$ & $2100$ & $1050$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item By inspecting the activity values at $t = 0\ \mathrm{h}$, $t = 6.0\ \mathrm{h}$, $t = 12.0\ \mathrm{h}$, and $t = 18.0\ \mathrm{h}$, deduce the half-life $t_{1/2}$ directly.
+  \item Calculate the decay constant $\lambda$ in $\mathrm{h^{-1}}$ and in $\mathrm{s^{-1}}$.
+  \item Predict the expected activity of the sample at $t = 24.0\ \mathrm{hours}$ and at $t = 48.0\ \mathrm{hours}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Direct Deduction of Half-Life:}
+Observe the sequence of recorded activities:
+\begin{itemize}[itemsep=1pt]
+  \item At $t = 0\ \mathrm{h}$: $A_0 = 8400\ \mathrm{cpm}$.
+  \item At $t = 6.0\ \mathrm{h}$: $A(6) = 4200\ \mathrm{cpm} = A_0 / 2$.
+  \item At $t = 12.0\ \mathrm{h}$: $A(12) = 2100\ \mathrm{cpm} = A_0 / 4$.
+  \item At $t = 18.0\ \mathrm{h}$: $A(18) = 1050\ \mathrm{cpm} = A_0 / 8$.
+\end{itemize}
+In every interval of $6.0\ \mathrm{hours}$, the activity is halved precisely. Therefore:
+\[
+\mathbf{t_{1/2} = 6.00\ \mathrm{hours}}.
+\]
+(This corresponds to the well-known medical radioisotope Technetium-99m!).
+
+\textbf{2. Decay Constant $\lambda$:}
+\[
+\lambda = \frac{\ln 2}{6.00\ \mathrm{h}} = \mathbf{0.1155\ \mathrm{h^{-1}}}.
+\]
+In SI units ($1\ \mathrm{h} = 3600\ \mathrm{s}$):
+\[
+\lambda = \frac{0.115525\ \mathrm{h^{-1}}}{3600\ \mathrm{s\cdot h^{-1}}} = \mathbf{3.209 \times 10^{-5}\ \mathrm{s^{-1}}}.
+\]
+
+\textbf{3. Predicted Activities:}
+\begin{itemize}[itemsep=1pt]
+  \item At $t = 24.0\ \mathrm{h}$ ($4$ half-lives):
+  \[
+  A(24) = \frac{A_0}{2^4} = \frac{8400}{16} = \mathbf{525\ \mathrm{cpm}}.
+  \]
+  \item At $t = 48.0\ \mathrm{h}$ ($8$ half-lives):
+  \[
+  A(48) = \frac{A_0}{2^8} = \frac{8400}{256} = \mathbf{32.8\ \mathrm{cpm}}.
+  \]
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.10
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Specific Activity of Pure Phosphorus-32}
+Phosphorus-32 ($\ce{^{32}_{15}P}$, $M = 31.974\ \mathrm{g\cdot mol^{-1}}$) is a pure $\beta^-$ emitter with $t_{1/2} = 14.26\ \mathrm{days}$, used in molecular biology for radiolabeling nucleic acids.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Define the \textbf{specific activity} ($a$) of a radioactive source.
+  \item Derive the algebraic formula for the specific activity $a$ of a carrier-free pure radionuclide in terms of $N_A, M,$ and $t_{1/2}$.
+  \item Calculate the specific activity of carrier-free pure $\ce{^{32}P}$ in:
+  \begin{enumerate}[leftmargin=1.2em,itemsep=1pt]
+    \item Becquerels per gram ($\mathrm{Bq\cdot g^{-1}}$).
+    \item Curies per gram ($\mathrm{Ci\cdot g^{-1}}$).
+  \end{enumerate}
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Definition of Specific Activity:}
+The specific activity $a$ is the activity per unit mass of the substance:
+\[
+a = \frac{A}{m} \quad [\mathrm{Bq\cdot g^{-1}} \text{ or } \mathrm{Ci\cdot g^{-1}}].
+\]
+
+\textbf{2. Algebraic Derivation:}
+For a sample of mass $m$ of a pure radionuclide with molar mass $M$:
+\[
+N = \frac{m}{M} \cdot N_A.
+\]
+The activity is $A = \lambda N = \frac{\ln 2}{t_{1/2}} \cdot \frac{m}{M} \cdot N_A$.
+Dividing by $m$:
+\[
+\mathbf{a = \frac{\ln 2 \cdot N_A}{M \cdot t_{1/2}}}. \quad \text{Q.E.D.}
+\]
+
+\textbf{3. Numerical Calculation for Phosphorus-32:}
+Half-life in seconds:
+\[
+t_{1/2} = 14.26 \times 86\,400\ \mathrm{s} = 1.232\,064 \times 10^6\ \mathrm{s}.
+\]
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item Specific activity in $\mathrm{Bq\cdot g^{-1}}$:
+  \begin{align*}
+  a &= \frac{0.693\,147 \times 6.022\,141 \times 10^{23}\ \mathrm{mol^{-1}}}{31.974\ \mathrm{g\cdot mol^{-1}} \times 1.232\,064 \times 10^6\ \mathrm{s}} \\
+    &= \frac{4.174\,23 \times 10^{23}}{3.9394 \times 10^7} = \mathbf{1.0596 \times 10^{16}\ \mathrm{Bq\cdot g^{-1}}}.
+  \end{align*}
+  \item Specific activity in $\mathrm{Ci\cdot g^{-1}}$:
+  \[
+  a = \frac{1.0596 \times 10^{16}\ \mathrm{Bq\cdot g^{-1}}}{3.700 \times 10^{10}\ \mathrm{Bq\cdot Ci^{-1}}} = \mathbf{286\,380\ \mathrm{Ci\cdot g^{-1}}} \approx \mathbf{2.86 \times 10^5\ \mathrm{Ci\cdot g^{-1}}}.
+  \]
+  A single milligram of carrier-free $\ce{^{32}P}$ carries an astonishing activity of $286\ \mathrm{Ci}$!
+\end{enumerate}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.11
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Nuclear Medicine Radiopharmaceutical Dosage Protocol}
+A nuclear medicine department orders Technetium-99m ($\ce{^{99m}_{43}Tc}$, $t_{1/2} = 6.010\ \mathrm{hours}$) from a regional radiopharmacy. The radiopharmaceutical is calibrated to have an activity of $A_0 = 740.0\ \mathrm{MBq}$ ($20.00\ \mathrm{mCi}$) upon delivery at the hospital at $08:00\ \mathrm{AM}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item A patient is scheduled for a cardiac perfusion SPECT scan at $14:30$ ($2:30\ \mathrm{PM}$) on the same day. Calculate the activity $A$ remaining in the syringe at the time of injection.
+  \item If the scan protocol prescribes a required injected dose of exactly $400.0\ \mathrm{MBq}$, at what exact time of day should the patient have been injected with this syringe?
+  \item If unused, how much activity remains in the syringe after $24.0\ \mathrm{hours}$ (at $08:00\ \mathrm{AM}$ the next day)?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Activity at $14:30$ (Elapsed time $\Delta t = 6.50\ \mathrm{hours}$):}
+Decay constant:
+\[
+\lambda = \frac{\ln 2}{6.010\ \mathrm{h}} = 0.115332\ \mathrm{h^{-1}}.
+\]
+Remaining activity:
+\[
+A(6.50\ \mathrm{h}) = A_0 e^{-\lambda t} = 740.0\ \mathrm{MBq} \times e^{-0.115332 \times 6.50} = 740.0 \times e^{-0.74966} = \mathbf{349.5\ \mathrm{MBq}}.
+\]
+
+\textbf{2. Injection Time for Exactly $400.0\ \mathrm{MBq}$:}
+\[
+\frac{A(t)}{A_0} = \frac{400.0}{740.0} = 0.54054 \implies e^{-\lambda t} = 0.54054
+\]
+\[
+-\lambda t = \ln(0.54054) = -0.61519 \implies t = \frac{0.61519}{0.115332\ \mathrm{h^{-1}}} = 5.334\ \mathrm{hours}.
+\]
+Convert decimal hours to hours and minutes:
+\[
+0.334\ \mathrm{h} \times 60\ \mathrm{min/h} = 20.04\ \mathrm{min} \approx 20\ \mathrm{minutes}.
+\]
+Adding $5\ \mathrm{hours}\ 20\ \mathrm{minutes}$ to $08:00\ \mathrm{AM}$:
+\[
+\text{Injection Time} = \mathbf{13:20\ (1:20\ \mathrm{PM})}.
+\]
+
+\textbf{3. Residual Activity After 24.0 Hours ($k = 24.0 / 6.010 = 3.993 \approx 4$ half-lives):}
+\[
+A(24\ \mathrm{h}) = 740.0 \times e^{-0.115332 \times 24.0} = 740.0 \times e^{-2.7680} = \mathbf{46.33\ \mathrm{MBq}} \approx \mathbf{1.25\ \mathrm{mCi}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.12
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Counting Particle Emissions in Natural Decay Series}
+The natural radioactive decay series cascade through multiple intermediate radionuclides before terminating at a stable lead isotope ($\ce{Pb}$, $Z = 82$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Thorium Series ($4n$):} Thorium-232 ($\ce{^{232}_{90}Th}$) decays through a series of $\alpha$ and $\beta^-$ emissions to stable Lead-208 ($\ce{^{208}_{82}Pb}$).
+  Determine the exact number of alpha particles ($N_\alpha$) and beta particles ($N_\beta$) emitted per transformed parent atom.
+  \item \textbf{Actinium Series ($4n+3$):} Uranium-235 ($\ce{^{235}_{92}U}$) decays to stable Lead-207 ($\ce{^{207}_{82}Pb}$).
+  Determine $N_\alpha$ and $N_\beta$.
+  \item State the general algebraic formula for $N_\alpha$ and $N_\beta$ in any decay chain transitioning from $\ce{^{A_1}_{Z_1}X}$ to $\ce{^{A_2}_{Z_2}Y}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{3. General Algebraic Formula:}
+Let the overall chain transformation be:
+\[
+\ce{^{A_1}_{Z_1}X -> ^{A_2}_{Z_2}Y + N_\alpha \, ^{4}_{2}He + N_\beta \, ^{0}_{-1}e}.
+\]
+Conservation of mass number $A$:
+\[
+A_1 = A_2 + 4 N_\alpha + 0 \implies \mathbf{N_\alpha = \frac{A_1 - A_2}{4}}.
+\]
+Conservation of charge number $Z$:
+\[
+Z_1 = Z_2 + 2 N_\alpha - N_\beta \implies \mathbf{N_\beta = 2 N_\alpha - (Z_1 - Z_2)}.
+\]
+
+\textbf{1. Thorium Series ($\ce{^{232}_{90}Th -> ^{208}_{82}Pb}$):}
+\begin{align*}
+N_\alpha &= \frac{232 - 208}{4} = \frac{24}{4} = \mathbf{6\ \alpha\text{-particles}}. \\
+N_\beta &= 2(6) - (90 - 82) = 12 - 8 = \mathbf{4\ \beta^-\text{-particles}}.
+\end{align*}
+Overall balanced equation:
+\[
+\ce{^{232}_{90}Th -> ^{208}_{82}Pb + 6\,^{4}_{2}He + 4\,^{0}_{-1}e + 4\,\bar{\nu}_e}.
+\]
+
+\textbf{2. Actinium Series ($\ce{^{235}_{92}U -> ^{207}_{82}Pb}$):}
+\begin{align*}
+N_\alpha &= \frac{235 - 207}{4} = \frac{28}{4} = \mathbf{7\ \alpha\text{-particles}}. \\
+N_\beta &= 2(7) - (92 - 82) = 14 - 10 = \mathbf{4\ \beta^-\text{-particles}}.
+\end{align*}
+Overall balanced equation:
+\[
+\ce{^{235}_{92}U -> ^{207}_{82}Pb + 7\,^{4}_{2}He + 4\,^{0}_{-1}e + 4\,\bar{\nu}_e}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.13
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Helium Accumulation from Alpha Emitters}
+Alpha particles are energetic helium nuclei that capture two stray electrons from surrounding matter to become neutral gaseous Helium-4 ($\ce{^{4}_{2}He}$).
+A sealed ampoule contains $m = 1.000\ \mathrm{g}$ of pure Radium-226 chloride ($\ce{RaCl2}$, $M = 296.93\ \mathrm{g\cdot mol^{-1}}$). The radium decays by alpha emission with a half-life of $t_{1/2} = 1600\ \mathrm{years}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Compute the number of $\ce{^{226}Ra}$ nuclei initially present in the ampoule.
+  \item Assuming the ampoule remains sealed for exactly $t = 10.0\ \mathrm{years}$, calculate the number of radium nuclei that decay.
+  \item Assuming each decaying radium nucleus yields one helium atom, determine the volume of helium gas accumulated inside the ampoule measured at standard temperature and pressure ($\mathrm{STP}: V_0 = 22.414\ \mathrm{L\cdot mol^{-1}}$).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Number of Initial Radium Nuclei ($N_0$):}
+\[
+n(\ce{RaCl2}) = \frac{1.000\ \mathrm{g}}{296.93\ \mathrm{g\cdot mol^{-1}}} = 3.3678 \times 10^{-3}\ \mathrm{mol}.
+\]
+Since each formula unit contains one radium atom:
+\[
+N_0 = 3.3678 \times 10^{-3}\ \mathrm{mol} \times 6.022\,141 \times 10^{23}\ \mathrm{mol^{-1}} = \mathbf{2.0281 \times 10^{21}\ \text{nuclei}}.
+\]
+
+\textbf{2. Number of Decays in $10.0\ \mathrm{years}$:}
+Decay constant in $\mathrm{yr^{-1}}$:
+\[
+\lambda = \frac{\ln 2}{1600\ \mathrm{yr}} = 4.332 \times 10^{-4}\ \mathrm{yr^{-1}}.
+\]
+Since $\lambda t = 4.332 \times 10^{-4} \times 10.0 = 4.332 \times 10^{-3} \ll 1$, we can use the first-order Taylor expansion $1 - e^{-\lambda t} \approx \lambda t$:
+\[
+\Delta N = N_0(1 - e^{-\lambda t}) \approx N_0 \cdot \lambda \cdot t.
+\]
+\[
+\Delta N = (2.0281 \times 10^{21}) \times (4.332 \times 10^{-3}) = \mathbf{8.786 \times 10^{18}\ \text{decays}}.
+\]
+
+\textbf{3. Volume of Helium Gas at STP:}
+Number of moles of helium gas formed:
+\[
+n(\ce{He}) = \frac{\Delta N}{N_A} = \frac{8.786 \times 10^{18}}{6.022\,141 \times 10^{23}} = 1.4589 \times 10^{-5}\ \mathrm{mol}.
+\]
+Volume at STP:
+\[
+V(\ce{He}) = n \cdot V_0 = 1.4589 \times 10^{-5}\ \mathrm{mol} \times 22.414\ \mathrm{L\cdot mol^{-1}} = 3.270 \times 10^{-4}\ \mathrm{L} = \mathbf{0.327\ \mathrm{mL}}.
+\]
+Over a single decade, one gram of radium chloride generates nearly a third of a milliliter of pure helium gas!
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.14
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Secular Equilibrium in the Uranium Decay Series}
+In natural uranium minerals that have remained undisturbed for geological epochs, parent Uranium-238 ($\ce{^{238}U}$, $t_{1/2,1} = 4.468 \times 10^9\ \mathrm{yr}$) exists in \textbf{secular equilibrium} with its immediate daughter Thorium-234 ($\ce{^{234}Th}$, $t_{1/2,2} = 24.10\ \mathrm{days}$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State the condition of secular equilibrium and show why the activities of parent and daughter are equal: $A_1 = A_2$.
+  \item Derive the equilibrium mass ratio $\dfrac{m_2}{m_1} = \dfrac{t_{1/2,2}}{t_{1/2,1}} \cdot \dfrac{M_2}{M_1}$.
+  \item Calculate the mass of Thorium-234 present in secular equilibrium with $m_1 = 1.000\ \mathrm{kg}$ of natural Uranium-238.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Secular Equilibrium Condition:}
+When the parent has a half-life enormously longer than the daughter ($t_{1/2,1} \gg t_{1/2,2}$, here $4.5 \times 10^9\ \mathrm{yr} \gg 24\ \mathrm{days}$), the parent's decay rate is virtually constant. The rate of creation of daughter nuclei ($\lambda_1 N_1$) balances the rate of daughter decay ($\lambda_2 N_2$):
+\[
+\frac{\dd N_2}{\dd t} = \lambda_1 N_1 - \lambda_2 N_2 = 0 \implies \mathbf{\lambda_1 N_1 = \lambda_2 N_2} \iff \mathbf{A_1 = A_2}.
+\]
+
+\textbf{2. Derivation of Equilibrium Mass Ratio:}
+From $\lambda_1 N_1 = \lambda_2 N_2$:
+\[
+\frac{N_2}{N_1} = \frac{\lambda_1}{\lambda_2} = \frac{\ln 2 / t_{1/2,1}}{\ln 2 / t_{1/2,2}} = \frac{t_{1/2,2}}{t_{1/2,1}}.
+\]
+Substitute $N = \frac{m}{M} N_A$:
+\[
+\frac{m_2 / M_2}{m_1 / M_1} = \frac{t_{1/2,2}}{t_{1/2,1}} \implies \mathbf{\frac{m_2}{m_1} = \frac{t_{1/2,2}}{t_{1/2,1}} \cdot \frac{M_2}{M_1}}. \quad \text{Q.E.D.}
+\]
+
+\textbf{3. Calculation of Equilibrium Mass of $^{234}\ce{Th}$:}
+Convert half-lives to identical units (days):
+\[
+t_{1/2,1} = 4.468 \times 10^9 \times 365.25\ \mathrm{days} = 1.632 \times 10^{12}\ \mathrm{days}.
+\]
+\[
+m_2 = m_1 \times \left( \frac{24.10\ \mathrm{days}}{1.632 \times 10^{12}\ \mathrm{days}} \right) \times \left( \frac{234.04}{238.05} \right) = 1000\ \mathrm{g} \times (1.4767 \times 10^{-11}) \times 0.98315.
+\]
+\[
+m_2 = \mathbf{1.452 \times 10^{-8}\ \mathrm{g}} = \mathbf{14.52\ \mathrm{ng}}.
+\]
+In an entire kilogram of uranium ore, only $14.5\ \mathrm{nanograms}$ of thorium-234 exists at any given instant, yet its activity matches that of the entire kilogram of uranium!
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.15
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Radiocarbon Archaeological Dating of Ancient Wood}
+Living plant matter maintains a constant dynamic equilibrium with atmospheric Carbon-14, exhibiting a specific activity of $A_0 = 15.30$ disintegrations per minute per gram of total carbon ($\mathrm{dpm\cdot g^{-1}}$). After the organism dies, carbon exchange ceases and $\ce{^{14}C}$ decays with a half-life of $t_{1/2} = 5730\ \mathrm{years}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item A wooden beam excavated from the tomb of an Egyptian pharaoh yields a measured specific activity of $A(t) = 9.42\ \mathrm{dpm\cdot g^{-1}}$.
+  \item Derive the dating formula expressing age $t$ in terms of $t_{1/2}, A_0,$ and $A(t)$.
+  \item Calculate the age of the wooden beam to the nearest decade.
+  \item In what calendar era (BCE) was the tree felled?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1 \& 2. Derivation of Radiocarbon Dating Formula:}
+From the decay equation $A(t) = A_0 e^{-\lambda t}$:
+\[
+\frac{A(t)}{A_0} = e^{-\lambda t} \implies \ln \left( \frac{A(t)}{A_0} \right) = -\lambda t \implies \ln \left( \frac{A_0}{A(t)} \right) = \lambda t.
+\]
+Since $\lambda = \dfrac{\ln 2}{t_{1/2}}$:
+\[
+\mathbf{t = \frac{1}{\lambda} \ln \left( \frac{A_0}{A(t)} \right) = \frac{t_{1/2}}{\ln 2} \ln \left( \frac{A_0}{A(t)} \right)}. \quad \text{Q.E.D.}
+\]
+
+\textbf{3. Numerical Calculation of Age:}
+Given $A_0 = 15.30\ \mathrm{dpm\cdot g^{-1}}$, $A(t) = 9.42\ \mathrm{dpm\cdot g^{-1}}$, and $t_{1/2} = 5730\ \mathrm{yr}$:
+\[
+\frac{A_0}{A(t)} = \frac{15.30}{9.42} = 1.6242.
+\]
+\[
+\ln(1.6242) = 0.48501.
+\]
+\[
+t = \frac{5730\ \mathrm{yr}}{0.693147} \times 0.48501 = 8266.6 \times 0.48501 = \mathbf{4009\ \mathrm{years}} \approx \mathbf{4010\ \mathrm{years}}.
+\]
+
+\textbf{4. Calendar Era:}
+Subtracting current date ($2026$):
+\[
+\text{Date} = 2026 - 4010 = -1984 \implies \mathbf{\approx 1980\ \mathrm{BCE}} \quad \text{(Middle Kingdom of Ancient Egypt)}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.16
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Dating with Measurement Uncertainty Propagation}
+Charcoal from the prehistoric Chauvet Cave (France) is analyzed by accelerator mass spectrometry (AMS). The remaining $\ce{^{14}C}$ activity is measured to be $A = 1.85 \pm 0.05\%$ of modern reference carbon ($A_0 = 100\%$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the central radiocarbon age $t$ of the prehistoric cave charcoal ($t_{1/2} = 5730\ \mathrm{yr}$).
+  \item Using first-order differential error propagation, show that the uncertainty in age is given by $\Delta t = \dfrac{t_{1/2}}{\ln 2} \cdot \dfrac{\Delta A}{A}$.
+  \item Calculate the absolute uncertainty $\Delta t$ and express the final dated age in standard scientific format: $t \pm \Delta t\ \mathrm{years\ BP}$ (Before Present).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Central Age Calculation:}
+Activity ratio: $\frac{A}{A_0} = 0.0185 \implies \frac{A_0}{A} = \frac{1}{0.0185} = 54.054$.
+\[
+t = \frac{5730}{\ln 2} \ln(54.054) = 8266.64 \times 3.9900 = \mathbf{32\,984\ \mathrm{years\ BP}}.
+\]
+
+\textbf{2. Differential Error Propagation Derivation:}
+Differentiating the dating equation $t = -\frac{1}{\lambda} \ln A + \text{const}$ with respect to $A$:
+\[
+\frac{\dd t}{\dd A} = -\frac{1}{\lambda A} \implies |\Delta t| = \frac{1}{\lambda} \left| \frac{\Delta A}{A} \right| = \mathbf{\frac{t_{1/2}}{\ln 2} \cdot \frac{\Delta A}{A}}. \quad \text{Q.E.D.}
+\]
+
+\textbf{3. Uncertainty Calculation:}
+Given $A = 1.85$ and $\Delta A = 0.05$:
+\[
+\frac{\Delta A}{A} = \frac{0.05}{1.85} = 0.02703 \quad (2.70\%).
+\]
+\[
+\Delta t = 8266.64 \times 0.02703 = \mathbf{223\ \mathrm{years}}.
+\]
+Final calibrated age:
+\[
+\mathbf{t = 33\,000 \pm 220\ \mathrm{years\ BP}} \quad \text{(Aurignacian paleolithic era)}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.17
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Uranium-Lead Geochronology of Ancient Zircons}
+Zircon crystals ($\ce{ZrSiO4}$) incorporate uranium atoms into their crystal lattice during crystallization while rigorously rejecting lead ($\ce{Pb^{2+}}$) due to ionic radius mismatch ($r(\ce{Zr^{4+}}) = 84\ \mathrm{pm}$ vs $r(\ce{Pb^{2+}}) = 119\ \mathrm{pm}$). Thus, any $\ce{^{206}Pb}$ present today arose exclusively from the alpha decay cascade of Uranium-238 ($\ce{^{238}U} \to \ce{^{206}Pb}$, $t_{1/2} = 4.468 \times 10^9\ \mathrm{yr}$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Derive the geochronological dating equation:
+  \[
+  t = \frac{1}{\lambda} \ln \left( 1 + \frac{N_{\ce{Pb}}}{N_{\ce{U}}} \right).
+  \]
+  \item Mass spectrometric analysis of an ancient zircon crystal from the Jack Hills (Western Australia) yields an isotopic atom ratio of:
+  \[
+  \frac{N(\ce{^{206}Pb})}{N(\ce{^{238}U})} = 0.9635.
+  \]
+  Calculate the crystallization age $t$ of this zircon crystal in billions of years ($\mathrm{Ga}$).
+  \item Compare this age to the accepted scientific age of the Earth ($4.54\ \mathrm{Ga}$).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Derivation of Uranium-Lead Isochron Formula:}
+Let $N_0$ be the initial number of uranium nuclei at crystallization ($t = 0$).
+Since no initial lead was incorporated ($N_{\ce{Pb}}(0) = 0$), every radiogenic $\ce{^{206}Pb}$ nucleus formed corresponds to one decayed $\ce{^{238}U}$ nucleus:
+\[
+N_{\ce{Pb}}(t) = N_0 - N_{\ce{U}}(t).
+\]
+From exponential decay, $N_0 = N_{\ce{U}}(t) e^{\lambda t}$. Substituting:
+\[
+N_{\ce{Pb}}(t) = N_{\ce{U}}(t) e^{\lambda t} - N_{\ce{U}}(t) = N_{\ce{U}}(t) \left( e^{\lambda t} - 1 \right).
+\]
+Dividing by $N_{\ce{U}}(t)$:
+\[
+\frac{N_{\ce{Pb}}}{N_{\ce{U}}} = e^{\lambda t} - 1 \implies e^{\lambda t} = 1 + \frac{N_{\ce{Pb}}}{N_{\ce{U}}}.
+\]
+Taking natural logarithms:
+\[
+\mathbf{t = \frac{1}{\lambda} \ln \left( 1 + \frac{N_{\ce{Pb}}}{N_{\ce{U}}} \right)}. \quad \text{Q.E.D.}
+\]
+
+\textbf{2. Age Calculation of Jack Hills Zircon:}
+Decay constant of $\ce{^{238}U}$:
+\[
+\lambda = \frac{\ln 2}{4.468 \times 10^9\ \mathrm{yr}} = 1.55136 \times 10^{-10}\ \mathrm{yr^{-1}}.
+\]
+Given ratio $N_{\ce{Pb}} / N_{\ce{U}} = 0.9635$:
+\[
+1 + \frac{N_{\ce{Pb}}}{N_{\ce{U}}} = 1 + 0.9635 = 1.9635.
+\]
+\[
+\ln(1.9635) = 0.67473.
+\]
+\[
+t = \frac{0.67473}{1.55136 \times 10^{-10}\ \mathrm{yr^{-1}}} = \mathbf{4.349 \times 10^9\ \mathrm{years}} = \mathbf{4.35\ \mathrm{Ga}}.
+\]
+
+\textbf{3. Geological Context:}
+The Jack Hills zircon crystallized $\mathbf{4.35\ \mathrm{billion\ years}}$ ago, merely $190\ \mathrm{million\ years}$ after the formation of the Earth ($4.54\ \mathrm{Ga}$). This confirms that solid continental crust and liquid water oceans existed astonishingly early in Earth's history!
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.18
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Branching Decay Kinetics and Potassium-Argon Dating}
+Potassium-40 ($\ce{^{40}_{19}K}$) is an unstable primordial isotope that decays via two competing parallel pathways:
+\begin{align*}
+\ce{^{40}_{19}K + ^{0}_{-1}e &-> ^{40}_{18}Ar + \nu_e} \quad (\text{Electron Capture, Branching Ratio } B_{\text{EC}} = 0.1072) \\
+\ce{^{40}_{19}K &-> ^{40}_{20}Ca + ^{0}_{-1}e + \bar{\nu}_e} \quad (\beta^-\text{ Decay, Branching Ratio } B_{\beta} = 0.8928)
+\end{align*}
+The total half-life is $t_{1/2} = 1.248 \times 10^9\ \mathrm{years}$ ($\lambda = \lambda_{\text{EC}} + \lambda_\beta$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Derive the equation relating accumulated radiogenic Argon-40 to remaining Potassium-40:
+  \[
+  N_{\ce{Ar}}(t) = \frac{\lambda_{\text{EC}}}{\lambda} N_{\ce{K}}(t) \left( e^{\lambda t} - 1 \right).
+  \]
+  \item A volcanic basalt sample erupted during an ancient rift event contains $m_{\ce{K}} = 2.500\ \mu\mathrm{g}$ of $\ce{^{40}K}$ and $V_{\ce{Ar}} = 1.250 \times 10^{-5}\ \mathrm{cm^3}$ of radiogenic $\ce{^{40}Ar}$ gas at STP ($V_0 = 22\,414\ \mathrm{cm^3\cdot mol^{-1}}$).
+  Calculate the crystallization age of the volcanic rock.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Derivation for Branching Decay:}
+The total rate of loss of $\ce{^{40}K}$ is $\frac{\dd N_{\ce{K}}}{\dd t} = -\lambda N_{\ce{K}}$, where $\lambda = \lambda_{\text{EC}} + \lambda_\beta$.
+The rate of generation of Argon-40 is exclusively through electron capture:
+\[
+\frac{\dd N_{\ce{Ar}}}{\dd t} = \lambda_{\text{EC}} N_{\ce{K}}(t) = \lambda_{\text{EC}} N_0 e^{-\lambda t}.
+\]
+Integrate from $0$ to $t$ (assuming initial molten rock outgassed all pre-existing argon, $N_{\ce{Ar}}(0) = 0$):
+\[
+N_{\ce{Ar}}(t) = \lambda_{\text{EC}} N_0 \int_0^t e^{-\lambda t'} \dd t' = \frac{\lambda_{\text{EC}}}{\lambda} N_0 \left( 1 - e^{-\lambda t} \right).
+\]
+Substitute $N_0 = N_{\ce{K}}(t) e^{\lambda t}$:
+\[
+\mathbf{N_{\ce{Ar}}(t) = \frac{\lambda_{\text{EC}}}{\lambda} N_{\ce{K}}(t) \left( e^{\lambda t} - 1 \right)}. \quad \text{Q.E.D.}
+\]
+
+\textbf{2. Numerical Calculation:}
+Total decay constant:
+\[
+\lambda = \frac{\ln 2}{1.248 \times 10^9\ \mathrm{yr}} = 5.554 \times 10^{-10}\ \mathrm{yr^{-1}}.
+\]
+Branching fraction: $\frac{\lambda_{\text{EC}}}{\lambda} = 0.1072$.
+Number of $\ce{^{40}K}$ nuclei:
+\[
+N_{\ce{K}} = \frac{2.500 \times 10^{-6}\ \mathrm{g}}{40.0\ \mathrm{g\cdot mol^{-1}}} \times 6.022 \times 10^{23} = 3.7638 \times 10^{16}\ \text{nuclei}.
+\]
+Number of $\ce{^{40}Ar}$ atoms:
+\[
+N_{\ce{Ar}} = \frac{1.250 \times 10^{-5}\ \mathrm{cm^3}}{22\,414\ \mathrm{cm^3\cdot mol^{-1}}} \times 6.022 \times 10^{23} = 3.3584 \times 10^{14}\ \text{atoms}.
+\]
+The ratio is:
+\[
+\frac{N_{\ce{Ar}}}{N_{\ce{K}}} = \frac{3.3584 \times 10^{14}}{3.7638 \times 10^{16}} = 8.9229 \times 10^{-3}.
+\]
+From the derived equation:
+\[
+e^{\lambda t} - 1 = \frac{1}{0.1072} \times \left( 8.9229 \times 10^{-3} \right) = 0.083236 \implies e^{\lambda t} = 1.083236.
+\]
+\[
+\lambda t = \ln(1.083236) = 0.07995.
+\]
+\[
+t = \frac{0.07995}{5.554 \times 10^{-10}\ \mathrm{yr^{-1}}} = \mathbf{1.440 \times 10^8\ \mathrm{years}} = \mathbf{144\ \mathrm{Ma}} \quad \text{(Late Jurassic period)}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.19
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Cumulative Radiation Dose and Biological Half-Life}
+In targeted thyroid radiotherapy, a patient receives an oral capsule containing $A_0 = 3.700\ \mathrm{GBq}$ ($100.0\ \mathrm{mCi}$) of Iodine-131. The isotope is eliminated from the body simultaneously by radioactive decay ($\lambda_p$, physical half-life $t_{p} = 8.020\ \mathrm{days}$) and by biological excretion in urine and sweat ($\lambda_b$, biological clearance half-life $t_{b} = 21.00\ \mathrm{days}$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Derive the \textbf{effective half-life} formula:
+  \[
+  \frac{1}{t_{\text{eff}}} = \frac{1}{t_p} + \frac{1}{t_b} \implies t_{\text{eff}} = \frac{t_p \cdot t_b}{t_p + t_b}.
+  \]
+  \item Calculate the effective half-life $t_{\text{eff}}$ of Iodine-131 in this patient in days.
+  \item The total number of disintegrations occurring inside the patient's body over all time is $N_{\text{cum}} = \int_0^\infty A_{\text{in vivo}}(t) \dd t$. Prove that $N_{\text{cum}} = \dfrac{A_0}{\lambda_{\text{eff}}}$, and compute its numerical value.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Effective Half-Life Derivation:}
+The in vivo disappearance of radioiodine follows two independent parallel first-order rate processes:
+\[
+\frac{\dd N}{\dd t} = -(\lambda_p + \lambda_b) N(t) \implies \lambda_{\text{eff}} = \lambda_p + \lambda_b.
+\]
+Expressing rate constants in terms of half-lives ($\lambda = \ln 2 / t_{1/2}$):
+\[
+\frac{\ln 2}{t_{\text{eff}}} = \frac{\ln 2}{t_p} + \frac{\ln 2}{t_b} \implies \mathbf{\frac{1}{t_{\text{eff}}} = \frac{1}{t_p} + \frac{1}{t_b}} \implies \mathbf{t_{\text{eff}} = \frac{t_p \cdot t_b}{t_p + t_b}}. \quad \text{Q.E.D.}
+\]
+
+\textbf{2. Numerical Calculation of $t_{\text{eff}}$:}
+Given $t_p = 8.020\ \mathrm{days}$ and $t_b = 21.00\ \mathrm{days}$:
+\[
+t_{\text{eff}} = \frac{8.020 \times 21.00}{8.020 + 21.00} = \frac{168.42}{29.02} = \mathbf{5.804\ \mathrm{days}}.
+\]
+
+\textbf{3. Cumulative Total In Vivo Disintegrations:}
+The in vivo activity is $A_{\text{in vivo}}(t) = A_0 e^{-\lambda_{\text{eff}} t}$.
+Integrating over $t \in [0, \infty)$:
+\[
+N_{\text{cum}} = \int_0^\infty A_0 e^{-\lambda_{\text{eff}} t} \dd t = A_0 \left[ -\frac{e^{-\lambda_{\text{eff}} t}}{\lambda_{\text{eff}}} \right]_0^\infty = A_0 \left( 0 - \left( -\frac{1}{\lambda_{\text{eff}}} \right) \right) = \mathbf{\frac{A_0}{\lambda_{\text{eff}}}}. \quad \text{Q.E.D.}
+\]
+Convert $t_{\text{eff}}$ to seconds:
+\[
+t_{\text{eff}} = 5.804 \times 86\,400\ \mathrm{s} = 5.0147 \times 10^5\ \mathrm{s}.
+\]
+\[
+\lambda_{\text{eff}} = \frac{\ln 2}{5.0147 \times 10^5\ \mathrm{s}} = 1.3823 \times 10^{-6}\ \mathrm{s^{-1}}.
+\]
+Given $A_0 = 3.700 \times 10^9\ \mathrm{Bq}$:
+\[
+N_{\text{cum}} = \frac{3.700 \times 10^9\ \mathrm{s^{-1}}}{1.3823 \times 10^{-6}\ \mathrm{s^{-1}}} = \mathbf{2.677 \times 10^{15}\ \text{nuclear disintegrations}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.20
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{The Bateman Differential Equations for Decay Cascades}
+Consider a sequential radioactive decay chain with parent nucleus $1$ decaying into daughter $2$, which in turn decays into stable granddaughter $3$:
+\[
+\ce{1} \xrightarrow{\lambda_1} \ce{2} \xrightarrow{\lambda_2} \ce{3 (stable)}.
+\]
+At time $t = 0$, only pure parent is present: $N_1(0) = N_0$ and $N_2(0) = 0$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Write the coupled system of differential rate equations for $\dd N_1 / \dd t$ and $\dd N_2 / \dd t$.
+  \item Solve the system analytically using an integrating factor to prove the Bateman formula:
+  \[
+  N_2(t) = \frac{\lambda_1}{\lambda_2 - \lambda_1} N_0 \left( e^{-\lambda_1 t} - e^{-\lambda_2 t} \right).
+  \]
+  \item Find the exact time $t_{\max}$ at which the daughter activity $A_2(t) = \lambda_2 N_2(t)$ reaches its maximum.
+  \item Apply this to the medical isotope generator system Molybdenum-99 ($\lambda_1 = 0.01050\ \mathrm{h^{-1}}$, $t_{1/2,1} = 66.0\ \mathrm{h}$) producing Technetium-99m ($\lambda_2 = 0.11533\ \mathrm{h^{-1}}$, $t_{1/2,2} = 6.01\ \mathrm{h}$). Calculate $t_{\max}$ in hours.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Coupled Differential Equations:}
+\begin{align}
+\frac{\dd N_1}{\dd t} &= -\lambda_1 N_1 \label{eq:b1} \\
+\frac{\dd N_2}{\dd t} &= \lambda_1 N_1 - \lambda_2 N_2 \label{eq:b2}
+\end{align}
+
+\textbf{2. Analytical Solution by Integrating Factor:}
+From \eqref{eq:b1}, $N_1(t) = N_0 e^{-\lambda_1 t}$. Substitute into \eqref{eq:b2}:
+\[
+\frac{\dd N_2}{\dd t} + \lambda_2 N_2 = \lambda_1 N_0 e^{-\lambda_1 t}.
+\]
+Multiply by the integrating factor $e^{\lambda_2 t}$:
+\[
+\frac{\dd}{\dd t} \left( N_2 e^{\lambda_2 t} \right) = \lambda_1 N_0 e^{(\lambda_2 - \lambda_1) t}.
+\]
+Integrate both sides from $0$ to $t$:
+\[
+N_2(t) e^{\lambda_2 t} - 0 = \lambda_1 N_0 \left[ \frac{e^{(\lambda_2 - \lambda_1) t} - 1}{\lambda_2 - \lambda_1} \right].
+\]
+Multiplying across by $e^{-\lambda_2 t}$:
+\[
+\mathbf{N_2(t) = \frac{\lambda_1}{\lambda_2 - \lambda_1} N_0 \left( e^{-\lambda_1 t} - e^{-\lambda_2 t} \right)}. \quad \text{Q.E.D.}
+\]
+
+\textbf{3. Determination of Maximum Time $t_{\max}$:}
+Set the derivative $\frac{\dd N_2}{\dd t} = 0$:
+\[
+-\lambda_1 e^{-\lambda_1 t_{\max}} + \lambda_2 e^{-\lambda_2 t_{\max}} = 0 \implies \lambda_1 e^{-\lambda_1 t_{\max}} = \lambda_2 e^{-\lambda_2 t_{\max}}.
+\]
+\[
+\frac{e^{-\lambda_1 t_{\max}}}{e^{-\lambda_2 t_{\max}}} = \frac{\lambda_2}{\lambda_1} \implies e^{(\lambda_2 - \lambda_1) t_{\max}} = \frac{\lambda_2}{\lambda_1}.
+\]
+Taking natural logarithms:
+\[
+(\lambda_2 - \lambda_1) t_{\max} = \ln \left( \frac{\lambda_2}{\lambda_1} \right) \implies \mathbf{t_{\max} = \frac{\ln(\lambda_2 / \lambda_1)}{\lambda_2 - \lambda_1}}.
+\]
+
+\textbf{4. Application to $\ce{^{99}Mo} \to \ce{^{99m}Tc}$ Generator:}
+Given $\lambda_1 = 0.01050\ \mathrm{h^{-1}}$ and $\lambda_2 = 0.11533\ \mathrm{h^{-1}}$:
+\[
+\lambda_2 - \lambda_1 = 0.11533 - 0.01050 = 0.10483\ \mathrm{h^{-1}}.
+\]
+\[
+\frac{\lambda_2}{\lambda_1} = \frac{0.11533}{0.01050} = 10.9838 \implies \ln(10.9838) = 2.3964.
+\]
+\[
+t_{\max} = \frac{2.3964}{0.10483\ \mathrm{h^{-1}}} = \mathbf{22.86\ \mathrm{hours}} \approx \mathbf{23\ \mathrm{hours}}.
+\]
+In hospital radiopharmacy practice, "milking" the molybdenum "cow" (technetium generator) is performed every 24 hours precisely because daughter technetium activity reaches its peak approximately 23 hours after each elution!
+\end{solution}

@@ -1,0 +1,756 @@
+\chapter{The Real Number System and Completeness of $\mathbb{R}$}
+\label{chap:exo_ch03}
+
+\begin{quicksummary}{Bounds, Completeness, Density \& the Floor Function}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{$\varepsilon$-Characterization of Supremum and Infimum:}
+  Let $A \subset \R$ be non-empty and bounded above. $M = \sup A \iff$:
+  \[
+  \begin{cases}
+  \forall x \in A,\ x \le M & (M \text{ is an upper bound}) \\
+  \forall \varepsilon > 0,\ \exists x \in A,\ x > M - \varepsilon & (\text{least upper bound}).
+  \end{cases}
+  \]
+  Let $A \subset \R$ be non-empty and bounded below. $m = \inf A \iff$:
+  \[
+  \begin{cases}
+  \forall x \in A,\ x \ge m & (m \text{ is a lower bound}) \\
+  \forall \varepsilon > 0,\ \exists x \in A,\ x < m + \varepsilon & (\text{greatest lower bound}).
+  \end{cases}
+  \]
+  \item \textbf{Axiom of Completeness (Least Upper Bound Property):}
+  Every non-empty subset of $\R$ that is bounded above has a supremum in $\R$.
+  \item \textbf{Archimedean Property of $\R$:}
+  $\forall x \in \R,\ \exists n \in \N,\ n > x \iff \forall \varepsilon > 0,\ \exists n \in \N^*,\ \frac{1}{n} < \varepsilon$.
+  \item \textbf{Floor Function $\lfloor x \rfloor$:}
+  $\forall x \in \R$, $\lfloor x \rfloor$ is the unique integer satisfying:
+  \[
+  \lfloor x \rfloor \le x < \lfloor x \rfloor + 1 \iff x - 1 < \lfloor x \rfloor \le x.
+  \]
+  \item \textbf{Density of $\Q$ and $\R \setminus \Q$ in $\R$:}
+  For any real numbers $a < b$:
+  \[
+  \exists q \in \Q \quad \text{such that} \quad a < q < b, \qquad \exists r \in \R \setminus \Q \quad \text{such that} \quad a < r < b.
+  \]
+\end{enumerate}
+\end{quicksummary}
+
+\vspace{10pt}
+
+% ===========================================================================
+% EXERCISE 3.1
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Determination of Bounds, Extremities, Sup, and Inf}
+For each of the following subsets of $\R$, determine whether it is bounded above, bounded below, or bounded. Find its supremum, infimum, and determine whether a maximum or minimum exists:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item $A_1 = \left\{ 1 - \frac{1}{n} : n \in \N^* \right\}$.
+  \item $A_2 = \left\{ (-1)^n + \frac{1}{n} : n \in \N^* \right\}$.
+  \item $A_3 = \left\{ x \in \R : x^2 - 3x + 2 < 0 \right\}$.
+  \item $A_4 = \left\{ \frac{n - 1}{n + 1} : n \in \N^* \right\}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Set $A_1 = \{1 - 1/n : n \ge 1\}$:}
+The elements are $0, 1/2, 2/3, 3/4, \dots$
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item For all $n \ge 1$, $1/n > 0 \implies 1 - 1/n < 1$. Thus $1$ is an upper bound.
+  Since $\lim_{n \to \infty} (1 - 1/n) = 1$, $\sup A_1 = 1$. Because $1 \notin A_1$, $\max A_1$ does not exist.
+  \item For $n = 1$, $x_1 = 0$. Since $1/n \le 1$ for all $n \ge 1$, $1 - 1/n \ge 0$.
+  Thus $\inf A_1 = 0$. Since $0 \in A_1$ (for $n=1$), $\min A_1 = 0$.
+\end{itemize}
+
+\textbf{2. Set $A_2 = \{(-1)^n + 1/n : n \ge 1\}$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item For even $n = 2k$: $x_{2k} = 1 + \frac{1}{2k}$.
+  The maximum occurs at $k=1$ ($n=2$): $x_2 = 1 + 1/2 = 3/2$.
+  For all other even $n$, $1 < 1 + \frac{1}{2k} < 3/2$.
+  For odd $n = 2k+1$: $x_{2k+1} = -1 + \frac{1}{2k+1} \le 0 < 3/2$.
+  Thus $\sup A_2 = \max A_2 = 3/2$.
+  \item For odd $n$: terms approach $-1$ from above.
+  $-1 + \frac{1}{2k+1} > -1$. As $k \to \infty$, the terms approach $-1$.
+  Even terms are all $> 1$.
+  Thus $\inf A_2 = -1$. Since $(-1)^n + 1/n = -1$ has no solution in $\N^*$, $-1 \notin A_2$, so $\min A_2$ does not exist.
+\end{itemize}
+
+\textbf{3. Set $A_3 = \{x \in \R : x^2 - 3x + 2 < 0\}$:}
+Factoring the quadratic: $(x - 1)(x - 2) < 0 \iff x \in (1, 2)$.
+$A_3$ is the open interval $(1, 2)$.
+Thus $\sup A_3 = 2$, $\inf A_3 = 1$. Neither maximum nor minimum exists because the endpoints are excluded.
+
+\textbf{4. Set $A_4 = \{(n - 1)/(n + 1) : n \in \N^*\}$:}
+Rewrite: $\frac{n - 1}{n + 1} = 1 - \frac{2}{n + 1}$.
+For $n = 1$, $x_1 = 0$. As $n$ increases, $\frac{2}{n+1}$ decreases strictly to $0$, so $x_n$ increases strictly towards $1$.
+Thus $\min A_4 = \inf A_4 = 0$ (achieved at $n=1$).
+$\sup A_4 = 1$. Since $x_n < 1$ for all $n$, $1 \notin A_4$, so $\max A_4$ does not exist. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.2
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{The $\varepsilon$-Characterization of Supremum and Infimum}
+Consider the set:
+\[
+A = \left\{ \frac{2n + 1}{n + 2} : n \in \N \right\}.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Compute the first three elements of $A$ ($n = 0, 1, 2$).
+  \item Show that $\min A = 1/2$.
+  \item Conjecture the value of $\sup A$.
+  \item Using the formal $\varepsilon$-characterization of the supremum, prove rigorously that $\sup A = 2$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. First Elements of $A$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item For $n=0$: $x_0 = \frac{2(0)+1}{0+2} = \frac{1}{2}$.
+  \item For $n=1$: $x_1 = \frac{2(1)+1}{1+2} = \frac{3}{3} = 1$.
+  \item For $n=2$: $x_2 = \frac{2(2)+1}{2+2} = \frac{5}{4} = 1.25$.
+\end{itemize}
+
+\textbf{2. Minimum of $A$:}
+Rewrite $x_n$:
+\[
+x_n = \frac{2n + 1}{n + 2} = \frac{2(n + 2) - 3}{n + 2} = 2 - \frac{3}{n + 2}.
+\]
+As $n$ increases on $\N$, the denominator $n+2$ increases, so $\frac{3}{n+2}$ decreases strictly, which implies that $x_n = 2 - \frac{3}{n+2}$ is strictly increasing.
+Therefore, the smallest value occurs at the minimal index $n = 0$:
+\[
+\forall n \in \N, \quad x_n \ge x_0 = \frac{1}{2}.
+\]
+Since $1/2 \in A$, we have $\min A = \inf A = 1/2$.
+
+\textbf{3. Conjecture for Supremum:}
+As $n \to \infty$, $x_n \to 2$. We conjecture $\sup A = 2$.
+
+\textbf{4. Rigorous $\varepsilon$-Proof that $\sup A = 2$:}
+We must verify two conditions:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{2 is an Upper Bound:}
+  For all $n \in \N$:
+  \[
+  x_n = 2 - \frac{3}{n + 2} < 2 \quad \left(\text{since } \frac{3}{n+2} > 0\right).
+  \]
+  Thus $x \le 2$ for all $x \in A$.
+  \item \textbf{Least Upper Bound Condition:}
+  Let $\varepsilon > 0$ be arbitrary. We must find $n \in \N$ such that $x_n > 2 - \varepsilon$.
+  \[
+  2 - \frac{3}{n + 2} > 2 - \varepsilon \iff \frac{3}{n + 2} < \varepsilon \iff n + 2 > \frac{3}{\varepsilon} \iff n > \frac{3}{\varepsilon} - 2.
+  \]
+  By the Archimedean property of $\R$, there exists an integer $N \in \N$ such that $N > \frac{3}{\varepsilon} - 2$.
+  Choosing $n = \max\left(0, \lfloor \frac{3}{\varepsilon} - 2 \rfloor + 1\right) \in \N$, we obtain:
+  \[
+  x_n > 2 - \varepsilon.
+  \]
+\end{enumerate}
+Both conditions are satisfied. Therefore, $\sup A = 2$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.3
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Properties of the Floor Function $\lfloor x \rfloor$}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State the defining inequality of the floor function $\lfloor x \rfloor$ for any $x \in \R$.
+  \item Solve the following equation for $x \in \R$:
+  \[
+  \lfloor 2x \rfloor = 3x - 1.
+  \]
+  \item Prove Hermite's identity for $n = 2$: For all $x \in \R$,
+  \[
+  \lfloor x \rfloor + \left\lfloor x + \frac{1}{2} \right\rfloor = \lfloor 2x \rfloor.
+  \]
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Defining Inequality:}
+For any $x \in \R$, $\lfloor x \rfloor \in \Z$ is the unique integer satisfying:
+\[
+\lfloor x \rfloor \le x < \lfloor x \rfloor + 1 \iff x - 1 < \lfloor x \rfloor \le x.
+\]
+
+\textbf{2. Solving $\lfloor 2x \rfloor = 3x - 1$:}
+Let $k = \lfloor 2x \rfloor \in \Z$. Then $k = 3x - 1$, which gives:
+\[
+x = \frac{k + 1}{3}.
+\]
+Applying the definition of the floor to $2x$:
+\[
+k \le 2x < k + 1.
+\]
+Substitute $x = \frac{k + 1}{3}$:
+\[
+k \le 2\left(\frac{k + 1}{3}\right) < k + 1 \iff 3k \le 2k + 2 < 3k + 3.
+\]
+This splits into two inequalities:
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item $3k \le 2k + 2 \implies k \le 2$.
+  \item $2k + 2 < 3k + 3 \implies k > -1 \implies k \ge 0$.
+\end{itemize}
+Since $k \in \Z$, the possible values are $k \in \{0, 1, 2\}$.
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item For $k = 0$: $x = 1/3$. Check: $\lfloor 2/3 \rfloor = 0$, $3(1/3) - 1 = 0$ (Valid).
+  \item For $k = 1$: $x = 2/3$. Check: $\lfloor 4/3 \rfloor = 1$, $3(2/3) - 1 = 1$ (Valid).
+  \item For $k = 2$: $x = 3/3 = 1$. Check: $\lfloor 2 \rfloor = 2$, $3(1) - 1 = 2$ (Valid).
+\end{itemize}
+The solution set is $S = \{1/3, 2/3, 1\}$.
+
+\textbf{3. Proof of Hermite's Identity ($n = 2$):}
+Every real number can be written as $x = m + \alpha$ where $m = \lfloor x \rfloor \in \Z$ and $\alpha \in [0, 1)$.
+We analyze two cases based on the position of $\alpha$:
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Case 1: $0 \le \alpha < 1/2$.}
+  Then $x + 1/2 = m + \alpha + 1/2$ where $1/2 \le \alpha + 1/2 < 1$.
+  Thus $\lfloor x + 1/2 \rfloor = m$.
+  Also $2x = 2m + 2\alpha$ where $0 \le 2\alpha < 1$, so $\lfloor 2x \rfloor = 2m$.
+  LHS $= \lfloor x \rfloor + \lfloor x + 1/2 \rfloor = m + m = 2m = \lfloor 2x \rfloor = \text{RHS}$.
+  \item \textbf{Case 2: $1/2 \le \alpha < 1$.}
+  Then $x + 1/2 = m + \alpha + 1/2 = m + 1 + (\alpha - 1/2)$ where $0 \le \alpha - 1/2 < 1/2$.
+  Thus $\lfloor x + 1/2 \rfloor = m + 1$.
+  Also $2x = 2m + 2\alpha = 2m + 1 + (2\alpha - 1)$ where $0 \le 2\alpha - 1 < 1$.
+  Thus $\lfloor 2x \rfloor = 2m + 1$.
+  LHS $= \lfloor x \rfloor + \lfloor x + 1/2 \rfloor = m + (m + 1) = 2m + 1 = \lfloor 2x \rfloor = \text{RHS}$.
+\end{itemize}
+In both cases, the equality holds identically. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.4
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Supremum of Unions and Minkowski Sums of Sets}
+Let $A$ and $B$ be two non-empty, bounded subsets of $\R$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $A \cup B$ is bounded and:
+  \[
+  \sup(A \cup B) = \max(\sup A, \sup B) \qquad \text{and} \qquad \inf(A \cup B) = \min(\inf A, \inf B).
+  \]
+  \item Define the Minkowski sum $A + B = \{a + b : a \in A,\, b \in B\}$.
+  Prove that $A + B$ is bounded above and:
+  \[
+  \sup(A + B) = \sup A + \sup B.
+  \]
+  \item State and prove the corresponding result for $\inf(A + B)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Supremum of the Union $A \cup B$:}
+Let $M_A = \sup A$ and $M_B = \sup B$, and let $M = \max(M_A, M_B)$.
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{$M$ is an upper bound of $A \cup B$:} Let $x \in A \cup B$.
+  If $x \in A$, then $x \le M_A \le M$.
+  If $x \in B$, then $x \le M_B \le M$.
+  In both cases, $x \le M$.
+  \item \textbf{$M$ is the least upper bound:} Let $\varepsilon > 0$.
+  Assume without loss of generality that $M = M_A$.
+  Since $M_A = \sup A$, by the $\varepsilon$-characterization, there exists $a \in A$ such that $a > M_A - \varepsilon = M - \varepsilon$.
+  Since $a \in A \subseteq A \cup B$, we have found an element in $A \cup B$ strictly greater than $M - \varepsilon$.
+\end{itemize}
+Thus $\sup(A \cup B) = \max(\sup A, \sup B)$. By an identical argument, $\inf(A \cup B) = \min(\inf A, \inf B)$.
+
+\textbf{2. Supremum of the Minkowski Sum $A + B$:}
+Let $M_A = \sup A$ and $M_B = \sup B$.
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{$M_A + M_B$ is an upper bound:} For any $z \in A + B$, $z = a + b$ with $a \in A, b \in B$.
+  Since $a \le M_A$ and $b \le M_B$, adding inequalities gives:
+  \[
+  a + b \le M_A + M_B.
+  \]
+  Thus $M_A + M_B$ is an upper bound.
+  \item \textbf{Least upper bound property:} Let $\varepsilon > 0$.
+  By the $\varepsilon/2$-characterization of $\sup A$ and $\sup B$:
+  \[
+  \exists a \in A \quad \text{such that} \quad a > M_A - \frac{\varepsilon}{2},
+  \]
+  \[
+  \exists b \in B \quad \text{such that} \quad b > M_B - \frac{\varepsilon}{2}.
+  \]
+  Adding these two inequalities:
+  \[
+  a + b > \left(M_A - \frac{\varepsilon}{2}\right) + \left(M_B - \frac{\varepsilon}{2}\right) = M_A + M_B - \varepsilon.
+  \]
+  Since $a + b \in A + B$, for every $\varepsilon > 0$, there exists an element of $A + B$ strictly greater than $(M_A + M_B) - \varepsilon$.
+\end{itemize}
+Therefore, $\sup(A + B) = \sup A + \sup B$. \hfill $\blacksquare$
+
+\textbf{3. Infimum of $A + B$:}
+By replacing $\varepsilon/2$ characterizations for lower bounds:
+$a \ge m_A$ and $b \ge m_B \implies a + b \ge m_A + m_B$.
+For any $\varepsilon > 0$, $\exists a \in A, b \in B$ with $a < m_A + \varepsilon/2$ and $b < m_B + \varepsilon/2$, so $a + b < m_A + m_B + \varepsilon$.
+Hence $\inf(A + B) = \inf A + \inf B$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.5
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Duality and Products of Bounded Sets}
+Let $A \subset \R$ be a non-empty, bounded set. Define $-A = \{-x : x \in A\}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $\sup(-A) = -\inf A$ and $\inf(-A) = -\sup A$.
+  \item Let $A, B \subset (0, +\infty)$ be bounded subsets of positive real numbers.
+  Define $A \cdot B = \{ab : a \in A,\, b \in B\}$. Prove that:
+  \[
+  \sup(A \cdot B) = (\sup A)(\sup B).
+  \]
+  \item Show by counterexample that the product rule fails if elements can take negative values.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Proof that $\sup(-A) = -\inf A$:}
+Let $m = \inf A$.
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item For all $x \in A$, $x \ge m \iff -x \le -m$.
+  Thus $-m$ is an upper bound of $-A$.
+  \item Let $\varepsilon > 0$. Since $m = \inf A$, $\exists x \in A$ such that $x < m + \varepsilon$.
+  Multiplying by $-1$ reverses the inequality: $-x > -m - \varepsilon$.
+  Since $-x \in -A$, this satisfies the $\varepsilon$-characterization of the supremum.
+\end{itemize}
+Hence $\sup(-A) = -m = -\inf A$.
+Applying this to $-(-A) = A$ gives $\sup(A) = -\inf(-A) \iff \inf(-A) = -\sup A$.
+
+\textbf{2. Supremum of Product of Positive Sets:}
+Let $M_A = \sup A > 0$ and $M_B = \sup B > 0$.
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item For all $a \in A, b \in B$, since $a > 0$ and $b > 0$, $a \le M_A$ and $b \le M_B \implies ab \le M_A M_B$.
+  Thus $M_A M_B$ is an upper bound of $A \cdot B$.
+  \item Let $\varepsilon > 0$. Choose $\eta > 0$ such that $\eta < \min(M_A, M_B)$ and $\eta(M_A + M_B) < \varepsilon$.
+  By $\varepsilon$-characterization, $\exists a \in A, b \in B$ such that $a > M_A - \eta$ and $b > M_B - \eta$.
+  Multiplying these positive inequalities:
+  \[
+  ab > (M_A - \eta)(M_B - \eta) = M_A M_B - \eta(M_A + M_B) + \eta^2 > M_A M_B - \varepsilon.
+  \]
+  Thus $\sup(A \cdot B) = M_A M_B = (\sup A)(\sup B)$.
+\end{itemize}
+
+\textbf{3. Counterexample for General Signs:}
+Let $A = [-3, 1]$ and $B = [-2, 1]$.
+$\sup A = 1$ and $\sup B = 1 \implies (\sup A)(\sup B) = 1$.
+However, $(-3) \times (-2) = 6 \in A \cdot B$, so $\sup(A \cdot B) \ge 6 \ne 1$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.6
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{The Archimedean Property and Infinitesimals}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that the set of natural numbers $\N$ is not bounded above in $\R$ using the Completeness Axiom.
+  \item Deduce the Archimedean Property: $\forall x \in \R,\ \exists n \in \N,\ n > x$.
+  \item Prove that $\inf \left\{ \frac{1}{n} : n \in \N^* \right\} = 0$.
+  \item Prove that if $x \in \R$ satisfies $\forall \varepsilon > 0,\ |x| < \varepsilon$, then $x = 0$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. $\N$ is Unbounded Above in $\R$:}
+Suppose for contradiction that $\N$ is bounded above.
+Since $\N \ne \emptyset$ and $\N$ is bounded above, by the Completeness Axiom of $\R$, $\N$ admits a supremum $M = \sup \N \in \R$.
+By the $\varepsilon$-characterization with $\varepsilon = 1 > 0$, there exists an element $n_0 \in \N$ such that:
+\[
+n_0 > M - 1.
+\]
+Adding $1$ to both sides yields:
+\[
+n_0 + 1 > M.
+\]
+Since $n_0 \in \N$, $n_0 + 1$ is also a natural number ($n_0 + 1 \in \N$).
+Thus $n_0 + 1 \in \N$ exceeds the upper bound $M$, which contradicts $M = \sup \N$.
+Therefore, $\N$ is not bounded above. \hfill $\blacksquare$
+
+\textbf{2. Deduction of the Archimedean Property:}
+Let $x \in \R$.
+If $\N$ were bounded above by $x$, then $x$ would be an upper bound of $\N$, which is impossible by part 1.
+Therefore, $x$ cannot be an upper bound of $\N$, which means $\exists n \in \N$ such that $n > x$.
+
+\textbf{3. $\inf \{1/n : n \in \N^*\} = 0$:}
+Let $S = \{1/n : n \ge 1\}$.
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item For all $n \ge 1$, $n > 0 \implies 1/n > 0$. Thus $0$ is a lower bound.
+  \item Let $\varepsilon > 0$. By the Archimedean property, there exists $n \in \N^*$ such that $n > 1/\varepsilon$.
+  Taking reciprocals yields $\frac{1}{n} < \varepsilon = 0 + \varepsilon$.
+\end{itemize}
+Hence $\inf S = 0$.
+
+\textbf{4. Proof that $|x| < \varepsilon$ for all $\varepsilon > 0 \implies x = 0$:}
+Suppose for contradiction that $x \ne 0$. Then $|x| > 0$.
+Choose $\varepsilon_0 = \frac{|x|}{2} > 0$.
+The hypothesis implies $|x| < \varepsilon_0 = \frac{|x|}{2}$, which simplifies to $1 < 1/2$, a clear contradiction.
+Therefore, $x = 0$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.7
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Rigorous Proof of the Density of $\Q$ in $\R$}
+A subset $D \subset \R$ is said to be dense in $\R$ if for every pair of real numbers $a, b \in \R$ with $a < b$, there exists $d \in D$ such that $a < d < b$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Let $a, b \in \R$ with $a < b$. Prove that there exists $q \in \N^*$ such that $q(b - a) > 1$.
+  \item Let $p = \lfloor qa \rfloor + 1 \in \Z$. Prove that $qa < p \le qa + 1$.
+  \item Deduce that $a < \frac{p}{q} < b$, establishing the density of the rational numbers $\Q$ in $\R$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Existence of Denominator $q \in \N^*$:}
+Since $a < b$, the difference $b - a > 0$ is strictly positive.
+Thus $\frac{1}{b - a} \in \R$.
+By the Archimedean property of $\R$, there exists an integer $q \in \N^*$ such that:
+\[
+q > \frac{1}{b - a}.
+\]
+Multiplying both sides by the positive quantity $b - a$:
+\[
+q(b - a) > 1 \iff qb - qa > 1 \iff qa + 1 < qb.
+\]
+
+\textbf{2. Bounds on $p = \lfloor qa \rfloor + 1$:}
+By definition of the floor function applied to $qa \in \R$:
+\[
+\lfloor qa \rfloor \le qa < \lfloor qa \rfloor + 1.
+\]
+Substituting $p = \lfloor qa \rfloor + 1$:
+\[
+p - 1 \le qa < p.
+\]
+From the right inequality, $qa < p$.
+From the left inequality, $p - 1 \le qa \implies p \le qa + 1$.
+Thus:
+\[
+qa < p \le qa + 1.
+\]
+
+\textbf{3. Deduction that $a < p/q < b$:}
+Combining the results:
+\[
+qa < p \le qa + 1 < qb.
+\]
+Therefore:
+\[
+qa < p < qb.
+\]
+Dividing through by the strictly positive integer $q > 0$:
+\[
+a < \frac{p}{q} < b.
+\]
+Since $p \in \Z$ and $q \in \N^*$, the ratio $\frac{p}{q}$ is a rational number ($\frac{p}{q} \in \Q$).
+Since $a$ and $b$ were arbitrary real numbers with $a < b$, this completes the proof that $\Q$ is dense in $\R$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.8
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Density of the Irrational Numbers $\R \setminus \Q$}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Show that if $q \in \Q$ and $r \in \R \setminus \Q$, then $q + r \in \R \setminus \Q$.
+  \item Let $a, b \in \R$ with $a < b$. Consider the shifted interval $\left(a - \sqrt{2}, b - \sqrt{2}\right)$.
+  Using the density of $\Q$, prove that there exists an irrational number $\xi \in \R \setminus \Q$ such that:
+  \[
+  a < \xi < b.
+  \]
+  \item Deduce that between any two distinct real numbers, there are infinitely many rational numbers and infinitely many irrational numbers.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Sum of Rational and Irrational is Irrational:}
+Let $q \in \Q$ and $r \notin \Q$.
+Suppose for contradiction that $s = q + r \in \Q$.
+Then $r = s - q$. Since $\Q$ is a field, the difference of two rational numbers is rational ($s - q \in \Q$), which implies $r \in \Q$, contradicting $r \notin \Q$.
+Thus $q + r$ is irrational.
+
+\textbf{2. Proof of Density of $\R \setminus \Q$:}
+Let $a, b \in \R$ with $a < b$.
+Subtracting $\sqrt{2}$ yields the real numbers $a' = a - \sqrt{2}$ and $b' = b - \sqrt{2}$, with $a' < b'$.
+By the density of $\Q$ in $\R$ (proved in Exercise 3.7), there exists a rational number $q \in \Q$ such that:
+\[
+a - \sqrt{2} < q < b - \sqrt{2}.
+\]
+Adding $\sqrt{2}$ across the inequalities:
+\[
+a < q + \sqrt{2} < b.
+\]
+Let $\xi = q + \sqrt{2}$. Since $q \in \Q$ and $\sqrt{2} \notin \Q$, by part 1, $\xi \in \R \setminus \Q$ is irrational.
+Hence $\xi$ is an irrational number in the open interval $(a, b)$.
+
+\textbf{3. Infinitely Many Rationals and Irrationals:}
+Suppose there were only finitely many rational numbers in $(a, b)$, say $\{q_1, \dots, q_k\}$.
+Let $q_{\min} = \min_{1 \le i \le k} \{q_i : q_i > a\}$.
+Then the non-empty interval $(a, q_{\min})$ would contain no rational numbers, which directly contradicts the density of $\Q$.
+The exact same contradiction applies to irrationals.
+Thus every non-empty interval $(a, b)$ contains infinitely many rational and infinitely many irrational numbers. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.9
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Cantor's Nested Interval Theorem (Théorème des Segments Emboîtés)}
+Let $([a_n, b_n])_{n \in \N}$ be a sequence of closed, bounded intervals in $\R$ that are nested:
+\[
+[a_0, b_0] \supseteq [a_1, b_1] \supseteq [a_2, b_2] \supseteq \dots \supseteq [a_n, b_n] \supseteq \dots
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that the sequence $(a_n)$ is increasing, $(b_n)$ is decreasing, and $\forall n, p \in \N$, $a_n \le b_p$.
+  \item Let $A = \{a_n : n \in \N\}$. Prove that $A$ is bounded above and that $\sup A \le b_p$ for all $p \in \N$.
+  \item Conclude that the intersection $\bigcap_{n=0}^\infty [a_n, b_n]$ is non-empty.
+  \item If in addition $\lim_{n \to \infty} (b_n - a_n) = 0$, prove that the intersection contains exactly one point.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Monotonicity and Cross-Inequality:}
+The containment $[a_{n+1}, b_{n+1}] \subseteq [a_n, b_n]$ means:
+\[
+a_n \le a_{n+1} \le b_{n+1} \le b_n.
+\]
+Thus $(a_n)$ is increasing and $(b_n)$ is decreasing.
+Let $n, p \in \N$. If $n \le p$, then $a_n \le a_p \le b_p$.
+If $n > p$, then $a_n \le b_n \le b_p$.
+In all cases, $a_n \le b_p$.
+
+\textbf{2. Supremum of $A$:}
+Every $b_p$ is an upper bound of the set $A = \{a_n : n \in \N\}$.
+Since $A \ne \emptyset$ and $A$ is bounded above (for instance by $b_0$), by the Completeness Axiom of $\R$, $c = \sup A$ exists in $\R$.
+By definition of the supremum (least upper bound), since every $b_p$ is an upper bound of $A$:
+\[
+c = \sup A \le b_p \quad \text{for all } p \in \N.
+\]
+Furthermore, since $c$ is an upper bound of $A$, $a_n \le c$ for all $n \in \N$.
+
+\textbf{3. Non-Empty Intersection:}
+Combining the inequalities: for all $n \in \N$:
+\[
+a_n \le c \le b_n \iff c \in [a_n, b_n].
+\]
+Since $c \in [a_n, b_n]$ for every $n \in \N$, we have $c \in \bigcap_{n=0}^\infty [a_n, b_n]$, so the intersection is non-empty.
+
+\textbf{4. Uniqueness when $\lim (b_n - a_n) = 0$:}
+Suppose $c_1, c_2 \in \bigcap_{n=0}^\infty [a_n, b_n]$ with $c_1 \le c_2$.
+Then for all $n \in \N$, $a_n \le c_1 \le c_2 \le b_n$.
+This implies:
+\[
+0 \le c_2 - c_1 \le b_n - a_n.
+\]
+Taking the limit as $n \to \infty$:
+\[
+0 \le c_2 - c_1 \le \lim_{n \to \infty} (b_n - a_n) = 0 \implies c_2 - c_1 = 0 \implies c_1 = c_2.
+\]
+Therefore, the intersection consists of the single point $\{c\}$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.10
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Incompleteness of $\Q$: Absence of Supremum in $\Q$}
+Consider the subset of rational numbers:
+\[
+S = \{q \in \Q : q > 0 \text{ and } q^2 < 2\}.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $S$ is non-empty and bounded above in $\Q$.
+  \item For any $q \in S$, define:
+  \[
+  q' = q - \frac{q^2 - 2}{q + 2} = \frac{2q + 2}{q + 2}.
+  \]
+  Show that $q' \in \Q$, $q' > q$, and $(q')^2 < 2$, proving that $S$ has no maximum in $\Q$.
+  \item Let $M \in \Q$ be any upper bound of $S$. Show that there exists a smaller upper bound $M' \in \Q$ with $M' < M$.
+  \item Conclude that the ordered field $\Q$ does not satisfy the Least Upper Bound Axiom (Completeness).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. $S$ is Non-Empty and Bounded Above in $\Q$:}
+$1 \in \Q$, $1 > 0$, and $1^2 = 1 < 2 \implies 1 \in S \ne \emptyset$.
+If $q \ge 2$, then $q^2 \ge 4 > 2$, so $q \notin S$.
+Thus $2$ (or any rational number $\ge 2$) is an upper bound of $S$ in $\Q$.
+
+\textbf{2. Construction of a Strictly Larger Element $q'$ in $S$:}
+Let $q \in S$, so $q > 0$ and $q^2 < 2$.
+\[
+q' = \frac{2q + 2}{q + 2}.
+\]
+Clearly $q' \in \Q$ and $q' > 0$.
+Compute $q' - q$:
+\[
+q' - q = \frac{2q + 2 - q(q + 2)}{q + 2} = \frac{2 - q^2}{q + 2}.
+\]
+Since $q^2 < 2$, the numerator $2 - q^2 > 0$, so $q' - q > 0 \implies q' > q$.
+Now compute $(q')^2 - 2$:
+\[
+(q')^2 - 2 = \left(\frac{2q + 2}{q + 2}\right)^2 - 2 = \frac{4q^2 + 8q + 4 - 2(q^2 + 4q + 4)}{(q + 2)^2} = \frac{2(q^2 - 2)}{(q + 2)^2}.
+\]
+Since $q^2 - 2 < 0$, we have $(q')^2 - 2 < 0 \implies (q')^2 < 2$.
+Thus $q' \in S$ and $q' > q$.
+This proves that no element in $S$ can be the maximum of $S$.
+
+\textbf{3. Absence of a Least Upper Bound in $\Q$:}
+Let $M \in \Q$ be an upper bound of $S$.
+Since $\sqrt{2} \notin \Q$, we cannot have $M^2 = 2$.
+If $M^2 < 2$, then by part 2, there exists $M' \in S$ with $M' > M$, contradicting that $M$ is an upper bound.
+Thus we must have $M^2 > 2$.
+Now consider:
+\[
+M' = \frac{2M + 2}{M + 2}.
+\]
+Then $M - M' = \frac{M^2 - 2}{M + 2} > 0 \implies M' < M$.
+Furthermore:
+\[
+(M')^2 - 2 = \frac{2(M^2 - 2)}{(M + 2)^2} > 0 \implies (M')^2 > 2.
+\]
+This implies that $M'$ is still an upper bound of $S$ in $\Q$, but $M' < M$.
+Hence no rational upper bound can be the *least* upper bound.
+
+\textbf{4. Conclusion:}
+The set $S \subset \Q$ is non-empty and bounded above, yet it possesses no supremum in $\Q$.
+Therefore, the rational number system $\Q$ is incomplete. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.11
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Supremum and Infimum of Doubly-Indexed Sets}
+Consider the set:
+\[
+A = \left\{ \frac{1}{n} - \frac{1}{m} : n, m \in \N^* \right\}.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Determine upper and lower bounds for $A$.
+  \item Prove that $\sup A = 1$ and $\inf A = -1$.
+  \item Does $A$ possess a maximum or a minimum? Justify carefully.
+  \item Prove that $0$ is an accumulation point of $A$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Bounds of $A$:}
+For all $n, m \in \N^*$, $0 < \frac{1}{n} \le 1$ and $0 < \frac{1}{m} \le 1$.
+Thus:
+\[
+-1 < -\frac{1}{m} \le \frac{1}{n} - \frac{1}{m} < \frac{1}{n} \le 1.
+\]
+Hence $-1 < x < 1$ for all $x \in A$. $A$ is bounded: bounded below by $-1$ and bounded above by $1$.
+
+\textbf{2. Proof that $\sup A = 1$ and $\inf A = -1$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item Upper bound: $\forall x \in A, x = \frac{1}{n} - \frac{1}{m} < \frac{1}{n} \le 1$, so $1$ is an upper bound.
+  \item Let $\varepsilon > 0$. Fix $n = 1$. Then $x_m = 1 - \frac{1}{m}$.
+  By Archimedes, $\exists m \in \N^*$ such that $\frac{1}{m} < \varepsilon$.
+  Then $x_m = 1 - \frac{1}{m} > 1 - \varepsilon$.
+  Since $x_m \in A$, this satisfies the $\varepsilon$-characterization of the supremum. Thus $\sup A = 1$.
+  \item For the infimum: Fix $m = 1$. Then $x_n = \frac{1}{n} - 1$.
+  By Archimedes, $\exists n \in \N^*$ such that $\frac{1}{n} < \varepsilon$.
+  Then $x_n = \frac{1}{n} - 1 < -1 + \varepsilon$.
+  Thus $\inf A = -1$.
+\end{itemize}
+
+\textbf{3. Non-existence of Maximum and Minimum:}
+Suppose $\max A$ exists. Then there would exist $n, m \in \N^*$ such that $\frac{1}{n} - \frac{1}{m} = 1$.
+This requires $\frac{1}{n} = 1 + \frac{1}{m} > 1$, which is impossible since $n \ge 1 \implies \frac{1}{n} \le 1$.
+Thus $\max A$ does not exist.
+By symmetry, $\frac{1}{n} - \frac{1}{m} = -1 \implies \frac{1}{m} = 1 + \frac{1}{n} > 1$, which is impossible.
+Thus $\min A$ does not exist.
+
+\textbf{4. $0$ is an Accumulation Point of $A$:}
+Taking $n = m$ gives $\frac{1}{n} - \frac{1}{n} = 0 \in A$.
+Taking $m = n + 1$ gives $y_n = \frac{1}{n} - \frac{1}{n+1} = \frac{1}{n(n+1)} \in A$.
+For any $\varepsilon > 0$, choosing $n > 1/\sqrt{\varepsilon}$ gives $0 < y_n < \varepsilon$.
+Thus every neighborhood of $0$ contains points of $A \setminus \{0\}$, proving $0$ is an accumulation point. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 3.12
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Uncountability of $\R$ and Cantor's Diagonal Argument}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Define what it means for a set $E$ to be countable.
+  \item State the Nested Interval Property of $\R$ (proved in Exercise 3.9).
+  \item Prove by contradiction that the open interval $(0, 1)$ is uncountable using Cantor's diagonal argument:
+  Assume $(0, 1) = \{x_1, x_2, x_3, \dots\}$ is an enumeration, where each $x_n$ has a decimal expansion:
+  \[
+  x_n = 0.d_{n,1} d_{n,2} d_{n,3} \dots \quad (d_{n,k} \in \{0, 1, \dots, 9\}).
+  \]
+  Construct an explicit real number $y \in (0, 1)$ that cannot belong to the list.
+  \item Deduce that the set of irrational numbers $\R \setminus \Q$ is uncountable.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Definition of Countability:}
+A set $E$ is countable if there exists an injective map $f: E \to \N$. If $E$ is infinite and there exists a bijection $f: E \to \N$, $E$ is countably infinite (or denumerable).
+
+\textbf{2. Nested Interval Property:}
+Every sequence of nested non-empty closed bounded intervals $[a_n, b_n]$ has a non-empty intersection $\bigcap_{n=0}^\infty [a_n, b_n] \ne \emptyset$.
+
+\textbf{3. Cantor's Diagonal Argument:}
+Assume for contradiction that the interval $(0, 1)$ is countable.
+Then there exists a bijection $f: \N^* \to (0, 1)$, listing all numbers in $(0, 1)$ as a sequence $(x_n)_{n \ge 1}$:
+\begin{align*}
+x_1 &= 0.d_{1,1} d_{1,2} d_{1,3} d_{1,4} \dots \\
+x_2 &= 0.d_{2,1} d_{2,2} d_{2,3} d_{2,4} \dots \\
+x_3 &= 0.d_{3,1} d_{3,2} d_{3,3} d_{3,4} \dots \\
+&\ \ \vdots
+\end{align*}
+(To avoid ambiguous representations like $0.1999\dots = 0.2000\dots$, we prohibit representations ending in infinitely repeating 9s).
+Now construct a number $y = 0.c_1 c_2 c_3 \dots \in (0, 1)$ by defining its $n$-th decimal digit $c_n$ along the diagonal:
+\[
+c_n = \begin{cases}
+4 & \text{if } d_{n,n} \ne 4 \\
+5 & \text{if } d_{n,n} = 4.
+\end{cases}
+\]
+Notice that:
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item All digits of $y$ are either 4 or 5, so $0 < y < 1$, and $y$ does not end in trailing 0s or 9s.
+  \item For every $n \ge 1$, the $n$-th digit of $y$ differs from the $n$-th digit of $x_n$:
+  \[
+  c_n \ne d_{n,n} \implies y \ne x_n.
+  \]
+\end{itemize}
+Thus $y$ cannot equal $x_n$ for any $n \in \N^*$.
+This means $y \in (0, 1)$ is not in the enumeration, which directly contradicts the assumption that $(x_n)$ enumerated all elements of $(0, 1)$.
+Therefore, $(0, 1)$ is uncountable, and consequently $\R$ is uncountable. \hfill $\blacksquare$
+
+\textbf{4. Uncountability of $\R \setminus \Q$:}
+We know that $\R = \Q \cup (\R \setminus \Q)$.
+The set of rational numbers $\Q$ is countable.
+If $\R \setminus \Q$ were also countable, then $\R$, being the union of two countable sets, would be countable.
+This contradicts the fact that $\R$ is uncountable.
+Therefore, the set of irrational numbers $\R \setminus \Q$ is uncountable. \hfill $\blacksquare$
+\end{solution}

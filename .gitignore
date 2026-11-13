@@ -1,0 +1,32 @@
+# LaTeX compilation auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex(gzip)
+*.synctex.gz
+*.toc
+*.vrb
+
+# Xournal++ notes (ignored per user request)
+*.xopp
+.*.xopp
+.*.autosave.xopp
+
+# OS & Editor temp files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/

@@ -1,0 +1,688 @@
+\chapter{Mathematical Logic, Quantifiers, Methods of Proof \& Set Theory}
+\label{chap:exo_ch01}
+
+\begin{quicksummary}{Core Logical Equivalences, Proof Strategies \& Set Identities}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Basic Logical Connectives \& Equivalences:}
+  \[
+  P \implies Q \iff \neg P \lor Q \iff \neg Q \implies \neg P \quad (\text{Contrapositive}).
+  \]
+  \[
+  \neg(P \land Q) \iff \neg P \lor \neg Q, \qquad \neg(P \lor Q) \iff \neg P \land \neg Q \quad (\text{De Morgan}).
+  \]
+  \[
+  \neg(P \implies Q) \iff P \land \neg Q.
+  \]
+  \item \textbf{Quantifiers \& Negation Rules:}
+  \[
+  \neg\bigl(\forall x \in E,\, P(x)\bigr) \iff \exists x \in E,\, \neg P(x), \qquad
+  \neg\bigl(\exists x \in E,\, P(x)\bigr) \iff \forall x \in E,\, \neg P(x).
+  \]
+  \item \textbf{Methods of Mathematical Proof:}
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item \textit{Direct Proof:} Assume $P$ is true; deduce $Q$ via logical chain.
+    \item \textit{Contrapositive:} Assume $\neg Q$ is true; deduce $\neg P$.
+    \item \textit{Proof by Contradiction:} Assume $P \land \neg Q$; deduce an absurd statement ($R \land \neg R$).
+    \item \textit{Induction Principle:} Verify $P(n_0)$ (base step), prove $\forall n \ge n_0,\, P(n) \implies P(n+1)$ (inductive step).
+  \end{itemize}
+  \item \textbf{Set Operations \& Indicator (Characteristic) Functions $\mathbf{1}_A$:}
+  \[
+  \mathbf{1}_{A \cap B} = \mathbf{1}_A \cdot \mathbf{1}_B, \quad \mathbf{1}_{A \cup B} = \mathbf{1}_A + \mathbf{1}_B - \mathbf{1}_A \mathbf{1}_B, \quad \mathbf{1}_{\complement_E A} = 1 - \mathbf{1}_A.
+  \]
+  \[
+  A \Delta B = (A \setminus B) \cup (B \setminus A) = (A \cup B) \setminus (A \cap B), \quad \mathbf{1}_{A \Delta B} = (\mathbf{1}_A - \mathbf{1}_B)^2 = \mathbf{1}_A + \mathbf{1}_B - 2\mathbf{1}_A \mathbf{1}_B.
+  \]
+\end{enumerate}
+\end{quicksummary}
+
+\vspace{10pt}
+
+% ===========================================================================
+% EXERCISE 1.1
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Truth Tables, Tautologies, and the Law of Contraposition}
+Let $P, Q,$ and $R$ be mathematical propositions.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Construct the complete truth table for the implication $P \implies Q$ and the contrapositive $\neg Q \implies \neg P$. Conclude that $(P \implies Q) \iff (\neg Q \implies \neg P)$ is a tautology.
+  \item Show via truth tables that the statement $[(P \implies Q) \land (Q \implies R)] \implies (P \implies R)$ (transitivity of implication / hypothetical syllogism) is a tautology.
+  \item Verify whether $(P \implies Q) \implies [P \implies (P \land Q)]$ is always true.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Equivalence of Implication and Contrapositive:}
+Recall that the implication $A \implies B$ is logically false if and only if $A$ is true and $B$ is false (i.e., equivalent to $\neg A \lor B$).
+\begin{center}
+\begin{tabular}{cc|c|cc|c|c}
+\toprule
+$P$ & $Q$ & $P \implies Q$ & $\neg Q$ & $\neg P$ & $\neg Q \implies \neg P$ & $(P \implies Q) \iff (\neg Q \implies \neg P)$ \\
+\midrule
+T & T & T & F & F & T & \textbf{T} \\
+T & F & F & T & F & F & \textbf{T} \\
+F & T & T & F & T & T & \textbf{T} \\
+F & F & T & T & T & T & \textbf{T} \\
+\bottomrule
+\end{tabular}
+\end{center}
+Since the final column evaluates to True (T) for all $2^2=4$ truth assignments, the proposition is a tautology.
+
+\textbf{2. Transitivity of Implication (Hypothetical Syllogism):}
+Let $A = (P \implies Q) \land (Q \implies R)$ and $B = (P \implies R)$.
+\begin{center}
+\small
+\begin{tabular}{ccc|cc|c|c|c}
+\toprule
+$P$ & $Q$ & $R$ & $P \implies Q$ & $Q \implies R$ & $A = (P \implies Q)\land(Q \implies R)$ & $B = P \implies R$ & $A \implies B$ \\
+\midrule
+T & T & T & T & T & T & T & \textbf{T} \\
+T & T & F & T & F & F & F & \textbf{T} \\
+T & F & T & F & T & F & T & \textbf{T} \\
+T & F & F & F & T & F & F & \textbf{T} \\
+F & T & T & T & T & T & T & \textbf{T} \\
+F & T & F & T & F & F & T & \textbf{T} \\
+F & F & T & T & T & T & T & \textbf{T} \\
+F & F & F & T & T & T & T & \textbf{T} \\
+\bottomrule
+\end{tabular}
+\end{center}
+Every row results in True; hence $[(P \implies Q) \land (Q \implies R)] \implies (P \implies R)$ is a tautology.
+
+\textbf{3. Verification of $(P \implies Q) \implies [P \implies (P \land Q)]$:}
+Assume $P \implies Q$ is True. We wish to prove $P \implies (P \land Q)$.
+Assume $P$ is True. Since $P \implies Q$ is True and $P$ is True, by \emph{Modus Ponens}, $Q$ is True.
+Since both $P$ and $Q$ are True, the conjunction $P \land Q$ is True.
+Hence $P \implies (P \land Q)$ holds in all cases. The overall implication is therefore a tautology.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.2
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Negation and Symbolic Translation of Quantified Assertions}
+Write the formal logical negation of each of the following statements without using the negation symbol $\neg$ in front of quantifiers:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item $A_1: \quad \forall x \in \R,\ \exists y \in \R,\ (x + y > 0 \implies x^2 + y^2 \ge 1)$.
+  \item $A_2$ (Boundedness of a function $f: \R \to \R$): $\quad \exists M > 0,\ \forall x \in \R,\ |f(x)| \le M$.
+  \item $A_3$ (Convergence of sequence $(u_n)$ to $\ell$): $\quad \forall \varepsilon > 0,\ \exists N \in \N,\ \forall n \ge N,\ |u_n - \ell| < \varepsilon$.
+  \item $A_4$ (Strict monotonicity of $f$): $\quad \forall x, y \in \R,\ (x < y \implies f(x) < f(y))$.
+\end{enumerate}
+State in plain words what the negation of each mathematical statement means.
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Negation of $A_1$:}
+Recall that the negation of an implication $P \implies Q$ is $P \land \neg Q$. Applying quantifier duality:
+\[
+\neg A_1 \iff \exists x \in \R,\ \forall y \in \R,\ \neg\bigl(x + y > 0 \implies x^2 + y^2 \ge 1\bigr) \iff \exists x \in \R,\ \forall y \in \R,\ (x + y > 0 \land x^2 + y^2 < 1).
+\]
+\emph{Meaning:} There exists a real $x$ such that for every real $y$, the sum $x+y$ is strictly positive yet the sum of squares $x^2+y^2$ is strictly less than 1.
+
+\textbf{2. Negation of $A_2$ (Unboundedness):}
+\[
+\neg A_2 \iff \forall M > 0,\ \exists x \in \R,\ |f(x)| > M.
+\]
+\emph{Meaning:} The function $f$ is unbounded on $\R$; no matter how large a bound $M > 0$ is chosen, there exists some point $x \in \R$ where $|f(x)|$ exceeds $M$.
+
+\textbf{3. Negation of $A_3$ (Non-convergence to $\ell$):}
+\[
+\neg A_3 \iff \exists \varepsilon > 0,\ \forall N \in \N,\ \exists n \ge N,\ |u_n - \ell| \ge \varepsilon.
+\]
+\emph{Meaning:} The sequence $(u_n)$ does not converge to $\ell$; there exists a positive error threshold $\varepsilon > 0$ such that beyond any index $N$, there is always some term $u_n$ that stays at least $\varepsilon$ away from $\ell$.
+
+\textbf{4. Negation of $A_4$ (Non-strictly increasing):}
+\[
+\neg A_4 \iff \exists x, y \in \R,\ (x < y \land f(x) \ge f(y)).
+\]
+\emph{Meaning:} The function $f$ fails to be strictly increasing; there exists at least one pair of points $x < y$ such that $f(x) \ge f(y)$.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.3
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Elementary Set Operations and De Morgan's Laws}
+Let $E$ be a universal set, and let $A, B, C \subseteq E$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove by double containment that $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$.
+  \item Prove that $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$ using logical equivalences of element membership.
+  \item Simplify the expression: $X = (A \cap B) \cup (A \cap \complement_E B) \cup (\complement_E A \cap B)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Proof that $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$:}
+Using element membership:
+\begin{align*}
+x \in A \setminus (B \cup C) &\iff x \in A \land x \notin (B \cup C) \\
+&\iff x \in A \land \neg(x \in B \lor x \in C) \\
+&\iff x \in A \land (x \notin B \land x \notin C) \quad (\text{by De Morgan}) \\
+&\iff (x \in A \land x \notin B) \land (x \in A \land x \notin C) \quad (\text{idempotence of } \land) \\
+&\iff x \in (A \setminus B) \land x \in (A \setminus C) \\
+&\iff x \in (A \setminus B) \cap (A \setminus C).
+\end{align*}
+Since each step is an equivalence ($\iff$), the sets are identical.
+
+\textbf{2. Distributivity $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$:}
+\begin{align*}
+x \in A \cup (B \cap C) &\iff x \in A \lor (x \in B \land x \in C) \\
+&\iff (x \in A \lor x \in B) \land (x \in A \lor x \in C) \quad (\text{distributivity of } \lor \text{ over } \land) \\
+&\iff x \in (A \cup B) \land x \in (A \cup C) \\
+&\iff x \in (A \cup B) \cap (A \cup C).
+\end{align*}
+
+\textbf{3. Simplification of $X$:}
+Notice that the first two terms can be factored using distributivity:
+\[
+(A \cap B) \cup (A \cap \complement_E B) = A \cap (B \cup \complement_E B) = A \cap E = A.
+\]
+Substituting this back into $X$:
+\[
+X = A \cup (\complement_E A \cap B) = (A \cup \complement_E A) \cap (A \cup B) = E \cap (A \cup B) = A \cup B.
+\]
+Hence $X = A \cup B$.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.4
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Direct Proofs in Number Theory and Parity}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove directly that the product of any two odd integers is odd.
+  \item Prove that for any integer $n \in \Z$, the quantity $n^3 - n$ is divisible by $6$.
+  \item Let $a, b \in \Z$. Prove that if $a + b$ is odd, then one of $a$ or $b$ is odd and the other is even.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Product of Two Odd Integers:}
+Let $x, y \in \Z$ be odd integers. By definition, there exist $k, m \in \Z$ such that $x = 2k + 1$ and $y = 2m + 1$.
+The product is:
+\[
+xy = (2k + 1)(2m + 1) = 4km + 2k + 2m + 1 = 2(2km + k + m) + 1.
+\]
+Let $p = 2km + k + m \in \Z$. Then $xy = 2p + 1$, which is odd by definition. \hfill $\blacksquare$
+
+\textbf{2. Divisibility of $n^3 - n$ by 6:}
+Factor $n^3 - n$:
+\[
+n^3 - n = n(n^2 - 1) = (n - 1)n(n + 1).
+\]
+This expression is the product of three consecutive integers:
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item Among any two consecutive integers, at least one is even (divisible by 2). Thus $2 \mid (n^3 - n)$.
+  \item Among any three consecutive integers, exactly one is a multiple of 3. Thus $3 \mid (n^3 - n)$.
+\end{itemize}
+Since $\gcd(2, 3) = 1$, by Gauss's Lemma, $2 \times 3 = 6$ divides $(n - 1)n(n + 1) = n^3 - n$. \hfill $\blacksquare$
+
+\textbf{3. Parity of $a$ and $b$ when $a+b$ is odd:}
+Assume $a, b \in \Z$ such that $a + b = 2k + 1$ for some $k \in \Z$.
+Suppose for contradiction that $a$ and $b$ have the same parity:
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item If both are even: $a = 2p$, $b = 2q \implies a + b = 2(p+q)$, which is even (contradiction).
+  \item If both are odd: $a = 2p+1$, $b = 2q+1 \implies a + b = 2(p+q+1)$, which is even (contradiction).
+\end{itemize}
+Therefore, $a$ and $b$ cannot have the same parity; exactly one is even and the other is odd. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.5
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Proof by Contraposition vs. Direct Proof}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Let $n \in \Z$. Prove by contraposition: If $n^2$ is even, then $n$ is even.
+  \item Let $x \in \R$. Prove by contraposition: If $3x^3 - x^2 + 2x - 5$ is irrational, then $x$ is irrational.
+  \item Let $x, y \in \R$. Prove by contraposition: If $x + y > 10$, then $x > 5$ or $y > 5$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. If $n^2$ is even, then $n$ is even:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Statement:} $P(n): n^2 \in 2\Z \implies Q(n): n \in 2\Z$.
+  \item \textbf{Contrapositive:} $\neg Q(n) \implies \neg P(n)$, i.e., ``If $n$ is odd, then $n^2$ is odd.''
+  \item \textbf{Proof of contrapositive:} Assume $n$ is odd. Then $n = 2k + 1$ for some $k \in \Z$.
+  \[
+  n^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1.
+  \]
+  Since $2k^2 + 2k \in \Z$, $n^2$ is of the form $2m + 1$, hence $n^2$ is odd.
+  By contraposition, if $n^2$ is even, then $n$ must be even. \hfill $\blacksquare$
+\end{itemize}
+
+\textbf{2. Irrationality of Polynomial in $x$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Contrapositive:} ``If $x \in \Q$, then $3x^3 - x^2 + 2x - 5 \in \Q$.''
+  \item \textbf{Proof:} Recall that the field of rational numbers $\Q$ is closed under addition, subtraction, and multiplication.
+  If $x \in \Q$, then $x^2 \in \Q$, $x^3 \in \Q$, and integer multiples $3x^3, -x^2, 2x$ are rational.
+  Consequently, the linear combination $3x^3 - x^2 + 2x - 5$ is a sum of rational numbers and is therefore in $\Q$.
+  By contraposition, if the value is irrational, $x$ must be irrational. \hfill $\blacksquare$
+\end{itemize}
+
+\textbf{3. If $x + y > 10$, then $x > 5$ or $y > 5$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Contrapositive:} $\neg(x > 5 \lor y > 5) \implies \neg(x + y > 10)$, which translates by De Morgan to:
+  \[
+  (x \le 5 \land y \le 5) \implies x + y \le 10.
+  \]
+  \item \textbf{Proof:} Assume $x \le 5$ and $y \le 5$. Adding these two real inequalities yields:
+  \[
+  x + y \le 5 + 5 = 10.
+  \]
+  This establishes the contrapositive directly, hence the original statement holds. \hfill $\blacksquare$
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.6
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Rigorous Proofs by Contradiction (Reductio ad Absurdum)}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove by contradiction that $\sqrt{3} \notin \Q$.
+  \item Prove by contradiction that $\log_{10}(2)$ is an irrational number.
+  \item Prove that there are no integers $m, n \in \Z$ such that $12m + 18n = 7$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Proof that $\sqrt{3} \notin \Q$:}
+Assume for contradiction that $\sqrt{3} \in \Q$. Then there exist coprime integers $p \in \Z$ and $q \in \N^*$ ($\gcd(p, q) = 1$) such that:
+\[
+\sqrt{3} = \frac{p}{q} \implies 3 = \frac{p^2}{q^2} \implies p^2 = 3q^2.
+\]
+This implies that $3$ divides $p^2$. Since 3 is prime, by Euclid's lemma, $3$ divides $p$.
+Thus, $p = 3k$ for some integer $k \in \Z$.
+Substituting into the equation:
+\[
+(3k)^2 = 3q^2 \implies 9k^2 = 3q^2 \implies q^2 = 3k^2.
+\]
+This implies that $3$ divides $q^2$, and since 3 is prime, $3$ divides $q$.
+Consequently, $3 \mid p$ and $3 \mid q$, so $\gcd(p, q) \ge 3$, which contradicts the irreducible assumption $\gcd(p, q) = 1$.
+Therefore, $\sqrt{3}$ is irrational. \hfill $\blacksquare$
+
+\textbf{2. Proof that $\log_{10}(2) \notin \Q$:}
+Assume for contradiction that $\log_{10}(2) \in \Q$.
+Since $10^0 = 1 < 2 < 10^1 = 10$, we have $0 < \log_{10}(2) < 1$.
+Thus, there exist strictly positive integers $p, q \in \N^*$ such that:
+\[
+\log_{10}(2) = \frac{p}{q} \implies 10^{p/q} = 2 \implies 10^p = 2^q.
+\]
+Decomposing $10$ into its prime factors, $10 = 2 \times 5$:
+\[
+(2 \times 5)^p = 2^q \implies 2^p \cdot 5^p = 2^q \implies 5^p = 2^{q-p}.
+\]
+Notice that $p \ge 1$, so $5^p$ is a positive integer divisible by 5 (hence an odd integer ending in 5).
+However, the right side $2^{q-p}$ is either a power of 2 (an even integer if $q > p$, or 1 if $q = p$, or non-integer if $q < p$).
+In all cases, an odd power of 5 cannot equal a power of 2 because prime factorizations are unique (Fundamental Theorem of Arithmetic).
+Contradiction! Hence $\log_{10}(2) \notin \Q$. \hfill $\blacksquare$
+
+\textbf{3. Proof that $12m + 18n \ne 7$ for all $m, n \in \Z$:}
+Assume for contradiction that there exist integers $m, n \in \Z$ such that $12m + 18n = 7$.
+Factor the left-hand side:
+\[
+6(2m + 3n) = 7.
+\]
+Since $m, n \in \Z$, $2m + 3n$ is an integer. Thus the left-hand side is divisible by 6.
+This requires $6 \mid 7$, which is absurd since $7$ is prime and $6 \nmid 7$.
+Therefore, no such integers exist. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.7
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Standard and Shifted Mathematical Induction}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove by induction that for all $n \ge 1$:
+  \[
+  \sum_{k=1}^n k^2 = 1^2 + 2^2 + \dots + n^2 = \frac{n(n+1)(2n+1)}{6}.
+  \]
+  \item Prove Bernoulli's Inequality: For any real number $x > -1$ and any integer $n \in \N$:
+  \[
+  (1 + x)^n \ge 1 + nx.
+  \]
+  \item Prove by induction that for all $n \ge 4$, $2^n < n!$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Sum of Squares Formula:}
+Let $P(n)$ be the proposition: $\sum_{k=1}^n k^2 = \frac{n(n+1)(2n+1)}{6}$.
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Base step ($n = 1$):} LHS $= 1^2 = 1$. RHS $= \frac{1(2)(3)}{6} = 1$. $P(1)$ is true.
+  \item \textbf{Induction step:} Assume $P(n)$ is true for some $n \ge 1$. We compute:
+  \[
+  \sum_{k=1}^{n+1} k^2 = \sum_{k=1}^n k^2 + (n+1)^2 = \frac{n(n+1)(2n+1)}{6} + (n+1)^2.
+  \]
+  Factor out $(n+1)$:
+  \[
+  = (n+1)\left[\frac{n(2n+1) + 6(n+1)}{6}\right] = (n+1)\left[\frac{2n^2 + 7n + 6}{6}\right].
+  \]
+  Since $2n^2 + 7n + 6 = (n+2)(2n+3) = ((n+1)+1)(2(n+1)+1)$:
+  \[
+  \sum_{k=1}^{n+1} k^2 = \frac{(n+1)((n+1)+1)(2(n+1)+1)}{6}.
+  \]
+  Thus $P(n+1)$ is true. By the principle of mathematical induction, $P(n)$ holds for all $n \ge 1$. \hfill $\blacksquare$
+\end{itemize}
+
+\textbf{2. Bernoulli's Inequality:}
+Let $P(n): (1+x)^n \ge 1 + nx$, with $x > -1$.
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Base step ($n=0$):} $(1+x)^0 = 1$ and $1 + 0x = 1$. $1 \ge 1$ holds.
+  \item \textbf{Induction step:} Assume $(1+x)^n \ge 1+nx$. Since $x > -1$, we have $1+x > 0$. Multiplying both sides by $(1+x)$ preserves inequality direction:
+  \[
+  (1+x)^{n+1} \ge (1+nx)(1+x) = 1 + x + nx + nx^2 = 1 + (n+1)x + nx^2.
+  \]
+  Since $n \ge 0$ and $x^2 \ge 0$, the term $nx^2 \ge 0$. Therefore:
+  \[
+  (1+x)^{n+1} \ge 1 + (n+1)x + nx^2 \ge 1 + (n+1)x.
+  \]
+  Thus $P(n+1)$ is true. By induction, the inequality holds for all $n \in \N$. \hfill $\blacksquare$
+\end{itemize}
+
+\textbf{3. Factorial Growth $2^n < n!$ for $n \ge 4$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Base step ($n=4$):} $2^4 = 16$ and $4! = 24$. Since $16 < 24$, the base case holds.
+  \item \textbf{Induction step:} Assume $2^n < n!$ for some $n \ge 4$.
+  Since $n \ge 4$, we have $n + 1 \ge 5 > 2$. Multiplying the induction hypothesis by $n+1$:
+  \[
+  (n+1)! = (n+1) \cdot n! > (n+1) \cdot 2^n > 2 \cdot 2^n = 2^{n+1}.
+  \]
+  Hence $2^{n+1} < (n+1)!$, completing the induction step. \hfill $\blacksquare$
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.8
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Strong Mathematical Induction \& Recurrence Relations}
+Consider the sequence $(u_n)_{n \in \N}$ defined by:
+\[
+u_0 = 1, \quad u_1 = 3, \quad \text{and} \quad u_{n+2} = 3u_{n+1} - 2u_n \quad \text{for all } n \ge 0.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the first four terms: $u_2, u_3, u_4, u_5$. Conjecture a closed-form formula for $u_n$.
+  \item Prove your conjecture for all $n \in \N$ using strong mathematical induction.
+  \item Alternatively, prove the formula by solving the characteristic polynomial equation.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Computation of Initial Terms:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item $u_2 = 3u_1 - 2u_0 = 3(3) - 2(1) = 9 - 2 = 7$.
+  \item $u_3 = 3u_2 - 2u_1 = 3(7) - 2(3) = 21 - 6 = 15$.
+  \item $u_4 = 3u_3 - 2u_2 = 3(15) - 2(7) = 45 - 14 = 31$.
+  \item $u_5 = 3u_4 - 2u_3 = 3(31) - 2(15) = 93 - 30 = 63$.
+\end{itemize}
+Notice the pattern: $1 = 2^1 - 1$, $3 = 2^2 - 1$, $7 = 2^3 - 1$, $15 = 2^4 - 1$, $31 = 2^5 - 1$, $63 = 2^6 - 1$.
+We conjecture:
+\[
+u_n = 2^{n+1} - 1 \quad \text{for all } n \ge 0.
+\]
+
+\textbf{2. Proof by Strong Induction:}
+Let $P(n)$ be the statement $u_n = 2^{n+1} - 1$.
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Base cases:}
+  For $n=0$: $u_0 = 2^{0+1} - 1 = 2 - 1 = 1$ (matches definition).
+  For $n=1$: $u_1 = 2^{1+1} - 1 = 4 - 1 = 3$ (matches definition).
+  Both base cases are verified.
+  \item \textbf{Induction step:} Let $k \ge 0$. Assume that $P(m)$ holds for all $0 \le m \le k+1$. In particular, assume $u_k = 2^{k+1}-1$ and $u_{k+1} = 2^{k+2}-1$.
+  We evaluate $u_{k+2}$:
+  \begin{align*}
+  u_{k+2} &= 3u_{k+1} - 2u_k \\
+  &= 3(2^{k+2} - 1) - 2(2^{k+1} - 1) \\
+  &= 3 \cdot 2^{k+2} - 3 - 2^{k+2} + 2 \\
+  &= (3 - 1) \cdot 2^{k+2} - 1 \\
+  &= 2 \cdot 2^{k+2} - 1 = 2^{(k+2)+1} - 1.
+  \end{align*}
+  Thus $P(k+2)$ is verified. By strong mathematical induction, $u_n = 2^{n+1} - 1$ for all $n \in \N$. \hfill $\blacksquare$
+\end{itemize}
+
+\textbf{3. Characteristic Equation Method:}
+The characteristic polynomial of $r^2 - 3r + 2 = 0$ factors as $(r-1)(r-2) = 0$, giving distinct real roots $r_1 = 1$ and $r_2 = 2$.
+The general solution is $u_n = A(1)^n + B(2)^n = A + B \cdot 2^n$.
+Using initial conditions:
+\[
+\begin{cases}
+u_0 = A + B = 1 \\
+u_1 = A + 2B = 3
+\end{cases}
+\implies B = 2, \quad A = 1 - 2 = -1.
+\]
+Thus $u_n = -1 + 2 \cdot 2^n = 2^{n+1} - 1$, confirming the result.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.9
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Symmetric Difference of Sets ($\Delta$)}
+The symmetric difference of two sets $A$ and $B$ is defined by $A \Delta B = (A \setminus B) \cup (B \setminus A)$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $A \Delta B = (A \cup B) \setminus (A \cap B)$.
+  \item Prove that the empty set $\emptyset$ is the neutral element for $\Delta$, and that every set is its own inverse: $A \Delta A = \emptyset$.
+  \item Prove the distributivity of intersection over symmetric difference:
+  \[
+  A \cap (B \Delta C) = (A \cap B) \Delta (A \cap C).
+  \]
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Alternative Characterization $A \Delta B = (A \cup B) \setminus (A \cap B)$:}
+\begin{align*}
+x \in A \Delta B &\iff (x \in A \land x \notin B) \lor (x \in B \land x \notin A) \\
+&\iff [(x \in A \land x \notin B) \lor x \in B] \land [(x \in A \land x \notin B) \lor x \notin A] \\
+&\iff [(x \in A \lor x \in B) \land (x \notin B \lor x \in B)] \land [(x \in A \lor x \notin A) \land (x \notin B \lor x \notin A)] \\
+&\iff (x \in A \lor x \in B) \land \neg(x \in A \land x \in B) \\
+&\iff x \in (A \cup B) \setminus (A \cap B).
+\end{align*}
+
+\textbf{2. Neutral Element and Inverses:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Neutral element:} $A \Delta \emptyset = (A \setminus \emptyset) \cup (\emptyset \setminus A) = A \cup \emptyset = A$.
+  \item \textbf{Self-inverse:} $A \Delta A = (A \setminus A) \cup (A \setminus A) = \emptyset \cup \emptyset = \emptyset$.
+\end{itemize}
+
+\textbf{3. Distributivity of $\cap$ over $\Delta$:}
+Using indicator functions $\mathbf{1}_S: E \to \{0, 1\}$ where operations are evaluated in $\Z/2\Z$:
+Recall that $\mathbf{1}_{X \Delta Y} = \mathbf{1}_X \oplus \mathbf{1}_Y = \mathbf{1}_X + \mathbf{1}_Y - 2\mathbf{1}_X\mathbf{1}_Y$ and $\mathbf{1}_{X \cap Y} = \mathbf{1}_X \mathbf{1}_Y$.
+For any element $x \in E$:
+\[
+\mathbf{1}_{A \cap (B \Delta C)}(x) = \mathbf{1}_A(x) \cdot \mathbf{1}_{B \Delta C}(x) = \mathbf{1}_A(x) \bigl(\mathbf{1}_B(x) \oplus \mathbf{1}_C(x)\bigr).
+\]
+In the ring $(\{0, 1\}, \oplus, \cdot)$, multiplication distributes over addition modulo 2:
+\[
+= \bigl(\mathbf{1}_A(x) \cdot \mathbf{1}_B(x)\bigr) \oplus \bigl(\mathbf{1}_A(x) \cdot \mathbf{1}_C(x)\bigr) = \mathbf{1}_{A \cap B}(x) \oplus \mathbf{1}_{A \cap C}(x) = \mathbf{1}_{(A \cap B) \Delta (A \cap C)}(x).
+\]
+Since their indicator functions are identical everywhere on $E$, the sets are equal:
+\[
+A \cap (B \Delta C) = (A \cap B) \Delta (A \cap C). \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.10
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Power Set $\mathcal{P}(E)$ and the Boolean Ring Structure}
+Let $E$ be a non-empty set and $\mathcal{P}(E)$ its power set.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Show that $(\mathcal{P}(E), \Delta)$ is an abelian group. Identify the identity and the inverse of any element $A \in \mathcal{P}(E)$.
+  \item Show that $(\mathcal{P}(E), \Delta, \cap)$ is a commutative ring with unity, and that every element is idempotent: $\forall A \in \mathcal{P}(E),\ A \cap A = A$. (Such a ring is called a \emph{Boolean ring}).
+  \item Prove that if $E$ is finite with $\card(E) = n$, then $\card(\mathcal{P}(E)) = 2^n$ using:
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item[(a)] The Binomial Theorem: $\sum_{k=0}^n \binom{n}{k} = 2^n$.
+    \item[(b)] The bijection between $\mathcal{P}(E)$ and the set of indicator functions $\{0, 1\}^E$.
+  \end{itemize}
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Abelian Group $(\mathcal{P}(E), \Delta)$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Closure:} For any $A, B \subseteq E$, $A \Delta B \subseteq E$, so $\Delta$ is an internal binary operation.
+  \item \textbf{Associativity:} Using indicator functions in $\Z/2\Z$, $\mathbf{1}_{(A \Delta B) \Delta C} = (\mathbf{1}_A \oplus \mathbf{1}_B) \oplus \mathbf{1}_C = \mathbf{1}_A \oplus (\mathbf{1}_B \oplus \mathbf{1}_C) = \mathbf{1}_{A \Delta (B \Delta C)}$. Thus $(A \Delta B) \Delta C = A \Delta (B \Delta C)$.
+  \item \textbf{Identity element:} For any $A \in \mathcal{P}(E)$, $A \Delta \emptyset = A$. The identity is $\emptyset$.
+  \item \textbf{Inverses:} $A \Delta A = \emptyset$, so every set $A$ is its own inverse: $A^{-1} = A$.
+  \item \textbf{Commutativity:} $A \Delta B = (A \setminus B) \cup (B \setminus A) = (B \setminus A) \cup (A \setminus B) = B \Delta A$.
+\end{itemize}
+Hence $(\mathcal{P}(E), \Delta)$ is an abelian group.
+
+\textbf{2. Boolean Ring Structure:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item We already proved that $(\mathcal{P}(E), \Delta)$ is an abelian group.
+  \item Intersection $\cap$ is associative: $(A \cap B) \cap C = A \cap (B \cap C)$.
+  \item Intersection distributes over $\Delta$: $A \cap (B \Delta C) = (A \cap B) \Delta (A \cap C)$ (proved in Exercise 1.9).
+  \item Intersection is commutative: $A \cap B = B \cap A$.
+  \item Unity element: $A \cap E = A$ for all $A \subseteq E$, so $E$ is the multiplicative identity.
+  \item Idempotence: $A \cap A = A$ for all $A \in \mathcal{P}(E)$.
+\end{itemize}
+Therefore, $(\mathcal{P}(E), \Delta, \cap)$ is a commutative Boolean ring with unity.
+
+\textbf{3. Cardinality of the Power Set:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Method (a) Binomial expansion:} A subset of $E$ can contain $k$ elements, where $0 \le k \le n$. The number of $k$-element subsets is given by the binomial coefficient $\binom{n}{k}$. Summing over all possible subset sizes:
+  \[
+  \card(\mathcal{P}(E)) = \sum_{k=0}^n \binom{n}{k} = \sum_{k=0}^n \binom{n}{k} 1^k 1^{n-k} = (1 + 1)^n = 2^n.
+  \]
+  \item \textbf{Method (b) Indicator function bijection:}
+  Define the map $\Phi: \mathcal{P}(E) \to \{0, 1\}^E$ by $\Phi(A) = \mathbf{1}_A$.
+  For any function $f \in \{0, 1\}^E$, the preimage $A_f = f^{-1}(\{1\}) = \{x \in E : f(x) = 1\}$ is a unique subset of $E$ satisfying $\Phi(A_f) = f$. Thus $\Phi$ is a bijection.
+  The cardinality of the function set $\{0, 1\}^E$ is $|\{0, 1\}|^{|E|} = 2^n$. Hence $\card(\mathcal{P}(E)) = 2^n$. \hfill $\blacksquare$
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.11
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Arbitrary Unions, Intersections, and Interval Limits}
+Let $I$ be an arbitrary non-empty indexing set, and let $(A_i)_{i \in I}$ be a family of subsets of a universal set $E$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove the generalized De Morgan's laws:
+  \[
+  \complement_E \left(\bigcup_{i \in I} A_i\right) = \bigcap_{i \in I} \complement_E A_i \qquad \text{and} \qquad \complement_E \left(\bigcap_{i \in I} A_i\right) = \bigcup_{i \in I} \complement_E A_i.
+  \]
+  \item Determine the following infinite intersections and unions of real intervals:
+  \[
+  J_1 = \bigcap_{n=1}^\infty \left[0, \frac{1}{n}\right], \qquad J_2 = \bigcap_{n=1}^\infty \left(0, \frac{1}{n}\right), \qquad J_3 = \bigcup_{n=1}^\infty \left[\frac{1}{n}, 1\right].
+  \]
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Generalized De Morgan's Laws:}
+For the first identity:
+\begin{align*}
+x \in \complement_E \left(\bigcup_{i \in I} A_i\right) &\iff x \notin \bigcup_{i \in I} A_i \iff \neg\left(\exists i \in I,\, x \in A_i\right) \\
+&\iff \forall i \in I,\, x \notin A_i \iff \forall i \in I,\, x \in \complement_E A_i \iff x \in \bigcap_{i \in I} \complement_E A_i.
+\end{align*}
+For the second identity:
+\begin{align*}
+x \in \complement_E \left(\bigcap_{i \in I} A_i\right) &\iff x \notin \bigcap_{i \in I} A_i \iff \neg\left(\forall i \in I,\, x \in A_i\right) \\
+&\iff \exists i \in I,\, x \notin A_i \iff \exists i \in I,\, x \in \complement_E A_i \iff x \in \bigcup_{i \in I} \complement_E A_i. \quad \blacksquare
+\end{align*}
+
+\textbf{2. Evaluation of Infinite Interval Families:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Evaluation of $J_1 = \bigcap_{n=1}^\infty [0, 1/n]$:}
+  For every $n \ge 1$, $0 \le 0 \le 1/n$, so $0 \in [0, 1/n]$ for all $n$, meaning $0 \in J_1$.
+  Suppose $x > 0$. By the Archimedean property of $\R$, there exists $N \in \N^*$ such that $1/N < x$. Then $x \notin [0, 1/N]$, so $x \notin J_1$.
+  If $x < 0$, $x \notin [0, 1]$ so $x \notin J_1$.
+  Therefore, $J_1 = \{0\}$.
+  \item \textbf{Evaluation of $J_2 = \bigcap_{n=1}^\infty (0, 1/n)$:}
+  Suppose there exists $x \in J_2$. Then $x \in (0, 1/n)$ for all $n \ge 1$, so $x > 0$ and $x < 1/n$ for all $n \ge 1$.
+  However, by the Archimedean property, choosing $n > 1/x$ implies $1/n < x$, which contradicts $x < 1/n$.
+  Hence no such $x$ exists: $J_2 = \emptyset$.
+  \item \textbf{Evaluation of $J_3 = \bigcup_{n=1}^\infty [1/n, 1]$:}
+  Clearly for every $n \ge 1$, $[1/n, 1] \subseteq (0, 1]$, hence $J_3 \subseteq (0, 1]$.
+  Conversely, let $x \in (0, 1]$. Since $x > 0$, by Archimedes there exists $n \in \N^*$ such that $1/n < x \le 1$, meaning $x \in [1/n, 1] \subseteq J_3$.
+  Thus $(0, 1] \subseteq J_3$.
+  We conclude $J_3 = (0, 1]$. \hfill $\blacksquare$
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.12
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{The Pigeonhole Principle (Dirichlet Principle) and Set Partitions}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State the Dirichlet Pigeonhole Principle.
+  \item Let $S \subset \{1, 2, 3, \dots, 2n\}$ be a subset containing $n + 1$ distinct integers.
+  Prove that there exist at least two distinct elements $a, b \in S$ such that $a$ divides $b$ ($a \mid b$).
+  \item Six people attend a conference. Between any two people, they are either mutual friends or mutual strangers. Prove that there must exist at least three mutual friends or three mutual strangers.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Dirichlet Pigeonhole Principle:}
+If $m$ items (pigeons) are placed into $k$ boxes (pigeonholes) with $m > k$, then at least one pigeonhole must contain two or more items.
+Formally, if $f: X \to Y$ is a function between finite sets with $\card(X) > \card(Y)$, then $f$ is not injective.
+
+\textbf{2. Existence of Divisible Pair in $S \subset \{1, \dots, 2n\}$ with $|S| = n + 1$:}
+Every positive integer $x \in \{1, 2, \dots, 2n\}$ can be uniquely factored as:
+\[
+x = 2^k \cdot q,
+\]
+where $k \ge 0$ is a non-negative integer and $q$ is an odd integer.
+Notice that the only possible odd factors $q$ are chosen from the set of odd numbers strictly bounded by $2n$:
+\[
+O = \{1, 3, 5, \dots, 2n - 1\}.
+\]
+The number of elements in $O$ is precisely $n$.
+Define the map $f: S \to O$ that assigns to each $x \in S$ its odd part $q$.
+The domain $S$ has cardinality $\card(S) = n + 1$, while the codomain $O$ has cardinality $\card(O) = n$.
+Since $\card(S) > \card(O)$, by the Pigeonhole Principle, $f$ cannot be injective: there exist two distinct elements $a, b \in S$ ($a \ne b$) that have the exact same odd part $q$.
+Thus:
+\[
+a = 2^j \cdot q \quad \text{and} \quad b = 2^m \cdot q \quad (j, m \in \N).
+\]
+Since $a \ne b$, $j \ne m$. Without loss of generality, assume $j < m$.
+Then:
+\[
+\frac{b}{a} = \frac{2^m \cdot q}{2^j \cdot q} = 2^{m - j} \in \N^*,
+\]
+which proves that $a$ divides $b$. \hfill $\blacksquare$
+
+\textbf{3. Theorem on Friends and Strangers ($R(3,3) = 6$):}
+Represent the 6 people as 6 vertices $V = \{v_1, \dots, v_6\}$ of a complete graph $K_6$. Color the edge between $v_i$ and $v_j$ blue if they are friends, and red if they are strangers.
+Consider a specific person $v_1$. There are 5 edges incident to $v_1$, connecting to the remaining 5 people.
+By the Pigeonhole Principle ($5$ edges distributed into $2$ colors), at least $\lceil 5/2 \rceil = 3$ edges incident to $v_1$ must share the same color.
+Without loss of generality, assume edges $(v_1, v_2), (v_1, v_3), (v_1, v_4)$ are all \textbf{blue} (friends):
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item Case A: If any edge between $v_2, v_3, v_4$ is blue (say $(v_2, v_3)$ is blue), then vertices $\{v_1, v_2, v_3\}$ form a blue triangle (three mutual friends).
+  \item Case B: If none of the edges between $v_2, v_3, v_4$ are blue, then all three edges $(v_2, v_3), (v_3, v_4), (v_2, v_4)$ must be \textbf{red}. Thus $\{v_2, v_3, v_4\}$ forms a red triangle (three mutual strangers).
+\end{itemize}
+In either case, a monochromatic triangle exists, proving that there are always at least three mutual friends or three mutual strangers. \hfill $\blacksquare$
+\end{solution}

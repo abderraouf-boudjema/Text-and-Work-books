@@ -1,0 +1,452 @@
+\chapter{Potential Energy and Conservative Forces}
+\label{ch:potential_energy}
+\begin{chapterintro}
+\textbf{You will learn to:} test whether a force field is conservative using the curl operator; derive potential energy functions; apply the conservation of mechanical energy; account for energy dissipation by non-conservative forces; and analyse systems with gravity, springs, and electrostatic potentials.
+\end{chapterintro}
+
+\section{Conservative Forces and Potential Energy}
+
+A force $\vec{F}(\vec{r})$ is said to be \textbf{conservative} if the work it performs on a particle moving between two points $A$ and $B$ depends \textbf{only on the endpoints} $A$ and $B$, and not on the path taken:
+\[
+W_{A\to B}(\vec{F}) = \int_{\mathcal{C}_1} \vec{F}\cdot\dd\vec{r} = \int_{\mathcal{C}_2} \vec{F}\cdot\dd\vec{r}.
+\]
+
+\begin{keyidea}[Three Equivalent Conditions for a Conservative Force]
+\begin{enumerate}[leftmargin=1.5em,itemsep=3pt]
+  \item \textbf{Path Independence}: The circulation along any closed loop is zero:
+        \[
+        \oint \vec{F}\cdot\dd\vec{r} = 0.
+        \]
+  \item \textbf{Irrotational (Curl-Free)}: In a simply-connected domain:
+        \[
+        \boxed{\vec{\nabla}\times\vec{F} = \vzero \iff \frac{\partial F_z}{\partial y} = \frac{\partial F_y}{\partial z},\quad \frac{\partial F_x}{\partial z} = \frac{\partial F_z}{\partial x},\quad \frac{\partial F_y}{\partial x} = \frac{\partial F_x}{\partial y}.}
+        \]
+  \item \textbf{Derives from a Scalar Potential Energy}: There exists a scalar function $E_p(x, y, z)$ such that:
+        \[
+        \boxed{\vec{F} = -\vec{\nabla} E_p = -\left(\frac{\partial E_p}{\partial x}\ihat + \frac{\partial E_p}{\partial y}\jhat + \frac{\partial E_p}{\partial z}\khat\right).}
+        \]
+\end{enumerate}
+\end{keyidea}
+
+The elementary work is the exact differential of the potential energy:
+\[
+\dd W = \vec{F}\cdot\dd\vec{r} = -\vec{\nabla} E_p\cdot\dd\vec{r} = -\dd E_p.
+\]
+Integrating between $A$ and $B$:
+\[
+\boxed{W_{A\to B}(\vec{F}) = -\Delta E_p = E_p(A) - E_p(B).}
+\]
+\begin{warning}[The Minus Sign]
+Remember the crucial minus sign in $\vec{F} = -\vec{\nabla} E_p$! Physical systems naturally accelerate \textbf{toward lower potential energy} (downhill).
+\end{warning}
+
+\section{Conservation of Mechanical Energy}
+
+The \textbf{total mechanical energy} of a material point is the sum of its kinetic and potential energies:
+\[
+\boxed{E_m = E_c + E_p = \frac{1}{2}m v^2 + E_p(\vec{r}).}
+\]
+Taking the time derivative:
+\[
+\frac{\dd E_m}{\dd t} = \frac{\dd E_c}{\dd t} + \frac{\dd E_p}{\dd t} = \vec{v}\cdot\sum\vec{F} + \vec{\nabla} E_p\cdot\frac{\dd\vec{r}}{\dd t} = \vec{v}\cdot\left(\sum\vec{F}_{\text{cons}} + \sum\vec{F}_{\text{nc}}\right) - \vec{F}_{\text{cons}}\cdot\vec{v} = \vec{F}_{\text{nc}}\cdot\vec{v}.
+\]
+Thus:
+\[
+\boxed{\frac{\dd E_m}{\dd t} = P_{\text{nc}}(t) = \vec{F}_{\text{nc}}\cdot\vec{v}.}
+\]
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item If \textbf{all forces are conservative} ($\vec{F}_{\text{nc}} = \vzero$):
+        \[
+        \boxed{\Delta E_m = 0 \iff E_c(B) + E_p(B) = E_c(A) + E_p(A) = \text{constant}.}
+        \]
+  \item If \textbf{non-conservative forces} (such as friction or drag) act:
+        \[
+        \boxed{\Delta E_m = E_m(B) - E_m(A) = W_{A\to B}\left(\vec{F}_{\text{nc}}\right).}
+        \]
+\end{itemize}
+
+\section{Worked Examples}
+
+\begin{worked}[Deriving potential energy from a 3D force field]
+Consider the force field $\vec{F}(x, y, z) = (2xy + z^3)\ihat + x^2\jhat + 3xz^2\khat$.
+(a) Show that $\vec{F}$ is conservative by calculating its curl.
+(b) Find the potential energy function $E_p(x, y, z)$, taking $E_p(0, 0, 0) = 0$.
+(c) Find the work done by $\vec{F}$ from $(0, 0, 0)$ to $(1, 2, 1)$.
+\end{worked}
+
+\begin{solution}{13.1}
+(a) Compute $\vec{\nabla}\times\vec{F}$:
+\begin{align*}
+(\vec{\nabla}\times\vec{F})_x &= \frac{\partial(3xz^2)}{\partial y} - \frac{\partial(x^2)}{\partial z} = 0 - 0 = 0, \\
+(\vec{\nabla}\times\vec{F})_y &= \frac{\partial(2xy + z^3)}{\partial z} - \frac{\partial(3xz^2)}{\partial x} = 3z^2 - 3z^2 = 0, \\
+(\vec{\nabla}\times\vec{F})_z &= \frac{\partial(x^2)}{\partial x} - \frac{\partial(2xy + z^3)}{\partial y} = 2x - 2x = 0.
+\end{align*}
+Since $\vec{\nabla}\times\vec{F} = \vzero$ everywhere in $\mathbb{R}^3$, the force is \textbf{conservative}.
+
+(b) Find $E_p(x, y, z)$ such that $\vec{F} = -\vec{\nabla} E_p$:
+\begin{align*}
+-\frac{\partial E_p}{\partial x} &= 2xy + z^3 \implies E_p(x, y, z) = -x^2 y - x z^3 + g(y, z), \\
+-\frac{\partial E_p}{\partial y} &= x^2 \implies x^2 - \frac{\partial g}{\partial y} = x^2 \implies \frac{\partial g}{\partial y} = 0 \implies g(y, z) = h(z), \\
+-\frac{\partial E_p}{\partial z} &= 3xz^2 \implies 3xz^2 - h'(z) = 3xz^2 \implies h'(z) = 0 \implies h(z) = C.
+\end{align*}
+With $E_p(0, 0, 0) = 0$, $C = 0$. Thus:
+\[
+\boxed{E_p(x, y, z) = -x^2 y - x z^3.}
+\]
+
+(c) The work from $A(0,0,0)$ to $B(1,2,1)$ is simply:
+\[
+W_{A\to B} = E_p(A) - E_p(B) = 0 - \left[ -(1)^2(2) - (1)(1)^3 \right] = 0 - (-2 - 1) = \mathbf{+3.0\ \mathrm{J}.}
+\]
+\end{solution}
+
+\begin{worked}[The spring gun]
+A spring gun uses a spring of stiffness $k = 400\ \mathrm{N\,m^{-1}}$ compressed by $\Delta x = 0.150\ \mathrm{m}$ to fire a ball of mass $m = 50.0\ \mathrm{g} = 0.0500\ \mathrm{kg}$ vertically upward.
+Find the maximum height $h_{\max}$ reached by the ball above the compressed release point.
+\end{worked}
+
+\begin{solution}{13.2}
+Set the origin of vertical coordinates $y = 0$ at the compressed release position of the ball.
+The system is conservative (ignoring air resistance):
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item Initial state (compressed spring at rest): $y_1 = 0$, $v_1 = 0$, spring compression $\Delta x = 0.150\ \mathrm{m}$.
+  \[
+  E_{m1} = E_{c1} + E_{p,\text{grav},1} + E_{p,\text{spring},1} = 0 + 0 + \frac{1}{2}k(\Delta x)^2.
+  \]
+  \item Final state at maximum height: $y_2 = h_{\max}$, $v_2 = 0$, spring fully released (uncompressed).
+  \[
+  E_{m2} = E_{c2} + E_{p,\text{grav},2} + E_{p,\text{spring},2} = 0 + mg h_{\max} + 0.
+  \]
+\end{itemize}
+By conservation of mechanical energy $E_{m1} = E_{m2}$:
+\[
+\frac{1}{2}k(\Delta x)^2 = mg h_{\max} \implies \boxed{h_{\max} = \frac{k(\Delta x)^2}{2mg}.}
+\]
+Computing:
+\[
+h_{\max} = \frac{400\times (0.150)^2}{2(0.0500)(9.81)} = \frac{400\times 0.0225}{0.981} = \frac{9.00}{0.981} \approx \mathbf{9.17\ \mathrm{m}.}
+\]
+\end{solution}
+
+\section{Exercises and Step-by-Step Solutions}
+
+\begin{exercise}{\warm\ Finding force from a polynomial potential}
+A particle moves along the $x$-axis subject to a potential energy:
+\[
+E_p(x) = ax^4 - bx^2,
+\]
+where $a = 2.00\ \mathrm{J\,m^{-4}}$ and $b = 8.00\ \mathrm{J\,m^{-2}}$.
+(a) Derive the expression for the force $F_x(x) = -\frac{\dd E_p}{\dd x}$.
+(b) Find all points where the force is zero (equilibrium points).
+(c) Calculate the potential energy at each equilibrium point.
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}{13.1}
+(a) The 1D conservative force is the negative derivative of $E_p(x)$:
+\[
+F_x(x) = -\frac{\dd E_p}{\dd x} = -\frac{\dd}{\dd x}\left(ax^4 - bx^2\right) = -(4ax^3 - 2bx) = \boxed{2bx - 4ax^3.}
+\]
+With numerical values: $F_x(x) = 16.0x - 8.00x^3 = 8.00x(2 - x^2)\ \mathrm{N}$.
+
+(b) Equilibria occur where $F_x(x) = 0$:
+\[
+8.00x(2 - x^2) = 0 \implies x_1 = \mathbf{0\ \mathrm{m}},\quad x_{2, 3} = \pm\sqrt{2} \approx \mathbf{\pm 1.414\ \mathrm{m}.}
+\]
+
+(c) Potential values:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item At $x = 0$: $E_p(0) = \mathbf{0\ \mathrm{J}}$.
+  \item At $x = \pm\sqrt{2}$:
+  \[
+  E_p(\pm\sqrt{2}) = 2.00(\sqrt{2})^4 - 8.00(\sqrt{2})^2 = 2.00(4) - 8.00(2) = 8.00 - 16.00 = \mathbf{-8.00\ \mathrm{J}.}
+  \]
+\end{itemize}
+The potential has the classic symmetric double-well shape with minima at $\pm\sqrt{2}\ \mathrm{m}$ and a local barrier at $x = 0$.
+\end{solution}
+
+\begin{exercise}{\warm\ The simple pendulum: maximum speed and string tension}
+A simple pendulum consists of a bob of mass $m=0.400\ \mathrm{kg}$ suspended by a light string of length $L=1.20\ \mathrm{m}$. The bob is pulled aside until the string makes an angle $\theta_0 = 60.0^\circ$ with the vertical and released from rest.
+(a) Using conservation of mechanical energy, find the speed $v_{\max}$ of the bob as it passes through the lowest point ($\theta = 0$).
+(b) Determine the string tension $T_{\max}$ at the lowest point. Compare it with the static weight $mg$.
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}{13.2}
+(a) Set the zero of gravitational potential energy at the lowest point of the swing ($z = 0$).
+The initial height at angle $\theta_0$ is:
+\[
+z_0 = L(1 - \cos\theta_0) = 1.20(1 - \cos 60^\circ) = 1.20(1 - 0.50) = 0.600\ \mathrm{m}.
+\]
+Conservation of mechanical energy between the release point ($v_0 = 0$) and the bottom ($z = 0$, speed $v$):
+\[
+E_{m1} = mg z_0 = E_{m2} = \frac{1}{2}m v_{\max}^2 \implies v_{\max} = \sqrt{2g z_0} = \sqrt{2gL(1 - \cos\theta_0)}.
+\]
+Computing:
+\[
+v_{\max} = \sqrt{2(9.81)(0.600)} = \sqrt{11.772} \approx \mathbf{3.43\ \mathrm{m\,s^{-1}}.}
+\]
+
+(b) At the lowest point, the bob undergoes circular motion with centripetal acceleration $a_c = \frac{v_{\max}^2}{L}$ directed upward:
+\[
+\sum F_z = T_{\max} - mg = m\frac{v_{\max}^2}{L} \implies T_{\max} = mg + m\frac{2gL(1 - \cos\theta_0)}{L} = mg(3 - 2\cos\theta_0).
+\]
+For $\theta_0 = 60^\circ$ ($\cos 60^\circ = 0.5$):
+\[
+T_{\max} = mg(3 - 2(0.5)) = \mathbf{2mg.}
+\]
+Numerical value:
+\[
+T_{\max} = 2(0.400)(9.81) = \mathbf{7.85\ \mathrm{N}.}
+\]
+The dynamic tension at the bottom is exactly twice the static weight!
+\end{solution}
+
+\begin{exercise}{\core\ Curl test and 3D potential function}
+Consider the two force fields:
+\[
+\vec{F}_1 = (2xy + z)\ihat + (x^2 + 2yz)\jhat + (y^2 + x)\khat,
+\]
+\[
+\vec{F}_2 = yz\,\ihat + xz\,\jhat + 2xy\,\khat.
+\]
+(a) Compute the curl of both fields and determine which one is conservative.
+(b) For the conservative field, find the potential energy $E_p(x, y, z)$ such that $E_p(0, 0, 0) = 0$.
+(c) Evaluate the work done by the conservative force along any curve connecting $(1, 0, 0)$ to $(1, 2, 3)$.
+\end{exercise}
+
+\begin{tabletworkspace}[6.5cm]
+\end{tabletworkspace}
+
+\begin{solution}{13.3}
+(a) For $\vec{F}_1$:
+\begin{align*}
+(\vec{\nabla}\times\vec{F}_1)_x &= \frac{\partial(y^2+x)}{\partial y} - \frac{\partial(x^2+2yz)}{\partial z} = 2y - 2y = 0, \\
+(\vec{\nabla}\times\vec{F}_1)_y &= \frac{\partial(2xy+z)}{\partial z} - \frac{\partial(y^2+x)}{\partial x} = 1 - 1 = 0, \\
+(\vec{\nabla}\times\vec{F}_1)_z &= \frac{\partial(x^2+2yz)}{\partial x} - \frac{\partial(2xy+z)}{\partial y} = 2x - 2x = 0.
+\end{align*}
+Thus $\vec{\nabla}\times\vec{F}_1 = \vzero$: $\vec{F}_1$ is \textbf{conservative}.
+
+For $\vec{F}_2$:
+\[
+(\vec{\nabla}\times\vec{F}_2)_x = \frac{\partial(2xy)}{\partial y} - \frac{\partial(xz)}{\partial z} = 2x - x = x \ne 0.
+\]
+Thus $\vec{F}_2$ is \textbf{non-conservative}.
+
+(b) Integrate $\vec{F}_1 = -\vec{\nabla} E_p$:
+\begin{align*}
+-\frac{\partial E_p}{\partial x} &= 2xy + z \implies E_p = -x^2 y - xz + g(y, z), \\
+-\frac{\partial E_p}{\partial y} &= x^2 + 2yz \implies x^2 - \frac{\partial g}{\partial y} = x^2 + 2yz \implies \frac{\partial g}{\partial y} = -2yz \implies g(y, z) = -y^2 z + h(z), \\
+-\frac{\partial E_p}{\partial z} &= y^2 + x \implies x + y^2 - h'(z) = y^2 + x \implies h'(z) = 0 \implies h(z) = C.
+\end{align*}
+With $E_p(0,0,0) = 0$, $C = 0$:
+\[
+\boxed{E_p(x, y, z) = -x^2 y - y^2 z - xz.}
+\]
+
+(c) Work is path-independent:
+\[
+W = E_p(1, 0, 0) - E_p(1, 2, 3).
+\]
+Evaluating:
+\begin{align*}
+E_p(1, 0, 0) &= -(1)^2(0) - (0)^2(3) - (1)(0) = 0, \\
+E_p(1, 2, 3) &= -(1)^2(2) - (2)^2(3) - (1)(3) = -2 - 12 - 3 = -17\ \mathrm{J}.
+\end{align*}
+Thus:
+\[
+W = 0 - (-17) = \mathbf{+17.0\ \mathrm{J}.}
+\]
+\end{solution}
+
+\begin{exercise}{\core\ High-altitude vertical launch: exact vs approximate energy}
+A rocket of mass $m=500\ \mathrm{kg}$ is launched vertically upward from Earth's surface with speed $v_0 = 3.00\ \mathrm{km\,s^{-1}} = 3000\ \mathrm{m\,s^{-1}}$.
+(a) Using the exact gravitational potential energy $E_p(r) = -G\frac{M_E m}{r}$, find the maximum altitude $h_{\max}$ reached above Earth's surface. ($R_E = 6371\ \mathrm{km}, M_E = 5.972\times 10^{24}\ \mathrm{kg}$).
+(b) Calculate $h_{\text{approx}}$ using the naive flat-Earth formula $v_0^2 = 2gh$.
+(c) Find the percentage error made by the flat-Earth approximation.
+\end{exercise}
+
+\begin{tabletworkspace}[6.0cm]
+\end{tabletworkspace}
+
+\begin{solution}{13.4}
+(a) Let $r_1 = R_E$ and $r_2 = R_E + h_{\max}$. At maximum height, $v = 0$.
+By conservation of mechanical energy:
+\[
+\frac{1}{2}m v_0^2 - \frac{GM_E m}{R_E} = 0 - \frac{GM_E m}{R_E + h_{\max}}.
+\]
+Divide by $m$ and define $\mu = GM_E$:
+\[
+\frac{1}{R_E + h_{\max}} = \frac{1}{R_E} - \frac{v_0^2}{2\mu} = \frac{2\mu - R_E v_0^2}{2\mu R_E}.
+\]
+Inverting:
+\[
+R_E + h_{\max} = \frac{R_E}{1 - \frac{R_E v_0^2}{2\mu}} \implies \boxed{h_{\max} = \frac{v_0^2 R_E^2}{2\mu - R_E v_0^2}.}
+\]
+Computing:
+$\mu = (6.674\times 10^{-11})(5.972\times 10^{24}) = 3.986\times 10^{14}\ \mathrm{m^3\,s^{-2}}$.
+$R_E = 6.371\times 10^6\ \mathrm{m}$, $v_0^2 = 9.00\times 10^6\ \mathrm{m^2\,s^{-2}}$.
+\[
+R_E v_0^2 = (6.371\times 10^6)(9.00\times 10^6) = 5.734\times 10^{13}\ \mathrm{m^3\,s^{-2}}.
+\]
+\[
+2\mu - R_E v_0^2 = 7.972\times 10^{14} - 0.5734\times 10^{14} = 7.399\times 10^{14}\ \mathrm{m^3\,s^{-2}}.
+\]
+\[
+h_{\max} = \frac{(9.00\times 10^6)\times (6.371\times 10^6)^2}{7.399\times 10^{14}} = \frac{3.653\times 10^{20}}{7.399\times 10^{14}} \approx 4.937\times 10^5\ \mathrm{m} = \mathbf{493.7\ \mathrm{km}.}
+\]
+
+(b) Flat-Earth approximation ($g = 9.81\ \mathrm{m\,s^{-2}}$):
+\[
+h_{\text{approx}} = \frac{v_0^2}{2g} = \frac{(3000)^2}{2(9.81)} = \frac{9.00\times 10^6}{19.62} \approx 4.587\times 10^5\ \mathrm{m} = \mathbf{458.7\ \mathrm{km}.}
+\]
+
+(c) Percentage error:
+\[
+\text{Error} = \frac{h_{\max} - h_{\text{approx}}}{h_{\max}}\times 100\% = \frac{493.7 - 458.7}{493.7}\times 100\% \approx \mathbf{7.1\%.}
+\]
+Gravity weakens significantly at this altitude, allowing the rocket to climb $35\ \mathrm{km}$ higher than the constant-$g$ approximation predicts.
+\end{solution}
+
+\begin{exercise}{\core\ Spring compression on a rough surface}
+A block of mass $m=2.00\ \mathrm{kg}$ slides on a horizontal floor with initial speed $v_0 = 4.00\ \mathrm{m\,s^{-1}}$ toward an unstretched horizontal spring of stiffness $k = 500\ \mathrm{N\,m^{-1}}$. The coefficient of kinetic friction between the block and floor is $\mu_k = 0.200$.
+(a) From the moment the block contacts the spring until it momentarily stops at maximum compression $x_c$, identify the conservative and non-conservative forces.
+(b) Write the energy balance $\Delta E_m = W_{\text{nc}}$.
+(c) Solve the resulting quadratic equation to find the maximum compression $x_c$.
+\end{exercise}
+
+\begin{tabletworkspace}[6.0cm]
+\end{tabletworkspace}
+
+\begin{solution}{13.5}
+(a) Forces acting on the block:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item Conservative: spring restoring force $\vec{F}_s = -kx\ihat$ (potential energy $E_p = \frac{1}{2}kx^2$).
+  \item Non-conservative: kinetic friction $\vec{f}_k = -\mu_k mg\ihat$.
+  \item Normal force and gravity cancel vertically and do no work.
+\end{itemize}
+
+(b) Initial state (contact with unstretched spring): $E_m(0) = \frac{1}{2}m v_0^2 + 0$.
+Final state (maximum compression $x_c$, $v = 0$): $E_m(x_c) = 0 + \frac{1}{2}k x_c^2$.
+Work of friction during compression: $W_{\text{nc}} = -f_k x_c = -\mu_k mg x_c$.
+Energy relation:
+\[
+\Delta E_m = E_m(x_c) - E_m(0) = W_{\text{nc}} \implies \frac{1}{2}k x_c^2 - \frac{1}{2}m v_0^2 = -\mu_k mg x_c.
+\]
+Rearranging into standard quadratic form:
+\[
+\frac{1}{2}k x_c^2 + \mu_k mg x_c - \frac{1}{2}m v_0^2 = 0 \iff k x_c^2 + 2\mu_k mg x_c - m v_0^2 = 0.
+\]
+
+(c) Numerical coefficients:
+$k = 500$, $2\mu_k mg = 2(0.200)(2.00)(9.81) = 7.848$, $m v_0^2 = (2.00)(4.00)^2 = 32.0$.
+\[
+500 x_c^2 + 7.848 x_c - 32.0 = 0.
+\]
+Solving for positive root:
+\[
+\Delta = (7.848)^2 - 4(500)(-32.0) = 61.59 + 64000 = 64061.59 \implies \sqrt{\Delta} \approx 253.10.
+\]
+\[
+x_c = \frac{-7.848 + 253.10}{2(500)} = \frac{245.25}{1000} \approx \mathbf{0.245\ \mathrm{m}} = 24.5\ \mathrm{cm}.
+\]
+\end{solution}
+
+\begin{exercise}{\mastery\ The Yukawa Potential}
+In nuclear and particle physics, the interaction between two nucleons is modeled by the \textbf{Yukawa potential}:
+\[
+U(r) = -g_0^2\,\frac{e^{-\alpha r}}{r},
+\]
+where $g_0$ is the coupling constant and $\alpha = 1/r_0$ is the inverse screening radius.
+(a) Show that the central force derived from this potential is:
+\[
+\vec{F}(r) = -g_0^2\,\frac{e^{-\alpha r}}{r^2}(1 + \alpha r)\,\ur.
+\]
+(b) Examine the two limiting cases $\alpha r \ll 1$ and $\alpha r \gg 1$.
+(c) For a particle of mass $m$ with angular momentum $L$, write the effective potential $U_{\text{eff}}(r)$. Show that circular orbits are possible only if the screening length $r_0$ is sufficiently large.
+\end{exercise}
+
+\begin{tabletworkspace}[6.5cm]
+\end{tabletworkspace}
+
+\begin{solution}{13.6}
+(a) Since the potential is spherically symmetric, $\vec{F} = -\frac{\dd U}{\dd r}\ur$:
+\begin{align*}
+\frac{\dd U}{\dd r} &= -g_0^2 \frac{\dd}{\dd r}\left(\frac{e^{-\alpha r}}{r}\right) = -g_0^2\left[ \frac{-\alpha e^{-\alpha r}\cdot r - e^{-\alpha r}\cdot 1}{r^2} \right] \\
+&= +g_0^2 \frac{e^{-\alpha r}}{r^2}(1 + \alpha r).
+\end{align*}
+Therefore:
+\[
+\boxed{\vec{F}(r) = -g_0^2\,\frac{e^{-\alpha r}}{r^2}(1 + \alpha r)\,\ur.}
+\]
+The force is strictly attractive and points radially inward.
+
+(b) Limiting behaviors:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item Short range ($\alpha r \ll 1$): $e^{-\alpha r} \approx 1$ and $(1+\alpha r) \approx 1$, so:
+  \[
+  \vec{F}(r) \approx -\frac{g_0^2}{r^2}\ur.
+  \]
+  It recovers the standard Coulomb / inverse-square force law!
+  \item Long range ($\alpha r \gg 1$): The exponential decay $e^{-\alpha r}$ completely suppresses the interaction. Unlike Coulomb forces, the Yukawa force is \textbf{short-ranged} (decaying exponentially past $r_0 = 1/\alpha$).
+\end{itemize}
+
+(c) The effective potential is:
+\[
+U_{\text{eff}}(r) = -g_0^2\frac{e^{-\alpha r}}{r} + \frac{L^2}{2mr^2}.
+\]
+A circular orbit at radius $r_c$ requires $\left.\frac{\dd U_{\text{eff}}}{\dd r}\right|_{r_c} = 0$:
+\[
+g_0^2\frac{e^{-\alpha r_c}}{r_c^2}(1 + \alpha r_c) = \frac{L^2}{m r_c^3} \implies g_0^2 r_c e^{-\alpha r_c}(1 + \alpha r_c) = \frac{L^2}{m}.
+\]
+The function $f(r) = r(1+\alpha r)e^{-\alpha r}$ has a maximum at $\alpha r = \frac{\sqrt{5}-1}{2} \approx 0.618$.
+If $L^2/m$ exceeds this peak value, no circular orbit can exist! Thus, screening limits the existence of bound states.
+\end{solution}
+
+\begin{exercise}{\mastery\ Rate of mechanical energy dissipation by air drag}
+A projectile of mass $m$ is in flight under gravity $\vec{g} = -g\jhat$ and a non-linear aerodynamic drag force $\vec{f} = -\gamma v^n\vec{u}_t = -\gamma v^{n-1}\vec{v}$, where $\gamma > 0$ and $n \ge 1$.
+(a) Show that the time rate of change of total mechanical energy is:
+\[
+\frac{\dd E_m}{\dd t} = -\gamma v^{n+1}.
+\]
+(b) Explain why $\frac{\dd E_m}{\dd t} \le 0$ at all instants, and state what becomes of the lost mechanical energy.
+(c) For linear drag ($n = 1$, $\vec{f} = -b\vec{v}$), integrate $\frac{\dd E_m}{\dd t}$ along a horizontal trajectory where $v(t) = v_0 e^{-bt/m}$ to find the total mechanical energy dissipated from $t=0$ to $t\to\infty$. Compare with the initial kinetic energy.
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}{13.7}
+(a) The mechanical energy is $E_m = E_c + E_p$.
+The only non-conservative force is the drag force $\vec{f}$.
+The rate of change of mechanical energy is the power of the non-conservative forces:
+\[
+\frac{\dd E_m}{\dd t} = \vec{f}\cdot\vec{v} = \left(-\gamma v^{n-1}\vec{v}\right)\cdot\vec{v} = -\gamma v^{n-1}(\vec{v}\cdot\vec{v}) = \boxed{-\gamma v^{n+1}.}
+\]
+
+(b) Since $\gamma > 0$, $v \ge 0$, and $n \ge 1$, the term $\gamma v^{n+1} \ge 0$ for all physical states.
+Therefore:
+\[
+\frac{\dd E_m}{\dd t} \le 0.
+\]
+Mechanical energy is strictly non-increasing (monotonically dissipated).
+By the First Law of Thermodynamics, the lost mechanical energy is converted into \textbf{internal thermal energy} (heating both the projectile and the surrounding air) and acoustic energy (sound waves).
+
+(c) For linear drag ($n=1, \gamma=b$), on a horizontal path ($E_p = \text{const}$):
+\[
+\frac{\dd E_m}{\dd t} = -b v^2(t).
+\]
+Substituting $v(t) = v_0 e^{-bt/m}$:
+\[
+v^2(t) = v_0^2 e^{-2bt/m}.
+\]
+Integrating the dissipated power from $t=0$ to $\infty$:
+\[
+\Delta E_{\text{diss}} = \int_0^\infty b v^2(t)\dd t = b v_0^2 \int_0^\infty e^{-2bt/m}\dd t = b v_0^2 \left[ -\frac{m}{2b}e^{-2bt/m} \right]_0^\infty = b v_0^2\left(0 - \left(-\frac{m}{2b}\right)\right) = \mathbf{\frac{1}{2}m v_0^2.}
+\]
+The total mechanical energy dissipated is exactly equal to the initial kinetic energy $\frac{1}{2}m v_0^2$: 100\% of the initial kinetic energy is converted into heat.
+\end{solution}

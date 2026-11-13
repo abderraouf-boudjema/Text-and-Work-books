@@ -1,0 +1,125 @@
+\chapter{Mathematical Toolbox for Classical Mechanics}
+\label{app:math}
+
+This mathematical appendix compiles the fundamental vector calculus, curvilinear coordinate formulas, vector identities, and asymptotic series expansions used throughout classical point mechanics.
+
+\section{Curvilinear Coordinate Systems}
+
+\subsection{1. Cartesian Coordinates $(x, y, z)$}
+\begin{itemize}[leftmargin=1.5em,itemsep=3pt]
+  \item \textbf{Position Vector:}
+  \[
+  \vec{r} = x\,\ihat + y\,\jhat + z\,\khat.
+  \]
+  \item \textbf{Velocity Vector:}
+  \[
+  \vec{v} = \dot{x}\,\ihat + \dot{y}\,\jhat + \dot{z}\,\khat.
+  \]
+  \item \textbf{Acceleration Vector:}
+  \[
+  \vec{a} = \ddot{x}\,\ihat + \ddot{y}\,\jhat + \ddot{z}\,\khat.
+  \]
+  \item \textbf{Infinitesimal Displacement and Volume Element:}
+  \[
+  \dd\vec{r} = \dd x\,\ihat + \dd y\,\jhat + \dd z\,\khat, \qquad \dd V = \dd x\,\dd y\,\dd z.
+  \]
+  \item \textbf{Differential Vector Operators:}
+  \begin{align*}
+  \vec{\nabla} \Phi &= \frac{\partial\Phi}{\partial x}\,\ihat + \frac{\partial\Phi}{\partial y}\,\jhat + \frac{\partial\Phi}{\partial z}\,\khat, \\
+  \vec{\nabla} \cdot \vec{A} &= \frac{\partial A_x}{\partial x} + \frac{\partial A_y}{\partial y} + \frac{\partial A_z}{\partial z}, \\
+  \vec{\nabla} \times \vec{A} &= \left(\frac{\partial A_z}{\partial y} - \frac{\partial A_y}{\partial z}\right)\ihat + \left(\frac{\partial A_x}{\partial z} - \frac{\partial A_z}{\partial x}\right)\jhat + \left(\frac{\partial A_y}{\partial x} - \frac{\partial A_x}{\partial y}\right)\khat, \\
+  \nabla^2 \Phi &= \frac{\partial^2\Phi}{\partial x^2} + \frac{\partial^2\Phi}{\partial y^2} + \frac{\partial^2\Phi}{\partial z^2}.
+  \end{align*}
+\end{itemize}
+
+\subsection{2. Cylindrical Coordinates $(r, \theta, z)$}
+\begin{itemize}[leftmargin=1.5em,itemsep=3pt]
+  \item \textbf{Coordinate Transformation:}
+  \[
+  x = r\cos\theta, \qquad y = r\sin\theta, \qquad z = z.
+  \]
+  \item \textbf{Basis Vectors:}
+  \[
+  \ur = \cos\theta\,\ihat + \sin\theta\,\jhat, \qquad \ut = -\sin\theta\,\ihat + \cos\theta\,\jhat, \qquad \khat = \khat.
+  \]
+  \item \textbf{Kinematic Vectors:}
+  \begin{align*}
+  \vec{r} &= r\,\ur + z\,\khat, \\
+  \vec{v} &= \dot{r}\,\ur + r\dot{\theta}\,\ut + \dot{z}\,\khat, \\
+  \vec{a} &= (\ddot{r} - r\dot{\theta}^2)\,\ur + (r\ddot{\theta} + 2\dot{r}\dot{\theta})\,\ut + \ddot{z}\,\khat.
+  \end{align*}
+  \item \textbf{Displacement and Volume Elements:}
+  \[
+  \dd\vec{r} = \dd r\,\ur + r\,\dd\theta\,\ut + \dd z\,\khat, \qquad \dd V = r\,\dd r\,\dd\theta\,\dd z.
+  \]
+  \item \textbf{Vector Differential Operators:}
+  \begin{align*}
+  \vec{\nabla} \Phi &= \frac{\partial\Phi}{\partial r}\,\ur + \frac{1}{r}\frac{\partial\Phi}{\partial\theta}\,\ut + \frac{\partial\Phi}{\partial z}\,\khat, \\
+  \vec{\nabla} \cdot \vec{A} &= \frac{1}{r}\frac{\partial(r A_r)}{\partial r} + \frac{1}{r}\frac{\partial A_\theta}{\partial\theta} + \frac{\partial A_z}{\partial z}, \\
+  \vec{\nabla} \times \vec{A} &= \left(\frac{1}{r}\frac{\partial A_z}{\partial\theta} - \frac{\partial A_\theta}{\partial z}\right)\ur + \left(\frac{\partial A_r}{\partial z} - \frac{\partial A_z}{\partial r}\right)\ut + \frac{1}{r}\left(\frac{\partial(r A_\theta)}{\partial r} - \frac{\partial A_r}{\partial\theta}\right)\khat.
+  \end{align*}
+\end{itemize}
+
+\subsection{3. Spherical Coordinates $(r, \theta, \phi)$}
+\begin{itemize}[leftmargin=1.5em,itemsep=3pt]
+  \item \textbf{Coordinate Transformation:} ($r \ge 0$, $\theta \in [0, \pi]$ colatitude, $\phi \in [0, 2\pi)$ azimuth)
+  \[
+  x = r\sin\theta\cos\phi, \qquad y = r\sin\theta\sin\phi, \qquad z = r\cos\theta.
+  \]
+  \item \textbf{Kinematic Vectors:}
+  \begin{align*}
+  \vec{r} &= r\,\ur, \\
+  \vec{v} &= \dot{r}\,\ur + r\dot{\theta}\,\ut + r\dot{\phi}\sin\theta\,\uphi, \\
+  a_r &= \ddot{r} - r\dot{\theta}^2 - r\dot{\phi}^2\sin^2\theta, \\
+  a_\theta &= r\ddot{\theta} + 2\dot{r}\dot{\theta} - r\dot{\phi}^2\sin\theta\cos\theta, \\
+  a_\phi &= r\ddot{\phi}\sin\theta + 2\dot{r}\dot{\phi}\sin\theta + 2r\dot{\theta}\dot{\phi}\cos\theta = \frac{1}{r\sin\theta}\frac{\dd}{\dd t}(r^2\dot{\phi}\sin^2\theta).
+  \end{align*}
+  \item \textbf{Volume and Area Elements:}
+  \[
+  \dd V = r^2\sin\theta\,\dd r\,\dd\theta\,\dd\phi, \qquad \dd\Omega = \sin\theta\,\dd\theta\,\dd\phi.
+  \]
+  \item \textbf{Gradient in Spherical Coordinates:}
+  \[
+  \vec{\nabla}\Phi = \frac{\partial\Phi}{\partial r}\,\ur + \frac{1}{r}\frac{\partial\Phi}{\partial\theta}\,\ut + \frac{1}{r\sin\theta}\frac{\partial\Phi}{\partial\phi}\,\uphi.
+  \]
+\end{itemize}
+
+\subsection{4. Frenet-Serret Intrinsic Coordinates $(\utt, \un, \ub)$}
+For a 3D curve parametrized by arc length $s$:
+\begin{equation}
+\frac{\dd\utt}{\dd s} = \frac{1}{R_c}\,\un, \qquad \frac{\dd\un}{\dd s} = -\frac{1}{R_c}\,\utt + \tau\,\ub, \qquad \frac{\dd\ub}{\dd s} = -\tau\,\un,
+\end{equation}
+where $R_c$ is the local radius of curvature and $\tau$ is the torsion.
+Kinematic decomposition:
+\begin{equation}
+\vec{v} = v\,\utt, \qquad \vec{a} = \dot{v}\,\utt + \frac{v^2}{R_c}\,\un.
+\end{equation}
+
+\section{Essential Vector Algebra and Calculus Identities}
+
+Let $\vec{A}, \vec{B}, \vec{C}, \vec{D}$ be vector fields and $\Phi, \Psi$ be scalar fields:
+\begin{align}
+\vec{A} \times (\vec{B} \times \vec{C}) &= (\vec{A} \cdot \vec{C})\vec{B} - (\vec{A} \cdot \vec{B})\vec{C} \quad \text{(BAC-CAB Rule)}, \\
+\vec{A} \cdot (\vec{B} \times \vec{C}) &= \vec{B} \cdot (\vec{C} \times \vec{A}) = \vec{C} \cdot (\vec{A} \times \vec{B}) \quad \text{(Scalar Triple Product)}, \\
+(\vec{A} \times \vec{B}) \cdot (\vec{C} \times \vec{D}) &= (\vec{A} \cdot \vec{C})(\vec{B} \cdot \vec{D}) - (\vec{A} \cdot \vec{D})(\vec{B} \cdot \vec{C}) \quad \text{(Binet-Cauchy Identity)}, \\
+\vec{\nabla}(\Phi\Psi) &= \Phi\,\vec{\nabla}\Psi + \Psi\,\vec{\nabla}\Phi, \\
+\vec{\nabla} \cdot (\Phi\vec{A}) &= \Phi(\vec{\nabla}\cdot\vec{A}) + \vec{A}\cdot\vec{\nabla}\Phi, \\
+\vec{\nabla} \times (\Phi\vec{A}) &= \Phi(\vec{\nabla}\times\vec{A}) + (\vec{\nabla}\Phi)\times\vec{A}, \\
+\vec{\nabla} \times (\vec{\nabla}\Phi) &\equiv \vzero \quad \text{(The curl of a gradient is identically zero)}, \\
+\vec{\nabla} \cdot (\vec{\nabla}\times\vec{A}) &\equiv 0 \quad \text{(The divergence of a curl is identically zero)}, \\
+\vec{\nabla} \times (\vec{\nabla}\times\vec{A}) &= \vec{\nabla}(\vec{\nabla}\cdot\vec{A}) - \nabla^2\vec{A}.
+\end{align}
+
+\section{Standard Taylor Series Expansions ($x \to 0$)}
+
+\begin{align}
+(1 + x)^\alpha &= 1 + \alpha x + \frac{\alpha(\alpha-1)}{2!} x^2 + \frac{\alpha(\alpha-1)(\alpha-2)}{3!} x^3 + \mathcal{O}(x^4), \\
+\frac{1}{1 - x} &= 1 + x + x^2 + x^3 + \mathcal{O}(x^4), \\
+\sin x &= x - \frac{x^3}{6} + \frac{x^5}{120} + \mathcal{O}(x^7), \\
+\cos x &= 1 - \frac{x^2}{2} + \frac{x^4}{24} - \frac{x^6}{720} + \mathcal{O}(x^8), \\
+\tan x &= x + \frac{x^3}{3} + \frac{2x^5}{15} + \mathcal{O}(x^7), \\
+e^x &= 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \frac{x^4}{24} + \mathcal{O}(x^5), \\
+\ln(1 + x) &= x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \mathcal{O}(x^5), \\
+\sinh x &= x + \frac{x^3}{6} + \frac{x^5}{120} + \mathcal{O}(x^7), \\
+\cosh x &= 1 + \frac{x^2}{2} + \frac{x^4}{24} + \mathcal{O}(x^6).
+\end{align}

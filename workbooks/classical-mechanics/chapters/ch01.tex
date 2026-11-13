@@ -1,0 +1,396 @@
+\chapter{Starting from Zero}
+\label{ch:zero}
+\begin{chapterintro}
+\textbf{You will learn to:} use SI units correctly; convert between units; check
+formulas with dimensions; handle scientific notation and significant figures; use
+trigonometry to resolve vectors; and read the slope and area of a graph. These are
+the tools that every later chapter assumes.
+\end{chapterintro}
+
+\section{Physical quantities, units, and dimensions}
+
+A \textbf{physical quantity} is a number together with a unit. Writing
+``$v=5$'' is meaningless; writing ``$v=5\ \mathrm{m\,s^{-1}}$'' is a statement
+about the world. Mechanics uses three base dimensions:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Dimension} & \textbf{Symbol} & \textbf{SI base unit} \\
+\midrule
+length & $\mathrm{L}$ & metre (m) \\
+mass & $\mathrm{M}$ & kilogram (kg) \\
+time & $\mathrm{T}$ & second (s) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Derived quantities are combinations of these. For example
+\[
+[v]=\mathrm{L\,T^{-1}},\qquad
+[a]=\mathrm{L\,T^{-2}},\qquad
+[F]=\mathrm{M\,L\,T^{-2}}.
+\]
+The last one defines the newton: $1\ \mathrm{N}=1\ \mathrm{kg\,m\,s^{-2}}$.
+
+\begin{keyidea}[Dimensional homogeneity]
+Both sides of a correct physical equation must have the same dimensions. You may
+add or equate quantities only if they share dimensions. You may multiply and
+divide any quantities, combining their dimensions.
+\end{keyidea}
+
+\begin{warning}[The most common first-year error]
+Adding a length to a time, or a speed to an acceleration, is always wrong. If an
+equation contains $x+vt$, then $vt$ must be a length; check it before you
+continue.
+\end{warning}
+
+\subsection{Prefixes and conversions}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Prefix} & \textbf{Symbol} & \textbf{Factor} & \textbf{Example} \\
+\midrule
+giga & G & $10^{9}$ & $1\ \mathrm{Gm}=10^{9}\ \mathrm{m}$ \\
+mega & M & $10^{6}$ & $1\ \mathrm{MPa}=10^{6}\ \mathrm{Pa}$ \\
+kilo & k & $10^{3}$ & $1\ \mathrm{km}=10^{3}\ \mathrm{m}$ \\
+centi & c & $10^{-2}$ & $1\ \mathrm{cm}=10^{-2}\ \mathrm{m}$ \\
+milli & m & $10^{-3}$ & $1\ \mathrm{mm}=10^{-3}\ \mathrm{m}$ \\
+micro & $\mu$ & $10^{-6}$ & $1\ \mu\mathrm{m}=10^{-6}\ \mathrm{m}$ \\
+nano & n & $10^{-9}$ & $1\ \mathrm{nm}=10^{-9}\ \mathrm{m}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+To convert units, multiply by a fraction equal to one. For example,
+\[
+72\ \mathrm{km\,h^{-1}}
+=72\ \frac{\mathrm{km}}{\mathrm{h}}
+\times\frac{1000\ \mathrm{m}}{1\ \mathrm{km}}
+\times\frac{1\ \mathrm{h}}{3600\ \mathrm{s}}
+=20\ \mathrm{m\,s^{-1}}.
+\]
+
+\section{Scientific notation and significant figures}
+
+Write very large or very small numbers as $a\times10^{n}$ with $1\le |a|<10$.
+In calculations, keep all digits in intermediate steps and round only the final
+answer. A reasonable rule for this book is three significant figures.
+
+\begin{method}[Rounding]
+If the first discarded digit is less than 5, round down; if it is 5 or more,
+round up. For example, $2.347\to2.35$ (three figures) and $0.004562\to0.00456$.
+\end{method}
+
+\section{Trigonometry you must own}
+
+For a right triangle with angle $\theta$,
+\[
+\sin\theta=\frac{\text{opposite}}{\text{hypotenuse}},\qquad
+\cos\theta=\frac{\text{adjacent}}{\text{hypotenuse}},\qquad
+\tan\theta=\frac{\text{opposite}}{\text{adjacent}}.
+\]
+Also
+\[
+\sin^2\theta+\cos^2\theta=1,\qquad
+\tan\theta=\frac{\sin\theta}{\cos\theta}.
+\]
+Angles are measured in radians in calculus: $\pi\ \mathrm{rad}=180^\circ$. The
+arc length of a circle of radius $R$ subtending angle $\theta$ is $s=R\theta$.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+$\theta$ & $0$ & $30^\circ$ & $45^\circ$ & $60^\circ$ & $90^\circ$ \\
+\midrule
+$\sin\theta$ & $0$ & $1/2$ & $\sqrt2/2$ & $\sqrt3/2$ & $1$ \\
+$\cos\theta$ & $1$ & $\sqrt3/2$ & $\sqrt2/2$ & $1/2$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Reading graphs: slope and area}
+
+Two graphical operations recur constantly in mechanics.
+
+\begin{itemize}[leftmargin=1.4em,itemsep=3pt]
+  \item The \textbf{slope} of a graph of $y$ against $x$ is $\dd y/\dd x$. On a
+        straight line $y=mx+b$, the slope is $m$ and the intercept is $b$.
+  \item The \textbf{area} under a graph of $y$ against $x$, between two values of
+        $x$, is $\int y\,\dd x$. For a triangle this is $\tfrac12\times\text{base}
+        \times\text{height}$; for a rectangle it is base $\times$ height.
+\end{itemize}
+
+\begin{keyidea}[What slopes and areas mean in mechanics]
+On an $x$--$t$ graph, the slope is velocity. On a $v$--$t$ graph, the slope is
+acceleration and the area is displacement. On an $a$--$t$ graph, the area is the
+change in velocity.
+\end{keyidea}
+
+% ===========================================================================
+\section{Worked examples}
+
+\begin{worked}[Dimensional check of a kinematic formula]
+Check the dimensions of $v^2=v_0^2+2ax$ and deduce the SI unit of the product
+$ax$.
+\end{worked}
+
+\begin{solution}{1.1}
+Each term must be a velocity squared. Indeed
+\[
+[v^2]=\mathrm{L^2T^{-2}},\qquad
+[2ax]=[a][x]=\mathrm{L\,T^{-2}}\cdot\mathrm{L}=\mathrm{L^2T^{-2}}.
+\]
+The equation is dimensionally homogeneous. The product $ax$ therefore has the
+unit of velocity squared, $\mathrm{m^2\,s^{-2}}$.
+\end{solution}
+
+\begin{worked}[Resolving a force into components]
+A force of magnitude $F=80.0\ \mathrm{N}$ makes an angle of $35.0^\circ$ above the
+positive $x$-axis. Find its $x$- and $y$-components.
+\end{worked}
+
+\begin{solution}{1.2}
+\[
+F_x=F\cos\theta=80.0\cos35.0^\circ=65.5\ \mathrm{N},
+\]
+\[
+F_y=F\sin\theta=80.0\sin35.0^\circ=45.9\ \mathrm{N}.
+\]
+Check: $F_x^2+F_y^2=(65.5)^2+(45.9)^2=6400$, so $F=80.0\ \mathrm{N}$.
+\end{solution}
+
+% ===========================================================================
+\section{Exercises and Step-by-Step Solutions}
+
+\begin{exercise}{\warm\ Unit conversions}
+Convert: (a) $72\ \mathrm{km\,h^{-1}}$ to $\mathrm{m\,s^{-1}}$;
+(b) $1.0\ \mathrm{g\,cm^{-3}}$ to $\mathrm{kg\,m^{-3}}$;
+(c) $1.0\ \mathrm{kWh}$ to joules.
+\end{exercise}
+
+\begin{tabletworkspace}[6cm]
+\end{tabletworkspace}
+
+\begin{solution}{1.1}
+(a) $72\ \mathrm{km\,h^{-1}}=72\times1000/3600=20.0\ \mathrm{m\,s^{-1}}$.
+
+(b) $1\ \mathrm{g\,cm^{-3}}=10^{-3}\ \mathrm{kg}/(10^{-2}\ \mathrm{m})^3
+=10^{-3}/10^{-6}=10^{3}\ \mathrm{kg\,m^{-3}}$.
+
+(c) $1\ \mathrm{kWh}=10^{3}\ \mathrm{W}\times3600\ \mathrm{s}
+=3.60\times10^{6}\ \mathrm{J}$.
+\end{solution}
+
+\begin{exercise}{\warm\ Dimensional analysis}
+(a) Show that $F=ma$ is dimensionally consistent. (b) The force of a spring is
+$F=-kx$, where $x$ is a length. Find the dimensions and SI unit of the spring
+constant $k$. (c) Find the dimensions of the gravitational constant $G$ in
+$F=GMm/r^2$.
+\end{exercise}
+
+\begin{tabletworkspace}[6cm]
+\end{tabletworkspace}
+
+\begin{solution}{1.2}
+(a) $[ma]=\mathrm{M}\cdot\mathrm{L\,T^{-2}}=\mathrm{M\,L\,T^{-2}}=[F]$.
+
+(b) $k=F/x$, so $[k]=\mathrm{M\,L\,T^{-2}}/\mathrm{L}
+=\mathrm{M\,T^{-2}}$, unit $\mathrm{kg\,s^{-2}}$ (equivalently $\mathrm{N\,m^{-1}}$).
+
+(c) From $G=Fr^2/(Mm)$,
+\[
+[G]=\frac{\mathrm{M\,L\,T^{-2}}\cdot\mathrm{L^2}}{\mathrm{M^2}}
+=\mathrm{L^3M^{-1}T^{-2}},
+\]
+unit $\mathrm{m^3\,kg^{-1}\,s^{-2}}$.
+\end{solution}
+
+\begin{exercise}{\warm\ Scientific notation}
+Compute
+\[
+\frac{(3.2\times10^{-3})(4.5\times10^{6})}{1.8\times10^{-2}}
+\]
+and report the result with three significant figures.
+\end{exercise}
+
+\begin{tabletworkspace}[6cm]
+\end{tabletworkspace}
+
+\begin{solution}{1.3}
+\[
+\frac{3.2\times4.5}{1.8}\times10^{-3+6+2}
+=8.0\times10^{5}.
+\]
+The result is $8.00\times10^{5}$ to three significant figures.
+\end{solution}
+
+\begin{exercise}{\core\ Right-triangle trigonometry}
+In a right triangle the hypotenuse is $13.0\ \mathrm{cm}$ and one leg is
+$5.00\ \mathrm{cm}$. Find the other leg, the two acute angles, and the values of
+$\sin\theta$, $\cos\theta$, and $\tan\theta$ for the angle opposite the $5.00\ \mathrm{cm}$ leg.
+\end{exercise}
+
+\begin{tabletworkspace}[6cm]
+\end{tabletworkspace}
+
+\begin{solution}{1.4}
+The other leg is
+\[
+b=\sqrt{13.0^2-5.00^2}=\sqrt{169-25}=\sqrt{144}=12.0\ \mathrm{cm}.
+\]
+For the angle $\theta$ opposite the $5.00\ \mathrm{cm}$ leg,
+\[
+\sin\theta=\frac{5.00}{13.0}=0.385,\qquad
+\cos\theta=\frac{12.0}{13.0}=0.923,\qquad
+\tan\theta=\frac{5.00}{12.0}=0.417.
+\]
+Thus $\theta=\arcsin(0.385)=22.6^\circ$; the other acute angle is
+$90^\circ-22.6^\circ=67.4^\circ$.
+\end{solution}
+
+\begin{exercise}{\core\ Components and magnitude}
+A displacement has components $\Delta x=-3.00\ \mathrm{m}$ and
+$\Delta y=4.00\ \mathrm{m}$. Find its magnitude and the angle it makes with the
+positive $x$-axis. Draw the vector.
+\end{exercise}
+
+\begin{tabletworkspace}[6cm]
+\end{tabletworkspace}
+
+\begin{solution}{1.5}
+\[
+\norm{\Delta\vec r}=\sqrt{(-3.00)^2+(4.00)^2}=5.00\ \mathrm{m}.
+\]
+The angle measured from the positive $x$-axis is
+\[
+\theta=\arctan\frac{4.00}{-3.00}.
+\]
+The point is in the second quadrant, so $\theta=180^\circ-53.1^\circ=127^\circ$.
+\end{solution}
+
+\begin{exercise}{\core\ Slope of a graph}
+The position of a particle is measured as a function of time:
+\[
+\begin{array}{c|ccccc}
+t\ (\mathrm{s}) & 0 & 2 & 4 & 6 & 8\\
+\hline
+x\ (\mathrm{m}) & 2.0 & 6.0 & 10.0 & 14.0 & 18.0
+\end{array}
+\]
+(a) Plot $x$ against $t$. (b) Find the slope and intercept. (c) What physical
+quantity does the slope represent? (d) Write the equation of the line.
+\end{exercise}
+
+\begin{tabletworkspace}[6cm]
+\end{tabletworkspace}
+
+\begin{solution}{1.6}
+(a) The points lie on a straight line.
+
+(b) Choosing $(0,2.0)$ and $(8.0,18.0)$,
+\[
+m=\frac{18.0-2.0}{8.0-0}=2.0\ \mathrm{m\,s^{-1}},\qquad b=2.0\ \mathrm{m}.
+\]
+
+(c) The slope is the constant velocity, $v=2.0\ \mathrm{m\,s^{-1}}$.
+
+(d) $x(t)=2.0t+2.0$ with $x$ in metres and $t$ in seconds.
+\end{solution}
+
+\begin{exercise}{\core\ Area under a graph}
+A car starts from rest and its velocity increases linearly to
+$12.0\ \mathrm{m\,s^{-1}}$ in $6.00\ \mathrm{s}$. It then travels at constant
+velocity for $4.00\ \mathrm{s}$. Draw the $v$--$t$ graph and find the total
+distance travelled.
+\end{exercise}
+
+\begin{tabletworkspace}[6cm]
+\end{tabletworkspace}
+
+\begin{solution}{1.7}
+The $v$--$t$ graph consists of a triangle (from $0$ to $6\ \mathrm{s}$) and a
+rectangle (from $6$ to $10\ \mathrm{s}$).
+\[
+d=\underbrace{\tfrac12(6.00)(12.0)}_{\text{triangle}}
++\underbrace{(4.00)(12.0)}_{\text{rectangle}}
+=36.0+48.0=84.0\ \mathrm{m}.
+\]
+\end{solution}
+
+\begin{exercise}{\core\ The pendulum formula}
+The period of a simple pendulum is believed to be
+$T=2\pi\sqrt{L/g}$, where $L$ is a length and $g$ an acceleration.
+(a) Verify the dimensions. (b) Compute $T$ for $L=1.00\ \mathrm{m}$ and
+$g=9.81\ \mathrm{m\,s^{-2}}$. (c) What happens to $T$ if $L$ is quadrupled?
+\end{exercise}
+
+\begin{tabletworkspace}[6cm]
+\end{tabletworkspace}
+
+\begin{solution}{1.8}
+(a) $[L/g]=\mathrm{L}/(\mathrm{L\,T^{-2}})=\mathrm{T^2}$, so
+$\sqrt{L/g}$ has dimension $\mathrm{T}$, as required.
+
+(b)
+\[
+T=2\pi\sqrt{\frac{1.00}{9.81}}=2.01\ \mathrm{s}.
+\]
+
+(c) $T\propto\sqrt L$. Quadrupling $L$ multiplies $T$ by $\sqrt4=2$, so the
+period doubles to $4.01\ \mathrm{s}$.
+\end{solution}
+
+\begin{exercise}{\mastery\ Density of a sphere}
+A solid sphere has radius $2.00\ \mathrm{cm}$ and mass $250\ \mathrm{g}$.
+(a) Find its density in $\mathrm{kg\,m^{-3}}$. (b) Find its weight on Earth.
+(c) If the same material forms a sphere of twice the radius, by what factor does
+the mass increase?
+\end{exercise}
+
+\begin{tabletworkspace}[6cm]
+\end{tabletworkspace}
+
+\begin{solution}{1.9}
+(a) The volume is
+\[
+V=\frac43\pi r^3=\frac43\pi(2.00\times10^{-2})^3
+=3.35\times10^{-5}\ \mathrm{m^3}.
+\]
+The mass is $0.250\ \mathrm{kg}$, hence
+\[
+\rho=\frac{m}{V}=\frac{0.250}{3.35\times10^{-5}}
+=7.46\times10^{3}\ \mathrm{kg\,m^{-3}}.
+\]
+
+(b) $W=mg=0.250(9.81)=2.45\ \mathrm{N}$.
+
+(c) $m=\rho V\propto r^3$. Doubling $r$ multiplies the mass by $2^3=8$.
+\end{solution}
+
+\begin{exercise}{\mastery\ Linearisation of data}
+A student suspects a relation $y=Ax^n$. She plots $\log y$ against $\log x$ and
+obtains a straight line of slope $3.0$ passing through
+$(\log x,\log y)=(0,0.30)$ (logarithms base 10). Find $n$ and $A$.
+\end{exercise}
+
+\begin{tabletworkspace}[6cm]
+\end{tabletworkspace}
+
+\begin{solution}{1.10}
+Taking base-10 logarithms,
+\[
+\log y=\log A+n\log x.
+\]
+The slope of the line is $n=3.0$. At $\log x=0$,
+$\log y=\log A=0.30$, hence
+\[
+A=10^{0.30}=2.0.
+\]
+Therefore $y=2.0\,x^{3}$.
+\end{solution}
+

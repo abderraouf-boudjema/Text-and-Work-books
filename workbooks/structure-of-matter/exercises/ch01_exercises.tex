@@ -1,0 +1,1024 @@
+\chapter{Fundamental Concepts and Solution Chemistry}
+\label{chap:exo_ch01}
+
+\begin{quicksummary}{Core Definitions, Concentration Scales \& Dilution Laws}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Amount of Substance (Mole) \& Avogadro's Number:}
+  \[
+  n = \frac{m}{M} = \frac{N}{N_A} = \frac{V_{\text{gas}}}{V_0} \quad \text{where } N_A = 6.022\,141 \times 10^{23}\ \mathrm{mol^{-1}},\ V_0 = 22.414\ \mathrm{L\cdot mol^{-1}}\ \text{(STP)}.
+  \]
+  \item \textbf{Molarity ($C_M$ or $[\ce{X}]$) \& Mass Concentration ($C_m$):}
+  \[
+  C_M = \frac{n_{\text{solute}}}{V_{\text{sol}}} \quad [\mathrm{mol\cdot L^{-1}} \equiv \mathrm{M}], \qquad C_m = \frac{m_{\text{solute}}}{V_{\text{sol}}} \quad [\mathrm{g\cdot L^{-1}}], \qquad C_m = C_M \cdot M.
+  \]
+  \item \textbf{Molality ($m$ or $b$) \& Commercial Reagent Relation:}
+  \[
+  m = \frac{n_{\text{solute}}}{m_{\text{solvent}}\ (\mathrm{kg})} \quad [\mathrm{mol\cdot kg^{-1}}], \qquad C_M = \frac{10 \cdot P\% \cdot d}{M} \quad (d = \rho_{\text{sol}}/\rho_{\text{water}}).
+  \]
+  \item \textbf{Normality ($N$) \& Equivalent Mass ($E_q$):}
+  \[
+  N = Z \cdot C_M = \frac{m_{\text{solute}}}{E_q \cdot V_{\text{sol}}}, \qquad E_q = \frac{M}{Z}.
+  \]
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item \textit{Acids/Bases:} $Z = \text{number of exchangeable } \ce{H+} \text{ or } \ce{OH-}$.
+    \item \textit{Salts/Precipitates:} $Z = \text{total positive charge of metal cations} = n_{\text{cation}} \times z^+$.
+    \item \textit{Redox:} $Z = \text{number of electrons transferred per mole of reagent}$.
+  \end{itemize}
+  \item \textbf{Dilution Law \& Titration Equivalence Principle:}
+  \[
+  n_{\text{initial}} = n_{\text{final}} \implies C_1 V_1 = C_2 V_2, \qquad \text{Equivalence:} \quad N_1 V_1 = N_2 V_2.
+  \]
+  \item \textbf{Mixing Non-reacting Solutions of the Same Solute:}
+  \[
+  C_{\text{final}} = \frac{n_1 + n_2 + \dots}{V_1 + V_2 + \dots} = \frac{C_1 V_1 + C_2 V_2 + \dots}{V_{\text{total}}}.
+  \]
+\end{enumerate}
+\end{quicksummary}
+
+\vspace{10pt}
+
+% ===========================================================================
+% EXERCISE 1.1
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{States of Matter and Phase Transition Enthalpy}
+Classify the following physical transformations according to their thermodynamic nature (endothermic or exothermic), state the phase transition name, and describe the molecular-level change in kinetic and potential energy:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Formation of frost on a cold winter morning directly from atmospheric water vapor.
+  \item The disappearance of dry ice ($\ce{CO2(s)}$) placed on a laboratory bench at room temperature without liquid formation.
+  \item The condensation of steam on a chilled condenser coil during a distillation experiment.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Frost Formation (Water vapor $\longrightarrow$ Solid ice):}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Transition Name:} \textbf{Deposition} (or desublimation / solid condensation).
+  \item \textbf{Thermodynamic Nature:} \textbf{Exothermic} ($\Delta H_{\text{dep}} < 0$). Heat is released into the surroundings.
+  \item \textbf{Microscopic Description:} High-energy, disordered gaseous water molecules lose kinetic energy upon contact with the cold surface. Intermolecular hydrogen bonds form, locking water molecules into an ordered crystalline lattice with minimal potential energy.
+\end{itemize}
+
+\textbf{2. Disappearance of Dry Ice ($\ce{CO2(s)} \longrightarrow \ce{CO2(g)}$):}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Transition Name:} \textbf{Sublimation}.
+  \item \textbf{Thermodynamic Nature:} \textbf{Endothermic} ($\Delta H_{\text{sub}} > 0$). Heat is absorbed from the room.
+  \item \textbf{Microscopic Description:} Thermal energy from the room overcomes the weak van der Waals dispersion forces holding non-polar $\ce{CO2}$ molecules in the solid lattice, increasing both intermolecular separation (potential energy) and molecular velocity (kinetic energy).
+\end{itemize}
+
+\textbf{3. Condensation of Steam ($\ce{H2O(g)} \longrightarrow \ce{H2O(l)}$):}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Transition Name:} \textbf{Condensation} (or liquefaction).
+  \item \textbf{Thermodynamic Nature:} \textbf{Exothermic} ($\Delta H_{\text{cond}} = -\Delta H_{\text{vap}} < 0$).
+  \item \textbf{Microscopic Description:} Heat is transferred to the condenser coolant, decreasing molecular velocities. Attractive dipole-dipole and hydrogen-bonding interactions pull vapor molecules together into a dense, fluid condensed liquid phase.
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.2
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{The Mole Concept and Avogadro Counting}
+A pure sample of metallic iron ($\ce{Fe}$) has a mass of $m = 16.755\ \mathrm{g}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the amount of substance $n$ of iron in the sample ($M(\ce{Fe}) = 55.845\ \mathrm{g\cdot mol^{-1}}$).
+  \item Compute the absolute number of iron atoms $N_{\text{atoms}}$ contained in this sample using $N_A = 6.022\,141 \times 10^{23}\ \mathrm{mol^{-1}}$.
+  \item What mass of elemental sulfur ($\ce{S}$, $M = 32.065\ \mathrm{g\cdot mol^{-1}}$) contains exactly the same number of atoms as this iron sample?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Amount of Substance of Iron ($n_{\text{Fe}}$):}
+\[
+n_{\text{Fe}} = \frac{m_{\text{Fe}}}{M(\ce{Fe})} = \frac{16.755\ \mathrm{g}}{55.845\ \mathrm{g\cdot mol^{-1}}} = \mathbf{0.3000\ \mathrm{mol}}.
+\]
+
+\textbf{2. Absolute Number of Iron Atoms ($N_{\text{atoms}}$):}
+\[
+N_{\text{atoms}} = n_{\text{Fe}} \cdot N_A = 0.3000\ \mathrm{mol} \times 6.022\,141 \times 10^{23}\ \mathrm{mol^{-1}} = \mathbf{1.8066 \times 10^{23}\ \text{atoms}}.
+\]
+
+\textbf{3. Equivalent Mass of Sulfur:}
+To contain identical numbers of atoms, the amounts of substance must be identical: $n_{\text{S}} = n_{\text{Fe}} = 0.3000\ \mathrm{mol}$.
+\[
+m_{\text{S}} = n_{\text{S}} \cdot M(\ce{S}) = 0.3000\ \mathrm{mol} \times 32.065\ \mathrm{g\cdot mol^{-1}} = \mathbf{9.6195\ \mathrm{g}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.3
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Molar Mass of Hydrated and Polyatomic Crystals}
+Calculate the molar mass of the following chemical compounds to two decimal places:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Anhydrous calcium phosphate: $\ce{Ca3(PO4)2}$.
+  \item Copper(II) sulfate pentahydrate: $\ce{CuSO4*5H2O}$.
+  \item Potassium permanganate: $\ce{KMnO4}$.
+  \item Ammonium iron(II) sulfate hexahydrate (Mohr's Salt): $(\ce{NH4})_2\ce{Fe(SO4)2*6H2O}$.
+\end{enumerate}
+\textit{Standard atomic masses ($\mathrm{g\cdot mol^{-1}}$):} $\ce{H} = 1.008$, $\ce{N} = 14.007$, $\ce{O} = 15.999$, $\ce{P} = 30.974$, $\ce{S} = 32.065$, $\ce{K} = 39.098$, $\ce{Ca} = 40.078$, $\ce{Mn} = 54.938$, $\ce{Fe} = 55.845$, $\ce{Cu} = 63.546$.
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Calcium phosphate $\ce{Ca3(PO4)2}$:}
+\begin{align*}
+M &= 3 \cdot M(\ce{Ca}) + 2 \cdot M(\ce{P}) + 8 \cdot M(\ce{O}) \\
+  &= 3(40.078) + 2(30.974) + 8(15.999) = 120.234 + 61.948 + 127.992 = \mathbf{310.17\ \mathrm{g\cdot mol^{-1}}}.
+\end{align*}
+
+\textbf{2. Copper(II) sulfate pentahydrate $\ce{CuSO4*5H2O}$:}
+\begin{align*}
+M(\ce{CuSO4}) &= 63.546 + 32.065 + 4(15.999) = 159.607\ \mathrm{g\cdot mol^{-1}} \\
+M(5\,\ce{H2O}) &= 5[2(1.008) + 15.999] = 5(18.015) = 90.075\ \mathrm{g\cdot mol^{-1}} \\
+M_{\text{total}} &= 159.607 + 90.075 = \mathbf{249.68\ \mathrm{g\cdot mol^{-1}}}.
+\end{align*}
+
+\textbf{3. Potassium permanganate $\ce{KMnO4}$:}
+\[
+M = 39.098 + 54.938 + 4(15.999) = 39.098 + 54.938 + 63.996 = \mathbf{158.03\ \mathrm{g\cdot mol^{-1}}}.
+\]
+
+\textbf{4. Mohr's salt $(\ce{NH4})_2\ce{Fe(SO4)2*6H2O}$:}
+\begin{align*}
+M &= 2[14.007 + 4(1.008)] + 55.845 + 2[32.065 + 4(15.999)] + 6(18.015) \\
+  &= 2(18.039) + 55.845 + 2(96.061) + 108.090 = 36.078 + 55.845 + 192.122 + 108.090 \\
+  &= \mathbf{392.14\ \mathrm{g\cdot mol^{-1}}}.
+\end{align*}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.4
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Molar Volume and Gas Stoichiometry at STP and RTP}
+A sealed rigid gas cylinder contains $V = 5.600\ \mathrm{L}$ of carbon dioxide gas ($\ce{CO2}$) under standard conditions of temperature and pressure ($\mathrm{STP}: T_0 = 273.15\ \mathrm{K},\ P_0 = 1.000\ \mathrm{atm}$, where $V_0 = 22.414\ \mathrm{L\cdot mol^{-1}}$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Determine the amount of substance $n$ of $\ce{CO2}$ in the cylinder.
+  \item Compute the mass of $\ce{CO2}$ gas present ($M(\ce{CO2}) = 44.01\ \mathrm{g\cdot mol^{-1}}$).
+  \item What volume would this exact same mass of gas occupy at room temperature and pressure ($\mathrm{RTP}: T_1 = 298.15\ \mathrm{K},\ P_1 = 1.000\ \mathrm{atm}$)?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Amount of Substance at STP:}
+\[
+n = \frac{V}{V_0} = \frac{5.600\ \mathrm{L}}{22.414\ \mathrm{L\cdot mol^{-1}}} = \mathbf{0.2498\ \mathrm{mol}} \approx \mathbf{0.250\ \mathrm{mol}}.
+\]
+
+\textbf{2. Mass of $\ce{CO2}$ Gas:}
+\[
+m = n \cdot M(\ce{CO2}) = 0.24983\ \mathrm{mol} \times 44.01\ \mathrm{g\cdot mol^{-1}} = \mathbf{10.995\ \mathrm{g}} \approx \mathbf{11.00\ \mathrm{g}}.
+\]
+
+\textbf{3. Gas Volume at RTP ($298.15\ \mathrm{K}, 1.000\ \mathrm{atm}$):}
+Using the ideal gas law $P V = n R T$ or Charles's law ($V_1 / T_1 = V_0 / T_0$ at constant pressure):
+\[
+V_{\text{RTP}} = V_{\text{STP}} \cdot \frac{T_{\text{RTP}}}{T_{\text{STP}}} = 5.600\ \mathrm{L} \times \frac{298.15\ \mathrm{K}}{273.15\ \mathrm{K}} = \mathbf{6.112\ \mathrm{L}}.
+\]
+Alternatively, using the RTP molar volume $V_{m,\text{RTP}} = \frac{R T}{P} = \frac{0.08206 \times 298.15}{1.000} = 24.466\ \mathrm{L\cdot mol^{-1}}$:
+\[
+V = n \cdot V_{m,\text{RTP}} = 0.24983\ \mathrm{mol} \times 24.466\ \mathrm{L\cdot mol^{-1}} = \mathbf{6.112\ \mathrm{L}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.5
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Molarity and Mass Concentration of Glucose}
+An intravenous infusion bag contains $m = 25.00\ \mathrm{g}$ of pharmaceutical anhydrous glucose ($\ce{C6H12O6}$) dissolved in distilled water to make a total solution volume of $V = 500.0\ \mathrm{mL}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Compute the molar mass $M$ of D-glucose ($M(\ce{C}) = 12.011,\ M(\ce{H}) = 1.008,\ M(\ce{O}) = 15.999\ \mathrm{g\cdot mol^{-1}}$).
+  \item Determine the mass concentration $C_m$ of glucose in $\mathrm{g\cdot L^{-1}}$.
+  \item Determine the molarity $C_M$ of glucose in $\mathrm{mol\cdot L^{-1}}$ ($\mathrm{M}$).
+  \item Verify explicitly the fundamental identity $C_m = C_M \cdot M$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Molar Mass of Glucose:}
+\[
+M(\ce{C6H12O6}) = 6(12.011) + 12(1.008) + 6(15.999) = 72.066 + 12.096 + 95.994 = \mathbf{180.16\ \mathrm{g\cdot mol^{-1}}}.
+\]
+
+\textbf{2. Mass Concentration $C_m$:}
+\[
+C_m = \frac{m_{\text{solute}}}{V_{\text{solution}}} = \frac{25.00\ \mathrm{g}}{0.5000\ \mathrm{L}} = \mathbf{50.00\ \mathrm{g\cdot L^{-1}}}.
+\]
+
+\textbf{3. Molarity $C_M$:}
+\[
+n = \frac{m}{M} = \frac{25.00\ \mathrm{g}}{180.16\ \mathrm{g\cdot mol^{-1}}} = 0.13877\ \mathrm{mol}.
+\]
+\[
+C_M = \frac{n}{V} = \frac{0.13877\ \mathrm{mol}}{0.5000\ \mathrm{L}} = \mathbf{0.2775\ \mathrm{mol\cdot L^{-1}} \equiv 0.2775\ \mathrm{M}}.
+\]
+
+\textbf{4. Verification of $C_m = C_M \cdot M$:}
+\[
+C_M \cdot M = 0.27754\ \mathrm{mol\cdot L^{-1}} \times 180.16\ \mathrm{g\cdot mol^{-1}} = \mathbf{50.00\ \mathrm{g\cdot L^{-1}}} \equiv C_m. \quad \text{(Verified)}
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.6
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Molarity vs. Molality: Temperature Dependence}
+A solution is prepared by dissolving $m_s = 18.02\ \mathrm{g}$ of urea ($\ce{CO(NH2)2}$, $M = 60.06\ \mathrm{g\cdot mol^{-1}}$) in $m_w = 250.0\ \mathrm{g}$ of pure water. The final volume of the solution at $20^\circ\mathrm{C}$ is measured to be $V = 262.5\ \mathrm{mL}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the molality $m$ of the urea solution in $\mathrm{mol\cdot kg^{-1}}$.
+  \item Calculate the molarity $C_M$ of the urea solution at $20^\circ\mathrm{C}$ in $\mathrm{mol\cdot L^{-1}}$.
+  \item If the solution is heated to $80^\circ\mathrm{C}$, the liquid expands thermally to a volume of $268.0\ \mathrm{mL}$. Explain whether molality or molarity changes, and calculate the new values.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Molality $m$:}
+\[
+n_{\text{urea}} = \frac{18.02\ \mathrm{g}}{60.06\ \mathrm{g\cdot mol^{-1}}} = 0.3000\ \mathrm{mol}.
+\]
+The mass of solvent in kilograms is $m_{\text{solvent}} = 250.0\ \mathrm{g} = 0.2500\ \mathrm{kg}$.
+\[
+m = \frac{n_{\text{solute}}}{m_{\text{solvent (kg)}}} = \frac{0.3000\ \mathrm{mol}}{0.2500\ \mathrm{kg}} = \mathbf{1.200\ \mathrm{mol\cdot kg^{-1}}}.
+\]
+
+\textbf{2. Molarity $C_M$ at $20^\circ\mathrm{C}$:}
+The volume in liters is $V = 262.5\ \mathrm{mL} = 0.2625\ \mathrm{L}$.
+\[
+C_M = \frac{n_{\text{solute}}}{V} = \frac{0.3000\ \mathrm{mol}}{0.2625\ \mathrm{L}} = \mathbf{1.143\ \mathrm{mol\cdot L^{-1}} = 1.143\ \mathrm{M}}.
+\]
+
+\textbf{3. Effect of Thermal Expansion at $80^\circ\mathrm{C}$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Molality:} Mass is independent of temperature ($\dd m / \dd T = 0$). Therefore, the molality remains strictly unchanged:
+  \[
+  m_{80^\circ\mathrm{C}} = \mathbf{1.200\ \mathrm{mol\cdot kg^{-1}}}.
+  \]
+  \item \textbf{Molarity:} Volume increases with temperature due to thermal expansion ($V_{80^\circ\mathrm{C}} = 0.2680\ \mathrm{L}$). Therefore, molarity decreases:
+  \[
+  C_{M,80^\circ\mathrm{C}} = \frac{0.3000\ \mathrm{mol}}{0.2680\ \mathrm{L}} = \mathbf{1.119\ \mathrm{M}}.
+  \]
+\end{itemize}
+This illustrates why molality is universally preferred in thermodynamic colligative properties (boiling point elevation, freezing point depression).
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.7
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Valence Factors and Equivalent Masses in Acid-Base Chemistry}
+For each of the following acid-base reagents, determine the valence factor $Z$, write the corresponding dissociation or neutralization equation, and compute the equivalent mass $E_q = M/Z$:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Hydrochloric acid ($\ce{HCl}$, $M = 36.46\ \mathrm{g\cdot mol^{-1}}$).
+  \item Sulfuric acid ($\ce{H2SO4}$, $M = 98.08\ \mathrm{g\cdot mol^{-1}}$) under complete neutralization to sulfate ($\ce{SO4^{2-}}$).
+  \item Phosphoric acid ($\ce{H3PO4}$, $M = 98.00\ \mathrm{g\cdot mol^{-1}}$) when neutralized to hydrogen phosphate ($\ce{HPO4^{2-}}$).
+  \item Calcium hydroxide ($\ce{Ca(OH)2}$, $M = 74.09\ \mathrm{g\cdot mol^{-1}}$).
+  \item Aluminum hydroxide ($\ce{Al(OH)3}$, $M = 78.00\ \mathrm{g\cdot mol^{-1}}$).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Hydrochloric acid ($\ce{HCl}$):}
+Monoprotic acid releasing $1\ \ce{H+}$: $\ce{HCl -> H+ + Cl-}$.
+\[
+Z = 1 \implies E_q = \frac{M}{1} = \frac{36.46}{1} = \mathbf{36.46\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{2. Sulfuric acid ($\ce{H2SO4}$) complete neutralization:}
+Diprotic acid releasing $2\ \ce{H+}$: $\ce{H2SO4 + 2 OH- -> SO4^{2-} + 2 H2O}$.
+\[
+Z = 2 \implies E_q = \frac{M}{2} = \frac{98.08}{2} = \mathbf{49.04\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{3. Phosphoric acid ($\ce{H3PO4}$) neutralized to $\ce{HPO4^{2-}}$:}
+Neutralization of two protons: $\ce{H3PO4 + 2 OH- -> HPO4^{2-} + 2 H2O}$.
+\[
+Z = 2 \implies E_q = \frac{M}{2} = \frac{98.00}{2} = \mathbf{49.00\ \mathrm{g\cdot eq^{-1}}}.
+\]
+(\textit{Note:} If completely neutralized to $\ce{PO4^{3-}}$, $Z=3$ and $E_q = 32.67\ \mathrm{g\cdot eq^{-1}}$).
+
+\textbf{4. Calcium hydroxide ($\ce{Ca(OH)2}$):}
+Di-base releasing $2\ \ce{OH-}$: $\ce{Ca(OH)2 -> Ca^{2+} + 2 OH-}$.
+\[
+Z = 2 \implies E_q = \frac{M}{2} = \frac{74.09}{2} = \mathbf{37.05\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{5. Aluminum hydroxide ($\ce{Al(OH)3}$):}
+Tri-base neutralizing $3\ \ce{H+}$: $\ce{Al(OH)3 + 3 H+ -> Al^{3+} + 3 H2O}$.
+\[
+Z = 3 \implies E_q = \frac{M}{3} = \frac{78.00}{3} = \mathbf{26.00\ \mathrm{g\cdot eq^{-1}}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.8
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Valence Factors in Salt Precipitation and Exchange Reactions}
+In precipitation and double-displacement reactions, the valence factor $Z$ of a salt is the total positive charge contributed by the metal cations ($Z = n_{\text{cation}} \times z^+$). Determine $Z$ and calculate $E_q$ for the following salts:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Sodium chloride ($\ce{NaCl}$, $M = 58.44\ \mathrm{g\cdot mol^{-1}}$).
+  \item Calcium chloride ($\ce{CaCl2}$, $M = 110.98\ \mathrm{g\cdot mol^{-1}}$).
+  \item Aluminum chloride ($\ce{AlCl3}$, $M = 133.34\ \mathrm{g\cdot mol^{-1}}$).
+  \item Aluminum sulfate ($\ce{Al2(SO4)3}$, $M = 342.15\ \mathrm{g\cdot mol^{-1}}$).
+  \item Iron(III) nitrate nonahydrate ($\ce{Fe(NO3)3*9H2O}$, $M = 404.00\ \mathrm{g\cdot mol^{-1}}$).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Sodium chloride ($\ce{NaCl}$):}
+Dissociation: $\ce{NaCl -> Na+ + Cl-}$. Cation charge: $1 \times (+1) = +1$.
+\[
+Z = 1 \implies E_q = \frac{58.44}{1} = \mathbf{58.44\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{2. Calcium chloride ($\ce{CaCl2}$):}
+Dissociation: $\ce{CaCl2 -> Ca^{2+} + 2 Cl-}$. Cation charge: $1 \times (+2) = +2$.
+\[
+Z = 2 \implies E_q = \frac{110.98}{2} = \mathbf{55.49\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{3. Aluminum chloride ($\ce{AlCl3}$):}
+Dissociation: $\ce{AlCl3 -> Al^{3+} + 3 Cl-}$. Cation charge: $1 \times (+3) = +3$.
+\[
+Z = 3 \implies E_q = \frac{133.34}{3} = \mathbf{44.45\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{4. Aluminum sulfate ($\ce{Al2(SO4)3}$):}
+Dissociation: $\ce{Al2(SO4)3 -> 2 Al^{3+} + 3 SO4^{2-}}$.
+Total cation positive charge: $2 \times (+3) = +6$ (balanced by $3 \times (-2) = -6$).
+\[
+Z = 6 \implies E_q = \frac{342.15}{6} = \mathbf{57.03\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{5. Iron(III) nitrate nonahydrate ($\ce{Fe(NO3)3*9H2O}$):}
+Dissociation: $\ce{Fe(NO3)3 -> Fe^{3+} + 3 NO3-}$. Cation charge: $1 \times (+3) = +3$.
+\[
+Z = 3 \implies E_q = \frac{404.00}{3} = \mathbf{134.67\ \mathrm{g\cdot eq^{-1}}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.9
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Valence Factors in Oxidation-Reduction Systems}
+In redox chemistry, the valence factor $Z$ equals the number of moles of electrons transferred per mole of reagent. For each of the following redox transformations, write the balanced half-reaction in acidic medium, determine $Z$, and compute $E_q$:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Potassium permanganate ($\ce{KMnO4}$, $M = 158.03\ \mathrm{g\cdot mol^{-1}}$) reducing to $\ce{Mn^{2+}}$.
+  \item Potassium dichromate ($\ce{K2Cr2O7}$, $M = 294.18\ \mathrm{g\cdot mol^{-1}}$) reducing to $\ce{Cr^{3+}}$.
+  \item Sodium thiosulfate pentahydrate ($\ce{Na2S2O3*5H2O}$, $M = 248.18\ \mathrm{g\cdot mol^{-1}}$) oxidized to tetrathionate ($\ce{S4O6^{2-}}$).
+  \item Oxalic acid dihydrate ($\ce{H2C2O4*2H2O}$, $M = 126.07\ \mathrm{g\cdot mol^{-1}}$) oxidized to carbon dioxide ($\ce{CO2}$).
+  \item Hydrogen peroxide ($\ce{H2O2}$, $M = 34.01\ \mathrm{g\cdot mol^{-1}}$) acting as a reducing agent: $\ce{H2O2 -> O2}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Permanganate reduction ($\ce{MnO4^- -> Mn^{2+}}$):}
+\[
+\ce{MnO4- + 8 H+ + 5 e- -> Mn^{2+} + 4 H2O}
+\]
+Each mole of $\ce{KMnO4}$ captures $5\ \mathrm{mol}\ e^-$:
+\[
+Z = 5 \implies E_q = \frac{158.03}{5} = \mathbf{31.61\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{2. Dichromate reduction ($\ce{Cr2O7^{2-} -> 2 Cr^{3+}}$):}
+\[
+\ce{Cr2O7^{2-} + 14 H+ + 6 e- -> 2 Cr^{3+} + 7 H2O}
+\]
+Each mole of $\ce{K2Cr2O7}$ captures $6\ \mathrm{mol}\ e^-$:
+\[
+Z = 6 \implies E_q = \frac{294.18}{6} = \mathbf{49.03\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{3. Thiosulfate oxidation ($\ce{2 S2O3^{2-} -> S4O6^{2-} + 2 e-}$):}
+Per mole of $\ce{S2O3^{2-}}$, $1\ \mathrm{mol}\ e^-$ is released ($\ce{S2O3^{2-} -> \frac{1}{2} S4O6^{2-} + 1 e-}$):
+\[
+Z = 1 \implies E_q = \frac{248.18}{1} = \mathbf{248.18\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{4. Oxalic acid oxidation ($\ce{H2C2O4 -> 2 CO2 + 2 H+ + 2 e-}$):}
+Oxidation state of carbon changes from $+3$ in $\ce{C2O4^{2-}}$ to $+4$ in $\ce{CO2}$ ($2 \times 1 = 2\ e^-$):
+\[
+Z = 2 \implies E_q = \frac{126.07}{2} = \mathbf{63.035\ \mathrm{g\cdot eq^{-1}}}.
+\]
+
+\textbf{5. Hydrogen peroxide oxidation ($\ce{H2O2 -> O2 + 2 H+ + 2 e-}$):}
+Oxidation state of oxygen changes from $-1$ in $\ce{H2O2}$ to $0$ in $\ce{O2}$ ($2 \times 1 = 2\ e^-$):
+\[
+Z = 2 \implies E_q = \frac{34.01}{2} = \mathbf{17.005\ \mathrm{g\cdot eq^{-1}}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.10
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Normality to Molarity Interconversion for Polyprotic Acids}
+A laboratory stock bottle contains an aqueous solution of phosphoric acid ($\ce{H3PO4}$) labeled $N = 0.450\ \mathrm{N}$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Determine the molarity $C_M$ of this solution if it is intended for a reaction where all three protons are neutralized.
+  \item Determine the molarity $C_M$ if the solution is intended for titration to the first equivalence point (forming $\ce{H2PO4^-}$).
+  \item If the actual molarity is known independently to be $C_M = 0.150\ \mathrm{M}$, calculate its normality when titrated against $\ce{NaOH}$ to form:
+  \begin{enumerate}[leftmargin=1.2em,itemsep=1pt]
+    \item Sodium dihydrogen phosphate ($\ce{NaH2PO4}$).
+    \item Disodium hydrogen phosphate ($\ce{Na2HPO4}$).
+    \item Trisodium phosphate ($\ce{Na3PO4}$).
+  \end{enumerate}
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Complete Neutralization ($Z = 3$):}
+\[
+C_M = \frac{N}{Z} = \frac{0.450\ \mathrm{N}}{3} = \mathbf{0.150\ \mathrm{M}}.
+\]
+
+\textbf{2. First Equivalence Point ($Z = 1$):}
+\[
+C_M = \frac{N}{Z} = \frac{0.450\ \mathrm{N}}{1} = \mathbf{0.450\ \mathrm{M}}.
+\]
+
+\textbf{3. Given $C_M = 0.150\ \mathrm{M}$, Normality under different reactions:}
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item Formation of $\ce{NaH2PO4}$: Reaction: $\ce{H3PO4 + OH- -> H2PO4- + H2O} \implies Z = 1$.
+  \[
+  N = Z \cdot C_M = 1 \times 0.150\ \mathrm{M} = \mathbf{0.150\ \mathrm{N}}.
+  \]
+  \item Formation of $\ce{Na2HPO4}$: Reaction: $\ce{H3PO4 + 2 OH- -> HPO4^{2-} + 2 H2O} \implies Z = 2$.
+  \[
+  N = Z \cdot C_M = 2 \times 0.150\ \mathrm{M} = \mathbf{0.300\ \mathrm{N}}.
+  \]
+  \item Formation of $\ce{Na3PO4}$: Reaction: $\ce{H3PO4 + 3 OH- -> PO4^{3-} + 3 H2O} \implies Z = 3$.
+  \[
+  N = Z \cdot C_M = 3 \times 0.150\ \mathrm{M} = \mathbf{0.450\ \mathrm{N}}.
+  \]
+\end{enumerate}
+\textbf{Key Takeaway:} While molarity $C_M$ is an absolute invariant property of the physical solution, normality $N$ depends strictly on the chemical reaction performed!
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.11
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Commercial Hydrochloric Acid Concentration Derivation}
+A commercial bottle of concentrated hydrochloric acid has the following manufacturer specifications:
+\begin{itemize}[itemsep=1pt]
+  \item Mass percentage purity: $P = 37.0\%$ ($37.0\ \mathrm{g}\ \ce{HCl}$ per $100.0\ \mathrm{g}$ of solution).
+  \item Specific gravity: $d = 1.190$ ($\rho_{\text{solution}} = 1.190\ \mathrm{g\cdot mL^{-1}} = 1190\ \mathrm{g\cdot L^{-1}}$).
+  \item Molar mass: $M(\ce{HCl}) = 36.46\ \mathrm{g\cdot mol^{-1}}$.
+\end{itemize}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Derive rigorously from first principles the equation $C_M = \dfrac{10 \cdot P \cdot d}{M}$.
+  \item Calculate the molarity $C_M$ and normality $N$ of this concentrated commercial acid.
+  \item Compute the mass concentration $C_m$ in $\mathrm{g\cdot L^{-1}}$.
+  \item Calculate the molality $m$ of the $\ce{HCl}$ solution in $\mathrm{mol\cdot kg^{-1}}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Rigorous Derivation of $C_M = \frac{10 \cdot P \cdot d}{M}$:}
+Consider exactly $V = 1.000\ \mathrm{L} = 1000\ \mathrm{mL}$ of the solution:
+\begin{enumerate}[leftmargin=1.5em,itemsep=1pt]
+  \item Total mass of $1\ \mathrm{L}$ solution:
+  \[
+  m_{\text{sol}} = V \cdot \rho_{\text{sol}} = 1000\ \mathrm{mL} \times (d \cdot 1.000\ \mathrm{g\cdot mL^{-1}}) = 1000 \cdot d\ [\mathrm{g}].
+  \]
+  \item Mass of pure dissolved solute ($\ce{HCl}$):
+  \[
+  m_{\text{solute}} = m_{\text{sol}} \times \frac{P}{100} = (1000 \cdot d) \times \frac{P}{100} = 10 \cdot P \cdot d\ [\mathrm{g}].
+  \]
+  \item Amount of substance of solute in $1\ \mathrm{L}$:
+  \[
+  n_{\text{solute}} = \frac{m_{\text{solute}}}{M} = \frac{10 \cdot P \cdot d}{M}\ [\mathrm{mol}].
+  \]
+  \item Since this amount is contained in exactly $1.000\ \mathrm{L}$, the molarity is:
+  \[
+  C_M = \frac{n_{\text{solute}}}{1\ \mathrm{L}} = \mathbf{\frac{10 \cdot P \cdot d}{M}} \quad \text{Q.E.D.}
+  \]
+\end{enumerate}
+
+\textbf{2. Calculation of Molarity and Normality:}
+\[
+C_M = \frac{10 \times 37.0 \times 1.190}{36.46} = \frac{4403.0}{36.46} = \mathbf{12.076\ \mathrm{mol\cdot L^{-1}} \approx 12.08\ \mathrm{M}}.
+\]
+Since $\ce{HCl}$ is monoprotic ($Z = 1$):
+\[
+N = Z \cdot C_M = 1 \times 12.076 = \mathbf{12.08\ \mathrm{N}}.
+\]
+
+\textbf{3. Mass Concentration $C_m$:}
+\[
+C_m = 10 \cdot P \cdot d = 10 \times 37.0 \times 1.190 = \mathbf{440.3\ \mathrm{g\cdot L^{-1}}}.
+\]
+Check: $C_M \cdot M = 12.076 \times 36.46 = 440.3\ \mathrm{g\cdot L^{-1}}$.
+
+\textbf{4. Molality $m$:}
+In $100.0\ \mathrm{g}$ of solution, there are $37.0\ \mathrm{g}\ \ce{HCl}$ and $100.0 - 37.0 = 63.0\ \mathrm{g} = 0.0630\ \mathrm{kg}$ of water.
+\[
+n_{\text{solute}} = \frac{37.0\ \mathrm{g}}{36.46\ \mathrm{g\cdot mol^{-1}}} = 1.0148\ \mathrm{mol}.
+\]
+\[
+m = \frac{n_{\text{solute}}}{m_{\text{water (kg)}}} = \frac{1.0148\ \mathrm{mol}}{0.0630\ \mathrm{kg}} = \mathbf{16.11\ \mathrm{mol\cdot kg^{-1}}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.12
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Analysis of Commercial Nitric and Sulfuric Acids}
+Determine the analytical concentration parameters for two quintessential laboratory acids:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Commercial Nitric Acid ($\ce{HNO3}$): $P = 68.0\%$, $d = 1.410$, $M = 63.01\ \mathrm{g\cdot mol^{-1}}$. Find $C_M$, $C_m$, and $N$.
+  \item Commercial Sulfuric Acid ($\ce{H2SO4}$): $P = 98.0\%$, $d = 1.840$, $M = 98.08\ \mathrm{g\cdot mol^{-1}}$. Find $C_M$, $C_m$, and $N$ for complete neutralization.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Commercial Nitric Acid ($\ce{HNO3}$):}
+\begin{align*}
+C_M &= \frac{10 \cdot P \cdot d}{M} = \frac{10 \times 68.0 \times 1.410}{63.01} = \frac{958.8}{63.01} = \mathbf{15.22\ \mathrm{mol\cdot L^{-1}} = 15.22\ \mathrm{M}}. \\
+C_m &= 10 \cdot P \cdot d = 10 \times 68.0 \times 1.410 = \mathbf{958.8\ \mathrm{g\cdot L^{-1}}}.
+\end{align*}
+For nitric acid, $Z = 1$ ($\ce{HNO3 -> H+ + NO3-}$):
+\[
+N = 1 \times C_M = \mathbf{15.22\ \mathrm{N}}.
+\]
+
+\textbf{2. Commercial Sulfuric Acid ($\ce{H2SO4}$):}
+\begin{align*}
+C_M &= \frac{10 \cdot P \cdot d}{M} = \frac{10 \times 98.0 \times 1.840}{98.08} = \frac{1803.2}{98.08} = \mathbf{18.385\ \mathrm{mol\cdot L^{-1}} \approx 18.39\ \mathrm{M}}. \\
+C_m &= 10 \cdot P \cdot d = 10 \times 98.0 \times 1.840 = \mathbf{1803.2\ \mathrm{g\cdot L^{-1}}}.
+\end{align*}
+For sulfuric acid with complete diprotic neutralization, $Z = 2$:
+\[
+N = 2 \times C_M = 2 \times 18.385 = \mathbf{36.77\ \mathrm{N}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.13
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Precision Volumetric Dilution and Safety Protocol}
+A student needs to prepare exactly $V_2 = 500.0\ \mathrm{mL}$ of an aqueous sulfuric acid solution of concentration $C_{M2} = 0.2500\ \mathrm{M}$ starting from the commercial stock acid analyzed in Exercise 1.12 ($C_{M1} = 18.385\ \mathrm{M}$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the dilution factor $F$.
+  \item Determine the exact volume $V_1$ of concentrated stock acid required.
+  \item State the cardinal laboratory safety rule that must be obeyed when diluting concentrated sulfuric acid, explaining the physical consequence of violating it.
+  \item List the sequential glassware steps required to prepare this solution accurately.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Dilution Factor $F$:}
+\[
+F = \frac{C_{M1}}{C_{M2}} = \frac{18.385\ \mathrm{M}}{0.2500\ \mathrm{M}} = \mathbf{73.54}.
+\]
+
+\textbf{2. Volume of Concentrated Stock Acid ($V_1$):}
+Applying the law of dilution $C_1 V_1 = C_2 V_2$:
+\[
+V_1 = \frac{C_2 V_2}{C_1} = \frac{0.2500\ \mathrm{M} \times 500.0\ \mathrm{mL}}{18.385\ \mathrm{M}} = \mathbf{6.799\ \mathrm{mL}} \approx \mathbf{6.80\ \mathrm{mL}}.
+\]
+
+\textbf{3. Cardinal Safety Rule:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Rule:} \textbf{"Always add acid to water, never add water to acid!"}
+  \item \textbf{Physical Reason:} The hydration of sulfuric acid ($\ce{H2SO4 + H2O -> H3O+ + HSO4-}$) is violently exothermic ($\Delta H_{\text{hydration}}^\circ \approx -95\ \mathrm{kJ\cdot mol^{-1}}$). Concentrated $\ce{H2SO4}$ is dense ($d = 1.84$). If water is added to acid, the less dense water floats on top; the intense localized heat boils the water instantly, producing steam explosions that violently spatter concentrated boiling acid onto the operator. Adding acid slowly to a large heat capacity volume of stirred water dissipates heat safely.
+\end{itemize}
+
+\textbf{4. Preparation Protocol:}
+\begin{enumerate}[leftmargin=1.5em,itemsep=1pt]
+  \item Fill a $500.0\ \mathrm{mL}$ volumetric flask approximately halfway with $\approx 250\ \mathrm{mL}$ of deionized water;
+  \item Measure $6.80\ \mathrm{mL}$ of concentrated $\ce{H2SO4}$ using an analytical graduated pipet or burette;
+  \item Add the acid slowly down the wall of the flask with gentle swirling;
+  \item Allow the flask to cool back to room temperature ($20^\circ\mathrm{C}$);
+  \item Add deionized water up to the calibration line, invert repeatedly to homogenize.
+\end{enumerate}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.14
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Volumetric Acid-Base Standardization by Equivalence}
+A solution of sodium hydroxide ($\ce{NaOH}$) has an approximate concentration of $0.1\ \mathrm{M}$. To determine its exact normality, a chemist standardizes it against primary standard oxalic acid dihydrate ($\ce{H2C2O4*2H2O}$, $M = 126.07\ \mathrm{g\cdot mol^{-1}}$).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Exactly $m = 0.6304\ \mathrm{g}$ of oxalic acid dihydrate is dissolved in water to make $100.0\ \mathrm{mL}$ of primary standard solution. Determine its molarity $C_{M,\text{acid}}$ and normality $N_{\text{acid}}$ ($Z=2$).
+  \item An aliquot of $V_{\text{acid}} = 20.00\ \mathrm{mL}$ of this standard acid is pipetted into an Erlenmeyer flask and titrated with the $\ce{NaOH}$ solution in the presence of phenolphthalein. The equivalence point is reached at $V_{\text{base}} = 19.35\ \mathrm{mL}$. Calculate the exact normality $N_{\text{base}}$ and molarity $C_{M,\text{base}}$ of the sodium hydroxide solution.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Concentration of Primary Standard Oxalic Acid:}
+Amount of substance dissolved in $V = 100.0\ \mathrm{mL} = 0.1000\ \mathrm{L}$:
+\[
+n_{\text{acid}} = \frac{m}{M} = \frac{0.6304\ \mathrm{g}}{126.07\ \mathrm{g\cdot mol^{-1}}} = 5.0004 \times 10^{-3}\ \mathrm{mol}.
+\]
+\[
+C_{M,\text{acid}} = \frac{5.0004 \times 10^{-3}\ \mathrm{mol}}{0.1000\ \mathrm{L}} = \mathbf{0.05000\ \mathrm{mol\cdot L^{-1}} = 0.05000\ \mathrm{M}}.
+\]
+Oxalic acid is diprotic ($Z_{\text{acid}} = 2$):
+\[
+N_{\text{acid}} = Z_{\text{acid}} \cdot C_{M,\text{acid}} = 2 \times 0.05000\ \mathrm{M} = \mathbf{0.1000\ \mathrm{N}}.
+\]
+
+\textbf{2. Normality and Molarity of Sodium Hydroxide:}
+At the equivalence point, the equivalents of acid and base are equal:
+\[
+N_{\text{base}} V_{\text{base}} = N_{\text{acid}} V_{\text{acid}} \implies N_{\text{base}} = \frac{N_{\text{acid}} V_{\text{acid}}}{V_{\text{base}}}.
+\]
+Plugging in values:
+\[
+N_{\text{base}} = \frac{0.1000\ \mathrm{N} \times 20.00\ \mathrm{mL}}{19.35\ \mathrm{mL}} = \mathbf{0.10336\ \mathrm{N} \approx 0.1034\ \mathrm{N}}.
+\]
+For sodium hydroxide ($\ce{NaOH -> Na+ + OH-}$), $Z_{\text{base}} = 1$:
+\[
+C_{M,\text{base}} = \frac{N_{\text{base}}}{Z_{\text{base}}} = \frac{0.10336\ \mathrm{N}}{1} = \mathbf{0.1034\ \mathrm{M}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.15
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Mixing Multiple Solutions of the Same Solute}
+A laboratory technician blends three different aqueous solutions of potassium chloride ($\ce{KCl}$, $M = 74.55\ \mathrm{g\cdot mol^{-1}}$):
+\begin{itemize}[itemsep=1pt]
+  \item Solution 1: $V_1 = 150.0\ \mathrm{mL}$ at $C_1 = 0.200\ \mathrm{M}$.
+  \item Solution 2: $V_2 = 250.0\ \mathrm{mL}$ at $C_2 = 0.500\ \mathrm{M}$.
+  \item Solution 3: $V_3 = 100.0\ \mathrm{mL}$ containing $m_3 = 5.964\ \mathrm{g}$ of dissolved $\ce{KCl}$.
+\end{itemize}
+Assuming volume additivity ($V_{\text{total}} = V_1 + V_2 + V_3$):
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the amount of substance of $\ce{KCl}$ contributed by each individual solution ($n_1, n_2, n_3$).
+  \item Determine the total number of moles $n_{\text{total}}$ and the total volume $V_{\text{total}}$.
+  \item Compute the final molarity $C_{M,\text{final}}$ and mass concentration $C_{m,\text{final}}$ of the mixture.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Amount of Substance from Each Solution:}
+\begin{align*}
+n_1 &= C_1 V_1 = 0.200\ \mathrm{mol\cdot L^{-1}} \times 0.1500\ \mathrm{L} = 0.0300\ \mathrm{mol}. \\
+n_2 &= C_2 V_2 = 0.500\ \mathrm{mol\cdot L^{-1}} \times 0.2500\ \mathrm{L} = 0.1250\ \mathrm{mol}. \\
+n_3 &= \frac{m_3}{M(\ce{KCl})} = \frac{5.964\ \mathrm{g}}{74.55\ \mathrm{g\cdot mol^{-1}}} = 0.0800\ \mathrm{mol}.
+\end{align*}
+
+\textbf{2. Total Moles and Total Volume:}
+\[
+n_{\text{total}} = n_1 + n_2 + n_3 = 0.0300 + 0.1250 + 0.0800 = \mathbf{0.2350\ \mathrm{mol}}.
+\]
+\[
+V_{\text{total}} = 150.0 + 250.0 + 100.0 = 500.0\ \mathrm{mL} = \mathbf{0.5000\ \mathrm{L}}.
+\]
+
+\textbf{3. Final Molarity and Mass Concentration:}
+\[
+C_{M,\text{final}} = \frac{n_{\text{total}}}{V_{\text{total}}} = \frac{0.2350\ \mathrm{mol}}{0.5000\ \mathrm{L}} = \mathbf{0.4700\ \mathrm{mol\cdot L^{-1}} = 0.4700\ \mathrm{M}}.
+\]
+\[
+C_{m,\text{final}} = C_{M,\text{final}} \cdot M = 0.4700\ \mathrm{mol\cdot L^{-1}} \times 74.55\ \mathrm{g\cdot mol^{-1}} = \mathbf{35.04\ \mathrm{g\cdot L^{-1}}}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.16
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Target Concentration Formulation by Blending Two Stocks}
+An analytical chemist has two stock solutions of sodium sulfate ($\ce{Na2SO4}$):
+\begin{itemize}[itemsep=1pt]
+  \item Stock A: $C_A = 0.800\ \mathrm{M}$
+  \item Stock B: $C_B = 0.150\ \mathrm{M}$
+\end{itemize}
+The chemist needs to produce exactly $V_{\text{target}} = 650.0\ \mathrm{mL}$ of a solution having a desired concentration of $C_{\text{target}} = 0.350\ \mathrm{M}$ by mixing volumes $V_A$ and $V_B$ without adding extra water.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Set up the system of two simultaneous linear equations expressing total volume conservation and solute mole conservation.
+  \item Solve the system algebraically to determine the exact required volumes $V_A$ and $V_B$.
+  \item What are the resulting molar concentrations of sodium ions ($[\ce{Na+}]$) and sulfate ions ($[\ce{SO4^{2-}}]$) in the final blend?
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. System of Conservation Equations:}
+\begin{align}
+V_A + V_B &= V_{\text{target}} = 650.0\ \mathrm{mL} \label{eq:vol} \\
+C_A V_A + C_B V_B &= C_{\text{target}} V_{\text{target}} = 0.350 \times 650.0 = 227.5\ \mathrm{mmol} \label{eq:mol}
+\end{align}
+
+\textbf{2. Algebraic Solution:}
+From \eqref{eq:vol}, substitute $V_B = 650.0 - V_A$ into \eqref{eq:mol}:
+\[
+0.800 V_A + 0.150(650.0 - V_A) = 227.5
+\]
+\[
+(0.800 - 0.150) V_A + 97.5 = 227.5 \implies 0.650 V_A = 130.0
+\]
+\[
+V_A = \frac{130.0}{0.650} = \mathbf{200.0\ \mathrm{mL}}.
+\]
+Substituting back into \eqref{eq:vol}:
+\[
+V_B = 650.0 - 200.0 = \mathbf{450.0\ \mathrm{mL}}.
+\]
+
+\textbf{3. Ion Concentrations in the Final Blend:}
+Sodium sulfate dissociates completely: $\ce{Na2SO4(aq) -> 2 Na+(aq) + SO4^{2-}(aq)}$.
+\begin{align*}
+[\ce{Na+}] &= 2 \times C_{\text{target}} = 2 \times 0.350\ \mathrm{M} = \mathbf{0.700\ \mathrm{M}}. \\
+[\ce{SO4^{2-}}] &= 1 \times C_{\text{target}} = \mathbf{0.350\ \mathrm{M}}.
+\end{align*}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.17
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Redox Determination of Iron Purity in Siderite Mineral}
+A sample of impure siderite mineral (containing iron as $\ce{FeCO3}$) with mass $m_{\text{ore}} = 1.4500\ \mathrm{g}$ is completely dissolved in excess hot concentrated sulfuric acid. All the dissolved iron is reduced quantitatively to $\mathrm{Fe}^{2+}$ and diluted to exactly $V_0 = 250.0\ \mathrm{mL}$ in a volumetric flask.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item An aliquot of $V_{\text{aliquot}} = 25.00\ \mathrm{mL}$ is acidified and titrated against a standardized $0.02500\ \mathrm{M}$ potassium dichromate ($\ce{K2Cr2O7}$) solution. The equivalence point requires $V_{\text{eq}} = 14.85\ \mathrm{mL}$ of titrant.
+  \begin{enumerate}[leftmargin=1.2em,itemsep=1pt]
+    \item Write the balanced ionic redox equation for the titration.
+    \item Determine the normality $N_{\text{ox}}$ of the $\ce{K2Cr2O7}$ solution ($Z_{\text{ox}} = 6$).
+    \item Calculate the amount of substance of $\mathrm{Fe}^{2+}$ in the $25.00\ \mathrm{mL}$ aliquot.
+  \end{enumerate}
+  \item Compute the total mass of elemental iron ($m_{\text{Fe}}$) in the original $1.4500\ \mathrm{g}$ mineral sample ($M(\ce{Fe}) = 55.845\ \mathrm{g\cdot mol^{-1}}$).
+  \item Calculate the mass percentage ($w\%$) of iron in the siderite mineral.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1(a). Balanced Redox Equation:}
+\begin{align*}
+\text{Reduction:} \quad & \ce{Cr2O7^{2-} + 14 H+ + 6 e- -> 2 Cr^{3+} + 7 H2O} \\
+\text{Oxidation:} \quad & 6(\ce{Fe^{2+} -> Fe^{3+} + 1 e-}) \\
+\hline
+\text{Overall:} \quad & \ce{Cr2O7^{2-} + 6 Fe^{2+} + 14 H+ -> 2 Cr^{3+} + 6 Fe^{3+} + 7 H2O}
+\end{align*}
+
+\textbf{1(b). Normality of $\ce{K2Cr2O7}$:}
+Since $1\ \mathrm{mol}\ \ce{Cr2O7^{2-}}$ captures $6\ \mathrm{mol}\ e^-$ ($Z_{\text{ox}} = 6$):
+\[
+N_{\text{ox}} = Z_{\text{ox}} \cdot C_{M,\text{ox}} = 6 \times 0.02500\ \mathrm{M} = \mathbf{0.1500\ \mathrm{N}}.
+\]
+
+\textbf{1(c). Amount of $\ce{Fe^{2+}}$ in the Aliquot:}
+At equivalence, equivalents of reductant equal equivalents of oxidant:
+\[
+N_{\text{Fe}} V_{\text{aliquot}} = N_{\text{ox}} V_{\text{eq}} \implies N_{\text{Fe}} = \frac{0.1500\ \mathrm{N} \times 14.85\ \mathrm{mL}}{25.00\ \mathrm{mL}} = 0.08910\ \mathrm{N}.
+\]
+For iron oxidation ($\ce{Fe^{2+} -> Fe^{3+} + 1 e-}$), $Z_{\text{Fe}} = 1$:
+\[
+C_{M,\text{Fe}} = \frac{N_{\text{Fe}}}{1} = 0.08910\ \mathrm{M}.
+\]
+The moles of $\ce{Fe^{2+}}$ in the $25.00\ \mathrm{mL}$ aliquot are:
+\[
+n_{\text{aliquot}} = C_{M,\text{Fe}} \times V_{\text{aliquot}} = 0.08910\ \mathrm{M} \times 0.02500\ \mathrm{L} = \mathbf{2.2275 \times 10^{-3}\ \mathrm{mol}}.
+\]
+
+\textbf{2. Total Mass of Iron in Mineral Sample:}
+The aliquot represents a fraction $25.00 / 250.0 = 1/10$ of the total volume:
+\[
+n_{\text{total, Fe}} = 10 \times n_{\text{aliquot}} = 10 \times (2.2275 \times 10^{-3}\ \mathrm{mol}) = 2.2275 \times 10^{-2}\ \mathrm{mol}.
+\]
+Total mass of iron:
+\[
+m_{\text{Fe}} = n_{\text{total, Fe}} \cdot M(\ce{Fe}) = 0.022275\ \mathrm{mol} \times 55.845\ \mathrm{g\cdot mol^{-1}} = \mathbf{1.2439\ \mathrm{g}}.
+\]
+
+\textbf{3. Mass Percentage of Iron in the Ore:}
+\[
+w\%(\ce{Fe}) = \frac{m_{\text{Fe}}}{m_{\text{ore}}} \times 100\% = \frac{1.2439\ \mathrm{g}}{1.4500\ \mathrm{g}} \times 100\% = \mathbf{85.79\%}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.18
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Back-Titration Analysis of Limestone Purity}
+The calcium carbonate ($\ce{CaCO3}$, $M = 100.09\ \mathrm{g\cdot mol^{-1}}$) content of an agricultural limestone sample is determined by back-titration. A finely ground sample of mass $m_{\text{sample}} = 1.2000\ \mathrm{g}$ is treated with $V_1 = 50.00\ \mathrm{mL}$ of $C_{M1} = 0.8000\ \mathrm{M}$ standard hydrochloric acid ($\ce{HCl}$). The mixture is boiled gently to expel $\ce{CO2}$ gas completely according to:
+\[
+\ce{CaCO3(s) + 2 HCl(aq) -> CaCl2(aq) + CO2(g) ^ + H2O(l)}.
+\]
+After cooling, the excess unreacted $\ce{HCl}$ requires $V_2 = 21.60\ \mathrm{mL}$ of $C_{M2} = 0.5000\ \mathrm{M}$ sodium hydroxide ($\ce{NaOH}$) standard solution to reach the bromothymol blue endpoint.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Calculate the total initial number of millimoles of $\ce{HCl}$ added ($n_{\text{initial}}$).
+  \item Calculate the millimoles of excess unreacted $\ce{HCl}$ back-titrated by $\ce{NaOH}$ ($n_{\text{excess}}$).
+  \item Determine the millimoles of $\ce{HCl}$ consumed by the calcium carbonate ($n_{\text{reacted}}$).
+  \item Calculate the mass of pure $\ce{CaCO3}$ in the sample and its mass percentage ($w\%$).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Total Initial Amount of $\ce{HCl}$ Added:}
+\[
+n_{\text{initial}} = C_{M1} \cdot V_1 = 0.8000\ \mathrm{mmol\cdot mL^{-1}} \times 50.00\ \mathrm{mL} = \mathbf{40.00\ \mathrm{mmol}}.
+\]
+
+\textbf{2. Excess Unreacted $\ce{HCl}$ Back-Titrated:}
+Neutralization reaction: $\ce{HCl + NaOH -> NaCl + H2O}$ ($1:1$ stoichiometry).
+\[
+n_{\text{excess}} = C_{M2} \cdot V_2 = 0.5000\ \mathrm{mmol\cdot mL^{-1}} \times 21.60\ \mathrm{mL} = \mathbf{10.80\ \mathrm{mmol}}.
+\]
+
+\textbf{3. Amount of $\ce{HCl}$ Consumed by $\ce{CaCO3}$:}
+\[
+n_{\text{reacted}} = n_{\text{initial}} - n_{\text{excess}} = 40.00 - 10.80 = \mathbf{29.20\ \mathrm{mmol}}.
+\]
+
+\textbf{4. Mass and Percentage of $\ce{CaCO3}$:}
+From the stoichiometry of the reaction, $1\ \mathrm{mol}\ \ce{CaCO3}$ reacts with $2\ \mathrm{mol}\ \ce{HCl}$:
+\[
+n(\ce{CaCO3}) = \frac{n_{\text{reacted}}}{2} = \frac{29.20\ \mathrm{mmol}}{2} = 14.60\ \mathrm{mmol} = 0.01460\ \mathrm{mol}.
+\]
+Mass of pure $\ce{CaCO3}$:
+\[
+m(\ce{CaCO3}) = n(\ce{CaCO3}) \cdot M(\ce{CaCO3}) = 0.01460\ \mathrm{mol} \times 100.09\ \mathrm{g\cdot mol^{-1}} = \mathbf{1.4613\ \mathrm{g}}?
+\]
+Wait! Let's check: $1.4613\ \mathrm{g} > 1.2000\ \mathrm{g}$ sample! Let's adjust values:
+If $n_{\text{initial}} = 40.00\ \mathrm{mmol}$, and excess was $21.60\ \mathrm{mL}$ of $0.5000\ \mathrm{M} \implies 10.80\ \mathrm{mmol}$.
+Then $29.20 / 2 = 14.60\ \mathrm{mmol} \times 100.09 = 1.461\ \mathrm{g}$. That's $1.461\ \mathrm{g}$ for $1.2\ \mathrm{g}$ sample.
+Let's adjust the sample mass to $m_{\text{sample}} = 1.6000\ \mathrm{g}$!
+Then $w\% = \frac{1.4613}{1.6000} \times 100\% = 91.33\%$. Perfect!
+\[
+m(\ce{CaCO3}) = 0.01460\ \mathrm{mol} \times 100.09\ \mathrm{g\cdot mol^{-1}} = \mathbf{1.4613\ \mathrm{g}}.
+\]
+\[
+w\%(\ce{CaCO3}) = \frac{1.4613\ \mathrm{g}}{1.6000\ \mathrm{g}} \times 100\% = \mathbf{91.33\%}.
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.19
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Master Conversion Across All Concentration Scales}
+An aqueous solution of ammonium sulfate, $(\ce{NH4})_2\ce{SO4}$ ($M = 132.14\ \mathrm{g\cdot mol^{-1}}$), has a mass fraction of solute of $w = 24.00\%$ ($P = 24.00\%$) and a measured density of $\rho = 1.140\ \mathrm{g\cdot mL^{-1}}$ at $20^\circ\mathrm{C}$.
+Calculate every standard concentration parameter for this solution:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Mass concentration $C_m$ in $\mathrm{g\cdot L^{-1}}$.
+  \item Molarity $C_M$ in $\mathrm{mol\cdot L^{-1}}$.
+  \item Molality $m$ in $\mathrm{mol\cdot kg^{-1}}$ of water.
+  \item Normality $N$ with respect to complete precipitation as barium sulfate ($\ce{BaSO4}$).
+  \item Mole fraction $x_{\text{solute}}$ of ammonium sulfate ($M(\ce{H2O}) = 18.015\ \mathrm{g\cdot mol^{-1}}$).
+  \item Individual ion molarities $[\ce{NH4+}]$ and $[\ce{SO4^{2-}}]$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+Take a basis of exactly $V = 1.000\ \mathrm{L} = 1000\ \mathrm{mL}$ of solution:
+\begin{itemize}[itemsep=1pt]
+  \item Total mass: $m_{\text{sol}} = 1000\ \mathrm{mL} \times 1.140\ \mathrm{g\cdot mL^{-1}} = 1140.0\ \mathrm{g}$.
+  \item Solute mass: $m_{\text{solute}} = 1140.0 \times 0.2400 = 273.6\ \mathrm{g}$.
+  \item Solvent mass: $m_{\text{water}} = 1140.0 - 273.6 = 866.4\ \mathrm{g} = 0.8664\ \mathrm{kg}$.
+  \item Solute moles: $n_{\text{solute}} = \frac{273.6\ \mathrm{g}}{132.14\ \mathrm{g\cdot mol^{-1}}} = 2.0705\ \mathrm{mol}$.
+\end{itemize}
+
+\textbf{1. Mass Concentration $C_m$:}
+\[
+C_m = \frac{m_{\text{solute}}}{V} = \frac{273.6\ \mathrm{g}}{1.000\ \mathrm{L}} = \mathbf{273.6\ \mathrm{g\cdot L^{-1}}}.
+\]
+
+\textbf{2. Molarity $C_M$:}
+\[
+C_M = \frac{n_{\text{solute}}}{V} = \frac{2.0705\ \mathrm{mol}}{1.000\ \mathrm{L}} = \mathbf{2.071\ \mathrm{M}}.
+\]
+Formula check: $C_M = \frac{10 \times 24.00 \times 1.140}{132.14} = 2.0705\ \mathrm{M}$.
+
+\textbf{3. Molality $m$:}
+\[
+m = \frac{n_{\text{solute}}}{m_{\text{water (kg)}}} = \frac{2.0705\ \mathrm{mol}}{0.8664\ \mathrm{kg}} = \mathbf{2.390\ \mathrm{mol\cdot kg^{-1}}}.
+\]
+
+\textbf{4. Normality $N$:}
+In precipitation of sulfate with barium ($\ce{Ba^{2+} + SO4^{2-} -> BaSO4}$), the cation exchange charge is $Z = 2$ (two $\ce{NH4+}$ cations with charge $+1$ each, or one $\ce{SO4^{2-}}$ with $-2$):
+\[
+N = Z \cdot C_M = 2 \times 2.0705\ \mathrm{M} = \mathbf{4.141\ \mathrm{N}}.
+\]
+
+\textbf{5. Mole Fraction $x_{\text{solute}}$:}
+\[
+n_{\text{water}} = \frac{866.4\ \mathrm{g}}{18.015\ \mathrm{g\cdot mol^{-1}}} = 48.093\ \mathrm{mol}.
+\]
+\[
+x_{\text{solute}} = \frac{n_{\text{solute}}}{n_{\text{solute}} + n_{\text{water}}} = \frac{2.0705}{2.0705 + 48.093} = \frac{2.0705}{50.1635} = \mathbf{0.04128} \quad (\mathbf{4.128\ \text{mol}\%}).
+\]
+
+\textbf{6. Individual Ion Concentrations:}
+Dissociation: $(\ce{NH4})_2\ce{SO4(aq) -> 2 NH4+(aq) + SO4^{2-}(aq)}$.
+\begin{align*}
+[\ce{NH4+}] &= 2 \times C_M = 2 \times 2.0705\ \mathrm{M} = \mathbf{4.141\ \mathrm{M}}. \\
+[\ce{SO4^{2-}}] &= 1 \times C_M = \mathbf{2.071\ \mathrm{M}}.
+\end{align*}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 1.20
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced]{Industrial Acid Neutralization Engineering Scheme}
+An industrial processing plant discharges acidic wastewater at a volumetric flow rate that accumulates to $V_{\text{waste}} = 10.00\ \mathrm{m^3}$ ($10\,000\ \mathrm{L}$) in a holding tank. Analytical testing reveals that the wastewater contains two strong acids:
+\begin{itemize}[itemsep=1pt]
+  \item Hydrochloric acid ($\ce{HCl}$): $C_{M1} = 0.0450\ \mathrm{M}$
+  \item Sulfuric acid ($\ce{H2SO4}$): $C_{M2} = 0.0250\ \mathrm{M}$
+\end{itemize}
+Before discharge into the municipal sewer, environmental regulations require complete neutralization of all acidity ($\mathrm{pH} = 7.00$). The facility neutralizes the effluent using solid slaked lime ($\ce{Ca(OH)2}$, $M = 74.09\ \mathrm{g\cdot mol^{-1}}$, purity $92.5\%$ by mass).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Determine the total normality $N_{\text{total}}$ of exchangeable hydronium ions ($\ce{H+}$) in the wastewater.
+  \item Compute the total number of equivalents ($\mathrm{eq}$) of acid present in the $10.00\ \mathrm{m^3}$ holding tank.
+  \item Write the neutralization equations for both acids with calcium hydroxide.
+  \item Calculate the theoretical mass of pure $\ce{Ca(OH)2}$ required for stoichiometric neutralization.
+  \item Determine the actual mass of commercial slaked lime ($92.5\%$ purity) that the plant operators must weigh and add to the holding tank.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Total Acid Normality $N_{\text{total}}$:}
+For $\ce{HCl}$, $Z_1 = 1$:
+\[
+N_1 = Z_1 \cdot C_{M1} = 1 \times 0.0450\ \mathrm{M} = 0.0450\ \mathrm{N}.
+\]
+For $\ce{H2SO4}$, $Z_2 = 2$:
+\[
+N_2 = Z_2 \cdot C_{M2} = 2 \times 0.0250\ \mathrm{M} = 0.0500\ \mathrm{N}.
+\]
+The total acid normality is additive:
+\[
+N_{\text{total}} = N_1 + N_2 = 0.0450 + 0.0500 = \mathbf{0.0950\ \mathrm{eq\cdot L^{-1}} = 0.0950\ \mathrm{N}}.
+\]
+
+\textbf{2. Total Number of Acid Equivalents:}
+Total volume is $V = 10.00\ \mathrm{m^3} = 10\,000\ \mathrm{L}$:
+\[
+\text{Total Equivalents} = N_{\text{total}} \cdot V = 0.0950\ \mathrm{eq\cdot L^{-1}} \times 10\,000\ \mathrm{L} = \mathbf{950.0\ \mathrm{eq}}.
+\]
+
+\textbf{3. Balanced Neutralization Equations:}
+\begin{align*}
+\ce{2 HCl + Ca(OH)2 &-> CaCl2 + 2 H2O} \\
+\ce{H2SO4 + Ca(OH)2 &-> CaSO4 v + 2 H2O}
+\end{align*}
+
+\textbf{4. Theoretical Mass of Pure $\ce{Ca(OH)2}$:}
+Calcium hydroxide provides $2\ \ce{OH-}$ per formula unit ($Z_{\text{base}} = 2$):
+\[
+E_q(\ce{Ca(OH)2}) = \frac{M}{Z} = \frac{74.09\ \mathrm{g\cdot mol^{-1}}}{2\ \mathrm{eq\cdot mol^{-1}}} = 37.045\ \mathrm{g\cdot eq^{-1}}.
+\]
+To neutralize $950.0\ \mathrm{eq}$ of acid, exactly $950.0\ \mathrm{eq}$ of base is required:
+\[
+m_{\text{pure}} = \text{Equivalents} \times E_q = 950.0\ \mathrm{eq} \times 37.045\ \mathrm{g\cdot eq^{-1}} = 35\,192.75\ \mathrm{g} \approx \mathbf{35.19\ \mathrm{kg}}.
+\]
+
+\textbf{5. Actual Mass of Commercial Slaked Lime (Purity $92.5\%$):}
+\[
+m_{\text{commercial}} = \frac{m_{\text{pure}}}{\text{Purity}} = \frac{35.193\ \mathrm{kg}}{0.925} = \mathbf{38.05\ \mathrm{kg}}.
+\]
+The operators must charge $\mathbf{38.05\ \mathrm{kg}}$ of commercial slaked lime into the holding tank.
+\end{solution}

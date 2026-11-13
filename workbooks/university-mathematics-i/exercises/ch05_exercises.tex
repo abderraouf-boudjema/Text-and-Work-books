@@ -1,0 +1,753 @@
+\chapter{Real Functions of a Real Variable, Continuity \& Derivatives}
+\label{chap:exo_ch05}
+
+\begin{quicksummary}{Limits, Continuity, Extreme Values, Rolle, MVT \& L'Hôpital}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{$\varepsilon$-$\delta$ Definition of Function Limit:}
+  \[
+  \lim_{x \to x_0} f(x) = \ell \iff \forall \varepsilon > 0,\ \exists \delta > 0,\ \forall x \in D,\ (0 < |x - x_0| < \delta \implies |f(x) - \ell| < \varepsilon).
+  \]
+  \item \textbf{Sequential Characterization (Heine's Criterion):}
+  $\lim_{x \to x_0} f(x) = \ell \iff$ for every sequence $(x_n)$ in $D \setminus \{x_0\}$ converging to $x_0$, $\lim f(x_n) = \ell$.
+  \item \textbf{Intermediate Value Theorem (Bolzano / TVI):}
+  If $f: [a, b] \to \R$ is continuous and $y$ is strictly between $f(a)$ and $f(b)$, then $\exists c \in (a, b)$ such that $f(c) = y$.
+  In particular, if $f(a) f(b) < 0$, then $\exists c \in (a, b)$ such that $f(c) = 0$.
+  \item \textbf{Weierstrass Extreme Value Theorem:}
+  A continuous function on a closed bounded interval $[a, b]$ is bounded and attains its absolute minimum and maximum:
+  $\exists x_{\min}, x_{\max} \in [a, b]$ such that $f(x_{\min}) \le f(x) \le f(x_{\max})$ for all $x \in [a, b]$.
+  \item \textbf{Rolle's Theorem:}
+  If $f \in C([a, b])$ and $f$ is differentiable on $(a, b)$ with $f(a) = f(b)$, then $\exists c \in (a, b)$ such that $f'(c) = 0$.
+  \item \textbf{Mean Value Theorem (Lagrange):}
+  If $f \in C([a, b])$ and $f$ is differentiable on $(a, b)$, then $\exists c \in (a, b)$ such that:
+  \[
+  f(b) - f(a) = f'(c)(b - a).
+  \]
+  \item \textbf{Cauchy's Mean Value Theorem:}
+  $\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}$ for some $c \in (a, b)$.
+\end{enumerate}
+\end{quicksummary}
+
+\vspace{10pt}
+
+% ===========================================================================
+% EXERCISE 5.1
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Direct $\varepsilon$-$\delta$ Proofs of Function Limits}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Using the formal $\varepsilon$-$\delta$ definition, prove that $\lim_{x \to 3} (4x - 5) = 7$.
+  \item Prove using the $\varepsilon$-$\delta$ definition that $\lim_{x \to 2} x^2 = 4$.
+  \item Prove using the $\varepsilon$-$\delta$ definition that $\lim_{x \to 2} \frac{1}{x} = \frac{1}{2}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Proof that $\lim_{x \to 3} (4x - 5) = 7$:}
+We must find $\delta > 0$ such that $0 < |x - 3| < \delta \implies |(4x - 5) - 7| < \varepsilon$.
+Compute the error:
+\[
+|(4x - 5) - 7| = |4x - 12| = 4|x - 3|.
+\]
+To have $4|x - 3| < \varepsilon$, it suffices to choose $|x - 3| < \frac{\varepsilon}{4}$.
+Let $\varepsilon > 0$. Choose $\delta = \frac{\varepsilon}{4} > 0$.
+Then if $0 < |x - 3| < \delta$:
+\[
+|(4x - 5) - 7| = 4|x - 3| < 4\delta = 4\left(\frac{\varepsilon}{4}\right) = \varepsilon.
+\]
+Thus $\lim_{x \to 3} (4x - 5) = 7$. \hfill $\blacksquare$
+
+\textbf{2. Proof that $\lim_{x \to 2} x^2 = 4$:}
+Compute $|x^2 - 4| = |x - 2| \cdot |x + 2|$.
+To control $|x + 2|$, restrict $x$ to a neighborhood of 2, say $|x - 2| < 1 \implies 1 < x < 3$.
+Then $3 < x + 2 < 5 \implies |x + 2| < 5$.
+Thus, provided $|x - 2| < 1$:
+\[
+|x^2 - 4| = |x - 2| \cdot |x + 2| < 5|x - 2|.
+\]
+To have $5|x - 2| < \varepsilon$, we require $|x - 2| < \frac{\varepsilon}{5}$.
+Let $\varepsilon > 0$. Choose $\delta = \min\left(1, \frac{\varepsilon}{5}\right) > 0$.
+Then if $0 < |x - 2| < \delta$:
+\[
+|x^2 - 4| < 5|x - 2| < 5\left(\frac{\varepsilon}{5}\right) = \varepsilon.
+\]
+Thus $\lim_{x \to 2} x^2 = 4$. \hfill $\blacksquare$
+
+\textbf{3. Proof that $\lim_{x \to 2} \frac{1}{x} = \frac{1}{2}$:}
+Compute:
+\[
+\left| \frac{1}{x} - \frac{1}{2} \right| = \left| \frac{2 - x}{2x} \right| = \frac{|x - 2|}{2|x|}.
+\]
+Restrict $|x - 2| < 1 \implies 1 < x < 3 \implies |x| > 1 \implies \frac{1}{|x|} < 1$.
+Then:
+\[
+\left| \frac{1}{x} - \frac{1}{2} \right| = \frac{|x - 2|}{2|x|} < \frac{|x - 2|}{2}.
+\]
+Let $\varepsilon > 0$. Choose $\delta = \min(1, 2\varepsilon) > 0$.
+Then for $0 < |x - 2| < \delta$:
+\[
+\left| \frac{1}{x} - \frac{1}{2} \right| < \frac{|x - 2|}{2} < \frac{2\varepsilon}{2} = \varepsilon.
+\]
+Thus $\lim_{x \to 2} \frac{1}{x} = \frac{1}{2}$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.2
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Sequential Criterion (Heine) and Non-Existence of Limits}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State Heine's Sequential Criterion for the limit of a function at $x_0$.
+  \item Consider the function $f(x) = \sin(1/x)$ defined on $\R^*$.
+  Consider the two sequences $x_n = \frac{1}{2n\pi}$ and $y_n = \frac{1}{2n\pi + \pi/2}$.
+  Show that $x_n \to 0$ and $y_n \to 0$, but $\lim f(x_n) \ne \lim f(y_n)$.
+  \item Deduce that $\lim_{x \to 0} \sin(1/x)$ does not exist.
+  \item Determine whether $\lim_{x \to 0} x \sin(1/x)$ exists.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Heine's Sequential Criterion:}
+$\lim_{x \to x_0} f(x) = \ell$ if and only if for every sequence $(x_n)_{n \in \N}$ in $D_f \setminus \{x_0\}$ such that $\lim_{n \to \infty} x_n = x_0$, the image sequence converges to $\ell$: $\lim_{n \to \infty} f(x_n) = \ell$.
+
+\textbf{2. Subsequences for $f(x) = \sin(1/x)$:}
+Both sequences converge to 0:
+\[
+x_n = \frac{1}{2n\pi} \xrightarrow{n \to \infty} 0, \qquad y_n = \frac{1}{2n\pi + \pi/2} \xrightarrow{n \to \infty} 0.
+\]
+Evaluating $f$ on these sequences:
+\[
+f(x_n) = \sin\left(\frac{1}{1/(2n\pi)}\right) = \sin(2n\pi) = 0 \xrightarrow{n \to \infty} 0,
+\]
+\[
+f(y_n) = \sin\left(\frac{1}{1/(2n\pi + \pi/2)}\right) = \sin\left(2n\pi + \frac{\pi}{2}\right) = 1 \xrightarrow{n \to \infty} 1.
+\]
+We observe that $\lim_{n \to \infty} f(x_n) = 0 \ne 1 = \lim_{n \to \infty} f(y_n)$.
+
+\textbf{3. Non-Existence of Limit:}
+Since two sequences converging to $0$ produce distinct image limits ($0 \ne 1$), by Heine's Theorem, the limit $\lim_{x \to 0} \sin(1/x)$ does not exist.
+
+\textbf{4. Limit of $g(x) = x \sin(1/x)$:}
+Since $|\sin(1/x)| \le 1$ for all $x \ne 0$:
+\[
+|g(x)| = |x \sin(1/x)| = |x| \cdot |\sin(1/x)| \le |x| \cdot 1 = |x|.
+\]
+Thus $-|x| \le g(x) \le |x|$.
+Since $\lim_{x \to 0} (-|x|) = 0$ and $\lim_{x \to 0} |x| = 0$, by the Squeeze Theorem:
+\[
+\lim_{x \to 0} x \sin\left(\frac{1}{x}\right) = 0. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.3
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Continuous Extensions (Prolongement par Continuité)}
+Determine whether each of the following functions can be extended by continuity to the specified point $x_0$. If so, state the value $\tilde{f}(x_0)$:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item $f_1(x) = \frac{\sin(3x)}{x}$ at $x_0 = 0$.
+  \item $f_2(x) = \frac{\sqrt{1 + x} - 1}{x}$ at $x_0 = 0$.
+  \item $f_3(x) = \frac{x^2 - 4}{|x - 2|}$ at $x_0 = 2$.
+  \item $f_4(x) = x \ln(x)$ at $x_0 = 0$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+A function $f$ admits a continuous extension at $x_0 \notin D_f$ if and only if $\lim_{x \to x_0} f(x) = \ell \in \R$ exists and is finite. The extension is defined by $\tilde{f}(x) = f(x)$ for $x \ne x_0$ and $\tilde{f}(x_0) = \ell$.
+
+\textbf{1. $f_1(x) = \frac{\sin(3x)}{x}$ at $x_0 = 0$:}
+Rewrite: $f_1(x) = 3 \cdot \frac{\sin(3x)}{3x}$.
+Let $u = 3x$. As $x \to 0$, $u \to 0$. Using the fundamental limit $\lim_{u \to 0} \frac{\sin u}{u} = 1$:
+\[
+\lim_{x \to 0} f_1(x) = 3 \times 1 = 3.
+\]
+Yes, extendable with $\tilde{f}_1(0) = 3$.
+
+\textbf{2. $f_2(x) = \frac{\sqrt{1 + x} - 1}{x}$ at $x_0 = 0$:}
+Multiply numerator and denominator by the conjugate $\sqrt{1 + x} + 1$:
+\[
+f_2(x) = \frac{(\sqrt{1 + x} - 1)(\sqrt{1 + x} + 1)}{x(\sqrt{1 + x} + 1)} = \frac{(1 + x) - 1}{x(\sqrt{1 + x} + 1)} = \frac{x}{x(\sqrt{1 + x} + 1)} = \frac{1}{\sqrt{1 + x} + 1}.
+\]
+Taking the limit as $x \to 0$:
+\[
+\lim_{x \to 0} f_2(x) = \frac{1}{\sqrt{1 + 0} + 1} = \frac{1}{2}.
+\]
+Yes, extendable with $\tilde{f}_2(0) = 1/2$.
+
+\textbf{3. $f_3(x) = \frac{x^2 - 4}{|x - 2|}$ at $x_0 = 2$:}
+Factor $x^2 - 4 = (x - 2)(x + 2)$.
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item Right limit ($x \to 2^+$): $|x - 2| = x - 2$, so $f_3(x) = \frac{(x-2)(x+2)}{x-2} = x + 2 \to 4$.
+  \item Left limit ($x \to 2^-$): $|x - 2| = -(x - 2)$, so $f_3(x) = \frac{(x-2)(x+2)}{-(x-2)} = -(x + 2) \to -4$.
+\end{itemize}
+Since the left and right limits disagree ($4 \ne -4$), $\lim_{x \to 2} f_3(x)$ does not exist.
+$f_3$ cannot be extended by continuity at $x = 2$.
+
+\textbf{4. $f_4(x) = x \ln(x)$ at $x_0 = 0$:}
+By standard logarithmic growth hierarchy:
+\[
+\lim_{x \to 0^+} x \ln(x) = 0.
+\]
+Yes, extendable by continuity from the right with $\tilde{f}_4(0) = 0$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.4
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{The Intermediate Value Theorem and Fixed Points}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that the polynomial equation $x^5 - 3x - 1 = 0$ has at least one real root in the interval $(1, 2)$.
+  \item Prove that any continuous function $f: [0, 1] \to [0, 1]$ has at least one fixed point, i.e., $\exists c \in [0, 1]$ such that $f(c) = c$.
+  \item A hiker starts climbing a mountain trail at 8:00 AM and reaches the summit at 5:00 PM. The next day, she departs the summit at 8:00 AM along the same trail and arrives at the base at 5:00 PM.
+  Prove that there exists a point on the trail that she crossed at the exact same time on both days.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Root of $P(x) = x^5 - 3x - 1$ in $(1, 2)$:}
+$P$ is a polynomial function, hence continuous on $[1, 2]$.
+Compute the values at endpoints:
+\[
+P(1) = 1^5 - 3(1) - 1 = 1 - 3 - 1 = -3 < 0,
+\]
+\[
+P(2) = 2^5 - 3(2) - 1 = 32 - 6 - 1 = 25 > 0.
+\]
+Since $P(1) < 0 < P(2)$ and $P$ is continuous, by Bolzano's Intermediate Value Theorem, there exists at least one $c \in (1, 2)$ such that $P(c) = 0$.
+
+\textbf{2. Fixed Point of $f: [0, 1] \to [0, 1]$:}
+Define the auxiliary function $g: [0, 1] \to \R$ by:
+\[
+g(x) = f(x) - x.
+\]
+Since $f$ and $x \mapsto x$ are continuous, $g$ is continuous on $[0, 1]$.
+Evaluate $g$ at endpoints:
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item $g(0) = f(0) - 0 = f(0) \ge 0$ (since $f([0, 1]) \subseteq [0, 1]$).
+  \item $g(1) = f(1) - 1 \le 0$ (since $f(1) \le 1$).
+\end{itemize}
+If $g(0) = 0$, then $c = 0$ is a fixed point.
+If $g(1) = 0$, then $c = 1$ is a fixed point.
+Otherwise, $g(0) > 0$ and $g(1) < 0$.
+By the Intermediate Value Theorem, there exists $c \in (0, 1)$ such that $g(c) = 0 \iff f(c) = c$.
+
+\textbf{3. The Mountain Climber Problem:}
+Let $s(t)$ denote the hiker's distance from the base along the trail on Day 1, where $t \in [8, 17]$ (hours).
+Then $s(8) = 0$ and $s(17) = L$ (summit distance).
+Let $r(t)$ denote the hiker's distance from the base on Day 2.
+Then $r(8) = L$ and $r(17) = 0$.
+Both $s(t)$ and $r(t)$ are continuous functions of time.
+Define $h(t) = s(t) - r(t)$ for $t \in [8, 17]$.
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item $h(8) = s(8) - r(8) = 0 - L = -L < 0$.
+  \item $h(17) = s(17) - r(17) = L - 0 = L > 0$.
+\end{itemize}
+Since $h$ is continuous and changes sign, by the Intermediate Value Theorem, there exists $t^* \in (8, 17)$ such that:
+\[
+h(t^*) = 0 \iff s(t^*) = r(t^*).
+\]
+At time $t^*$, the hiker was at the exact same location on the trail on both days. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.5
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Differentiability vs. Continuity and Class $C^1$}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that if a function $f$ is differentiable at $x_0$, then $f$ is continuous at $x_0$.
+  \item Consider $f(x) = |x|$. Show that $f$ is continuous at $0$, but not differentiable at $0$.
+  \item Consider the function:
+  \[
+  g(x) = \begin{cases} x^2 \sin\left(\frac{1}{x}\right) & \text{if } x \ne 0 \\ 0 & \text{if } x = 0. \end{cases}
+  \]
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item[(a)] Prove that $g$ is differentiable at $x = 0$ and calculate $g'(0)$.
+    \item[(b)] Calculate $g'(x)$ for $x \ne 0$.
+    \item[(c)] Prove that $g'$ is not continuous at $x = 0$, so $g \in C^0(\R) \cap D^1(\R)$ but $g \notin C^1(\R)$.
+  \end{itemize}
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Differentiability $\implies$ Continuity:}
+Assume $f'(x_0) = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}$ exists.
+For $x \ne x_0$, write:
+\[
+f(x) - f(x_0) = \frac{f(x) - f(x_0)}{x - x_0} \cdot (x - x_0).
+\]
+Taking limits as $x \to x_0$:
+\[
+\lim_{x \to x_0} [f(x) - f(x_0)] = \lim_{x \to x_0} \left[ \frac{f(x) - f(x_0)}{x - x_0} \right] \cdot \lim_{x \to x_0} (x - x_0) = f'(x_0) \cdot 0 = 0.
+\]
+Thus $\lim_{x \to x_0} f(x) = f(x_0)$, which proves that $f$ is continuous at $x_0$.
+
+\textbf{2. Counterexample $f(x) = |x|$:}
+$|x| \to 0 = f(0)$ as $x \to 0$, so $f$ is continuous at 0.
+Compute the difference quotient at 0:
+\[
+\frac{f(h) - f(0)}{h} = \frac{|h|}{h} = \begin{cases} 1 & \text{if } h > 0 \\ -1 & \text{if } h < 0. \end{cases}
+\]
+Right derivative $f'_+(0) = 1$, left derivative $f'_-(0) = -1$.
+Since $f'_+(0) \ne f'_-(0)$, $f'(0)$ does not exist.
+
+\textbf{3. Pathological Function $g(x)$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item[(a)] \textbf{Derivative at 0:}
+  \[
+  \lim_{h \to 0} \frac{g(h) - g(0)}{h} = \lim_{h \to 0} \frac{h^2 \sin(1/h)}{h} = \lim_{h \to 0} h \sin\left(\frac{1}{h}\right).
+  \]
+  Since $|h \sin(1/h)| \le |h| \to 0$, the limit is $0$.
+  Thus $g$ is differentiable at $0$ and $g'(0) = 0$.
+  \item[(b)] \textbf{Derivative for $x \ne 0$:}
+  Using the product and chain rules:
+  \[
+  g'(x) = \frac{\dd}{\dd x}\left(x^2 \sin(1/x)\right) = 2x \sin\left(\frac{1}{x}\right) + x^2 \cos\left(\frac{1}{x}\right)\left(-\frac{1}{x^2}\right) = 2x \sin\left(\frac{1}{x}\right) - \cos\left(\frac{1}{x}\right).
+  \]
+  \item[(c)] \textbf{Discontinuity of $g'$ at 0:}
+  As $x \to 0$, $2x \sin(1/x) \to 0$. However, $\cos(1/x)$ oscillates between $-1$ and $1$ and has no limit.
+  Thus $\lim_{x \to 0} g'(x)$ does not exist.
+  Since $\lim_{x \to 0} g'(x) \ne g'(0) = 0$, $g'$ is discontinuous at $0$.
+  Hence $g$ is differentiable everywhere, but not continuously differentiable ($g \notin C^1(\R)$). \hfill $\blacksquare$
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.6
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Applications of Rolle's Theorem}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State Rolle's Theorem precisely, listing all hypotheses.
+  \item Let $P(x) = x^3 - 3x + k$. Prove that $P(x) = 0$ cannot have more than one real root in $[-1, 1]$ regardless of the value of $k$.
+  \item Let $f: [a, b] \to \R$ be twice differentiable on $(a, b)$.
+  Suppose $f(a) = f(b) = 0$ and there exists $x_0 \in (a, b)$ such that $f(x_0) > 0$.
+  Prove that there exists $c \in (a, b)$ such that $f''(c) < 0$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Statement of Rolle's Theorem:}
+Let $f: [a, b] \to \R$. If:
+\begin{enumerate}[leftmargin=1.5em,itemsep=1pt]
+  \item $f$ is continuous on the closed interval $[a, b]$,
+  \item $f$ is differentiable on the open interval $(a, b)$,
+  \item $f(a) = f(b)$,
+\end{enumerate}
+then there exists at least one $c \in (a, b)$ such that $f'(c) = 0$.
+
+\textbf{2. At Most One Root of $P(x) = x^3 - 3x + k$ in $[-1, 1]$:}
+Suppose for contradiction that $P(x) = 0$ has two or more distinct roots in $[-1, 1]$, say $x_1 < x_2 \in [-1, 1]$.
+Then $P(x_1) = P(x_2) = 0$.
+Since $P$ is a polynomial, it is continuous on $[x_1, x_2]$ and differentiable on $(x_1, x_2)$.
+By Rolle's Theorem, there must exist $c \in (x_1, x_2) \subset (-1, 1)$ such that $P'(c) = 0$.
+Compute $P'(x)$:
+\[
+P'(x) = 3x^2 - 3 = 3(x^2 - 1).
+\]
+For $c \in (-1, 1)$, we have $c^2 < 1$, which gives:
+\[
+P'(c) = 3(c^2 - 1) < 0.
+\]
+Thus $P'(c)$ cannot equal zero for any $c \in (-1, 1)$.
+Contradiction! Therefore, $P(x)$ has at most one real root in $[-1, 1]$.
+
+\textbf{3. Existence of $c$ such that $f''(c) < 0$:}
+Since $f$ is continuous on the compact interval $[a, b]$, by Weierstrass's Extreme Value Theorem, $f$ attains its absolute maximum at some point $x_{\max} \in [a, b]$.
+Since $f(x_0) > 0$ and $f(a) = f(b) = 0$, the maximum must be strictly positive:
+\[
+f(x_{\max}) \ge f(x_0) > 0.
+\]
+Thus $x_{\max} \ne a$ and $x_{\max} \ne b$, meaning $x_{\max} \in (a, b)$.
+Since $f$ is differentiable on $(a, b)$, by Fermat's Theorem on local extrema:
+\[
+f'(x_{\max}) = 0.
+\]
+Now apply Rolle's Theorem to $f$ on $[a, x_{\max}]$: there exists $c_1 \in (a, x_{\max})$ such that $f'(c_1) = \frac{f(x_{\max}) - f(a)}{x_{\max} - a} > 0$.
+Apply the Mean Value Theorem to $f'$ on $[c_1, x_{\max}]$:
+There exists $c \in (c_1, x_{\max}) \subset (a, b)$ such that:
+\[
+f''(c) = \frac{f'(x_{\max}) - f'(c_1)}{x_{\max} - c_1} = \frac{0 - f'(c_1)}{x_{\max} - c_1} < 0. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.7
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{The Mean Value Theorem and Fundamental Inequalities}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State the Mean Value Theorem (Lagrange).
+  \item Applying the MVT to $f(t) = \ln(t)$ on $[1, 1 + x]$ for $x > 0$, prove the fundamental inequality:
+  \[
+  \frac{x}{1 + x} < \ln(1 + x) < x \quad \text{for all } x > 0.
+  \]
+  \item Prove that for all $x, y \in \R$:
+  \[
+  |\sin(x) - \sin(y)| \le |x - y| \qquad \text{and} \qquad |\arctan(x) - \arctan(y)| \le |x - y|.
+  \]
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Statement of Mean Value Theorem:}
+If $f: [a, b] \to \R$ is continuous on $[a, b]$ and differentiable on $(a, b)$, then there exists at least one $c \in (a, b)$ such that:
+\[
+f(b) - f(a) = f'(c)(b - a).
+\]
+
+\textbf{2. Proof of Logarithmic Inequalities for $x > 0$:}
+Consider $f(t) = \ln(t)$ on the interval $[1, 1 + x]$.
+$f$ is continuous on $[1, 1+x]$ and differentiable on $(1, 1+x)$ with $f'(t) = \frac{1}{t}$.
+By the Mean Value Theorem, there exists $c \in (1, 1 + x)$ such that:
+\[
+\ln(1 + x) - \ln(1) = f'(c)((1 + x) - 1) \iff \ln(1 + x) = \frac{1}{c} \cdot x = \frac{x}{c}.
+\]
+Since $1 < c < 1 + x$, taking reciprocals reverses inequalities:
+\[
+\frac{1}{1 + x} < \frac{1}{c} < 1.
+\]
+Multiplying by $x > 0$:
+\[
+\frac{x}{1 + x} < \frac{x}{c} < x \iff \frac{x}{1 + x} < \ln(1 + x) < x. \quad \blacksquare
+\]
+
+\textbf{3. 1-Lipschitz Continuity of $\sin$ and $\arctan$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Sine Function:} For $x = y$, $|\sin x - \sin y| = 0 = |x - y|$.
+  For $x \ne y$, assume without loss of generality $x < y$.
+  Applying MVT to $f(t) = \sin(t)$ on $[x, y]$:
+  \[
+  \sin(y) - \sin(x) = \cos(c)(y - x) \quad \text{for some } c \in (x, y).
+  \]
+  Taking absolute values:
+  \[
+  |\sin(y) - \sin(x)| = |\cos(c)| \cdot |y - x| \le 1 \cdot |y - x| = |x - y|.
+  \]
+  \item \textbf{Arctangent Function:} Applying MVT to $g(t) = \arctan(t)$:
+  \[
+  \arctan(y) - \arctan(x) = \frac{1}{1 + c^2}(y - x) \quad \text{for some } c \in (x, y).
+  \]
+  Since $c^2 \ge 0$, $\frac{1}{1 + c^2} \le 1$. Taking absolute values:
+  \[
+  |\arctan(y) - \arctan(x)| = \frac{1}{1 + c^2}|y - x| \le |x - y|. \quad \blacksquare
+  \]
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.8
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Cauchy's Mean Value Theorem and Proof of L'Hôpital's Rule}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State Cauchy's Generalized Mean Value Theorem.
+  \item Prove Cauchy's MVT by applying Rolle's Theorem to the auxiliary function:
+  \[
+  h(x) = [g(b) - g(a)]f(x) - [f(b) - f(a)]g(x).
+  \]
+  \item Use Cauchy's MVT to prove L'Hôpital's Rule for the indeterminate form $\frac{0}{0}$:
+  If $f(x_0) = g(x_0) = 0$, $f, g$ differentiable near $x_0$, $g'(x) \ne 0$, and $\lim_{x \to x_0} \frac{f'(x)}{g'(x)} = \ell$, then $\lim_{x \to x_0} \frac{f(x)}{g(x)} = \ell$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Statement of Cauchy's MVT:}
+Let $f, g: [a, b] \to \R$ be continuous on $[a, b]$ and differentiable on $(a, b)$.
+If $g'(x) \ne 0$ for all $x \in (a, b)$, then $g(b) \ne g(a)$, and there exists $c \in (a, b)$ such that:
+\[
+\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}.
+\]
+
+\textbf{2. Proof via Auxiliary Function:}
+Note that if $g(b) = g(a)$, by Rolle's Theorem there would exist $d \in (a, b)$ with $g'(d) = 0$, contradicting the assumption $g'(x) \ne 0$. Thus $g(b) \ne g(a)$.
+Define:
+\[
+h(x) = [g(b) - g(a)]f(x) - [f(b) - f(a)]g(x).
+\]
+$h$ is continuous on $[a, b]$ and differentiable on $(a, b)$.
+Evaluate $h$ at endpoints:
+\[
+h(a) = [g(b) - g(a)]f(a) - [f(b) - f(a)]g(a) = g(b)f(a) - f(b)g(a),
+\]
+\[
+h(b) = [g(b) - g(a)]f(b) - [f(b) - f(a)]g(b) = g(b)f(a) - f(b)g(a).
+\]
+Thus $h(a) = h(b)$.
+By Rolle's Theorem, there exists $c \in (a, b)$ such that $h'(c) = 0$:
+\[
+[g(b) - g(a)]f'(c) - [f(b) - f(a)]g'(c) = 0 \iff \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}.
+\]
+
+\textbf{3. Proof of L'Hôpital's Rule ($0/0$):}
+Let $x \ne x_0$ in a punctured neighborhood of $x_0$.
+Since $f(x_0) = g(x_0) = 0$, by Cauchy's MVT on the interval between $x_0$ and $x$, there exists $c_x$ strictly between $x_0$ and $x$ such that:
+\[
+\frac{f(x)}{g(x)} = \frac{f(x) - f(x_0)}{g(x) - g(x_0)} = \frac{f'(c_x)}{g'(c_x)}.
+\]
+As $x \to x_0$, since $c_x$ is squeezed between $x_0$ and $x$, we have $c_x \to x_0$.
+Therefore:
+\[
+\lim_{x \to x_0} \frac{f(x)}{g(x)} = \lim_{x \to x_0} \frac{f'(c_x)}{g'(c_x)} = \lim_{c \to x_0} \frac{f'(c)}{g'(c)} = \ell. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.9
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Systematic Application of L'Hôpital's Rule}
+Compute the following indeterminate limits using L'Hôpital's Rule:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item $\lim_{x \to 0} \frac{x - \sin(x)}{x^3} \quad \left(\frac{0}{0}\right)$.
+  \item $\lim_{x \to 0^+} x \ln(x) \quad (0 \times \infty)$.
+  \item $\lim_{x \to 0} \left( \frac{1}{x} - \frac{1}{e^x - 1} \right) \quad (\infty - \infty)$.
+  \item $\lim_{x \to 0^+} x^x \quad (0^0)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Limit of $\frac{x - \sin x}{x^3}$ ($0/0$):}
+Differentiating numerator and denominator (Pass 1):
+\[
+\lim_{x \to 0} \frac{1 - \cos x}{3x^2} \quad \left[\frac{0}{0}\right].
+\]
+Differentiating again (Pass 2):
+\[
+\lim_{x \to 0} \frac{\sin x}{6x} = \frac{1}{6} \lim_{x \to 0} \frac{\sin x}{x} = \frac{1}{6} \times 1 = \frac{1}{6}.
+\]
+
+\textbf{2. Limit of $x \ln x$ as $x \to 0^+$ ($0 \times \infty$):}
+Rewrite as $\frac{\ln x}{1/x}$ ($\infty / \infty$):
+\[
+\lim_{x \to 0^+} \frac{\ln x}{1/x} \stackrel{\text{H}}{=} \lim_{x \to 0^+} \frac{1/x}{-1/x^2} = \lim_{x \to 0^+} (-x) = 0.
+\]
+
+\textbf{3. Limit of $\frac{1}{x} - \frac{1}{e^x - 1}$ ($\infty - \infty$):}
+Bring to a common denominator:
+\[
+\frac{e^x - 1 - x}{x(e^x - 1)} \quad \left[\frac{0}{0}\right].
+\]
+Differentiate numerator and denominator (Pass 1):
+\[
+\lim_{x \to 0} \frac{e^x - 1}{(e^x - 1) + x e^x} \quad \left[\frac{0}{0}\right].
+\]
+Differentiate again (Pass 2):
+\[
+\lim_{x \to 0} \frac{e^x}{e^x + e^x + x e^x} = \lim_{x \to 0} \frac{e^x}{2e^x + x e^x} = \frac{1}{2 + 0} = \frac{1}{2}.
+\]
+
+\textbf{4. Limit of $x^x$ as $x \to 0^+$ ($0^0$):}
+Let $y = x^x$. Then $\ln y = x \ln x$.
+From part 2, $\lim_{x \to 0^+} x \ln x = 0$.
+By continuity of the exponential function:
+\[
+\lim_{x \to 0^+} x^x = \exp\left(\lim_{x \to 0^+} x \ln x\right) = e^0 = 1. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.10
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Darboux's Theorem: Intermediate Value Property of Derivatives}
+Let $f: [a, b] \to \R$ be a differentiable function on $[a, b]$ (we do NOT assume $f'$ is continuous).
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Suppose $f'(a) < 0 < f'(b)$. Define $x_0$ as the point where $f$ attains its minimum on $[a, b]$.
+  Prove that $x_0 \in (a, b)$ and deduce that $f'(x_0) = 0$.
+  \item Prove Darboux's Theorem: If $\lambda$ lies strictly between $f'(a)$ and $f'(b)$, then there exists $c \in (a, b)$ such that $f'(c) = \lambda$.
+  \item Deduce that a derivative $f'$ can never have jump discontinuities.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Minimum in the Interior $(a, b)$:}
+Since $f$ is differentiable on $[a, b]$, $f$ is continuous on the compact interval $[a, b]$.
+By the Extreme Value Theorem, $f$ attains its minimum at some point $x_0 \in [a, b]$.
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item Since $f'(a) = \lim_{x \to a^+} \frac{f(x) - f(a)}{x - a} < 0$, for $x > a$ sufficiently close to $a$, the quotient is negative:
+  \[
+  \frac{f(x) - f(a)}{x - a} < 0 \implies f(x) < f(a).
+  \]
+  Thus $a$ cannot be the global minimum point: $x_0 \ne a$.
+  \item Since $f'(b) = \lim_{x \to b^-} \frac{f(x) - f(b)}{x - b} > 0$, for $x < b$ sufficiently close to $b$, the denominator is negative, so:
+  \[
+  f(x) - f(b) < 0 \implies f(x) < f(b).
+  \]
+  Thus $b$ cannot be the global minimum point: $x_0 \ne b$.
+\end{itemize}
+Therefore, $x_0 \in (a, b)$.
+Since $x_0$ is an interior extremum and $f$ is differentiable at $x_0$, by Fermat's Theorem:
+\[
+f'(x_0) = 0.
+\]
+
+\textbf{2. General Darboux Theorem:}
+Let $\lambda$ be between $f'(a)$ and $f'(b)$. Assume without loss of generality $f'(a) < \lambda < f'(b)$.
+Define the auxiliary function:
+\[
+g(x) = f(x) - \lambda x.
+\]
+Then $g$ is differentiable on $[a, b]$, and:
+\[
+g'(a) = f'(a) - \lambda < 0, \qquad g'(b) = f'(b) - \lambda > 0.
+\]
+Applying the result of part 1 to $g$, there exists $c \in (a, b)$ such that:
+\[
+g'(c) = 0 \iff f'(c) - \lambda = 0 \iff f'(c) = \lambda. \quad \blacksquare
+\]
+
+\textbf{3. Absence of Jump Discontinuities:}
+A function $h$ has a jump discontinuity at $x_0$ if both one-sided limits $\lim_{x \to x_0^+} h(x)$ and $\lim_{x \to x_0^-} h(x)$ exist but are unequal.
+If $f'$ had a jump discontinuity, there would be an interval of values between the two limits that $f'$ could never achieve in any neighborhood of $x_0$, directly violating Darboux's Intermediate Value Property.
+Therefore, derivatives cannot possess jump discontinuities. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.11
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Convexity, Jensen's Inequality, and Classical Means}
+A function $f: I \to \R$ is convex if $\forall x, y \in I$ and $\forall t \in [0, 1]$, $f(tx + (1-t)y) \le t f(x) + (1-t)f(y)$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that if $f \in C^2(I)$ and $f''(x) \ge 0$ for all $x \in I$, then $f$ is convex.
+  \item State Jensen's Inequality for a convex function $f$:
+  \[
+  f\left(\sum_{i=1}^n \lambda_i x_i\right) \le \sum_{i=1}^n \lambda_i f(x_i) \quad \left(\lambda_i > 0,\, \sum \lambda_i = 1\right).
+  \]
+  \item Applying Jensen's inequality to the concave function $f(x) = \ln(x)$ on $(0, +\infty)$ with weights $\lambda_i = 1/n$, prove the Arithmetic-Geometric Mean (AM-GM) inequality:
+  \[
+  \sqrt[n]{x_1 x_2 \dots x_n} \le \frac{x_1 + x_2 + \dots + x_n}{n}.
+  \]
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. $f''(x) \ge 0 \implies f$ is Convex:}
+Let $x < y \in I$ and $t \in (0, 1)$. Let $z = tx + (1-t)y$. Then $x < z < y$.
+By Taylor-Lagrange with order 1 expanded around $z$:
+\[
+f(x) = f(z) + f'(z)(x - z) + \frac{f''(\xi_1)}{2}(x - z)^2 \ge f(z) + f'(z)(x - z),
+\]
+\[
+f(y) = f(z) + f'(z)(y - z) + \frac{f''(\xi_2)}{2}(y - z)^2 \ge f(z) + f'(z)(y - z),
+\]
+since $f'' \ge 0$.
+Multiply the first inequality by $t$ and the second by $1 - t$, and add them:
+\[
+t f(x) + (1-t) f(y) \ge f(z) + f'(z)[t(x - z) + (1-t)(y - z)].
+\]
+Notice that $t(x - z) + (1-t)(y - z) = [tx + (1-t)y] - z = z - z = 0$.
+Therefore:
+\[
+t f(x) + (1-t) f(y) \ge f(z) = f(tx + (1-t)y).
+\]
+This proves that $f$ is convex.
+
+\textbf{2. Statement of Jensen's Inequality:}
+If $f: I \to \R$ is convex, then for any $x_1, \dots, x_n \in I$ and weights $\lambda_1, \dots, \lambda_n \in [0, 1]$ with $\sum_{i=1}^n \lambda_i = 1$:
+\[
+f\left(\sum_{i=1}^n \lambda_i x_i\right) \le \sum_{i=1}^n \lambda_i f(x_i).
+\]
+If $f$ is concave (i.e., $-f$ is convex), the inequality reverses ($\ge$).
+
+\textbf{3. Proof of AM-GM Inequality:}
+Let $f(x) = \ln(x)$ on $(0, +\infty)$.
+$f'(x) = 1/x$, $f''(x) = -1/x^2 < 0$.
+Since $f'' < 0$, $\ln(x)$ is strictly concave.
+Applying Jensen's inequality with equal weights $\lambda_i = 1/n$:
+\[
+\ln\left( \frac{1}{n}\sum_{i=1}^n x_i \right) \ge \frac{1}{n} \sum_{i=1}^n \ln(x_i) = \sum_{i=1}^n \ln(x_i^{1/n}) = \ln\left( \prod_{i=1}^n x_i^{1/n} \right) = \ln\left( \sqrt[n]{x_1 x_2 \dots x_n} \right).
+\]
+Since the natural exponential function $x \mapsto e^x$ is strictly increasing, applying it to both sides preserves the inequality:
+\[
+\frac{x_1 + x_2 + \dots + x_n}{n} \ge \sqrt[n]{x_1 x_2 \dots x_n}. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 5.12
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Synthesis Problem: Uniform Continuity and the Heine-Cantor Theorem}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Define uniform continuity of a function $f$ on an interval $I$.
+  \item Prove that $f(x) = \frac{1}{x}$ is continuous on $(0, 1)$, but NOT uniformly continuous on $(0, 1)$.
+  \item State the Heine-Cantor Theorem: Every continuous function on a closed and bounded (compact) interval $[a, b]$ is uniformly continuous.
+  \item Prove that if $f: \R \to \R$ has a bounded derivative on $\R$ (i.e., $\exists M > 0, |f'(x)| \le M$), then $f$ is uniformly continuous on $\R$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Definition of Uniform Continuity:}
+A function $f: I \to \R$ is uniformly continuous on $I$ if:
+\[
+\forall \varepsilon > 0,\ \exists \delta > 0,\ \forall x, y \in I,\ (|x - y| < \delta \implies |f(x) - f(y)| < \varepsilon).
+\]
+Key distinction: $\delta$ depends solely on $\varepsilon$, not on the choice of point $x$.
+
+\textbf{2. $f(x) = 1/x$ is Not Uniformly Continuous on $(0, 1)$:}
+Negation of uniform continuity:
+\[
+\exists \varepsilon > 0,\ \forall \delta > 0,\ \exists x, y \in (0, 1),\ |x - y| < \delta \land |f(x) - f(y)| \ge \varepsilon.
+\]
+Choose $\varepsilon_0 = 1$. Let $\delta > 0$ be arbitrary.
+Choose $n \in \N^*$ such that $1/n < \delta$.
+Define $x = \frac{1}{n}$ and $y = \frac{1}{n+1}$. Both $x, y \in (0, 1)$.
+The distance between them is:
+\[
+|x - y| = \frac{1}{n} - \frac{1}{n+1} = \frac{1}{n(n+1)} < \frac{1}{n} < \delta.
+\]
+However, the distance between function values is:
+\[
+|f(x) - f(y)| = \left| n - (n+1) \right| = 1 \ge \varepsilon_0.
+\]
+Thus $f$ is not uniformly continuous on $(0, 1)$.
+
+\textbf{3. Heine-Cantor Theorem:}
+Let $f: [a, b] \to \R$ be continuous on a compact interval $[a, b]$. Then $f$ is uniformly continuous on $[a, b]$.
+
+\textbf{4. Bounded Derivative $\implies$ Uniform Continuity:}
+Assume $|f'(t)| \le M$ for all $t \in \R$.
+Let $x, y \in \R$ with $x < y$.
+Since $f$ is differentiable, by the Mean Value Theorem, there exists $c \in (x, y)$ such that:
+\[
+f(x) - f(y) = f'(c)(x - y).
+\]
+Taking absolute values:
+\[
+|f(x) - f(y)| = |f'(c)| \cdot |x - y| \le M |x - y|.
+\]
+Thus $f$ is $M$-Lipschitz continuous on $\R$.
+Let $\varepsilon > 0$. Choose $\delta = \frac{\varepsilon}{M} > 0$.
+Then for all $x, y \in \R$:
+\[
+|x - y| < \delta \implies |f(x) - f(y)| \le M |x - y| < M \left(\frac{\varepsilon}{M}\right) = \varepsilon.
+\]
+Since $\delta$ is completely independent of $x$ and $y$, $f$ is uniformly continuous on $\R$. \hfill $\blacksquare$
+\end{solution}

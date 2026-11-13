@@ -1,0 +1,677 @@
+\chapter{Binary Relations, Mappings \& Abstract Algebraic Structures}
+\label{chap:exo_ch02}
+
+\begin{quicksummary}{Binary Relations, Mappings, Groups, Rings \& Fields}
+\begin{enumerate}[leftmargin=1.4em,itemsep=3pt]
+  \item \textbf{Equivalence Relations \& Partitions:}
+  $\mathcal{R}$ is an equivalence relation on $E$ if it is reflexive, symmetric, and transitive.
+  The equivalence class of $x$ is $[x] = \{y \in E : x \mathcal{R} y\}$. The quotient set $E/\mathcal{R} = \{[x] : x \in E\}$ forms a partition of $E$.
+  \item \textbf{Order Relations (Posets):}
+  $\mathcal{R}$ is a partial order if it is reflexive, antisymmetric ($x \mathcal{R} y \land y \mathcal{R} x \implies x = y$), and transitive. It is a total order if $\forall x, y \in E$, $x \mathcal{R} y \lor y \mathcal{R} x$.
+  \item \textbf{Mappings (Functions):}
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item \textit{Injective:} $f(x) = f(x') \implies x = x'$.
+    \item \textit{Surjective:} $\forall y \in F,\, \exists x \in E,\, f(x) = y$.
+    \item \textit{Bijective:} Both injective and surjective (admits an inverse $f^{-1}: F \to E$).
+  \end{itemize}
+  \item \textbf{Subgroup Criterion:}
+  $H \subseteq G$ is a subgroup of $(G, \cdot)$ iff $H \ne \emptyset$ and $\forall x, y \in H,\, x \cdot y^{-1} \in H$.
+  \item \textbf{Group Homomorphisms:}
+  $\phi(x \cdot y) = \phi(x) * \phi(y)$. $\ker \phi = \{x \in G : \phi(x) = e_H\}$ is a subgroup of $G$; $\phi$ is injective $\iff \ker \phi = \{e_G\}$.
+  \item \textbf{Lagrange's Theorem:}
+  If $G$ is a finite group and $H \le G$, then $\card(H)$ divides $\card(G)$.
+\end{enumerate}
+\end{quicksummary}
+
+\vspace{10pt}
+
+% ===========================================================================
+% EXERCISE 2.1
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Classification of Binary Relations}
+For each of the following binary relations defined on a specified set, determine whether it is reflexive, symmetric, antisymmetric, or transitive:
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item On $\Z$: $x \mathcal{R}_1 y \iff x + y \text{ is even}$.
+  \item On $\Z$: $x \mathcal{R}_2 y \iff x \le y + 1$.
+  \item On $\R$: $x \mathcal{R}_3 y \iff x - y \in \Q$.
+  \item On $\N^*$: $a \mid b$ ($a$ divides $b$).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Relation $\mathcal{R}_1$ on $\Z$ ($x + y$ is even):}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \textbf{Reflexive:} $\forall x \in \Z$, $x + x = 2x$, which is even. Yes.
+  \item \textbf{Symmetric:} If $x + y = 2k$, then $y + x = 2k$ is even. Yes.
+  \item \textbf{Antisymmetric:} No. Take $x = 0, y = 2$: $0+2=2$ is even and $2+0=2$ is even, but $0 \ne 2$.
+  \item \textbf{Transitive:} If $x+y$ and $y+z$ are even, then $(x+z) = (x+y) + (y+z) - 2y$ is a sum of even integers, hence even. Yes.
+\end{itemize}
+$\mathcal{R}_1$ is an \textbf{equivalence relation}.
+
+\textbf{2. Relation $\mathcal{R}_2$ on $\Z$ ($x \le y + 1$):}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \textbf{Reflexive:} $x \le x + 1$ holds for all $x \in \Z$. Yes.
+  \item \textbf{Symmetric:} No. $0 \le 1 + 1$ ($0 \mathcal{R}_2 1$), but $2 \mathcal{R}_2 0$ means $2 \le 1$, which is false.
+  \item \textbf{Antisymmetric:} No. Take $x = 0, y = 1$: $0 \le 2$ (true) and $1 \le 1$ (true), but $0 \ne 1$.
+  \item \textbf{Transitive:} No. $2 \mathcal{R}_2 1$ ($2 \le 2$) and $1 \mathcal{R}_2 0$ ($1 \le 1$), but $2 \mathcal{R}_2 0$ requires $2 \le 1$ (false).
+\end{itemize}
+$\mathcal{R}_2$ is reflexive only.
+
+\textbf{3. Relation $\mathcal{R}_3$ on $\R$ ($x - y \in \Q$):}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \textbf{Reflexive:} $x - x = 0 \in \Q$. Yes.
+  \item \textbf{Symmetric:} If $x - y = q \in \Q$, then $y - x = -q \in \Q$. Yes.
+  \item \textbf{Antisymmetric:} No. $0 - 1 = -1 \in \Q$ and $1 - 0 = 1 \in \Q$, but $0 \ne 1$.
+  \item \textbf{Transitive:} If $x - y = q_1 \in \Q$ and $y - z = q_2 \in \Q$, then $x - z = (x - y) + (y - z) = q_1 + q_2 \in \Q$. Yes.
+\end{itemize}
+$\mathcal{R}_3$ is an \textbf{equivalence relation} (the Vitali equivalence relation on $\R/\Q$).
+
+\textbf{4. Relation of Divisibility on $\N^*$ ($a \mid b$):}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \textbf{Reflexive:} $a = 1 \cdot a \implies a \mid a$. Yes.
+  \item \textbf{Antisymmetric:} If $a \mid b$ and $b \mid a$, then $b = ka$ and $a = mb$ ($k, m \in \N^*$). Thus $a = km a \implies km = 1 \implies k = m = 1$, so $a = b$. Yes.
+  \item \textbf{Transitive:} If $a \mid b$ and $b \mid c$, then $b = k a$ and $c = m b \implies c = (km)a \implies a \mid c$. Yes.
+  \item \textbf{Symmetric:} No. $2 \mid 4$ but $4 \nmid 2$.
+\end{itemize}
+Divisibility on $\N^*$ is a \textbf{partial order relation}.
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.2
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Equivalence Classes and the Quotient Set $\R/\Z$}
+Let $\sim$ be the binary relation on the set of real numbers $\R$ defined by:
+\[
+x \sim y \iff x - y \in \Z.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $\sim$ is an equivalence relation on $\R$.
+  \item Explicitly describe the equivalence class $[0]$ and $[1/2]$.
+  \item Show that every real number $x \in \R$ has a unique representative in the half-open interval $[0, 1)$.
+  \item Deduce that the quotient set $\R/\sim$ is in bijective correspondence with $[0, 1)$ (the 1-torus / circle $\mathbb{S}^1$).
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Equivalence Relation Verification:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \textbf{Reflexivity:} $\forall x \in \R$, $x - x = 0 \in \Z$, so $x \sim x$.
+  \item \textbf{Symmetry:} If $x \sim y$, then $x - y = k \in \Z$. Thus $y - x = -k \in \Z$, so $y \sim x$.
+  \item \textbf{Transitivity:} If $x \sim y$ and $y \sim z$, then $x - y = k \in \Z$ and $y - z = m \in \Z$. Then $x - z = (x - y) + (y - z) = k + m \in \Z$, so $x \sim z$.
+\end{itemize}
+Thus $\sim$ is an equivalence relation on $\R$.
+
+\textbf{2. Description of Equivalence Classes:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item $[0] = \{y \in \R : y - 0 \in \Z\} = \Z = \{\dots, -2, -1, 0, 1, 2, \dots\}$.
+  \item $[1/2] = \{y \in \R : y - 1/2 \in \Z\} = \{k + 1/2 : k \in \Z\} = \{\dots, -1/2, 1/2, 3/2, 5/2, \dots\}$.
+\end{itemize}
+
+\textbf{3. Unique Representative in $[0, 1)$:}
+For any $x \in \R$, let $\lfloor x \rfloor$ denote the floor function (the greatest integer less than or equal to $x$), and let $\{x\} = x - \lfloor x \rfloor$ denote its fractional part.
+By definition of the floor:
+\[
+\lfloor x \rfloor \le x < \lfloor x \rfloor + 1 \implies 0 \le x - \lfloor x \rfloor < 1 \implies \{x\} \in [0, 1).
+\]
+Furthermore, $x - \{x\} = \lfloor x \rfloor \in \Z$, which proves $x \sim \{x\}$.
+To show uniqueness: suppose $r_1, r_2 \in [0, 1)$ such that $r_1 \sim r_2$.
+Then $r_1 - r_2 \in \Z$. But since $0 \le r_1 < 1$ and $-1 < -r_2 \le 0$, we have:
+\[
+-1 < r_1 - r_2 < 1.
+\]
+The only integer in the open interval $(-1, 1)$ is $0$. Therefore $r_1 - r_2 = 0 \implies r_1 = r_2$.
+
+\textbf{4. Quotient Set Bijection:}
+The map $\Psi: \R/\sim \to [0, 1)$ defined by $\Psi([x]) = \{x\}$ is well-defined and bijective. Geometrically, identifying $0 \sim 1$ wraps the interval $[0, 1)$ into the unit circle $\mathbb{S}^1 \subset \C$ via $x \mapsto e^{2\pi i x}$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.3
+% ===========================================================================
+\begin{exercise}[$\bigstar$ Foundational]{Injective, Surjective, and Bijective Mappings}
+Consider the rational function:
+\[
+f: \R \setminus \{1\} \to \R \setminus \{2\}, \qquad f(x) = \frac{2x + 1}{x - 1}.
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $f$ is well-defined (i.e., that $f(x) \ne 2$ for all $x \ne 1$).
+  \item Prove that $f$ is injective directly from the definition.
+  \item Prove that $f$ is surjective.
+  \item Determine the explicit formula for the inverse bijection $f^{-1}(y)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Well-definedness:}
+Suppose for contradiction that there exists $x \in \R \setminus \{1\}$ such that $f(x) = 2$.
+\[
+\frac{2x + 1}{x - 1} = 2 \implies 2x + 1 = 2(x - 1) = 2x - 2 \implies 1 = -2,
+\]
+which is impossible. Thus $f(x) \ne 2$ for all $x \in \R \setminus \{1\}$, so the codomain is indeed $\R \setminus \{2\}$.
+
+\textbf{2. Injectivity of $f$:}
+Let $x_1, x_2 \in \R \setminus \{1\}$ such that $f(x_1) = f(x_2)$.
+\begin{align*}
+\frac{2x_1 + 1}{x_1 - 1} = \frac{2x_2 + 1}{x_2 - 1} &\implies (2x_1 + 1)(x_2 - 1) = (2x_2 + 1)(x_1 - 1) \\
+&\implies 2x_1 x_2 - 2x_1 + x_2 - 1 = 2x_1 x_2 - 2x_2 + x_1 - 1 \\
+&\implies -2x_1 + x_2 = -2x_2 + x_1 \\
+&\implies 3x_2 = 3x_1 \implies x_1 = x_2.
+\end{align*}
+Hence $f$ is injective.
+
+\textbf{3. Surjectivity of $f$:}
+Let $y \in \R \setminus \{2\}$. We seek $x \in \R \setminus \{1\}$ such that $f(x) = y$:
+\[
+y = \frac{2x + 1}{x - 1} \implies y(x - 1) = 2x + 1 \implies yx - y = 2x + 1 \implies x(y - 2) = y + 1.
+\]
+Since $y \ne 2$, we can divide by $y - 2$:
+\[
+x = \frac{y + 1}{y - 2}.
+\]
+Notice that if $x$ were equal to $1$:
+\[
+\frac{y + 1}{y - 2} = 1 \implies y + 1 = y - 2 \implies 1 = -2 \quad (\text{absurd}).
+\]
+Thus $x \ne 1$, so $x \in \R \setminus \{1\}$.
+Therefore, every $y \in \R \setminus \{2\}$ possesses a preimage under $f$. $f$ is surjective.
+
+\textbf{4. Inverse Bijection:}
+Since $f$ is both injective and surjective, it is bijective, and its inverse is:
+\[
+f^{-1}: \R \setminus \{2\} \to \R \setminus \{1\}, \qquad f^{-1}(y) = \frac{y + 1}{y - 2}. \quad \blacksquare
+\]
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.4
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Posets and Extremal Elements}
+Let $E = \{1, 2, 3, 4, 6, 12\}$ ordered by the divisibility relation $a \mid b$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Verify that $(\mathcal{E}, \mid)$ is a partially ordered set (poset). Is it totally ordered?
+  \item Determine the minimal, maximal, least (minimum), and greatest (maximum) elements of $E$.
+  \item Consider the subset $A = \{2, 3\}$. Determine the set of lower bounds, upper bounds, infimum ($\inf A = \gcd(2,3)$), and supremum ($\sup A = \operatorname{lcm}(2,3)$) of $A$ in $E$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Poset Properties:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item Reflexivity: $\forall x \in E$, $x \mid x$ ($x = 1 \cdot x$).
+  \item Antisymmetry: If $x \mid y$ and $y \mid x$, then $x = y$ for positive integers.
+  \item Transitivity: If $x \mid y$ and $y \mid z$, then $x \mid z$.
+\end{itemize}
+$(E, \mid)$ is a poset. It is \textbf{not totally ordered} because, for instance, elements $2$ and $3$ are incomparable: $2 \nmid 3$ and $3 \nmid 2$.
+
+\textbf{2. Extremal Elements of $(E, \mid)$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \textbf{Least element (Minimum):} $1$ is the minimum, since $1 \mid x$ for all $x \in E$.
+  \item \textbf{Minimal elements:} The only minimal element is $1$.
+  \item \textbf{Greatest element (Maximum):} $12$ is the maximum, since $x \mid 12$ for all $x \in E$.
+  \item \textbf{Maximal elements:} The only maximal element is $12$.
+\end{itemize}
+
+\textbf{3. Bounds of $A = \{2, 3\}$ in $(E, \mid)$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Lower bounds of $A$:} Elements $d \in E$ such that $d \mid 2$ and $d \mid 3$. The common divisors of $2$ and $3$ in $E$ are $\{1\}$.
+  \item \textbf{Infimum ($\inf A$):} The greatest lower bound is $\gcd(2, 3) = 1$.
+  \item \textbf{Upper bounds of $A$:} Elements $m \in E$ such that $2 \mid m$ and $3 \mid m$ (common multiples in $E$). The multiples of 6 in $E$ are $\{6, 12\}$.
+  \item \textbf{Supremum ($\sup A$):} The least upper bound under divisibility is the element dividing all upper bounds: $\operatorname{lcm}(2, 3) = 6$. \hfill $\blacksquare$
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.5
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Direct and Inverse Images of Sets}
+Let $f: E \to F$ be a mapping, $A, B \subseteq E$, and $C, D \subseteq F$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $f(A \cap B) \subseteq f(A) \cap f(B)$. Provide a counterexample showing that equality does not hold in general.
+  \item Prove that $f(A \cap B) = f(A) \cap f(B)$ for all $A, B \subseteq E$ if and only if $f$ is injective.
+  \item Prove that the inverse image always preserves set operations:
+  \[
+  f^{-1}(C \cup D) = f^{-1}(C) \cup f^{-1}(D) \qquad \text{and} \qquad f^{-1}(C \cap D) = f^{-1}(C) \cap f^{-1}(D).
+  \]
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Proof of $f(A \cap B) \subseteq f(A) \cap f(B)$ \& Counterexample:}
+Let $y \in f(A \cap B)$. By definition, $\exists x \in A \cap B$ such that $f(x) = y$.
+Since $x \in A$, $y = f(x) \in f(A)$. Since $x \in B$, $y = f(x) \in f(B)$.
+Thus $y \in f(A) \cap f(B)$.
+\emph{Counterexample to equality:} Define $f: \R \to \R$ by $f(x) = x^2$.
+Let $A = [-2, 0]$ and $B = [0, 2]$. Then $A \cap B = \{0\}$, so $f(A \cap B) = \{0\}$.
+However, $f(A) = [0, 4]$ and $f(B) = [0, 4]$, so $f(A) \cap f(B) = [0, 4] \ne \{0\}$.
+
+\textbf{2. Equality Holds for all $A, B$ $\iff$ $f$ is Injective:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item $(\implies)$ Assume $f(A \cap B) = f(A) \cap f(B)$ for all subsets.
+  Let $x_1, x_2 \in E$ with $f(x_1) = f(x_2) = y$. Choose singletons $A = \{x_1\}$ and $B = \{x_2\}$.
+  Then $f(A) \cap f(B) = \{y\} \cap \{y\} = \{y\} \ne \emptyset$.
+  By our hypothesis, $f(A \cap B) = \{y\} \ne \emptyset \implies A \cap B \ne \emptyset$.
+  Since $A$ and $B$ are singletons, $\{x_1\} \cap \{x_2\} \ne \emptyset \implies x_1 = x_2$.
+  Thus $f$ is injective.
+  \item $(\impliedby)$ Assume $f$ is injective. We already have $f(A \cap B) \subseteq f(A) \cap f(B)$.
+  Now take $y \in f(A) \cap f(B)$. Then $\exists x_A \in A$ and $x_B \in B$ such that $f(x_A) = y = f(x_B)$.
+  By injectivity, $x_A = x_B = x$. Thus $x \in A \cap B$, meaning $y = f(x) \in f(A \cap B)$.
+  Hence $f(A) \cap f(B) \subseteq f(A \cap B)$, proving equality.
+\end{itemize}
+
+\textbf{3. Inverse Image Preserves Operations:}
+\begin{align*}
+x \in f^{-1}(C \cap D) &\iff f(x) \in C \cap D \iff f(x) \in C \land f(x) \in D \\
+&\iff x \in f^{-1}(C) \land x \in f^{-1}(D) \iff x \in f^{-1}(C) \cap f^{-1}(D).
+\end{align*}
+Similarly:
+\begin{align*}
+x \in f^{-1}(C \cup D) &\iff f(x) \in C \cup D \iff f(x) \in C \lor f(x) \in D \\
+&\iff x \in f^{-1}(C) \lor x \in f^{-1}(D) \iff x \in f^{-1}(C) \cup f^{-1}(D). \quad \blacksquare
+\end{align*}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.6
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Composition of Mappings and Invertibility}
+Let $f: E \to F$ and $g: F \to G$ be two mappings.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that if $g \circ f$ is injective, then $f$ is injective.
+  \item Prove that if $g \circ f$ is surjective, then $g$ is surjective.
+  \item Deduce that if $g \circ f$ is bijective, then $f$ is injective and $g$ is surjective.
+  \item Give an explicit example where $g \circ f$ is bijective, but $f$ is not surjective and $g$ is not injective.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. $g \circ f$ injective $\implies f$ injective:}
+Let $x_1, x_2 \in E$ such that $f(x_1) = f(x_2)$.
+Applying $g$ to both sides:
+\[
+g(f(x_1)) = g(f(x_2)) \iff (g \circ f)(x_1) = (g \circ f)(x_2).
+\]
+Since $g \circ f$ is injective, this implies $x_1 = x_2$. Hence $f$ is injective. \hfill $\blacksquare$
+
+\textbf{2. $g \circ f$ surjective $\implies g$ surjective:}
+Let $z \in G$. Since $g \circ f$ is surjective, there exists $x \in E$ such that:
+\[
+(g \circ f)(x) = z \iff g(f(x)) = z.
+\]
+Setting $y = f(x) \in F$, we have found an element $y \in F$ such that $g(y) = z$.
+Thus $g$ is surjective. \hfill $\blacksquare$
+
+\textbf{3. Bijectivity of $g \circ f$:}
+Since $g \circ f$ is bijective, it is both injective and surjective.
+By part 1, $f$ is injective. By part 2, $g$ is surjective.
+
+\textbf{4. Counterexample ($f$ not surjective, $g$ not injective):}
+Let $E = \{1\}$, $F = \{a, b\}$, and $G = \{1\}$.
+Define:
+\[
+f: \{1\} \to \{a, b\} \quad \text{by } f(1) = a, \qquad g: \{a, b\} \to \{1\} \quad \text{by } g(a) = 1,\ g(b) = 1.
+\]
+The composite is $(g \circ f)(1) = g(a) = 1$, which is a bijection from $\{1\}$ to $\{1\}$.
+However:
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item $f$ is not surjective because $b \in F$ has no preimage ($f(\{1\}) = \{a\} \ne F$).
+  \item $g$ is not injective because $g(a) = g(b) = 1$ while $a \ne b$. \hfill $\blacksquare$
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.7
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Subgroups and the Structure of Subgroups of $(\Z, +)$}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State the One-Step Subgroup Criterion.
+  \item Prove that for any $n \in \Z$, the set $n\Z = \{nk : k \in \Z\}$ is a subgroup of $(\Z, +)$.
+  \item Prove that every subgroup $H$ of $(\Z, +)$ is of the form $H = n\Z$ for some unique non-negative integer $n \in \N$.
+  \item For two subgroups $a\Z$ and $b\Z$, identify $a\Z \cap b\Z$ and $a\Z + b\Z$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Subgroup Criterion:}
+A non-empty subset $H \subseteq G$ of a group $(G, \cdot)$ is a subgroup ($H \le G$) if and only if $\forall x, y \in H$, $x \cdot y^{-1} \in H$. In additive notation: $\forall x, y \in H$, $x - y \in H$.
+
+\textbf{2. $n\Z \le (\Z, +)$:}
+$0 = n \cdot 0 \in n\Z$, so $n\Z \ne \emptyset$.
+For any $x, y \in n\Z$, $x = nk_1$ and $y = nk_2$.
+Then $x - y = nk_1 - nk_2 = n(k_1 - k_2) \in n\Z$.
+Thus $n\Z$ is a subgroup of $(\Z, +)$.
+
+\textbf{3. Every Subgroup of $\Z$ is of the form $n\Z$:}
+Let $H \le (\Z, +)$.
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item Case 1: If $H = \{0\}$, then $H = 0\Z$ (with $n = 0$).
+  \item Case 2: If $H \ne \{0\}$, then $H$ contains a non-zero element $x$. Since $H$ is a subgroup, $-x \in H$. Thus $H$ contains at least one strictly positive integer.
+  Let $S = H \cap \N^* = \{x \in H : x > 0\}$. Since $S$ is a non-empty subset of $\N^*$, by the Well-Ordering Principle of $\N$, $S$ possesses a least element, which we call $n = \min(S) > 0$.
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+    \item We first show $n\Z \subseteq H$: Since $n \in H$ and $H$ is closed under addition and negation, $nk \in H$ for all $k \in \Z$.
+    \item Next, we show $H \subseteq n\Z$: Let $m \in H$. By the Euclidean Division Theorem in $\Z$, there exist unique integers $q, r$ such that:
+    \[
+    m = nq + r \quad \text{with } 0 \le r < n.
+    \]
+    Rearranging gives $r = m - nq$. Since $m \in H$ and $nq \in H$, we have $r \in H$.
+    If $r > 0$, then $r \in S$ and $r < n$, contradicting the minimality of $n = \min(S)$.
+    Therefore, the remainder must be $r = 0$, which implies $m = nq \in n\Z$.
+  \end{itemize}
+\end{itemize}
+Hence $H = n\Z$.
+
+\textbf{4. Intersection and Sum of Subgroups:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item $x \in a\Z \cap b\Z \iff a \mid x \land b \mid x \iff \operatorname{lcm}(a, b) \mid x$. Thus $a\Z \cap b\Z = \operatorname{lcm}(a, b)\Z$.
+  \item $a\Z + b\Z = \{au + bv : u, v \in \Z\}$. By Bézout's Identity, this set consists of all multiples of $\gcd(a, b)$: $a\Z + b\Z = \gcd(a, b)\Z$. \hfill $\blacksquare$
+\end{itemize}
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.8
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{The Klein Four-Group $V_4$ and Cayley Tables}
+Let $V_4 = \{e, a, b, c\}$ be a set of four elements equipped with a binary operation $*$ whose Cayley table is:
+\begin{center}
+\begin{tabular}{c|cccc}
+$*$ & $e$ & $a$ & $b$ & $c$ \\
+\hline
+$e$ & $e$ & $a$ & $b$ & $c$ \\
+$a$ & $a$ & $e$ & $c$ & $b$ \\
+$b$ & $b$ & $c$ & $e$ & $a$ \\
+$c$ & $c$ & $b$ & $a$ & $e$
+\end{tabular}
+\end{center}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Verify from the table that $(V_4, *)$ is an abelian group. What is the identity element?
+  \item What is the order of each element in $V_4$?
+  \item Show that $V_4$ is not isomorphic to the cyclic group $(\Z/4\Z, +)$.
+  \item Prove that $V_4 \cong \Z/2\Z \times \Z/2\Z$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Verification of Group Axioms:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \textbf{Identity:} The row and column for $e$ reproduce the header elements: $e * x = x * e = x$. Thus $e$ is the identity element.
+  \item \textbf{Inverses:} The diagonal elements are all $e$: $e^2 = a^2 = b^2 = c^2 = e$. Thus every element is its own inverse ($x^{-1} = x$).
+  \item \textbf{Commutativity:} The table is strictly symmetric with respect to the main diagonal. Thus $x * y = y * x$ for all $x, y \in V_4$.
+  \item \textbf{Associativity:} Verified case-by-case (or by realization as symmetries of a rectangle).
+\end{itemize}
+Thus $(V_4, *)$ is an abelian group.
+
+\textbf{2. Order of Elements:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item $\operatorname{ord}(e) = 1$.
+  \item $\operatorname{ord}(a) = 2$ (since $a \ne e$ and $a^2 = e$).
+  \item $\operatorname{ord}(b) = 2$ (since $b \ne e$ and $b^2 = e$).
+  \item $\operatorname{ord}(c) = 2$ (since $c \ne e$ and $c^2 = e$).
+\end{itemize}
+
+\textbf{3. Non-isomorphism with $\Z/4\Z$:}
+In $(\Z/4\Z, +)$, the element $\bar{1}$ has order $4$ (since $1+1=2, 1+1+1=3, 1+1+1+1=0$). Thus $\Z/4\Z$ is cyclic of order 4.
+In $V_4$, the maximum element order is $2$.
+Since group isomorphisms preserve element orders, $V_4$ cannot be isomorphic to $\Z/4\Z$.
+
+\textbf{4. Isomorphism $V_4 \cong \Z/2\Z \times \Z/2\Z$:}
+The direct product $\Z/2\Z \times \Z/2\Z$ contains 4 elements: $(0,0), (1,0), (0,1), (1,1)$.
+Define the map $\phi: V_4 \to \Z/2\Z \times \Z/2\Z$ by:
+\[
+\phi(e) = (0, 0), \quad \phi(a) = (1, 0), \quad \phi(b) = (0, 1), \quad \phi(c) = (1, 1).
+\]
+It is directly verified that $\phi(x * y) = \phi(x) + \phi(y)$ (addition modulo 2 in each component) and $\phi$ is bijective. Thus $V_4 \cong \Z/2\Z \times \Z/2\Z$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.9
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar$ Intermediate]{Group Homomorphisms, Kernels, and Images}
+Let $(G, \cdot)$ and $(H, *)$ be two groups, and let $\phi: G \to H$ be a group homomorphism.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $\phi(e_G) = e_H$ and $\phi(x^{-1}) = (\phi(x))^{-1}$ for all $x \in G$.
+  \item Prove that $\ker \phi = \{x \in G : \phi(x) = e_H\}$ is a subgroup of $G$.
+  \item Prove that $\phi$ is injective if and only if $\ker \phi = \{e_G\}$.
+  \item Prove that the image $\operatorname{Im} \phi = \{\phi(x) : x \in G\}$ is a subgroup of $H$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Preservation of Identity and Inverses:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Identity:} Since $e_G \cdot e_G = e_G$, applying $\phi$ gives $\phi(e_G) * \phi(e_G) = \phi(e_G) = \phi(e_G) * e_H$. Multiplying both sides by $(\phi(e_G))^{-1}$ yields $\phi(e_G) = e_H$.
+  \item \textbf{Inverses:} For any $x \in G$, $x \cdot x^{-1} = e_G$. Applying $\phi$:
+  \[
+  \phi(x) * \phi(x^{-1}) = \phi(x \cdot x^{-1}) = \phi(e_G) = e_H.
+  \]
+  By uniqueness of inverses in $H$, $\phi(x^{-1}) = (\phi(x))^{-1}$.
+\end{itemize}
+
+\textbf{2. $\ker \phi \le G$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item Since $\phi(e_G) = e_H$, $e_G \in \ker \phi$, so $\ker \phi \ne \emptyset$.
+  \item Let $x, y \in \ker \phi$. Then $\phi(x) = e_H$ and $\phi(y) = e_H$.
+  \[
+  \phi(x \cdot y^{-1}) = \phi(x) * \phi(y^{-1}) = \phi(x) * (\phi(y))^{-1} = e_H * e_H^{-1} = e_H.
+  \]
+  Thus $x \cdot y^{-1} \in \ker \phi$. By the subgroup criterion, $\ker \phi \le G$.
+\end{itemize}
+
+\textbf{3. Injectivity Criterion ($\phi$ injective $\iff \ker \phi = \{e_G\}$):}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item $(\implies)$ Assume $\phi$ is injective. If $x \in \ker \phi$, then $\phi(x) = e_H = \phi(e_G)$. By injectivity, $x = e_G$. Thus $\ker \phi = \{e_G\}$.
+  \item $(\impliedby)$ Assume $\ker \phi = \{e_G\}$. Let $x_1, x_2 \in G$ such that $\phi(x_1) = \phi(x_2)$.
+  Multiplying by $\phi(x_2)^{-1}$:
+  \[
+  \phi(x_1) * (\phi(x_2))^{-1} = e_H \implies \phi(x_1 \cdot x_2^{-1}) = e_H \implies x_1 \cdot x_2^{-1} \in \ker \phi.
+  \]
+  Since $\ker \phi = \{e_G\}$, $x_1 \cdot x_2^{-1} = e_G \implies x_1 = x_2$. Hence $\phi$ is injective.
+\end{itemize}
+
+\textbf{4. $\operatorname{Im} \phi \le H$:}
+$e_H = \phi(e_G) \in \operatorname{Im} \phi \implies \operatorname{Im} \phi \ne \emptyset$.
+Let $u, v \in \operatorname{Im} \phi$. Then $\exists x, y \in G$ such that $u = \phi(x)$ and $v = \phi(y)$.
+Then $u * v^{-1} = \phi(x) * \phi(y)^{-1} = \phi(x \cdot y^{-1}) \in \operatorname{Im} \phi$ since $x \cdot y^{-1} \in G$.
+Thus $\operatorname{Im} \phi$ is a subgroup of $H$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.10
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Lagrange's Theorem and Applications in Number Theory}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item State and prove Lagrange's Theorem for a finite group $G$ and subgroup $H \le G$.
+  \item Deduce that the order of any element $g \in G$ divides the order of the group $|G|$.
+  \item Prove Fermat's Little Theorem using group theory: For any prime $p$ and integer $a$ with $\gcd(a, p) = 1$,
+  \[
+  a^{p-1} \equiv 1 \pmod p.
+  \]
+  \item Let $G$ be a group of prime order $p$. Prove that $G$ is cyclic and generated by any non-identity element.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Proof of Lagrange's Theorem:}
+Let $G$ be a finite group and $H \le G$.
+For any $x \in G$, define the left coset of $H$ containing $x$ as $xH = \{xh : h \in H\}$.
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item The map $\psi_x: H \to xH$ given by $\psi_x(h) = xh$ is a bijection (injective by left cancellation: $xh_1 = xh_2 \implies h_1 = h_2$, and surjective by definition of $xH$). Thus every left coset has the exact same cardinality:
+  \[
+  |xH| = |H|.
+  \]
+  \item The relation $x \sim y \iff x^{-1}y \in H$ is an equivalence relation whose equivalence classes are precisely the left cosets $xH$.
+  Since equivalence classes partition $G$, the cosets are mutually disjoint and their union is $G$:
+  \[
+  G = x_1 H \cup x_2 H \cup \dots \cup x_m H,
+  \]
+  where $m = [G : H]$ is the number of distinct cosets (the index of $H$ in $G$).
+  Summing cardinalities:
+  \[
+  |G| = \sum_{i=1}^m |x_i H| = m \cdot |H| = [G : H] \cdot |H|.
+  \]
+  Therefore, $|H|$ divides $|G|$. \hfill $\blacksquare$
+\end{itemize}
+
+\textbf{2. Element Order Divides Group Order:}
+For any $g \in G$, consider the cyclic subgroup generated by $g$: $\langle g \rangle = \{g^k : k \in \Z\}$.
+The cardinality of this subgroup is precisely the order of the element: $|\langle g \rangle| = \operatorname{ord}(g)$.
+By Lagrange's Theorem, $|\langle g \rangle|$ divides $|G|$, hence $\operatorname{ord}(g)$ divides $|G|$.
+
+\textbf{3. Proof of Fermat's Little Theorem:}
+Consider the set of non-zero congruence classes modulo $p$:
+\[
+G = (\Z/p\Z)^* = \{\bar{1}, \bar{2}, \dots, \overline{p-1}\}.
+\]
+Since $p$ is prime, every non-zero element has a multiplicative inverse by Bézout's identity. Thus $(G, \cdot)$ is a group under multiplication modulo $p$, with order $|G| = p - 1$.
+For any integer $a$ coprime to $p$, the class $\bar{a} \in G$.
+By part 2, the order $k = \operatorname{ord}(\bar{a})$ divides $|G| = p - 1$.
+Thus $p - 1 = kq$ for some integer $q$, which implies:
+\[
+\bar{a}^{p-1} = (\bar{a}^k)^q = \bar{1}^q = \bar{1} \iff a^{p-1} \equiv 1 \pmod p. \quad \blacksquare
+\]
+
+\textbf{4. Groups of Prime Order are Cyclic:}
+Let $|G| = p$ where $p$ is prime. Take any element $x \in G$ with $x \ne e$.
+Consider the subgroup $H = \langle x \rangle$. By Lagrange's Theorem, $|H|$ divides $|G| = p$.
+The only positive divisors of the prime $p$ are $1$ and $p$.
+Since $x \ne e$, $|H| \ge 2$, which forces $|H| = p$.
+Since $H \subseteq G$ and $|H| = |G|$, $H = G$, meaning $G = \langle x \rangle$ is cyclic. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.11
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{The Ring $\Z/n\Z$ and Field Invertibility Criterion}
+Consider the quotient ring $(\Z/n\Z, +, \cdot)$ where $n \ge 2$.
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that an element $\bar{a} \in \Z/n\Z$ is invertible (a unit) if and only if $\gcd(a, n) = 1$.
+  \item Deduce that $(\Z/n\Z, +, \cdot)$ is a field if and only if $n$ is prime.
+  \item In the field $\Z/13\Z$, determine the multiplicative inverse of $\bar{5}$ using the Extended Euclidean Algorithm.
+  \item Solve the linear congruence in $\Z$: $5x \equiv 9 \pmod{13}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.0cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Invertibility Criterion in $\Z/n\Z$:}
+$\bar{a}$ is invertible in $\Z/n\Z \iff \exists \bar{u} \in \Z/n\Z$ such that $\bar{a} \cdot \bar{u} = \bar{1}$.
+\[
+\bar{a} \cdot \bar{u} = \bar{1} \iff au \equiv 1 \pmod n \iff \exists v \in \Z,\, au - 1 = vn \iff au - vn = 1.
+\]
+By Bézout's Identity, integers $u, v$ satisfying $au + n(-v) = 1$ exist if and only if $\gcd(a, n) = 1$.
+
+\textbf{2. $\Z/n\Z$ is a Field $\iff n$ is Prime:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item $(\implies)$ Assume $\Z/n\Z$ is a field. Then every non-zero element is invertible.
+  If $n$ were composite, $n = ab$ with $1 < a, b < n$.
+  Then $\bar{a} \ne \bar{0}$ and $\bar{b} \ne \bar{0}$, but $\bar{a} \cdot \bar{b} = \bar{n} = \bar{0}$, making $\bar{a}$ a zero divisor, which cannot happen in a field. Contradiction.
+  \item $(\impliedby)$ Assume $n = p$ is prime. For any $\bar{a} \ne \bar{0}$, $1 \le a \le p - 1$.
+  Since $p$ is prime, $\gcd(a, p) = 1$. By part 1, $\bar{a}$ is invertible.
+  Since $(\Z/p\Z, +, \cdot)$ is a non-trivial commutative ring with unity where every non-zero element is invertible, it is a field.
+\end{itemize}
+
+\textbf{3. Inverse of $\bar{5}$ in $\Z/13\Z$ via Extended Euclidean Algorithm:}
+Compute $\gcd(13, 5)$:
+\begin{align*}
+13 &= 2 \times 5 + 3 \implies 3 = 13 - 2 \times 5 \\
+5 &= 1 \times 3 + 2 \implies 2 = 5 - 3 = 5 - (13 - 2 \times 5) = 3 \times 5 - 13 \\
+3 &= 1 \times 2 + 1 \implies 1 = 3 - 2 = (13 - 2 \times 5) - (3 \times 5 - 13) = 2 \times 13 - 5 \times 5.
+\end{align*}
+Thus:
+\[
+-5 \times 5 + 2 \times 13 = 1 \implies -5 \times 5 \equiv 1 \pmod{13}.
+\]
+Modulo 13: $-5 \equiv 13 - 5 = 8 \pmod{13}$.
+Check: $5 \times 8 = 40 = 3 \times 13 + 1 \equiv 1 \pmod{13}$.
+Thus $\bar{5}^{-1} = \bar{8}$ in $\Z/13\Z$.
+
+\textbf{4. Solving $5x \equiv 9 \pmod{13}$:}
+Multiply both sides of the congruence by the modular inverse $\bar{5}^{-1} = \bar{8}$:
+\[
+x \equiv 8 \times 9 \pmod{13} \implies x \equiv 72 \pmod{13}.
+\]
+Dividing $72$ by $13$: $72 = 5 \times 13 + 7$.
+Hence $x \equiv 7 \pmod{13}$.
+Verification: $5 \times 7 = 35 = 2 \times 13 + 9 \equiv 9 \pmod{13}$ (correct).
+The general solution in $\Z$ is $x \in \{7 + 13k : k \in \Z\}$. \hfill $\blacksquare$
+\end{solution}
+
+% ===========================================================================
+% EXERCISE 2.12
+% ===========================================================================
+\begin{exercise}[$\bigstar\bigstar\bigstar$ Advanced / Exam Level]{Canonical Decomposition and the First Isomorphism Theorem for Sets}
+Let $f: E \to F$ be any mapping between sets. Define a binary relation $\mathcal{R}_f$ on $E$ by:
+\[
+x \mathcal{R}_f y \iff f(x) = f(y).
+\]
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+  \item Prove that $\mathcal{R}_f$ is an equivalence relation on $E$ (the \emph{fiber relation} or kernel equivalence).
+  \item Let $\pi: E \to E/\mathcal{R}_f$ be the canonical projection $\pi(x) = [x]$. Show that $\pi$ is surjective.
+  \item Define $\tilde{f}: E/\mathcal{R}_f \to \operatorname{Im}(f)$ by $\tilde{f}([x]) = f(x)$.
+  Prove that $\tilde{f}$ is well-defined and bijective.
+  \item Deduce the canonical commutative diagram factorization: $f = i \circ \tilde{f} \circ \pi$, where $i: \operatorname{Im}(f) \hookrightarrow F$ is the inclusion injection.
+\end{enumerate}
+\end{exercise}
+
+\begin{tabletworkspace}[5.5cm]
+\end{tabletworkspace}
+
+\begin{solution}
+\textbf{1. Equivalence Relation $\mathcal{R}_f$:}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \textbf{Reflexivity:} $\forall x \in E$, $f(x) = f(x) \implies x \mathcal{R}_f x$.
+  \item \textbf{Symmetry:} $x \mathcal{R}_f y \implies f(x) = f(y) \implies f(y) = f(x) \implies y \mathcal{R}_f x$.
+  \item \textbf{Transitivity:} $x \mathcal{R}_f y \land y \mathcal{R}_f z \implies f(x) = f(y) \land f(y) = f(z) \implies f(x) = f(z) \implies x \mathcal{R}_f z$.
+\end{itemize}
+Thus $\mathcal{R}_f$ is an equivalence relation on $E$.
+
+\textbf{2. Canonical Projection $\pi$ is Surjective:}
+By definition of the quotient set $E/\mathcal{R}_f$, any element in the quotient set is an equivalence class $[x]$ for some representative $x \in E$.
+Thus for every $[x] \in E/\mathcal{R}_f$, we have $\pi(x) = [x]$, which demonstrates that $\pi$ is surjective.
+
+\textbf{3. $\tilde{f}$ is Well-Defined and Bijective:}
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+  \item \textbf{Well-defined:} Suppose $[x] = [x']$. Then $x \mathcal{R}_f x' \implies f(x) = f(x')$. Thus the definition $\tilde{f}([x]) = f(x)$ is independent of the choice of representative.
+  \item \textbf{Injectivity:} Suppose $\tilde{f}([x_1]) = \tilde{f}([x_2])$. Then $f(x_1) = f(x_2) \implies x_1 \mathcal{R}_f x_2 \implies [x_1] = [x_2]$. Thus $\tilde{f}$ is injective.
+  \item \textbf{Surjectivity:} Let $y \in \operatorname{Im}(f)$. Then $\exists x \in E$ such that $f(x) = y$. Thus $\tilde{f}([x]) = f(x) = y$. Hence $\tilde{f}$ is surjective onto $\operatorname{Im}(f)$.
+\end{itemize}
+Therefore, $\tilde{f}: E/\mathcal{R}_f \to \operatorname{Im}(f)$ is a bijection.
+
+\textbf{4. Canonical Factorization:}
+For any $x \in E$:
+\[
+(i \circ \tilde{f} \circ \pi)(x) = i(\tilde{f}(\pi(x))) = i(\tilde{f}([x])) = i(f(x)) = f(x).
+\]
+Hence $f = i \circ \tilde{f} \circ \pi$.
+This expresses every mapping as the composition of a canonical surjection ($\pi$), a bijection ($\tilde{f}$), and a canonical injection ($i$). \hfill $\blacksquare$
+\end{solution}
